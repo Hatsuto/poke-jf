@@ -8740,6 +8740,40 @@ Cry_Pecharunt::
 .endif @ P_FAMILY_PECHARUNT
 .endif @ P_CRIES_ENABLED
 
+.if P_FAMILY_GREMBER == TRUE
+	.align 2
+Cry_Grember::
+.if TESTING == FALSE
+	.incbin "sound/direct_sound_samples/cries/grember.bin"
+.endif
+
+	.align 2
+Cry_Charbold::
+.if TESTING == FALSE
+	.incbin "sound/direct_sound_samples/cries/charbold.bin"
+.endif
+
+	.align 2
+Cry_Shampyre::
+.if TESTING == FALSE
+	.incbin "sound/direct_sound_samples/cries/shampyre.bin"
+.endif
+.endif @ P_FAMILY_GREMBER
+
+.if P_FAMILY_CUDDLEFISH == TRUE
+	.align 2
+Cry_Cuddlefish::
+.if TESTING == FALSE
+	.incbin "sound/direct_sound_samples/cries/cuddlefish.bin"
+.endif
+
+	.align 2
+Cry_Cuddlefist::
+.if TESTING == FALSE
+	.incbin "sound/direct_sound_samples/cries/cuddlefist.bin"
+.endif
+.endif @ P_FAMILY_CUDDLEFISH
+
 .if TESTING == TRUE
 @ Tests use a single shared cry for all mons, and Fletchling is the standard measurement
 	.align 2

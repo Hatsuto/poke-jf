@@ -6693,4 +6693,25 @@ static const struct SpriteFrameImage sPicTable_Pecharunt[] = {
 };
 #endif //P_FAMILY_PECHARUNT
 
+#if P_FAMILY_GREMBER
+static const struct SpriteFrameImage sPicTable_Grember[] = {
+    overworld_ascending_frames(gObjectEventPic_Grember, 2, 4),
+};
+static const struct SpriteFrameImage sPicTable_Charbold[] = {
+    overworld_ascending_frames(gObjectEventPic_Charbold, 2, 4),
+};
+static const struct SpriteFrameImage sPicTable_Shampyre[] = {
+    overworld_ascending_frames(gObjectEventPic_Shampyre, 2, 4),
+};
+#endif //P_FAMILY_GREMBER
+
+#if P_FAMILY_CUDDLEFISH
+static const struct SpriteFrameImage sPicTable_Cuddlefish[] = {
+    overworld_ascending_frames(gObjectEventPic_Cuddlefish, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_Cuddlefist[] = {
+    overworld_ascending_frames(gObjectEventPic_Cuddlefist, 4, 4),
+};
+#endif //P_FAMILY_GREMBER
+
 #endif //OW_POKEMON_OBJECT_EVENTS
