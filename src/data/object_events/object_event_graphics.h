@@ -633,3 +633,26 @@ const u16 gObjectEventPic_PidgeyOld[] = INCGFX_U16("graphics/object_events/pics/
 const u16 gObjectEventPic_ClefairyOld[] = INCGFX_U16("graphics/object_events/pics/pokemon_old/clefairy.png", ".4bpp", "-mwidth 2 -mheight 2");
 
 #endif // IS_FRLG
+
+// Additional NPC
+const u32 gObjectEventPic_Roughneck[] = INCGFX_U32("graphics/object_events/pics/people/roughneck.png", ".4bpp", "-mwidth 4 -mheight 4");
+
+// Additional Pokemon
+// Gen II
+const u32 gObjectEventPic_Shuckle[] = INCGFX_U32("graphics/object_events/pics/pokemon/shuckle.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u16 gObjectEventPal_Shuckle[] = INCGFX_U16("graphics/object_events/palettes/shuckle.pal", ".gbapal");
+const u32 gObjectEventPic_Larvitar[] = INCGFX_U32("graphics/object_events/pics/pokemon/larvitar.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPal_Larvitar[] = INCGFX_U16("graphics/object_events/palettes/larvitar.pal", ".gbapal");
+// Gen VI
+const u32 gObjectEventPic_Klefki[] = INCGFX_U32("graphics/object_events/pics/pokemon/klefki.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPal_Klefki[] = INCGFX_U16("graphics/object_events/palettes/klefki.pal", ".gbapal");
+const u32 gObjectEventPic_Malamar[] = INCGFX_U32("graphics/object_events/pics/pokemon/malamar.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u16 gObjectEventPal_Malamar[] = INCGFX_U16("graphics/object_events/palettes/malamar.pal", ".gbapal");
+const u32 gObjectEventPic_Trevenant[] = INCGFX_U32("graphics/object_events/pics/pokemon/trevenant.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u16 gObjectEventPal_Trevenant[] = INCGFX_U16("graphics/object_events/palettes/trevenant.pal", ".gbapal");
+// Gen VII
+const u32 gObjectEventPic_LycanrocMidnight[] = INCGFX_U32("graphics/object_events/pics/pokemon/lycanroc_midnight.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u16 gObjectEventPal_LycanrocMidnight[] = INCGFX_U16("graphics/object_events/palettes/lycanroc_midnight.pal", ".gbapal");
+// Fakemon
+const u32 gObjectEventPic_Grember[] = INCGFX_U32("graphics/object_events/pics/pokemon/grember.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPal_Grember[] = INCGFX_U16("graphics/object_events/palettes/grember.pal", ".gbapal");
