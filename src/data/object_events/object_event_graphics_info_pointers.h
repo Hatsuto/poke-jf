@@ -803,12 +803,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
 
 	//Custom entries
     [OBJ_EVENT_GFX_ROUGHNECK]                = &gObjectEventGraphicsInfo_Roughneck,
-    [OBJ_EVENT_GFX_SHUCKLE]                  = &gObjectEventGraphicsInfo_Shuckle,
-    [OBJ_EVENT_GFX_LARVITAR]                 = &gObjectEventGraphicsInfo_Larvitar,
-    [OBJ_EVENT_GFX_KLEFKI]                   = &gObjectEventGraphicsInfo_Klefki,
-    [OBJ_EVENT_GFX_MALAMAR]                  = &gObjectEventGraphicsInfo_Malamar,
-    [OBJ_EVENT_GFX_TREVENANT]                = &gObjectEventGraphicsInfo_Trevenant,
-    [OBJ_EVENT_GFX_LYCANROCMIDNIGHT]         = &gObjectEventGraphicsInfo_LycanrocMidnight,
     [OBJ_EVENT_GFX_GREMBER]                  = &gObjectEventGraphicsInfo_Grember,
 };
 

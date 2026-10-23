@@ -416,12 +416,6 @@ enum
 	
 	// Custom
 	OBJ_EVENT_GFX_ROUGHNECK,
-    OBJ_EVENT_GFX_SHUCKLE,
-    OBJ_EVENT_GFX_LARVITAR,
-    OBJ_EVENT_GFX_KLEFKI,
-    OBJ_EVENT_GFX_MALAMAR,
-    OBJ_EVENT_GFX_TREVENANT,
-    OBJ_EVENT_GFX_LYCANROCMIDNIGHT,
     OBJ_EVENT_GFX_GREMBER,
 	
     NUM_OBJ_EVENT_GFX,
@@ -618,17 +612,8 @@ enum
 
 // Not a real object - final tag used by base ROM, above
 #define OBJ_EVENT_PAL_TAG_FINAL                   0x116A
-// Gen II
-#define OBJ_EVENT_PAL_TAG_SHUCKLE                 (OBJ_EVENT_PAL_TAG_FINAL + 1)
-#define OBJ_EVENT_PAL_TAG_LARVITAR                (OBJ_EVENT_PAL_TAG_FINAL + 2)
-// Gen VI
-#define OBJ_EVENT_PAL_TAG_KLEFKI                  (OBJ_EVENT_PAL_TAG_FINAL + 3)
-#define OBJ_EVENT_PAL_TAG_MALAMAR                 (OBJ_EVENT_PAL_TAG_FINAL + 4)
-#define OBJ_EVENT_PAL_TAG_TREVENANT               (OBJ_EVENT_PAL_TAG_FINAL + 5)
-// Gen VII
-#define OBJ_EVENT_PAL_TAG_LYCANROC_MIDNIGHT       (OBJ_EVENT_PAL_TAG_FINAL + 6)
 // Fakemon
-#define OBJ_EVENT_PAL_TAG_GREMBER                 (OBJ_EVENT_PAL_TAG_FINAL + 7)
+#define OBJ_EVENT_PAL_TAG_GREMBER                 (OBJ_EVENT_PAL_TAG_FINAL + 1)
 
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
