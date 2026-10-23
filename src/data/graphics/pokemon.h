@@ -27684,3 +27684,53 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u32 gMonFrontPic_Egg[] = INCGFX_U32("graphics/pokemon/egg/anim_front.png", ".4bpp.smol");
     const u16 gMonPalette_Egg[] = INCGFX_U16("graphics/pokemon/egg/normal.pal", ".gbapal");
     const u8 gMonIcon_Egg[] = INCGFX_U8("graphics/pokemon/egg/icon.png", ".4bpp");
+	
+#if P_FAMILY_GREMBER
+    const u32 gMonFrontPic_Grember[] = INCGFX_U32("graphics/pokemon/grember/anim_front.png", ".4bpp.smol");
+    const u16 gMonPalette_Grember[] = INCGFX_U16("graphics/pokemon/grember/normal.pal", ".gbapal");
+    const u32 gMonBackPic_Grember[] = INCGFX_U32("graphics/pokemon/grember/back.png", ".4bpp.smol");
+    const u16 gMonShinyPalette_Grember[] = INCGFX_U16("graphics/pokemon/grember/shiny.pal", ".gbapal");
+    const u8 gMonIcon_Grember[] = INCGFX_U8("graphics/pokemon/grember/icon.png", ".4bpp");
+#if P_FOOTPRINTS
+	const u8 gMonFootprint_Grember[] = INCGFX_U8("graphics/pokemon/grember/footprint.png", ".1bpp");
+#endif //P_FOOTPRINTS
+#if OW_POKEMON_OBJECT_EVENTS
+	const u32 gObjectEventPic_Grember[] = INCGFX_COMP("graphics/pokemon/grember/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
+#if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
+	const u16 gOverworldPalette_Grember[] = INCGFX_U16("graphics/pokemon/grember/overworld_normal.pal", ".gbapal");
+	const u16 gShinyOverworldPalette_Grember[] = INCGFX_U16("graphics/pokemon/grember/overworld_shiny.pal", ".gbapal");
+#endif //OW_PKMN_OBJECTS_SHARE_PALETTES
+#endif //OW_POKEMON_OBJECT_EVENTS
+
+    const u32 gMonFrontPic_Charbold[] = INCGFX_U32("graphics/pokemon/charbold/anim_front.png", ".4bpp.smol");
+    const u16 gMonPalette_Charbold[] = INCGFX_U16("graphics/pokemon/charbold/normal.pal", ".gbapal");
+    const u32 gMonBackPic_Charbold[] = INCGFX_U32("graphics/pokemon/charbold/back.png", ".4bpp.smol");
+    const u16 gMonShinyPalette_Charbold[] = INCGFX_U16("graphics/pokemon/charbold/shiny.pal", ".gbapal");
+    const u8 gMonIcon_Charbold[] = INCGFX_U8("graphics/pokemon/charbold/icon.png", ".4bpp");
+#if P_FOOTPRINTS
+	const u8 gMonFootprint_Charbold[] = INCGFX_U8("graphics/pokemon/charbold/footprint.png", ".1bpp");
+#endif //P_FOOTPRINTS
+#if OW_POKEMON_OBJECT_EVENTS
+	const u32 gObjectEventPic_Charbold[] = INCGFX_COMP("graphics/pokemon/charbold/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
+#if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
+	const u16 gOverworldPalette_Charbold[] = INCGFX_U16("graphics/pokemon/charbold/overworld_normal.pal", ".gbapal");
+	const u16 gShinyOverworldPalette_Charbold[] = INCGFX_U16("graphics/pokemon/charbold/overworld_shiny.pal", ".gbapal");
+#endif //OW_PKMN_OBJECTS_SHARE_PALETTES
+#endif //OW_POKEMON_OBJECT_EVENTS
+
+    const u32 gMonFrontPic_Shampyre[] = INCGFX_U32("graphics/pokemon/shampyre/anim_front.png", ".4bpp.smol");
+    const u16 gMonPalette_Shampyre[] = INCGFX_U16("graphics/pokemon/shampyre/normal.pal", ".gbapal");
+    const u32 gMonBackPic_Shampyre[] = INCGFX_U32("graphics/pokemon/shampyre/back.png", ".4bpp.smol");
+    const u16 gMonShinyPalette_Shampyre[] = INCGFX_U16("graphics/pokemon/shampyre/shiny.pal", ".gbapal");
+    const u8 gMonIcon_Shampyre[] = INCGFX_U8("graphics/pokemon/shampyre/icon.png", ".4bpp");
+#if P_FOOTPRINTS
+	const u8 gMonFootprint_Shampyre[] = INCGFX_U8("graphics/pokemon/shampyre/footprint.png", ".1bpp");
+#endif //P_FOOTPRINTS
+#if OW_POKEMON_OBJECT_EVENTS
+	const u32 gObjectEventPic_Shampyre[] = INCGFX_COMP("graphics/pokemon/shampyre/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
+#if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
+	const u16 gOverworldPalette_Shampyre[] = INCGFX_U16("graphics/pokemon/shampyre/overworld_normal.pal", ".gbapal");
+	const u16 gShinyOverworldPalette_Shampyre[] = INCGFX_U16("graphics/pokemon/shampyre/overworld_shiny.pal", ".gbapal");
+#endif //OW_PKMN_OBJECTS_SHARE_PALETTES
+#endif //OW_POKEMON_OBJECT_EVENTS
+#endif //P_FAMILY_GREMBER
