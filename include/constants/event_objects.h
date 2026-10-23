@@ -413,6 +413,17 @@ enum
     OBJ_EVENT_GFX_PUSHABLE_BOULDER_FRLG,
     OBJ_EVENT_GFX_CUTTABLE_TREE_FRLG,
     OBJ_EVENT_GFX_BREAKABLE_ROCK_FRLG,
+	
+	// Custom
+	OBJ_EVENT_GFX_ROUGHNECK,
+    OBJ_EVENT_GFX_SHUCKLE,
+    OBJ_EVENT_GFX_LARVITAR,
+    OBJ_EVENT_GFX_KLEFKI,
+    OBJ_EVENT_GFX_MALAMAR,
+    OBJ_EVENT_GFX_TREVENANT,
+    OBJ_EVENT_GFX_LYCANROCMIDNIGHT,
+    OBJ_EVENT_GFX_GREMBER,
+	
     NUM_OBJ_EVENT_GFX,
 };
 
@@ -604,6 +615,21 @@ enum
 // Gen VIII
 #define OBJ_EVENT_PAL_TAG_BALL_STRANGE            0x116A
 #endif //OW_FOLLOWERS_POKEBALLS
+
+// Not a real object - final tag used by base ROM, above
+#define OBJ_EVENT_PAL_TAG_FINAL                   0x116A
+// Gen II
+#define OBJ_EVENT_PAL_TAG_SHUCKLE                 (OBJ_EVENT_PAL_TAG_FINAL + 1)
+#define OBJ_EVENT_PAL_TAG_LARVITAR                (OBJ_EVENT_PAL_TAG_FINAL + 2)
+// Gen VI
+#define OBJ_EVENT_PAL_TAG_KLEFKI                  (OBJ_EVENT_PAL_TAG_FINAL + 3)
+#define OBJ_EVENT_PAL_TAG_MALAMAR                 (OBJ_EVENT_PAL_TAG_FINAL + 4)
+#define OBJ_EVENT_PAL_TAG_TREVENANT               (OBJ_EVENT_PAL_TAG_FINAL + 5)
+// Gen VII
+#define OBJ_EVENT_PAL_TAG_LYCANROC_MIDNIGHT       (OBJ_EVENT_PAL_TAG_FINAL + 6)
+// Fakemon
+#define OBJ_EVENT_PAL_TAG_GREMBER                 (OBJ_EVENT_PAL_TAG_FINAL + 7)
+
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
 #define OBJ_EVENT_PAL_TAG_LIGHT                   0x8001

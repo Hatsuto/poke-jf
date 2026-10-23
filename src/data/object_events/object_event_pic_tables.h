@@ -2494,3 +2494,99 @@ static const struct SpriteFrameImage sPicTable_MomFrlg[] = {
 };
 
 #endif // IS_FRLG
+
+// Custom sprites
+
+// NPC
+const struct SpriteFrameImage gObjectEventPicTable_Roughneck[] = {
+    overworld_frame(gObjectEventPic_Roughneck, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Roughneck, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Roughneck, 4, 4, 2),
+    overworld_frame(gObjectEventPic_Roughneck, 4, 4, 3),
+    overworld_frame(gObjectEventPic_Roughneck, 4, 4, 4),
+    overworld_frame(gObjectEventPic_Roughneck, 4, 4, 5),
+    overworld_frame(gObjectEventPic_Roughneck, 4, 4, 6),
+    overworld_frame(gObjectEventPic_Roughneck, 4, 4, 7),
+    overworld_frame(gObjectEventPic_Roughneck, 4, 4, 8),
+};
+// Gen II
+const struct SpriteFrameImage gObjectEventPicTable_Shuckle[] = {
+    overworld_frame(gObjectEventPic_Shuckle, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Shuckle, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Shuckle, 4, 4, 2),
+    overworld_frame(gObjectEventPic_Shuckle, 4, 4, 3),
+    overworld_frame(gObjectEventPic_Shuckle, 4, 4, 4),
+    overworld_frame(gObjectEventPic_Shuckle, 4, 4, 5),
+    overworld_frame(gObjectEventPic_Shuckle, 4, 4, 6),
+    overworld_frame(gObjectEventPic_Shuckle, 4, 4, 7),
+    overworld_frame(gObjectEventPic_Shuckle, 4, 4, 8),
+};
+const struct SpriteFrameImage gObjectEventPicTable_Larvitar[] = {
+    overworld_frame(gObjectEventPic_Larvitar, 2, 4, 0),
+    overworld_frame(gObjectEventPic_Larvitar, 2, 4, 1),
+    overworld_frame(gObjectEventPic_Larvitar, 2, 4, 2),
+    overworld_frame(gObjectEventPic_Larvitar, 2, 4, 3),
+    overworld_frame(gObjectEventPic_Larvitar, 2, 4, 4),
+    overworld_frame(gObjectEventPic_Larvitar, 2, 4, 5),
+    overworld_frame(gObjectEventPic_Larvitar, 2, 4, 6),
+    overworld_frame(gObjectEventPic_Larvitar, 2, 4, 7),
+    overworld_frame(gObjectEventPic_Larvitar, 2, 4, 8),
+};
+// Gen VI
+const struct SpriteFrameImage gObjectEventPicTable_Klefki[] = {
+    overworld_frame(gObjectEventPic_Klefki, 2, 4, 0),
+    overworld_frame(gObjectEventPic_Klefki, 2, 4, 1),
+    overworld_frame(gObjectEventPic_Klefki, 2, 4, 2),
+    overworld_frame(gObjectEventPic_Klefki, 2, 4, 3),
+    overworld_frame(gObjectEventPic_Klefki, 2, 4, 4),
+    overworld_frame(gObjectEventPic_Klefki, 2, 4, 5),
+    overworld_frame(gObjectEventPic_Klefki, 2, 4, 6),
+    overworld_frame(gObjectEventPic_Klefki, 2, 4, 7),
+    overworld_frame(gObjectEventPic_Klefki, 2, 4, 8),
+};
+const struct SpriteFrameImage gObjectEventPicTable_Malamar[] = {
+    overworld_frame(gObjectEventPic_Malamar, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Malamar, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Malamar, 4, 4, 2),
+    overworld_frame(gObjectEventPic_Malamar, 4, 4, 3),
+    overworld_frame(gObjectEventPic_Malamar, 4, 4, 4),
+    overworld_frame(gObjectEventPic_Malamar, 4, 4, 5),
+    overworld_frame(gObjectEventPic_Malamar, 4, 4, 6),
+    overworld_frame(gObjectEventPic_Malamar, 4, 4, 7),
+    overworld_frame(gObjectEventPic_Malamar, 4, 4, 8),
+};
+const struct SpriteFrameImage gObjectEventPicTable_Trevenant[] = {
+    overworld_frame(gObjectEventPic_Trevenant, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Trevenant, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Trevenant, 4, 4, 2),
+    overworld_frame(gObjectEventPic_Trevenant, 4, 4, 3),
+    overworld_frame(gObjectEventPic_Trevenant, 4, 4, 4),
+    overworld_frame(gObjectEventPic_Trevenant, 4, 4, 5),
+    overworld_frame(gObjectEventPic_Trevenant, 4, 4, 6),
+    overworld_frame(gObjectEventPic_Trevenant, 4, 4, 7),
+    overworld_frame(gObjectEventPic_Trevenant, 4, 4, 8),
+};
+// Gen VII
+const struct SpriteFrameImage gObjectEventPicTable_LycanrocMidnight[] = {
+    overworld_frame(gObjectEventPic_LycanrocMidnight, 4, 4, 0),
+    overworld_frame(gObjectEventPic_LycanrocMidnight, 4, 4, 1),
+    overworld_frame(gObjectEventPic_LycanrocMidnight, 4, 4, 2),
+    overworld_frame(gObjectEventPic_LycanrocMidnight, 4, 4, 3),
+    overworld_frame(gObjectEventPic_LycanrocMidnight, 4, 4, 4),
+    overworld_frame(gObjectEventPic_LycanrocMidnight, 4, 4, 5),
+    overworld_frame(gObjectEventPic_LycanrocMidnight, 4, 4, 6),
+    overworld_frame(gObjectEventPic_LycanrocMidnight, 4, 4, 7),
+    overworld_frame(gObjectEventPic_LycanrocMidnight, 4, 4, 8),
+};
+// Fakemon
+const struct SpriteFrameImage gObjectEventPicTable_Grember[] = {
+    overworld_frame(gObjectEventPic_Grember, 2, 4, 0),
+    overworld_frame(gObjectEventPic_Grember, 2, 4, 1),
+    overworld_frame(gObjectEventPic_Grember, 2, 4, 2),
+    overworld_frame(gObjectEventPic_Grember, 2, 4, 3),
+    overworld_frame(gObjectEventPic_Grember, 2, 4, 4),
+    overworld_frame(gObjectEventPic_Grember, 2, 4, 5),
+    overworld_frame(gObjectEventPic_Grember, 2, 4, 6),
+    overworld_frame(gObjectEventPic_Grember, 2, 4, 7),
+    overworld_frame(gObjectEventPic_Grember, 2, 4, 8),
+};

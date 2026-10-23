@@ -400,6 +400,15 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Giddy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ApricornTree;
+// Custom sprites
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Roughneck;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Shuckle;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Larvitar;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Klefki;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Malamar;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Trevenant;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LycanrocMidnight;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Grember;
 
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
     [OBJ_EVENT_GFX_BRENDAN_NORMAL] =           &gObjectEventGraphicsInfo_BrendanNormal,
@@ -791,6 +800,16 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_DEOXYS_N]                 = &gObjectEventGraphicsInfo_DeoxysN,
     [OBJ_EVENT_GFX_SS_ANNE]                  = &gObjectEventGraphicsInfo_SSAnne,
 #endif // IS_FRLG
+
+	//Custom entries
+    [OBJ_EVENT_GFX_ROUGHNECK]                = &gObjectEventGraphicsInfo_Roughneck,
+    [OBJ_EVENT_GFX_SHUCKLE]                  = &gObjectEventGraphicsInfo_Shuckle,
+    [OBJ_EVENT_GFX_LARVITAR]                 = &gObjectEventGraphicsInfo_Larvitar,
+    [OBJ_EVENT_GFX_KLEFKI]                   = &gObjectEventGraphicsInfo_Klefki,
+    [OBJ_EVENT_GFX_MALAMAR]                  = &gObjectEventGraphicsInfo_Malamar,
+    [OBJ_EVENT_GFX_TREVENANT]                = &gObjectEventGraphicsInfo_Trevenant,
+    [OBJ_EVENT_GFX_LYCANROCMIDNIGHT]         = &gObjectEventGraphicsInfo_LycanrocMidnight,
+    [OBJ_EVENT_GFX_GREMBER]                  = &gObjectEventGraphicsInfo_Grember,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {
