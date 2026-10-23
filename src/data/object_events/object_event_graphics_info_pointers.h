@@ -402,13 +402,6 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvi
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ApricornTree;
 // Custom sprites
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Roughneck;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Shuckle;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Larvitar;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Klefki;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Malamar;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Trevenant;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LycanrocMidnight;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Grember;
 
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
     [OBJ_EVENT_GFX_BRENDAN_NORMAL] =           &gObjectEventGraphicsInfo_BrendanNormal,

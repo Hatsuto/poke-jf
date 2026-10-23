@@ -416,7 +416,6 @@ enum
 	
 	// Custom
 	OBJ_EVENT_GFX_ROUGHNECK,
-    OBJ_EVENT_GFX_GREMBER,
 	
     NUM_OBJ_EVENT_GFX,
 };

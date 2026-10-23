@@ -636,7 +636,3 @@ const u16 gObjectEventPic_ClefairyOld[] = INCGFX_U16("graphics/object_events/pic
 
 // Additional NPC
 const u32 gObjectEventPic_Roughneck[] = INCGFX_U32("graphics/object_events/pics/people/roughneck.png", ".4bpp", "-mwidth 4 -mheight 4");
-
-// Additional Pokemon
-const u32 gObjectEventPic_Grember[] = INCGFX_U32("graphics/object_events/pics/pokemon_old/grember.png", ".4bpp", "-mwidth 2 -mheight 4");
-const u16 gObjectEventPal_Grember[] = INCGFX_U16("graphics/object_events/palettes/grember.pal", ".gbapal");

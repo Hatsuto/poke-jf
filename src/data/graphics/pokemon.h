@@ -27695,7 +27695,7 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 	const u8 gMonFootprint_Grember[] = INCGFX_U8("graphics/pokemon/grember/footprint.png", ".1bpp");
 #endif //P_FOOTPRINTS
 #if OW_POKEMON_OBJECT_EVENTS
-	const u32 gObjectEventPic_Grember[] = INCGFX_COMP("graphics/pokemon/grember/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
+	const u32 gObjectEventPic_Grember[] = INCGFX_COMP("graphics/pokemon/grember/overworld.png", ".4bpp", "-mwidth 2 -mheight 4");
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
 	const u16 gOverworldPalette_Grember[] = INCGFX_U16("graphics/pokemon/grember/overworld_normal.pal", ".gbapal");
 	const u16 gShinyOverworldPalette_Grember[] = INCGFX_U16("graphics/pokemon/grember/overworld_shiny.pal", ".gbapal");
@@ -27711,7 +27711,7 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 	const u8 gMonFootprint_Charbold[] = INCGFX_U8("graphics/pokemon/charbold/footprint.png", ".1bpp");
 #endif //P_FOOTPRINTS
 #if OW_POKEMON_OBJECT_EVENTS
-	const u32 gObjectEventPic_Charbold[] = INCGFX_COMP("graphics/pokemon/charbold/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
+	const u32 gObjectEventPic_Charbold[] = INCGFX_COMP("graphics/pokemon/charbold/overworld.png", ".4bpp", "-mwidth 2 -mheight 4");
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
 	const u16 gOverworldPalette_Charbold[] = INCGFX_U16("graphics/pokemon/charbold/overworld_normal.pal", ".gbapal");
 	const u16 gShinyOverworldPalette_Charbold[] = INCGFX_U16("graphics/pokemon/charbold/overworld_shiny.pal", ".gbapal");
@@ -27727,10 +27727,44 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 	const u8 gMonFootprint_Shampyre[] = INCGFX_U8("graphics/pokemon/shampyre/footprint.png", ".1bpp");
 #endif //P_FOOTPRINTS
 #if OW_POKEMON_OBJECT_EVENTS
-	const u32 gObjectEventPic_Shampyre[] = INCGFX_COMP("graphics/pokemon/shampyre/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
+	const u32 gObjectEventPic_Shampyre[] = INCGFX_COMP("graphics/pokemon/shampyre/overworld.png", ".4bpp", "-mwidth 2 -mheight 4");
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
 	const u16 gOverworldPalette_Shampyre[] = INCGFX_U16("graphics/pokemon/shampyre/overworld_normal.pal", ".gbapal");
 	const u16 gShinyOverworldPalette_Shampyre[] = INCGFX_U16("graphics/pokemon/shampyre/overworld_shiny.pal", ".gbapal");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_FAMILY_GREMBER
+
+#if P_FAMILY_CUDDLEFISH
+    const u32 gMonFrontPic_Cuddlefish[] = INCGFX_U32("graphics/pokemon/cuddlefish/anim_front.png", ".4bpp.smol");
+    const u16 gMonPalette_Cuddlefish[] = INCGFX_U16("graphics/pokemon/cuddlefish/normal.pal", ".gbapal");
+    const u32 gMonBackPic_Cuddlefish[] = INCGFX_U32("graphics/pokemon/cuddlefish/back.png", ".4bpp.smol");
+    const u16 gMonShinyPalette_Cuddlefish[] = INCGFX_U16("graphics/pokemon/cuddlefish/shiny.pal", ".gbapal");
+    const u8 gMonIcon_Cuddlefish[] = INCGFX_U8("graphics/pokemon/cuddlefish/icon.png", ".4bpp");
+#if P_FOOTPRINTS
+	const u8 gMonFootprint_Cuddlefish[] = INCGFX_U8("graphics/pokemon/cuddlefish/footprint.png", ".1bpp");
+#endif //P_FOOTPRINTS
+#if OW_POKEMON_OBJECT_EVENTS
+	const u32 gObjectEventPic_Cuddlefish[] = INCGFX_COMP("graphics/pokemon/cuddlefish/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
+#if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
+	const u16 gOverworldPalette_Cuddlefish[] = INCGFX_U16("graphics/pokemon/cuddlefish/overworld_normal.pal", ".gbapal");
+	const u16 gShinyOverworldPalette_Cuddlefish[] = INCGFX_U16("graphics/pokemon/cuddlefish/overworld_shiny.pal", ".gbapal");
+#endif //OW_PKMN_OBJECTS_SHARE_PALETTES
+#endif //OW_POKEMON_OBJECT_EVENTS
+
+    const u32 gMonFrontPic_Cuddlefist[] = INCGFX_U32("graphics/pokemon/cuddlefist/anim_front.png", ".4bpp.smol");
+    const u16 gMonPalette_Cuddlefist[] = INCGFX_U16("graphics/pokemon/cuddlefist/normal.pal", ".gbapal");
+    const u32 gMonBackPic_Cuddlefist[] = INCGFX_U32("graphics/pokemon/cuddlefist/back.png", ".4bpp.smol");
+    const u16 gMonShinyPalette_Cuddlefist[] = INCGFX_U16("graphics/pokemon/cuddlefist/shiny.pal", ".gbapal");
+    const u8 gMonIcon_Cuddlefist[] = INCGFX_U8("graphics/pokemon/cuddlefist/icon.png", ".4bpp");
+#if P_FOOTPRINTS
+	const u8 gMonFootprint_Cuddlefist[] = INCGFX_U8("graphics/pokemon/cuddlefist/footprint.png", ".1bpp");
+#endif //P_FOOTPRINTS
+#if OW_POKEMON_OBJECT_EVENTS
+	const u32 gObjectEventPic_Cuddlefist[] = INCGFX_COMP("graphics/pokemon/cuddlefist/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
+#if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
+	const u16 gOverworldPalette_Cuddlefist[] = INCGFX_U16("graphics/pokemon/cuddlefist/overworld_normal.pal", ".gbapal");
+	const u16 gShinyOverworldPalette_Cuddlefist[] = INCGFX_U16("graphics/pokemon/cuddlefist/overworld_shiny.pal", ".gbapal");
+#endif //OW_PKMN_OBJECTS_SHARE_PALETTES
+#endif //OW_POKEMON_OBJECT_EVENTS
+#endif //P_FAMILY_CUDDLEFISH
