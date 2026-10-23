@@ -586,16 +586,16 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
 	
 	// Custom OW
     // Gen II
-    {gObjectEventPalette_Shuckle,           OBJ_EVENT_PAL_TAG_SHUCKLE},
-    {gObjectEventPalette_Larvitar,          OBJ_EVENT_PAL_TAG_LARVITAR},
+    {gObjectEventPal_Shuckle,           OBJ_EVENT_PAL_TAG_SHUCKLE},
+    {gObjectEventPal_Larvitar,          OBJ_EVENT_PAL_TAG_LARVITAR},
     // Gen VI
-    {gObjectEventPalette_Klefki,            OBJ_EVENT_PAL_TAG_KLEFKI},
-    {gObjectEventPalette_Malamar,           OBJ_EVENT_PAL_TAG_MALAMAR},
-    {gObjectEventPalette_Trevenant,         OBJ_EVENT_PAL_TAG_TREVENANT},
+    {gObjectEventPal_Klefki,            OBJ_EVENT_PAL_TAG_KLEFKI},
+    {gObjectEventPal_Malamar,           OBJ_EVENT_PAL_TAG_MALAMAR},
+    {gObjectEventPal_Trevenant,         OBJ_EVENT_PAL_TAG_TREVENANT},
     // Gen VII
-    {gObjectEventPalette_LycanrocMidnight,  OBJ_EVENT_PAL_TAG_LYCANROC_MIDNIGHT},
+    {gObjectEventPal_LycanrocMidnight,  OBJ_EVENT_PAL_TAG_LYCANROC_MIDNIGHT},
     // Fakemon
-    {gObjectEventPalette_Grember,           OBJ_EVENT_PAL_TAG_GREMBER},
+    {gObjectEventPal_Grember,           OBJ_EVENT_PAL_TAG_GREMBER},
 	
 #ifdef BUGFIX
     {NULL,                                  OBJ_EVENT_PAL_TAG_NONE},
