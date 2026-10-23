@@ -803,7 +803,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
 
 	//Custom entries
     [OBJ_EVENT_GFX_ROUGHNECK]                = &gObjectEventGraphicsInfo_Roughneck,
-    [OBJ_EVENT_GFX_GREMBER]                  = &gObjectEventGraphicsInfo_Grember,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {
