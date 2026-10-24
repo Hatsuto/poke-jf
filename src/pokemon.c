@@ -131,6 +131,7 @@ static const struct CombinedMove sCombinedMoves[2] =
 
 #define KANTO_TO_NATIONAL(name)     [KANTO_DEX_##name - 1] = NATIONAL_DEX_##name,
 #define HOENN_TO_NATIONAL(name)     [HOENN_DEX_##name - 1] = NATIONAL_DEX_##name,
+#define SEKIEN_TO_NATIONAL(name)    [SEKIEN_DEX_##name - 1] = NATIONAL_DEX_##name,
 
 static const enum NationalDexOrder sKantoToNationalOrder[KANTO_DEX_COUNT] =
 {
@@ -142,6 +143,13 @@ static const enum NationalDexOrder sKantoToNationalOrder[KANTO_DEX_COUNT] =
 static const enum NationalDexOrder sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
 {
     FOREACH_SPECIES_IN_HOENN_DEX_ORDER(HOENN_TO_NATIONAL)
+};
+
+
+// Assigns all Sekien Dex Indexes to a National Dex Index
+static const enum NationalDexOrder sSekienToNationalOrder[SEKIEN_DEX_COUNT - 1] =
+{
+    FOREACH_SPECIES_IN_SEKIEN_DEX_ORDER(SEKIEN_TO_NATIONAL)
 };
 
 // In Battle Palace, moves are chosen based on the Pokémon's nature rather than by the player
@@ -462,7 +470,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
 #include "data/pokemon/experience_tables.h"
 
 #if P_LVL_UP_LEARNSETS >= GEN_9
-#include "data/pokemon/level_up_learnsets/gen_9.h" // Scarlet/Violet
+#include "data/pokemon/level_up_learnsets/gen_0.h" // Scarlet/Violet + Custom mons
 #elif P_LVL_UP_LEARNSETS >= GEN_8
 #include "data/pokemon/level_up_learnsets/gen_8.h" // Sword/Shield
 #elif P_LVL_UP_LEARNSETS >= GEN_7
@@ -4656,7 +4664,8 @@ u32 NationalToRegionalOrder(enum NationalDexOrder nationalNum)
 {
     if (IS_FRLG)
         return NationalToKantoOrder(nationalNum);
-    return NationalToHoennOrder(nationalNum);
+    return NationalToSekienOrder(nationalNum);
+//    return NationalToHoennOrder(nationalNum);
 }
 
 enum KantoDexOrder NationalToKantoOrder(enum NationalDexOrder nationalNum)
@@ -4695,6 +4704,24 @@ enum HoennDexOrder NationalToHoennOrder(enum NationalDexOrder nationalNum)
     return hoennNum + 1;
 }
 
+enum SekienDexOrder NationalToSekienOrder(enum NationalDexOrder nationalNum)
+{
+    u16 sekienNum;
+
+    if (!nationalNum)
+        return 0;
+
+    sekienNum = 0;
+
+    while (sekienNum < (SEKIEN_DEX_COUNT - 1) && sSekienToNationalOrder[sekienNum] != nationalNum)
+        sekienNum++;
+
+    if (sekienNum >= SEKIEN_DEX_COUNT - 1)
+        return 0;
+
+    return sekienNum + 1;
+}
+
 enum NationalDexOrder SpeciesToNationalPokedexNum(enum Species species)
 {
     species = SanitizeSpeciesId(species);
@@ -4708,7 +4735,8 @@ u32 SpeciesToRegionalPokedexNum(enum Species species)
 {
     if (IS_FRLG)
         return SpeciesToKantoPokedexNum(species);
-    return SpeciesToHoennPokedexNum(species);
+    return SpeciesToSekienPokedexNum(species);
+//    return SpeciesToHoennPokedexNum(species);
 }
 
 enum KantoDexOrder SpeciesToKantoPokedexNum(enum Species species)
@@ -4725,11 +4753,19 @@ enum HoennDexOrder SpeciesToHoennPokedexNum(enum Species species)
     return NationalToHoennOrder(gSpeciesInfo[species].natDexNum);
 }
 
+enum SekienDexOrder SpeciesToSekienPokedexNum(enum Species species)
+{
+    if (!species)
+        return 0;
+    return NationalToSekienOrder(gSpeciesInfo[species].natDexNum);
+}
+
 enum NationalDexOrder RegionalToNationalOrder(u32 regionalNum)
 {
     if (IS_FRLG)
         return KantoToNationalOrder(regionalNum);
-    return HoennToNationalOrder(regionalNum);
+    return SekienToNationalOrder(regionalNum);
+//    return HoennToNationalOrder(regionalNum);
 }
 
 enum NationalDexOrder KantoToNationalOrder(enum KantoDexOrder kantoNum)
@@ -4746,6 +4782,14 @@ enum NationalDexOrder HoennToNationalOrder(enum HoennDexOrder hoennNum)
         return 0;
 
     return sHoennToNationalOrder[hoennNum - 1];
+}
+
+enum NationalDexOrder SekienToNationalOrder(enum SekienDexOrder sekienNum)
+{
+    if (!sekienNum || sekienNum >= SEKIEN_DEX_COUNT)
+        return 0;
+
+    return sSekienToNationalOrder[sekienNum - 1];
 }
 
 void EvolutionRenameMon(struct Pokemon *mon, enum Species oldSpecies, enum Species newSpecies)
@@ -5067,7 +5111,8 @@ bool32 IsSpeciesInRegionalDex(enum Species species)
 {
     if (IS_FRLG)
         return IsSpeciesInKantoDex(species);
-    return IsSpeciesInHoennDex(species);
+    return IsSpeciesInSekienDex(species);
+//    return IsSpeciesInHoennDex(species);
 }
 
 bool32 IsSpeciesInKantoDex(enum Species species)
@@ -5081,6 +5126,14 @@ bool32 IsSpeciesInKantoDex(enum Species species)
 bool32 IsSpeciesInHoennDex(enum Species species)
 {
     if (SpeciesToHoennPokedexNum(species) > HOENN_DEX_COUNT)
+        return FALSE;
+    else
+        return TRUE;
+}
+
+bool32 IsSpeciesInSekienDex(enum Species species)
+{
+    if (SpeciesToSekienPokedexNum(species) > SEKIEN_DEX_COUNT)
         return FALSE;
     else
         return TRUE;
