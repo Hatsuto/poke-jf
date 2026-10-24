@@ -1650,6 +1650,11 @@ enum KantoDexOrder
     F(RIBOMBEE) \
     F(ROCKRUFF) \
     F(LYCANROC) \
+	F(GREMBER) \
+	F(CHARBOLD) \
+	F(SHAMPYRE) \
+	F(CUDDLEFISH) \
+	F(CUDDLEFIST) \
 	F(SPIRITOMB) \
 	F(CELEBI) \
 	F(KYOGRE) \
