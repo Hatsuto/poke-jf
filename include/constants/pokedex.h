@@ -1599,7 +1599,7 @@ enum KantoDexOrder
     F(CRUSTLE) \
     F(CUBCHOO) \
     F(BEARTIC) \
-    F(CORSOLA_GALARIAN) \
+    F(CORSOLA) \
     F(CURSOLA) \
     F(DRIFLOON) \
     F(DRIFBLIM) \
