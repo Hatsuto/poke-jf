@@ -1,0 +1,103 @@
+const MOM_ID = 2
+
+mapscripts VisitorCenter_BusStop_MapScripts
+{
+//	MAP_SCRIPT_ON_TRANSITION: VisCen_Street_OnTransition
+	MAP_SCRIPT_ON_FRAME_TABLE
+	[
+		VAR_VISCEN_STATE, 0: VisCen_Street_Opening
+	]
+}
+
+//Not actually needed because flag is NOT set to begin with
+
+//script VisCen_Street_OnTransition
+//{
+//	goto_if_eq(VAR_VISCEN_STATE, 0, VisCen_Street_OpeningSetup)
+//}
+
+//script(local) VisCen_Street_OpeningSetup
+//{
+//	clearflag(FLAG_SCENE_TEMP)
+//}
+
+script VisCen_Street_Opening
+{
+	lock
+	
+	setrespawn(HEAL_LOCATION_VISITOR_CENTER)
+	
+	// Player hops off and Mom !s
+	delay(15)
+	playse(SE_LEDGE)
+	applymovement(OBJ_EVENT_ID_PLAYER,Player_ExitTruck)
+	delay(15)
+	playse(SE_PIN)
+	applymovement(MOM_ID,Common_Movement_ExclamationMark)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	
+	// Mom approaches while respecting your personal space and then leaves again
+	applymovement(OBJ_EVENT_ID_PLAYER,Common_Movement_FaceRight)
+	applymovement(MOM_ID,Mom_Approach)
+	waitmovement(0)
+	msgbox(format("MOM: {PLAYER}, we're finally here!\n"
+    	"Did you enjoy the ride?\p"
+        "I'm still not sure why you wanted to sit with all the luggage…\p"
+		"We have a lot of walking ahead of us,\n"
+		"so I hope it was comfy!\p"
+        "The other passengers are waiting inside while they get the tour all set up.\p"
+        "We have some time before it starts.\n"
+		"Why don't you come meet them?")
+		,MSGBOX_AUTOCLOSE)
+	applymovement(MOM_ID,Mom_Deproach)
+	waitmovement(0)
+	playse(SE_EXIT)
+	
+	removeobject(MOM_ID) // Mom gone + cutscene flag
+	clearflag(FLAG_HIDE_MAP_NAME_POPUP)
+	setvar(VAR_VISCEN_STATE,1)
+	
+	delay(12)
+	applymovement(OBJ_EVENT_ID_PLAYER,Common_Movement_FaceUp)
+	release
+	end
+}
+
+// This technically doesn't get used, might make an object just for it though
+script VisCen_Street_Truck
+{
+	lock
+	msgbox("It's a loading truck for the luggage.\p"
+		"It seemed a lot bigger from the inside.")
+	release
+	end
+}
+
+script VisCen_Street_Sign
+{
+	lock
+	msgbox(format("It's a schedule for the bus route around the Sekien region.\p"
+		"Looks like someone drew all over it, though…")
+		,MSGBOX_SIGN)
+	release
+	end
+}
+
+movement Player_ExitTruck
+{
+	jump_right
+	walk_up
+	delay_16 * 2
+}
+
+movement Mom_Approach
+{
+	walk_down
+	face_left
+}
+
+movement Mom_Deproach
+{
+	walk_up * 2
+	set_invisible
+}

@@ -51,13 +51,15 @@
 
 #else
 
-#define FLAG_UNUSED_0x020    0x20 // Unused Flag
-#define FLAG_UNUSED_0x021    0x21 // Unused Flag
-#define FLAG_UNUSED_0x022    0x22 // Unused Flag
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
-#define FLAG_UNUSED_0x025    0x25 // Unused Flag
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
+//*** These were all unused in vanilla
+//[!] indicates that the flag should be set at game start, or before affected events "see" them
+#define FLAG_VC_STREET_MOM		0x20 // VC-street mom visibility
+#define FLAG_VC_IN_PROF			0x21 // VC prof visibility
+#define FLAG_VC_OUT_BALLS		0x22 // VC ball visibility
+#define FLAG_VC_COMPLETE		0x23 // VC traveler visibility
+#define FLAG_ROUTE_1_ROAD_NPC	0x24 // Route 1 cutscene visibility
+#define FLAG_ROUTE_1_PATH_NPC   0x25 // Route 1 traveler visibility
+#define FLAG_ROUTE_1_BALL_GUY	0x26 // Starting item pack
 #define FLAG_UNUSED_0x027    0x27 // Unused Flag
 #define FLAG_UNUSED_0x028    0x28 // Unused Flag
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag
