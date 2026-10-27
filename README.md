@@ -7,17 +7,17 @@ This is my personal repository for my solo ROMhack project. Currently in the pro
 ```
  [rh-hideout/pokeemerald-expansion]
  ⠀⠀        ⠀⠀⠀⠀⠀│
- ⠀⠀        ⠀⠀⠀ `master`
+ ⠀⠀        ⠀⠀⠀ master
  ⠀⠀        ⠀⠀⠀⠀⠀│
- ⠀⠀        ⠀⠀⠀⠀`base`
+ ⠀⠀        ⠀⠀⠀⠀base
  ⠀        ⠀⠀⠀⠀⠀⠀├────────┬──────────────┐
- ⠀⠀⠀        ⠀⠀⠀⠀│⠀⠀⠀⠀`feature/X`⠀⠀⠀⠀`asset/Y`
+ ⠀⠀⠀        ⠀⠀⠀⠀│⠀⠀⠀⠀feature/X⠀⠀⠀⠀asset/Y
  ⠀⠀        ⠀⠀⠀⠀⠀│
- ⠀⠀⠀        ⠀⠀⠀`main`
+ ⠀⠀⠀        ⠀⠀⠀main
  ⠀⠀⠀        ⠀⠀⠀⠀│
- ⠀⠀⠀        ⠀`release/x.y.z`
+ ⠀⠀⠀        ⠀release/x.y.z
  ⠀⠀        ⠀⠀⠀⠀⠀├───────────┐
- ⠀⠀⠀        ⠀⠀`x.y.z/X`⠀⠀⠀`x.y.z/Y`
+ ⠀⠀⠀        ⠀⠀x.y.z/X⠀⠀⠀x.y.z/Y
  ```
  
 > - __**master**__: direct fork, local snapshot of `rh-hideout/pokeemerald-expansion` used for updating
