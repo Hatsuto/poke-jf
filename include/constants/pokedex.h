@@ -1533,10 +1533,151 @@ enum KantoDexOrder
     #undef KANTO_DEX_ENUM
 };
 
+
+
+#if P_NEW_EVOS_IN_REGIONAL_DEX
+#define SEKIEN_DEX_IF(config, ...) CAT(SEKIEN_DEX_IF_, config)(__VA_ARGS__)
+#define SEKIEN_DEX_IF_0(...)
+#define SEKIEN_DEX_IF_1(...) __VA_ARGS__
+#else
+#define SEKIEN_DEX_IF(config, ...)
+#endif
+
+#define FOREACH_SPECIES_IN_SEKIEN_DEX_ORDER(F) \
+    F(TORCHIC) \
+    F(COMBUSKEN) \
+    F(BLAZIKEN) \
+    F(MUDKIP) \
+    F(MARSHTOMP) \
+    F(SWAMPERT) \
+    F(TREECKO) \
+    F(GROVYLE) \
+    F(SCEPTILE) \
+    F(SENTRET) \
+    F(FURRET) \
+    F(FLETCHLING) \
+    F(FLETCHINDER) \
+    F(TALONFLAME) \
+    F(WURMPLE) \
+    F(SILCOON) \
+    F(BEAUTIFLY) \
+    F(CASCOON) \
+    F(DUSTOX) \
+    F(HATENNA) \
+    F(HATTREM) \
+    F(HATTERENE) \
+    F(STUFFUL) \
+    F(BEWEAR) \
+    F(BUNEARY) \
+    F(LOPUNNY) \
+    F(BONSLY) \
+    F(SUDOWOODO) \
+    F(HOOTHOOT) \
+    F(NOCTOWL) \
+    F(SEEDOT) \
+    F(NUZLEAF) \
+    F(SHIFTRY) \
+    F(PHANTUMP) \
+    F(TREVENANT) \
+    F(MORELULL) \
+    F(SHIINOTIC) \
+    F(HOUNDOUR) \
+    F(HOUNDOOM) \
+    F(SPOINK) \
+    F(GRUMPIG) \
+    F(MAGIKARP) \
+    F(GYARADOS) \
+    F(CLAMPERL) \
+    F(HUNTAIL) \
+    F(GOREBYSS) \
+    F(WOOPER) \
+    F(QUAGSIRE) \
+    F(CLODSIRE) \
+    F(SANDYGAST) \
+    F(PALOSSAND) \
+    F(DWEBBLE) \
+    F(CRUSTLE) \
+    F(CUBCHOO) \
+    F(BEARTIC) \
+    F(CORSOLA) \
+    F(CURSOLA) \
+    F(DRIFLOON) \
+    F(DRIFBLIM) \
+    F(MAREEP) \
+    F(FLAAFFY) \
+    F(AMPHAROS) \
+    F(KLEFKI) \
+    F(GOOMY) \
+    F(SLIGGOO) \
+    F(GOODRA) \
+    F(CLOBBOPUS) \
+    F(GRAPPLOCT) \
+    F(INKAY) \
+    F(MALAMAR) \
+    F(FRILLISH) \
+    F(JELLICENT) \
+    F(VOLTORB) \
+    F(ELECTRODE) \
+    F(LITWICK) \
+    F(LAMPENT) \
+    F(CHANDELURE) \
+    F(SWABLU) \
+    F(ALTARIA) \
+    F(IGGLYBUFF) \
+    F(JIGGLYPUFF) \
+    F(WIGGLYTUFF) \
+    F(GLIGAR) \
+    F(GLISCOR) \
+    F(VANILLITE) \
+    F(VANILLISH) \
+    F(VANILLUXE) \
+    F(HAPPINY) \
+    F(CHANSEY) \
+    F(BLISSEY) \
+    F(WHISMUR) \
+    F(LOUDRED) \
+    F(EXPLOUD) \
+    F(MAWILE) \
+    F(NOIBAT) \
+    F(NOIVERN) \
+    F(TOXEL) \
+    F(TOXTRICITY) \
+    F(PETILIL) \
+    F(LILLIGANT) \
+    F(SKIDDO) \
+    F(GOGOAT) \
+    F(CUTIEFLY) \
+    F(RIBOMBEE) \
+    F(ROCKRUFF) \
+    F(LYCANROC) \
+	F(GREMBER) \
+	F(CHARBOLD) \
+	F(SHAMPYRE) \
+	F(CUDDLEFISH) \
+	F(CUDDLEFIST) \
+	F(SPIRITOMB) \
+	F(CELEBI) \
+	F(KYOGRE) \
+	F(LATIOS) \
+	F(LATIAS) \
+	F(DARKRAI) \
+	F(CRESSELIA) \
+	F(MELOETTA)
+
+// Sekien Pokedex order
+enum SekienDexOrder
+{
+    SEKIEN_DEX_NONE,
+    #define SEKIEN_DEX_ENUM(name) SEKIEN_DEX_ ##name,
+    FOREACH_SPECIES_IN_SEKIEN_DEX_ORDER(SEKIEN_DEX_ENUM)
+    #undef SEKIEN_DEX_ENUM
+};
+
 #define KANTO_DEX_COUNT (KANTO_DEX_MEW + 1)
 #define HOENN_DEX_COUNT (HOENN_DEX_DEOXYS + 1)
+#define SEKIEN_DEX_COUNT (SEKIEN_DEX_MELOETTA + 1)
 
-#define REGIONAL_DEX_COUNT (IS_FRLG ? KANTO_DEX_COUNT : HOENN_DEX_COUNT)
+#define REGIONAL_DEX_COUNT (IS_FRLG ? KANTO_DEX_COUNT : SEKIEN_DEX_COUNT)
 
 #define DECAGRAMS_IN_POUND             453592
 #define CM_PER_INCH                    2.54
