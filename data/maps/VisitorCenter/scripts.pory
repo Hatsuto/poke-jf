@@ -1,0 +1,1354 @@
+//NPC ID's
+const PROF_ID = 1
+const ALPHA_ID = 3
+const BETA_ID = 4
+const KO_ID = 5
+const OYA_ID = 6
+const EMPLOYEE_ID = 7
+const RIAJUUF_ID = 8
+const RIAJUUM_ID = 9
+const LADY_ID = 10
+const GRAMPS_ID = 11
+const LASS_ID = 12
+//Bottom row, left to right
+const CROWDSTART_ID = 7
+const CROWDEND_ID = 10
+
+const BALL_L_ID = 13
+const BALL_M_ID = 14
+const BALL_R_ID = 15
+
+//Static Coordinate references
+
+//Starter Pokeballs
+const BALL_L_X = 8
+const BALL_M_X = BALL_L_X + 1
+const BALL_R_X = BALL_M_X + 1
+
+const BALL_Y = 7
+
+//Rivals and professor watching the battle
+const SPECT_A_X = 8
+const SPECT_P_X = SPECT_A_X + 1
+const SPECT_B_X = SPECT_P_X + 1
+
+const SPECT_Y = 6
+
+//Battlers
+const PLAYER_BATTLER_X = 8
+const OPPONENT_BATTLER_X = 10
+const BATTLER_Y = 9
+
+
+// Global flag/var notes
+// VAR_VISCEN_STATE:
+//		3: set in indoor map, indicates start of raffle event
+//		0x10: alpha chosen
+//		0x20: beta chosen
+//		0x30: prof chosen
+// VAR_LIAM_SOCIAL_LINK
+// VAR_OLIVE_SOCIAL_LINK
+
+
+// Temp Vars used
+//		0: Player X
+//		1: Player Y
+//		2: Loop control
+//		3: Professor desperation
+//		4: Starter choice
+//		5: Liam starter
+//		6: Olive starter
+//		7: Ball index
+//		8: Opponent sprite ID for moving them around
+//		9: Math
+//		F: Blocker (when set to 1)
+
+const PLAYER_X = VAR_TEMP_0
+const PLAYER_Y = VAR_TEMP_1
+const VAR_LOOP = VAR_TEMP_2
+const VAR_PROF_BEG = VAR_TEMP_3
+const VAR_STARTER = VAR_TEMP_4
+const VAR_ALPHA_STARTER = VAR_TEMP_5
+const VAR_BETA_STARTER = VAR_TEMP_6
+const VAR_BALL_ID = VAR_TEMP_7
+const OPP_SPRITE_ID = VAR_TEMP_8
+const VAR_MATH = VAR_TEMP_9
+const VAR_BLOCKER = VAR_TEMP_F
+
+// Temp flags used
+//		1: starter event started (cannot be exited conventionally until end)
+//		2: Liam declined
+//		3: Olive declined
+//		4: Professor refused to battle
+//		5: rival selection started
+
+const FLAG_EVENT_START = FLAG_TEMP_1
+const FLAG_ALPHA_NO = FLAG_TEMP_2
+const FLAG_BETA_NO = FLAG_TEMP_3
+const FLAG_PROF_REFUSE = FLAG_TEMP_4
+const FLAG_RIVAL_START = FLAG_TEMP_5
+
+mapscripts VisitorCenter_MapScripts
+{
+	MAP_SCRIPT_ON_LOAD: VisCen_OnLoad
+}
+
+// Set certain NPC positions and path blocker variables
+script VisCen_OnLoad
+{
+	if (var(VAR_VISCEN_STATE) == 3)
+	{
+		setobjectxyperm(EMPLOYEE_ID, 6, 10)
+		setobjectmovementtype(EMPLOYEE_ID, MOVEMENT_TYPE_FACE_UP)
+		setvar(VAR_BLOCKER, 1)
+	}
+	elif (var(VAR_VISCEN_STATE) < 0xA0)
+	{
+		setobjectxyperm(EMPLOYEE_ID, 7, 14)
+		setobjectmovementtype(EMPLOYEE_ID, MOVEMENT_TYPE_WANDER_AROUND)
+		setvar(VAR_BLOCKER, 1)
+	}
+	end
+}
+
+
+// *****
+// Tile events
+// *****
+
+script VisCen_ExitBlock
+{
+	lock
+	msgbox(format("{COLOR LIGHT_GRAY}{SHADOW WHITE}Can't leave Mom behind…")
+		,MSGBOX_AUTOCLOSE)
+	applymovement(OBJ_EVENT_ID_PLAYER,Common_Movement_WalkRight)
+	waitmovement(0)
+	release
+	end
+}
+
+// Opening event for starter selection
+script VisCen_RaffleStart
+{
+	lockall
+	if(!flag(FLAG_EVENT_START))
+	{
+		// Heads up to all NPC's
+		call(HeadsUp)
+		fadeoutbgm(1)
+		
+		msgbox(format("???: …And the 1st place winner, "
+			"with the first pick of the three, is…"))
+		
+		applymovement(PROF_ID, Common_Movement_WalkRight)
+		waitmovement(0)
+		playse(SE_LEDGE)
+		applymovement(PROF_ID, Prof_WalkBehindBushes_1)
+		waitmovement(0)
+		
+		playbgm(MUS_GAME_CORNER, 1)
+		checkplayergender
+		if(var(VAR_RESULT) == 1)
+		{
+			msgbox(format("…This gal!!\n"
+				"{FONT_SMALL}What was your name, kid…?\p"
+				"{FONT_NORMAL}…{PLAYER}!\n"
+				"Please, step up and claim your prize!"))
+		}
+		else
+		{
+			msgbox(format("…This guy!!\n"
+				"{FONT_SMALL}What was your name, kid…?\p"
+				"{FONT_NORMAL}…{PLAYER}!\n"
+				"Please, step up and claim your prize!"))
+		}
+		applymovement(PROF_ID, Prof_WalkBehindBushes_2)
+		setflag(FLAG_EVENT_START)
+	}
+	else // Event has started, player should not leave
+	{
+		call(Prof_Hop)
+		
+		if (!flag(FLAG_RIVAL_START)) // Starter has not yet been selected
+		{
+			switch(var(VAR_PROF_BEG))
+			{
+				case 0:
+					msgbox(format("???: W-wait a moment! This is a once in a lifetime chance!")
+						,MSGBOX_AUTOCLOSE)
+					setvar(VAR_PROF_BEG,1)
+				case 1:
+					msgbox(format("???: It's a free Pokémon!!\n"
+						"For free, kid!")
+						,MSGBOX_AUTOCLOSE)
+					setvar(VAR_PROF_BEG,2)
+				case 2:
+					msgbox(format("???: You're old enough to start your own Pokémon Journey!\p"
+						"Doesn't that sound exciting to you…?")
+						,MSGBOX_AUTOCLOSE)
+					setvar(VAR_PROF_BEG,3)
+				case 3:
+					msgbox(format("???: N-Need to check with your mother first, maybe?\p"
+						"Don't worry, I'm sure she would be thrilled!")
+						,MSGBOX_AUTOCLOSE)
+					setvar(VAR_PROF_BEG,4)
+				default:
+					msgbox(format("???:{FONT_SMALL}Kid, please, no one else in this crowd will cut it!\p"
+						"Even if it's just for show, I'm beggin' ya!")
+						,MSGBOX_AUTOCLOSE)
+			}
+		}
+		else // Only other moveable state is rival selection
+		{
+			goto(CrowdBlock_RivalEvent)
+		}
+	}
+	
+	// No matter what, player steps back in
+	goto(CrowdBlock_StepIn)
+}
+script(local) HeadsUp
+{
+	// Heads up to all NPC's except alpha/beta
+	applymovement(OYA_ID, Common_Movement_FaceRight)
+	applymovement(KO_ID, Common_Movement_FaceRight)
+	setvar(VAR_LOOP,CROWDSTART_ID)
+	
+	// They're all indexed in order
+	do
+	{
+		applymovement(VAR_LOOP, Common_Movement_FaceUp)
+		addvar(VAR_LOOP,1)
+	} while (var(VAR_LOOP) <= CROWDEND_ID)
+	
+	applymovement(GRAMPS_ID, Common_Movement_FaceLeft)
+	applymovement(LASS_ID, Common_Movement_FaceLeft)
+	waitmovement(0)
+}
+
+// These events common between 3 tiles under different conditions
+script(local) CrowdBlock_RivalEvent //Should be goto, leads to StepIn
+{
+	msgbox(format("Hold on, kid! There's two willing opponents right here!!")
+		,MSGBOX_AUTOCLOSE)
+	goto(CrowdBlock_StepIn)
+}
+script(local) CrowdBlock_StepIn //Should be goto, has an end
+{
+	//Player steps back into crowd
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp)
+	waitmovement(0)
+	releaseall
+	end
+}
+script VisCen_CrowdBlock // Only available during rival select
+{
+	lockall
+	call(Prof_Hop)
+	call(CrowdBlock_RivalEvent)
+}
+
+// *****
+// Contains everything from starter selection through either
+//	A) exiting to allowing the player to select their rival battle
+//	B) forcing the rival battle through random selection
+// *****
+script VisCen_BallPick
+{
+	lockall
+	applymovement(PROF_ID, Common_Movement_FaceDown)
+	waitmovement(0)
+	getplayerxy(PLAYER_X,PLAYER_Y)
+	
+	// Consolidated handling for each ball based on player position
+	switch(var(PLAYER_X))
+	{
+		case BALL_L_X - 1:
+		case BALL_L_X: // Show GRS starter and prompt
+			setvar(VAR_STARTER,SPECIES_STARTER_GRS)
+			setvar(VAR_STARTER_MON, 0) // Perm var
+			setvar(VAR_ALPHA_STARTER,SPECIES_STARTER_FIR)
+			setvar(VAR_BETA_STARTER,SPECIES_STARTER_WTR)
+			
+			setvar(PLAYER_X, BALL_L_X)
+			setvar(VAR_BALL_ID, BALL_L_ID)
+			
+			showmonpic(VAR_STARTER, 10, 3)
+			playmoncry(VAR_STARTER,0)
+			waitmoncry
+			
+			msgbox(format("Pretty cool, right?\p"
+				"So what do you think?"
+				"{COLOR GREEN}Grass type{COLOR DARK_GRAY}"
+				"Pokémon suit you?")
+				,MSGBOX_YESNO)
+			
+		case BALL_M_X: // Show FIR starter and prompt
+			setvar(VAR_STARTER,SPECIES_STARTER_FIR)
+			setvar(VAR_STARTER_MON, 1) // Perm var
+			setvar(VAR_ALPHA_STARTER,SPECIES_STARTER_WTR)
+			setvar(VAR_BETA_STARTER,SPECIES_STARTER_GRS)
+			
+			setvar(VAR_BALL_ID, BALL_M_ID)
+			
+			showmonpic(VAR_STARTER, 10, 3)
+			playmoncry(VAR_STARTER,0)
+			waitmoncry
+			
+			msgbox(format("Feisty little one, huh?\p"
+				"I get ya, so you've got your eye on "
+				"{COLOR RED}Fire type{COLOR DARK_GRAY} "
+				"Pokémon, that it?")
+				,MSGBOX_YESNO)
+			
+		case BALL_R_X + 1:
+		case BALL_R_X: // Show WTR starter and prompt
+			setvar(VAR_STARTER,SPECIES_STARTER_WTR)
+			setvar(VAR_STARTER_MON, 2) // Perm var
+			setvar(VAR_ALPHA_STARTER,SPECIES_STARTER_GRS)
+			setvar(VAR_BETA_STARTER,SPECIES_STARTER_FIR)
+			
+			setvar(VAR_BALL_ID, BALL_R_ID)
+			setvar(PLAYER_X, BALL_R_X)
+			
+			showmonpic(VAR_STARTER, 10, 3)
+			playmoncry(VAR_STARTER,0)
+			waitmoncry
+			
+			msgbox(format("A cute kid, that one!\p"
+				"What do you say? Wanna give that "
+				"{COLOR BLUE}Water type{COLOR DARK_GRAY}"
+				"Pokémon a good home?")
+				,MSGBOX_YESNO)
+	}
+	hidemonpic
+	closemessage
+	
+	// If true, starter decided. Leads through the following:
+	// - Starter receiving based on var set above
+	// - Nicknaming option
+	// - Rivals move to other starters
+	// - Balls disappear, flag is set for their visibility
+	// - Player given choice to pick battle or be forced into it
+	if(var(VAR_RESULT) == 1)
+	{
+		bufferspeciesname(0,VAR_STARTER)
+		
+		// Repositioning player
+		switch(var(PLAYER_Y))
+		{
+			case BALL_Y - 1:
+				if (var(PLAYER_X) == BALL_L_X)
+				{
+					applymovement(OBJ_EVENT_ID_PLAYER, Player_Ball_TopLeft)
+					waitmovement(0)
+				}
+				elif (var(PLAYER_X) == BALL_R_X)
+				{
+					applymovement(OBJ_EVENT_ID_PLAYER, Player_Ball_TopRight)
+					waitmovement(0)
+				}
+			case BALL_Y:
+				if (var(PLAYER_X) == BALL_L_X)
+				{
+					applymovement(OBJ_EVENT_ID_PLAYER, Player_Ball_Left)
+					waitmovement(0)
+				}
+				elif (var(PLAYER_X) == BALL_R_X)
+				{
+					applymovement(OBJ_EVENT_ID_PLAYER, Player_Ball_Right)
+					waitmovement(0)
+				}
+		}
+		
+		removeobject(VAR_BALL_ID)
+		msgbox(format("???: Treat 'em well, alright?"))
+		lockall
+		
+		givemon(VAR_STARTER, 5, ITEM_NONE)
+		setflag(FLAG_SYS_POKEMON_GET)
+		playfanfare(MUS_EVOLVED)
+		msgbox(format("{PLAYER} received the {STR_VAR_1} from the Professor!"))
+		waitfanfare
+		closemessage
+		
+		msgbox(format("Do you want to give a nickname to this {STR_VAR_1}?")
+			,MSGBOX_YESNO)
+		if (var(VAR_RESULT) == 1)
+		{
+			call(Common_EventScript_NameReceivedPartyMon)
+		}
+		
+		delay(32)
+		
+		applymovement(PROF_ID, Common_Movement_WalkInPlaceDown)
+		waitmovement(0)
+		msgbox(format("???: Excellent choice by our big winner!\p"
+			"Now, will winners Number 2 and 3 step up as well?"))
+		closemessage
+		
+		// Liam steps up
+		switch(var(VAR_STARTER_MON))
+		{
+			case 0:	// Liam: M, Olive: R
+				applymovement(ALPHA_ID, Liam_Ball_M)
+				setvar(VAR_BALL_ID, BALL_M_ID)
+			case 1:	// Liam: R, Olive: L
+				applymovement(ALPHA_ID, Liam_Ball_R)
+				setvar(VAR_BALL_ID, BALL_R_ID)
+			case 2:	// Liam: L, Olive: M
+				applymovement(ALPHA_ID, Liam_Ball_L)
+				setvar(VAR_BALL_ID, BALL_L_ID)
+		}
+		
+		bufferspeciesname(1, VAR_ALPHA_STARTER)
+		waitmovement(0)
+		removeobject(VAR_BALL_ID)
+		msgbox(Liam_Pick_Txt)
+		playfanfare(MUS_RG_OBTAIN_KEY_ITEM)
+		msgbox(Liam_Receive_Txt)
+		waitfanfare
+		closemessage
+		
+		// Olive steps up
+		switch(var(VAR_STARTER_MON))
+		{
+			case 0:	// Liam: M, Olive: R
+				applymovement(BETA_ID, Olive_Ball_R)
+				setvar(VAR_BALL_ID, BALL_R_ID)
+			case 1:	// Liam: R, Olive: L
+				applymovement(BETA_ID, Olive_Ball_L)
+				setvar(VAR_BALL_ID, BALL_L_ID)
+			case 2:	// Liam: L, Olive: M
+				applymovement(BETA_ID, Olive_Ball_M)
+				setvar(VAR_BALL_ID, BALL_M_ID)
+		}
+		
+		bufferspeciesname(2, VAR_BETA_STARTER)
+		waitmovement(0)
+		removeobject(VAR_BALL_ID)
+		msgbox(Olive_Pick_Txt)
+		playfanfare(MUS_RG_OBTAIN_KEY_ITEM)
+		msgbox(Olive_Receive_Txt)
+		waitfanfare
+		closemessage
+		
+		applymovement(PROF_ID, Common_Movement_WalkInPlaceDown)
+		waitmovement(0)
+		msgbox(format("???: So, what do you think of your new partners?\p"
+			"Some rare choices, right? Wasn't easy to get a hold of 'em…"))
+		closemessage
+		
+		applymovement(ALPHA_ID, Common_Movement_WalkInPlaceDown)
+		waitmovement(0)
+		msgbox(format("BOY: Partners, huh…? These Pokémon?"))
+		closemessage
+		
+		applymovement(PROF_ID, Common_Movement_WalkInPlaceDown)
+		waitmovement(0)
+		msgbox(format("???: That's right, your first Pokémon for a new journey!\p"
+			"Much more exciting than some boring sightseeing, yeah?"))
+		closemessage
+		
+		applymovement(BETA_ID, Common_Movement_WalkInPlaceDown)
+		waitmovement(0)
+		msgbox(format("GIRL: I was rather looking forward to the sightseeing, actually…"))
+		closemessage
+		
+		playse(SE_LEDGE)
+		applymovement(PROF_ID, Common_Movement_HopDown)
+		waitmovement(0)
+		msgbox(format("???: …But I can already see the excitement in your child eyes!\p"
+			"You're itchin' to battle already, aren't ya {PLAYER}?")
+			,MSGBOX_YESNO)
+		
+		if (var(VAR_RESULT) == 1) // Player challenges event
+		{
+			msgbox(format("???: Of course you are!\n"
+				"{FONT_SMALL}Thanks for the out.{FONT_NORMAL}\p"
+				"What's an adventure without hardship?"
+				"\nWithout Rivals??\p"
+				"Take hold of your destiny or whatever, kid!"
+				"Who's your mark?"))
+			
+			setflag(FLAG_RIVAL_START) //Rival selection step, exits script
+		}
+		else // Randomly chosen
+		{
+			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
+			waitmovement(0)
+			msgbox(format("???: Hey, hey… just work with me a little, huh?\l"
+				"{FONT_SMALL}You just got a gift."))
+			
+			random(2)
+			//Based on position, their movements change
+			if (var(VAR_RESULT) == 1) // Liam
+			{
+				switch (var(VAR_STARTER_MON))
+				{
+					case 0: //grs
+					case 1: //fir
+					applymovement(ALPHA_ID, Common_Movement_WalkInPlaceLeft)
+					waitmovement(ALPHA_ID)
+					applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
+					
+					case 2: //wtr
+					applymovement(BETA_ID, Olive_ChoiceA_P3)
+					applymovement(ALPHA_ID, Liam_ChoiceA_P3)
+					waitmovement(ALPHA_ID)
+					applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
+				}
+				
+				// Liam dialogue to battle transition
+				
+				msgbox(format("BOY: Getting cold feet?\p"
+					"If you don't want your Pokémon, I can take care of it!"))
+				closemessage
+				applymovement(PROF_ID, Common_Movement_WalkInPlaceDown)
+				waitmovement(0)
+				msgbox(format("???: Ooh, those are fighting words!\n"
+					"You're not just gonna take that, right?"))
+					
+				setvar(VAR_VISCEN_STATE, 0x10)
+				setvar(OPP_SPRITE_ID,ALPHA_ID)
+				setvar(VAR_MUGSHOT_ID, MUGSHOT_LIAM)
+			}
+			else // Olive
+			{
+				switch(var(VAR_STARTER_MON))
+				{
+					case 0: //grs
+					applymovement(ALPHA_ID, Liam_ChoiceB_P1)
+					applymovement(BETA_ID, Olive_ChoiceB_P1)
+					waitmovement(BETA_ID)
+					applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
+					
+					case 1: //fir
+					applymovement(BETA_ID, Common_Movement_WalkInPlaceRight)
+					waitmovement(BETA_ID)
+					applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
+					
+					case 2: //wtr
+					applymovement(ALPHA_ID, Liam_ChoiceB_P3)
+					applymovement(BETA_ID, Olive_ChoiceB_P3)
+					waitmovement(BETA_ID)
+					applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
+				}
+				
+				//Olive dialogue to battle transition
+				
+				msgbox(format("GIRL: Well, it would be rude not to get to know each other, right?\p"
+					"I think {STR_VAR_3} wants to play…"))
+				closemessage
+				applymovement(PROF_ID, Common_Movement_WalkInPlaceDown)
+				waitmovement(0)
+				msgbox(format("???: That's right, you three are in it for the long haul now!\p"
+					"Why don't you two come on over?"))
+				
+				setvar(VAR_VISCEN_STATE, 0x20)
+				setvar(OPP_SPRITE_ID,BETA_ID)
+				setvar(VAR_MUGSHOT_ID, MUGSHOT_OLIVE)
+			}
+			
+			goto(Battle_Transition)
+		}
+	}
+	
+	releaseall
+	end
+}
+
+// 
+script(local) Battle_Transition
+{
+	//Fade to black
+	fadescreen(FADE_TO_BLACK)
+	
+	//Move player in place
+	//warpsilent(MAP_VISITOR_CENTER, 0xFF, PLAYER_BATTLER_X, BATTLER_Y)
+	lockall
+		
+	//NPC movements
+	setobjectxy(KO_ID, 5, 7)
+	setobjectxy(OYA_ID, 5, 8)
+	setobjectxy(RIAJUUF_ID, 6, 10)
+	setobjectxy(RIAJUUM_ID, 7, 11)
+	setobjectxy(LADY_ID, 11, 11)
+	setobjectxy(GRAMPS_ID, 12, 10)
+	setobjectxy(LASS_ID, 13, 9)
+	applymovement(LASS_ID, Common_Movement_FaceRight)
+	applymovement(GRAMPS_ID, Common_Movement_FaceLeft)
+	
+	//Move all three to spectator seats
+	setobjectxy(ALPHA_ID, SPECT_A_X, SPECT_Y)
+	setobjectxy(BETA_ID, SPECT_B_X, SPECT_Y)
+	setobjectxy(PROF_ID, SPECT_P_X, SPECT_Y)
+	
+	//Move the player and their opponent to their places
+	//setobjectxy(OBJ_EVENT_ID_PLAYER, PLAYER_BATTLER_X, BATTLER_Y)
+	call(VisCen_Player_Realign)
+	setobjectxy(OPP_SPRITE_ID, OPPONENT_BATTLER_X, BATTLER_Y)
+	
+	//Adjust facing
+	applymovement(ALPHA_ID, Common_Movement_FaceDown)
+	applymovement(BETA_ID, Common_Movement_FaceDown)
+	applymovement(PROF_ID, Common_Movement_FaceDown)
+	call(HeadsUp)
+	
+	applymovement(OPP_SPRITE_ID, Common_Movement_FaceLeft)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
+	waitmovement(0)
+	
+	//Unfade
+	fadescreen(FADE_FROM_BLACK)
+	
+	//Battle start
+	switch(var(OPP_SPRITE_ID))
+	{
+		case ALPHA_ID:
+			switch(var(VAR_STARTER_MON))
+			{
+				case 0: //GRS
+					trainerbattle_no_whiteout(TRAINER_ALPHA_VISCEN_FIR,
+						VisCen_Liam_Intro, VisCen_Liam_Loss, VisCen_Liam_PostBattle)
+				case 1: //FIR
+					trainerbattle_no_whiteout(TRAINER_ALPHA_VISCEN_WTR,
+						VisCen_Liam_Intro, VisCen_Liam_Loss, VisCen_Liam_PostBattle)
+				case 2: //WTR
+					trainerbattle_no_whiteout(TRAINER_ALPHA_VISCEN_GRS,
+						VisCen_Liam_Intro, VisCen_Liam_Loss, VisCen_Liam_PostBattle)
+			}
+		case BETA_ID:
+			switch(var(VAR_STARTER_MON))
+			{
+				case 0: //GRS
+					trainerbattle_no_whiteout(TRAINER_BETA_VISCEN_WTR,
+						VisCen_Olive_Intro, VisCen_Olive_Loss, VisCen_Olive_PostBattle)
+				case 1: //FIR
+					trainerbattle_no_whiteout(TRAINER_BETA_VISCEN_GRS,
+						VisCen_Olive_Intro, VisCen_Olive_Loss, VisCen_Olive_PostBattle)
+				case 2: //WTR
+					trainerbattle_no_whiteout(TRAINER_BETA_VISCEN_FIR,
+						VisCen_Olive_Intro, VisCen_Olive_Loss, VisCen_Olive_PostBattle)
+			}
+		default:
+			setflag(FLAG_SYS_SET_BATTLE_BGM)
+			setvar(VAR_BATTLE_BGM, MUS_RG_VS_TRAINER)
+			trainerbattle_no_whiteout(TRAINER_SEQUOIA,
+				format("???: Alright, everyone watching? You're lookin' at the new Champ in the making!\p"
+					"{FONT_SMALL}Just put on a good show, kid."),
+				"Great, great. Good work.",
+				VisCen_Prof_PostBattle)
+			clearflag(FLAG_SYS_SET_BATTLE_BGM)
+	}
+}
+text(local) VisCen_Liam_Intro
+{
+	format("BOY: The name's {COLOR BLUE}Liam{COLOR DARK_GRAY}!\p"
+		"Sorry, but you're gonna be our first step on the way to the top!")
+}
+text(local) VisCen_Olive_Intro
+{
+	format("GIRL: By the way, I'm {COLOR BLUE}Olive{COLOR DARK_GRAY}!\p"
+		"We'll be seeing each other a lot, so let's get along, alright?"
+		)
+}
+text(local) VisCen_Liam_Loss
+{
+	format("Man… and I was sure this was the one…")
+}
+text(local) VisCen_Olive_Loss
+{
+	"Oh… tired already?"
+}
+script(local) VisCen_Player_Realign //Workaround measure for camera issues
+{
+	getplayerxy(PLAYER_X, PLAYER_Y)
+	if (var(PLAYER_X) < PLAYER_BATTLER_X)
+	{
+		//Only possible leftward starting position is 1 to the left,
+		//which is when talking to Liam from the left side
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkFasterRight)
+		waitmovement(0)
+	}
+	else
+	{
+		//Walk the player left
+		while (var(PLAYER_X) > PLAYER_BATTLER_X)
+		{
+			subvar(PLAYER_X,1)
+			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkFasterLeft)
+			waitmovement(0)
+		}
+	}
+	
+	if (var(PLAYER_Y) > BATTLER_Y)
+	{
+		//Only possible leftward starting position is 1 below,
+		//which is when talking to rivals facing up
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkFasterUp)
+		waitmovement(0)
+	}
+	else
+	{
+		//Walk the player down
+		while (var(PLAYER_Y) < BATTLER_Y)
+		{
+			addvar(PLAYER_Y,1)
+			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkFasterDown)
+			waitmovement(0)
+		}
+	}
+}
+
+script(local) VisCen_Liam_PostBattle
+{
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_WON)
+	{
+		addvar(VAR_VISCEN_STATE,1)
+		call(RivalLink_Add_Liam) //only increase if you win
+		msgbox(format("LIAM: So you've got a head start, but we'll catch up!"))
+	}
+	else
+	{
+		msgbox(format("LIAM: How was that? I'm pretty good at this, don't you think?"))
+	}
+	goto(VisCen_Rivals_PostBattle)
+}
+script(local) VisCen_Olive_PostBattle
+{
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_WON)
+	{
+		addvar(VAR_VISCEN_STATE,1)
+	}
+	call(RivalLink_Add_Olive) //happy either way
+	msgbox(format("OLIVE: Thank you for the battle. I can tell our Pokémon had fun!"))
+	goto(VisCen_Rivals_PostBattle)
+}
+script(local) VisCen_Rivals_PostBattle
+{
+	applymovement(PROF_ID, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp)
+	applymovement(OPP_SPRITE_ID, Common_Movement_FaceUp)
+	msgbox(format("???: You kids done?\p"
+		"Su{PAUSE 8}per{PAUSE 8} fun,{PAUSE 8} right?\n"
+		"Anyway, already told your other friend, but take these."))
+	closemessage
+	if (var(OPP_SPRITE_ID) == BETA_ID)
+	{
+		//go straight right
+		applymovement(PROF_ID, Prof_Walk_1_1)
+	}
+	else
+	{
+		//go up and then right
+		applymovement(PROF_ID, Prof_Walk_1_2)
+	}
+	waitmovement(PROF_ID) //once to the right of bush
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
+	
+	//Prof continues walking to below opponent
+	applymovement(PROF_ID, Prof_Walk_2)
+	waitmovement(PROF_ID)
+	applymovement(OPP_SPRITE_ID, Common_Movement_WalkInPlaceUp)
+	
+	//Prof walks over to player
+	applymovement(PROF_ID, Prof_Walk_3)
+	waitmovement(PROF_ID)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
+	waitmovement(0)
+	delay(16)
+	
+	msgbox(format("Don't lose it, alright?"))
+	goto(VisCen_Closing_Event)
+}
+script(local) VisCen_Prof_PostBattle
+{
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_WON)
+	{
+		addvar(VAR_VISCEN_STATE,1)
+		msgbox(format("???: Alright, alright. Got that out of your system?\p"
+			"Wasn't really in the script, but whatever gets you motivated."))
+	}
+	else
+	{
+		msgbox(format("???: …Er. You alright, kid?\p"
+			"You gotta watch it, or your little guy's gonna hurt…\l"
+			"{FONT_SMALL}You only get one, alright?"))
+	}
+	clearflag(FLAG_SYS_SET_BATTLE_BGM)
+	closemessage
+	applymovement(PROF_ID, Common_Movement_WalkLeft)
+	waitmovement(0)
+	delay(16)
+	
+	msgbox(format("Here, go ahead and take this. Don't lose it, understand?"))
+	
+	goto(VisCen_Closing_Event)
+}
+
+script(local) VisCen_Closing_Event
+{
+	special(HealPlayerParty)
+	
+	playfanfare(MUS_OBTAIN_TMHM)
+	setflag(FLAG_SYS_POKEDEX_GET)
+	msgbox(Prof_DexText)
+	waitfanfare
+	
+	// Position professor to center
+	if (var(OPP_SPRITE_ID) != PROF_ID)
+	{
+		applymovement(PROF_ID, Prof_Center_1)
+	}
+	else
+	{
+		applymovement(PROF_ID, Prof_Center_2)
+	}
+	waitmovement(0)
+	msgbox(format("???: It's a device that automatically stores data about Pokémon!"))
+	closemessage
+	applymovement(PROF_ID, Common_Movement_WalkDown)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
+	waitmovement(0)
+	msgbox(format("That's right, it's the latest and greatest in Pokémon Trainer Technology!\p"
+		"Well yeah, okay, maybe you've seen it before. Everyone's got one these days.\p"
+		"But I won't be hearing anything about those Pokétch apps or whatever!\l"
+		"This is complex technology, you know?"))
+	applymovement(PROF_ID, Common_Movement_WalkInPlaceUp)
+	waitmovement(0)
+	msgbox(format("Now, just seeing Pokémon is fine, but you'll learn more by catching 'em.\p"
+		"The tour guides here probably have Pokéballs for you…"))
+	applymovement(PROF_ID, Common_Movement_WalkInPlaceLeft)
+	waitmovement(0)
+	msgbox(format("Hm? Why can't I give you some?\lYou're wringin' me dry here…"))
+	closemessage
+	
+	// intercom, set flags, rewarp to clear NPC's
+	playse(SE_DING_DONG)
+	waitse
+	delay(32)
+	//intercom dialogue
+	msgbox(format("{COLOR GREEN}The tour will begin shortly.\p"
+		"Please meet with your designated tour guide outside the center."))
+	closemessage
+	
+	call(Prof_Hop)
+	
+	msgbox(format("???: Whoops, that's my cue.\p"
+		"Remember you three, if anyone asks where you got these?\p"
+		"Let them know {COLOR BLUE}Professor Sequoia{COLOR DARK_GRAY} hooked you up, alright?\l"
+		"I'll be seeing you around!"))
+	
+	warp(MAP_VISITOR_CENTER, 0xFF, 8, 8)
+	
+	releaseall
+	end
+}
+
+text Prof_DexText
+{
+	format("{PLAYER} received the Pokédex from the Professor.")
+}
+
+// Signs
+
+script VisCen_AreaSign
+{
+	msgbox(format("SEKIEN VISITOR CENTER\n"
+		"Welcome to our wonderful region!")
+		,MSGBOX_SIGN)
+	end
+}
+script VisCen_ExitSign
+{
+	msgbox(format("ROUTE 1\n"
+		"Nature Trail ahead")
+		,MSGBOX_SIGN)
+	end
+}
+script VisCen_FenceSign
+{
+	msgbox(format("Please do not touch the plants.")
+		,MSGBOX_SIGN)
+	end
+}
+script VisCen_MisplacedBush
+{
+	msgbox(format("It looks like it was recently uprooted.")
+		,MSGBOX_NPC)
+	end
+}
+
+
+// NPC triggers
+
+script VisCen_Professor
+{
+	if(!flag(FLAG_RIVAL_START)) //Starter selection
+	{
+		msgbox(format("???: What's the matter, big winner? Tough decision?\p"
+			"…There's no strings attached, I promise!")
+			,MSGBOX_NPC)
+	}
+	else // Only other event is Rival selection
+	{
+		lock
+		faceplayer
+		msgbox(format("???: Hmm? What, you want to battle me or something?")
+			,MSGBOX_YESNO)
+		
+		if(var(VAR_RESULT) == 1)
+		{
+			if (flag(FLAG_ALPHA_NO) && flag(FLAG_BETA_NO))
+			{
+				msgbox(format("Did neither of them want to? Really…? "
+					"{FONT_SMALL}Ugh…{FONT_NORMAL}\p"
+					"Fine, fine. If I've gotta break the ice for you, it's better than nothing."))
+				closemessage
+				applymovement(PROF_ID, Common_Movement_WalkInPlaceDown)
+				waitmovement(0)
+				applymovement(ALPHA_ID, Common_Movement_FaceUp)
+				applymovement(BETA_ID, Common_Movement_FaceUp)
+				msgbox(format("Hey, you two come here for a sec.")
+					,MSGBOX_AUTOCLOSE)
+				
+				//Transition to prof battle event
+				setvar(OPP_SPRITE_ID,PROF_ID)
+				setvar(VAR_VISCEN_STATE, 0x30)
+				
+				goto(Battle_Transition)
+			}
+			elif (!flag(FLAG_PROF_REFUSE))
+			{
+				msgbox(format("Come on… did you even try talking to the other two yet?\p"
+					"Competing with others your age is much more mentally stimulating.\p"
+					"Besides, I'm not really supposed to be involved in the{COLOR BLUE}"
+					"stud-{COLOR DARK_GRAY}\lin your Pokémon Journey.")
+					,MSGBOX_AUTOCLOSE)
+				setflag(FLAG_PROF_REFUSE)
+			}
+			else
+			{
+				msgbox(format("I said no already, kid. Why don't you{COLOR RED}"
+					"ask one of those two{COLOR DARK_GRAY} instead?")
+					,MSGBOX_AUTOCLOSE)
+			}
+		}
+		else
+		{
+			msgbox(format("Of course, don't be silly…\p"
+				"You've got two eager {COLOR RED}rivals{COLOR DARK_GRAY} right there. Just ask them!")
+				,MSGBOX_AUTOCLOSE)
+		}
+	}
+	end
+}
+script(local) Prof_Hop // He just does this a lot
+{
+	playse(SE_LEDGE)
+	applymovement(PROF_ID, Common_Movement_HopDown)
+	waitmovement(PROF_ID)
+}
+
+script VisCen_Liam
+{
+	// Flavor text
+	if(!flag(FLAG_EVENT_START))
+	{
+		msgbox(format("BOY: He said I'm a winner, but it doesn't change my goals!\p"
+			"I'll catch the strongest Pokémon out there!")
+			,MSGBOX_NPC)
+		applymovement(ALPHA_ID, Common_Movement_FaceUp)
+		waitmovement(0)
+	}
+	elif(!flag(FLAG_RIVAL_START))
+	{
+		msgbox(format("BOY: So, you're the one who won first place.\p"
+			"Just don't take the good one!")
+			,MSGBOX_NPC)
+	}
+	else
+	{
+		lock
+		faceplayer
+		msgbox(format("BOY: Picking me, huh? Well, I'm not about to miss my first shot!")
+			,MSGBOX_YESNO)
+		
+		if(var(VAR_RESULT) == 1)
+		{
+			// Transition to alpha battle event
+			setvar(VAR_VISCEN_STATE, 0x10)
+			setvar(OPP_SPRITE_ID,ALPHA_ID)
+			setvar(VAR_MUGSHOT_ID, MUGSHOT_LIAM)
+			call(RivalLink_Add_Liam)
+			
+			goto(Battle_Transition)
+		}
+		else
+		{
+			msgbox(format("What, don't get scared! I'll go easy on you!"))
+			setflag(FLAG_ALPHA_NO)
+		}
+		release
+	}
+	end
+}
+
+script VisCen_Olive
+{
+	// Flavor text
+	if(!flag(FLAG_EVENT_START))
+	{
+		msgbox(format("GIRL: Hmm… a free Pokémon, huh-?\l"
+			"That's a lot of responsibility…")
+			,MSGBOX_NPC)
+		applymovement(BETA_ID, Common_Movement_FaceUp)
+		waitmovement(0)
+	}
+	elif(!flag(FLAG_RIVAL_START))
+	{
+		msgbox(format("GIRL: Lucky you-!\p"
+			"Did you hear? I get to have the last Pokémon!")
+			,MSGBOX_NPC)
+	}
+	else
+	{
+		lock
+		faceplayer
+		bufferspeciesname(2, VAR_BETA_STARTER)
+		msgbox(format("GIRL: {STR_VAR_3} and I…? Well, why not!")
+			,MSGBOX_YESNO)
+		
+		if(var(VAR_RESULT) == 1)
+		{
+			// Transition to beta battle event
+			setvar(VAR_VISCEN_STATE, 0x20)
+			setvar(OPP_SPRITE_ID,BETA_ID)
+			setvar(VAR_MUGSHOT_ID, MUGSHOT_OLIVE)
+			call(RivalLink_Add_Olive)
+			
+			goto(Battle_Transition)
+		}
+		else
+		{
+			msgbox(format("GIRL: Oh…? Well, why not?"))
+			setflag(FLAG_BETA_NO)
+		}
+		release
+	}
+	end
+}
+
+
+script VisCen_Oyako
+{
+	lockall
+//	if(!flag(FLAG_EVENT_START))
+//	{
+		applymovement(OYA_ID,Common_Movement_FaceUp)
+		applymovement(KO_ID,Common_Movement_WalkInPlaceDown)
+		waitmovement(0)
+		msgbox(format("GIRL: Mom, mom! I want a Pokémon too!"))
+		applymovement(OYA_ID,Common_Movement_WalkInPlaceUp)
+		msgbox(format("MOTHER: Don't listen to the strange man, dear."))
+//	}
+	releaseall
+	end
+}
+script VisCen_Employee
+{
+	if(!flag(FLAG_SYS_POKEDEX_GET))
+	{
+		msgbox(format("Hey, what's going on? Does this guy even work here?")
+			,MSGBOX_NPC)
+	}
+	else
+	{
+		msgbox(format("Working here at the Visitor Center makes me want to take a trip, too.\p"
+			"Maybe I'll go visit Hoenn?")
+			,MSGBOX_NPC)
+	}
+	end
+}
+script VisCen_Riajuu
+{
+	lockall
+	applymovement(RIAJUUM_ID,Common_Movement_FaceLeft)
+	applymovement(RIAJUUF_ID,Common_Movement_WalkInPlaceRight)
+	waitmovement(0)
+	if(!flag(FLAG_EVENT_START))
+	{
+		msgbox(format("GIRL: If he chooses you, honey, can I have your Pokémon instead…?"))
+		applymovement(RIAJUUM_ID,Common_Movement_WalkInPlaceLeft)
+		msgbox(format("BOY: Huh?? I mean, o-of course you can, haha…"))
+	}
+	else
+	{
+		msgbox(format("GIRL: Aww, neither of our tickets won…\p"
+			"but you'll catch me a cute Pokémon anyway, right?"))
+		applymovement(RIAJUUM_ID,Common_Movement_WalkInPlaceLeft)
+		msgbox(format("BOY: Of course, of course! {FONT_SMALL}Whew…"))
+	}
+	releaseall
+	end
+}
+
+script VisCen_Beauty
+{
+	msgbox(format("LADY: This free Pokémon stuff sounds fishy if you ask me…\p"
+		"Is he even a real Professor?")
+		,MSGBOX_NPC)
+	end
+}
+script VisCen_LassGramps
+{
+	lockall
+	applymovement(GRAMPS_ID,Common_Movement_FaceUp)
+	applymovement(LASS_ID,Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	if(!flag(FLAG_EVENT_START))
+	{
+		msgbox(format("GIRL: Grandpa, did you hold onto your ticket?"))
+		applymovement(GRAMPS_ID,Common_Movement_WalkInPlaceUp)
+		msgbox(format("GRAMPS: Hm?{PAUSE 16} What's that??{PAUSE 16}\nSpeak up, kiddo!"))
+		applymovement(LASS_ID,Common_Movement_WalkInPlaceDown)
+		msgbox(format("GIRL: THE TICKET, GRANDPA.\n"
+			"THE {COLOR BLUE}RAFFLE TICKET{COLOR DARK_GRAY} FOR A FREE POKéMON?"))
+		applymovement(GRAMPS_ID,Common_Movement_WalkInPlaceUp)
+		msgbox(format("GRAMPS: Hah???"))
+	}
+	else
+	{
+		msgbox(format("GIRL: Looks like we didn't win, huh gramps?"))
+		applymovement(GRAMPS_ID,Common_Movement_WalkInPlaceUp)
+		msgbox(format("GRAMPS: Givin' away Pokémon for free… hah!"
+			"In my day, you had to wrangle your Pokémon with your own two hands!!"))
+		applymovement(LASS_ID,Common_Movement_WalkInPlaceDown)
+		msgbox(format("GIRL: Is… that even remotely true?"))
+	}
+	releaseall
+	end
+}
+script VisCen_TechnologyMan
+{
+	msgbox(format("Technology is incredible!\p"
+		"You can even create your own world if you put your mind to it!")
+		,MSGBOX_NPC)
+	end
+}
+
+
+text Liam_Pick_Txt
+{
+	"BOY: Then I'll take this one!"
+}
+text Liam_Receive_Txt
+{
+	"The Boy received {STR_VAR_2}\n"
+	"from the Professor!"
+}
+text Olive_Pick_Txt
+{
+	"GIRL: So, this one is mine?"
+}
+text Olive_Receive_Txt
+{
+	"The Girl received {STR_VAR_3}\n"
+	"from the Professor!"
+}
+
+
+movement Prof_WalkBehindBushes_1
+{
+	jump_in_place_down
+	delay_8
+}
+movement Prof_WalkBehindBushes_2
+{
+	walk_fast_left
+	walk_in_place_faster_down
+}
+
+movement Player_Ball_TopLeft
+{
+	walk_left
+	walk_down * 2
+	walk_right
+	face_up
+}
+movement Player_Ball_Left
+{
+	walk_down
+	walk_right
+	face_up
+}
+movement Player_Ball_TopRight
+{
+	walk_right
+	walk_down * 2
+	walk_left
+	face_up
+}
+movement Player_Ball_Right
+{
+	walk_down
+	walk_left
+	face_up
+}
+
+
+movement Liam_Ball_L
+{
+	walk_fast_up * 2
+	walk_fast_right
+	walk_in_place_faster_up
+}
+movement Liam_Ball_M
+{
+	walk_fast_up
+	walk_fast_right * 2
+	walk_fast_up
+}
+movement Liam_Ball_R
+{
+	walk_fast_up
+	walk_fast_right * 3
+	walk_fast_up
+}
+
+movement Olive_Ball_L
+{
+	walk_up
+	walk_in_place_left
+	walk_left * 3
+	walk_up
+}
+movement Olive_Ball_M
+{
+	walk_up
+	walk_in_place_left
+	walk_left * 2
+	walk_up
+}
+movement Olive_Ball_R
+{
+	walk_up * 2
+	walk_in_place_left
+	walk_left
+	walk_in_place_faster_up
+}
+
+// *****
+//	Movements for Liam and Olive on randomized rival selection
+//	Naming: [Object]_Choice[A/B]_P[X]
+//		ex. Liam_ChoiceA_P2: Liam's movement when being chosen when player is on 2nd ball
+//
+//	Balls:
+//	G F W
+//
+//	Generic: 
+//	(P1) A2* B3
+//	B1 (P2) A3*
+//	A walkinplace left
+//
+//	B1* (P2) A3
+//	B walkinplace right
+//	*****
+
+//	A1* B2 (P3)
+//		A and B face (A: common faceright)
+//		After a pause, B moves down, then faces up
+//		A moves right (common walkright)
+movement Liam_ChoiceA_P3
+{
+	walk_in_place_right
+	delay_8 * 8
+	walk_right
+	delay_8
+}
+movement Olive_ChoiceA_P3
+{
+	delay_8 * 2
+	face_left
+	delay_8 * 4
+	walk_down
+	face_up
+}
+
+//	(P1) A2 B3*
+//	B looks left and head follows A movement
+//	Short delay, A walks down and looks left
+//	After another delay, B walks left
+movement Liam_ChoiceB_P1
+{
+	delay_8 * 2
+	walk_down
+	walk_left * 2
+}
+movement Olive_ChoiceB_P1
+{
+	face_left
+	delay_8 * 4
+	face_down
+	delay_8 * 6
+	walk_left
+	delay_8
+}
+
+//	A1 B2* (P3)
+//	B looks left, after a delay A looks left too
+//	Short delay, then B walkinplaceright
+movement Liam_ChoiceB_P3
+{
+	delay_8 * 2
+	face_left
+}
+movement Olive_ChoiceB_P3
+{
+	face_left
+	delay_8 * 6
+	walk_in_place_right
+	delay_8
+}
+
+
+movement Prof_Walk_1_1
+{
+	walk_right * 2
+	walk_down
+}
+movement Prof_Walk_1_2 //Olive is in the way
+{
+	walk_up
+	walk_right * 2
+	walk_down * 2
+}
+movement Prof_Walk_2
+{
+	walk_down
+	walk_left
+	walk_in_place_down
+}
+movement Prof_Walk_3
+{
+	delay_8 * 4
+	walk_left * 2
+	walk_in_place_down
+}
+movement Prof_Center_1
+{
+	walk_fast_right
+	delay_8
+	walk_in_place_down
+}
+movement Prof_Center_2 //Prof was the battler
+{
+	walk_in_place_faster_up
+	delay_8
+	walk_in_place_down
+}

@@ -1746,3 +1746,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/VisitorCenter_BusStop/scripts.inc"
 
 	.include "data/maps/Route01/scripts.inc"
+
+	.include "data/maps/ThymeVillage/scripts.inc"

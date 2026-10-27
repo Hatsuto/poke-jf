@@ -9363,6 +9363,16 @@
       "secondary_tileset": "gTileset_Lilycove",
       "border_filepath": "data/layouts/Route01/border.bin",
       "blockdata_filepath": "data/layouts/Route01/map.bin"
+    },
+    {
+      "id": "LAYOUT_THYME_VILLAGE",
+      "name": "ThymeVillage_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/ThymeVillage/border.bin",
+      "blockdata_filepath": "data/layouts/ThymeVillage/map.bin"
     }
   ]
 }
