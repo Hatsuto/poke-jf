@@ -1,6 +1,7 @@
 {
   "group_order": [
-    "gMapGroup_JF_TownsAndRoutes",
+    "gMapGroup_TownsAndRoutes_JF",
+    "gMapGroup_VisitorCenter",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
@@ -77,8 +78,12 @@
     "gMapGroup_IndoorSixIslandRoute_Frlg",
     "gMapGroup_IndoorSevenIslandRoute_Frlg"
   ],
-  "gMapGroup_JF_TownsAndRoutes": [
+  "gMapGroup_TownsAndRoutes_JF": [
     "VisitorCenter"
+  ],
+  "gMapGroup_VisitorCenter": [
+    "VisitorCenter_Indoors",
+    "VisitorCenter_BusStop"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
