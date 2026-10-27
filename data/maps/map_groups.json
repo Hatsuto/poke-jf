@@ -79,7 +79,8 @@
     "gMapGroup_IndoorSevenIslandRoute_Frlg"
   ],
   "gMapGroup_TownsAndRoutes_JF": [
-    "VisitorCenter"
+    "VisitorCenter",
+    "Route01"
   ],
   "gMapGroup_VisitorCenter": [
     "VisitorCenter_Indoors",

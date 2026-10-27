@@ -1630,6 +1630,10 @@
     {
       "id": "MAPSEC_VISITOR_CENTER",
       "name": "VISITOR CENTER"
+    },
+    {
+      "id": "MAPSEC_ROUTE_01",
+      "name": "ROUTE 1"
     }
   ]
 }

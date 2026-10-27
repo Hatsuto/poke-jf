@@ -9338,7 +9338,7 @@
       "id": "LAYOUT_VISITOR_CENTER_INDOORS",
       "name": "VisitorCenter_Indoors_Layout",
       "width": 25,
-      "height": 33,
+      "height": 17,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Shop",
       "border_filepath": "data/layouts/VisitorCenter_Indoors/border.bin",
@@ -9353,6 +9353,16 @@
       "secondary_tileset": "gTileset_Lilycove",
       "border_filepath": "data/layouts/VisitorCenter_BusStop/border.bin",
       "blockdata_filepath": "data/layouts/VisitorCenter_BusStop/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE01",
+      "name": "Route01_Layout",
+      "width": 36,
+      "height": 46,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lilycove",
+      "border_filepath": "data/layouts/Route01/border.bin",
+      "blockdata_filepath": "data/layouts/Route01/map.bin"
     }
   ]
 }
