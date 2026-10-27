@@ -1,0 +1,20 @@
+{
+  "id": "MAP_VISITOR_CENTER",
+  "name": "VisitorCenter",
+  "layout": "LAYOUT_VISITOR_CENTER",
+  "music": "MUS_LITTLEROOT",
+  "region_map_section": "MAPSEC_VISITOR_CENTER",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_TOWN",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": []
+}
