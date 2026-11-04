@@ -145,6 +145,7 @@ struct Trainer
     u8 poolPickIndex;
     u8 poolPruneIndex;
     u16 overrideTrainer;
+    enum TrainerPicID mugshotPic;
 };
 
 struct TrainerClass
@@ -340,6 +341,11 @@ static inline const bool32 DoesTrainerHaveMugshot(u16 trainerId)
 static inline const u8 GetTrainerMugshotColorFromId(u16 trainerId)
 {
     return GetTrainerStructFromId(trainerId)->mugshotColor;
+}
+
+static inline const enum TrainerPicID GetMugshotPicFromId(u16 trainerId)
+{
+    return GetTrainerStructFromId(trainerId)->mugshotPic;
 }
 
 static inline const enum Item *GetTrainerItemsFromId(u16 trainerId)
