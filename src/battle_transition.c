@@ -2581,12 +2581,20 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
 {
     struct Sprite *opponentSpriteA, *opponentSpriteB=0, *playerSprite, *partnerSprite=0;
 
+/*
     enum TrainerPicID trainerAPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentA);
     enum TrainerPicID trainerBPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentB);
     enum TrainerPicID partnerPicId = GetTrainerPicFromId(gPartnerTrainerId);
+*/
+    enum TrainerPicID trainerAPicId = GetMugshotPicFromId(TRAINER_BATTLE_PARAM.opponentA);
+    enum TrainerPicID trainerBPicId = GetMugshotPicFromId(TRAINER_BATTLE_PARAM.opponentB);
+    enum TrainerPicID partnerPicId = GetMugshotPicFromId(gPartnerTrainerId);
+    enum TrainerPicID playerPicId = PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender);
     struct Coords16 mugshotCoordsA = GetTrainerFrontPicMugshotCoords(trainerAPicId);
     s16 opponentARotationScales = 0;
     s16 opponentBRotationScales = 0;
+    s16 playerARotationScales = 0;
+    s16 playerBRotationScales = 0;
 
     gReservedSpritePaletteCount = 10;
     if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
@@ -2600,9 +2608,9 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
         opponentSpriteB->callback = SpriteCB_MugshotTrainerPicPartner;
         opponentSpriteB->oam.affineMode = ST_OAM_AFFINE_DOUBLE;
         opponentSpriteB->oam.matrixNum = AllocOamMatrix();
-        opponentSpriteB->oam.shape = SPRITE_SHAPE(64x32);
+        opponentSpriteB->oam.shape = SPRITE_SHAPE(64x64);
         opponentSpriteB->oam.size = SPRITE_SIZE(64x32);
-        CalcCenterToCornerVec(opponentSpriteB, SPRITE_SHAPE(64x32), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
+        CalcCenterToCornerVec(opponentSpriteB, SPRITE_SHAPE(64x64), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
         opponentBRotationScales = GetTrainerFrontPicMugshotRotation(trainerBPicId);
         SetOamMatrixRotationScaling(opponentSpriteB->oam.matrixNum, opponentBRotationScales, opponentBRotationScales, 0);
     }
@@ -2623,13 +2631,14 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
         partnerSprite->callback = SpriteCB_MugshotTrainerPicPartner;
         partnerSprite->oam.affineMode = ST_OAM_AFFINE_DOUBLE;
         partnerSprite->oam.matrixNum = AllocOamMatrix();
-        partnerSprite->oam.shape = SPRITE_SHAPE(64x32);
+        partnerSprite->oam.shape = SPRITE_SHAPE(64x64);
         partnerSprite->oam.size = SPRITE_SIZE(64x32);
-        CalcCenterToCornerVec(partnerSprite, SPRITE_SHAPE(64x32), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
-        SetOamMatrixRotationScaling(partnerSprite->oam.matrixNum, -512, 512, 0);
+        CalcCenterToCornerVec(partnerSprite, SPRITE_SHAPE(64x64), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
+        playerBRotationScales = GetTrainerFrontPicMugshotRotation(partnerPicId);
+        SetOamMatrixRotationScaling(partnerSprite->oam.matrixNum, -1 * playerBRotationScales, playerBRotationScales, 0);
     }
 
-    task->tPlayerSpriteId = CreateTrainerSprite(PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender),
+    task->tPlayerSpriteId = CreateTrainerSprite(playerPicId,
                                                 DISPLAY_WIDTH + 32,
                                                 106,
                                                 0, NULL);
@@ -2646,19 +2655,20 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
     opponentSpriteA->oam.matrixNum = AllocOamMatrix();
     playerSprite->oam.matrixNum = AllocOamMatrix();
 
-    opponentSpriteA->oam.shape = SPRITE_SHAPE(64x32);
-    playerSprite->oam.shape = SPRITE_SHAPE(64x32);
+    opponentSpriteA->oam.shape = SPRITE_SHAPE(64x64);
+    playerSprite->oam.shape = SPRITE_SHAPE(64x64);
 
     opponentSpriteA->oam.size = SPRITE_SIZE(64x32);
     playerSprite->oam.size = SPRITE_SIZE(64x32);
 
-    CalcCenterToCornerVec(opponentSpriteA, SPRITE_SHAPE(64x32), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
-    CalcCenterToCornerVec(playerSprite, SPRITE_SHAPE(64x32), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
+    CalcCenterToCornerVec(opponentSpriteA, SPRITE_SHAPE(64x64), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
+    CalcCenterToCornerVec(playerSprite, SPRITE_SHAPE(64x64), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
 
     opponentARotationScales = GetTrainerFrontPicMugshotRotation(trainerAPicId);
+    playerARotationScales = GetTrainerFrontPicMugshotRotation(playerPicId);
 
     SetOamMatrixRotationScaling(opponentSpriteA->oam.matrixNum, opponentARotationScales, opponentARotationScales, 0);
-    SetOamMatrixRotationScaling(playerSprite->oam.matrixNum, -512, 512, 0);
+    SetOamMatrixRotationScaling(playerSprite->oam.matrixNum, -1 * playerARotationScales, playerARotationScales, 0);
 }
 
 static void SpriteCB_MugshotTrainerPic(struct Sprite *sprite)
