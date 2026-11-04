@@ -166,6 +166,9 @@ struct Trainer
 
     enum MultiParty multi_team;
     int multi_team_line;
+
+    struct String mugshot_pic;
+    int mugshot_pic_line;	
 };
 
 static bool is_empty_string(struct String s)
@@ -1337,6 +1340,13 @@ static bool parse_trainer(struct Parser *p, const struct Parsed *parsed, struct 
             if (!token_multi_team_type(p, &value, &trainer->multi_team))
                 any_error = !show_parse_error(p);
         }
+        else if (is_literal_token(&key, "Mugshot Pic"))
+        {
+            if (trainer->mugshot_pic_line)
+                any_error = !set_show_parse_error(p, key.location, "duplicate 'Mugshot Pic'");
+            trainer->mugshot_pic_line = value.location.line;
+            trainer->mugshot_pic = token_string(&value);
+        }
         else
         {
             any_error = !set_show_parse_error(p, key.location, "expected one of 'Name', 'Class', 'Pic', 'Back Pic', 'Gender', 'Music', 'Items', 'Battle Type', 'Difficulty', 'Party Size', 'Multi Party', 'Pool Rules', 'Pool Pick Functions', 'Pool Prune' or 'AI'");
@@ -1906,6 +1916,20 @@ static void fprint_trainers(const char *output_path, FILE *f, struct Parsed *par
             fprintf(f, "#line %d\n", trainer->mugshot_line);
             fprintf(f, "        .mugshotColor = ");
             fprint_constant(f, "MUGSHOT_COLOR", trainer->mugshot);
+            fprintf(f, ",\n");
+            
+            //Only adding this if Mugshot Color was specified first
+            fprintf(f, "#line %d\n", trainer->mugshot_pic_line);
+            fprintf(f, "        .mugshotPic = ");
+            
+            //For legacy support, defaulting to trainerPic or none
+            if (!is_empty_string(trainer->mugshot_pic))
+                fprint_constant(f, "TRAINER_PIC", trainer->mugshot_pic);
+            else if (!is_empty_string(trainer->pic))
+                fprint_constant(f, "TRAINER_PIC", trainer->pic);
+            else
+                fprintf(f, "TRAINER_PIC_NONE");
+            
             fprintf(f, ",\n");
         }
 
