@@ -486,6 +486,8 @@ const u16 gTrainerBackPicPalette_Leaf[] = INCGFX_U16("graphics/trainers/back_pic
 const u16 gTrainerBackPicPalette_Pokedude[] = INCGFX_U16("graphics/trainers/back_pics/pokedude.png", ".gbapal");
 const u16 gTrainerBackPicPalette_OldMan[] = INCGFX_U16("graphics/trainers/back_pics/old_man.png", ".gbapal");
 
+const u32 gTrainerFrontPic_HildaVs[] = INCGFX_U32("graphics/trainers/mugshots/HildaChallenge_sample.png", ".4bpp.smol");
+const u16 gTrainerPalette_HildaVs[] = INCGFX_U16("graphics/trainers/mugshots/HildaChallenge_sample.png", ".gbapal");
 
 static const union AnimCmd sAnimCmd_Hoenn[] =
 {
@@ -565,7 +567,24 @@ const union AnimCmd *const sBackAnims_OldManPokedude[] = {
 // gTrainerFrontPic/gTrainerPalette pointers, (e.g "gTrainerFrontPic_Hiker" and "gTrainerPalette_Hiker").
 // The last three parameters control the X and Y coordinates and rotation of the mugshot on the screen.
 // They default to 0, 0, and 0x200 which are default values used by the majority of the game's trainer sprites.
+#define TRAINER_MUGSHOT_DIMS(...)                                   \
+    (const struct TrainerMugshotInfo[])                             \
+    {{                                                              \
+        .mugshotShape = DEFAULT(SPRITE_SHAPE(64x32), __VA_ARGS__),  \
+        .mugshotSize = DEFAULT_2(SPRITE_SIZE(64x32), __VA_ARGS__),  \
+    }}
+
 #define TRAINER_FRONT_PIC(picFile, paletteFile, ...)                           \
+    (const struct TrainerFrontPicInfo[])                                       \
+    {{                                                                         \
+        .imageData = picFile,                                                  \
+        .paletteData = paletteFile,                                            \
+        .mugshotCoords = {DEFAULT(0, __VA_ARGS__), DEFAULT_2(0, __VA_ARGS__)}, \
+        .mugshotRotation = DEFAULT_3(0x200, __VA_ARGS__),                      \
+    }},                                                                        \
+    .mugPic = TRAINER_MUGSHOT_DIMS()
+
+#define TRAINER_FRONT_PIC_MUG(picFile, paletteFile, ...)                       \
     (const struct TrainerFrontPicInfo[])                                       \
     {{                                                                         \
         .imageData = picFile,                                                  \
@@ -1036,7 +1055,7 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     },
     [TRAINER_PIC_CUE_BALL_FRLG] =
     {
-        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_CueBallFrlg, gTrainerPalette_CueBallFrlg),
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_CueBallFrlg, gTrainerPalette_CueBallFrlg, -30, 0),
     },
     [TRAINER_PIC_GAMER_FRLG] =
     {

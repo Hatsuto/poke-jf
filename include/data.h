@@ -52,6 +52,13 @@ struct TrainerPicInfo
 {
     const struct TrainerFrontPicInfo *frontPic;
     const struct TrainerBackPicInfo *backPic;
+    const struct TrainerMugshotInfo *mugPic;
+};
+
+struct TrainerMugshotInfo
+{
+    u8 mugshotShape;
+    u8 mugshotSize;
 };
 
 #define MON_COORDS_SIZE(width, height) (DIV_ROUND_UP(width, 8) << 4 | DIV_ROUND_UP(height, 8))
@@ -410,6 +417,16 @@ static inline const struct Coords16 GetTrainerFrontPicMugshotCoords(enum Trainer
 static inline s16 GetTrainerFrontPicMugshotRotation(enum TrainerPicID trainerPic)
 {
     return gTrainerPicInfo[SanitizeFrontTrainerPic(trainerPic)].frontPic->mugshotRotation;
+}
+
+static inline u8 GetTrainerMugshotShape(enum TrainerPicID trainerPic)
+{
+    return gTrainerPicInfo[SanitizeFrontTrainerPic(trainerPic)].mugPic->mugshotShape;
+}
+
+static inline u8 GetTrainerMugshotSize(enum TrainerPicID trainerPic)
+{
+    return gTrainerPicInfo[SanitizeFrontTrainerPic(trainerPic)].mugPic->mugshotSize;
 }
 
 static inline const struct MonCoords *GetTrainerBackPicCoords(enum TrainerPicID trainerPic)
