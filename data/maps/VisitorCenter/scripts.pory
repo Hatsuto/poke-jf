@@ -547,7 +547,6 @@ script VisCen_BallPick
 				
 				setvar(VAR_VISCEN_STATE, 0x20)
 				setvar(OPP_SPRITE_ID,BETA_ID)
-				setvar(VAR_MUGSHOT_ID, MUGSHOT_OLIVE)
 			}
 			
 			goto(Battle_Transition)
@@ -610,26 +609,26 @@ script(local) Battle_Transition
 			{
 				case 0: //GRS
 					trainerbattle_no_whiteout(TRAINER_ALPHA_VISCEN_FIR,
-						VisCen_Liam_Intro, VisCen_Liam_Loss, VisCen_Liam_PostBattle)
+						VisCen_Liam_Intro, VisCen_Liam_Loss, VisCen_Liam_Loss, VisCen_Liam_PostBattle)
 				case 1: //FIR
 					trainerbattle_no_whiteout(TRAINER_ALPHA_VISCEN_WTR,
-						VisCen_Liam_Intro, VisCen_Liam_Loss, VisCen_Liam_PostBattle)
+						VisCen_Liam_Intro, VisCen_Liam_Loss, VisCen_Liam_Loss, VisCen_Liam_PostBattle)
 				case 2: //WTR
 					trainerbattle_no_whiteout(TRAINER_ALPHA_VISCEN_GRS,
-						VisCen_Liam_Intro, VisCen_Liam_Loss, VisCen_Liam_PostBattle)
+						VisCen_Liam_Intro, VisCen_Liam_Loss, VisCen_Liam_Loss, VisCen_Liam_PostBattle)
 			}
 		case BETA_ID:
 			switch(var(VAR_STARTER_MON))
 			{
 				case 0: //GRS
 					trainerbattle_no_whiteout(TRAINER_BETA_VISCEN_WTR,
-						VisCen_Olive_Intro, VisCen_Olive_Loss, VisCen_Olive_PostBattle)
+						VisCen_Olive_Intro, VisCen_Olive_Loss, VisCen_Olive_Loss, VisCen_Olive_PostBattle)
 				case 1: //FIR
 					trainerbattle_no_whiteout(TRAINER_BETA_VISCEN_GRS,
-						VisCen_Olive_Intro, VisCen_Olive_Loss, VisCen_Olive_PostBattle)
+						VisCen_Olive_Intro, VisCen_Olive_Loss, VisCen_Olive_Loss, VisCen_Olive_PostBattle)
 				case 2: //WTR
 					trainerbattle_no_whiteout(TRAINER_BETA_VISCEN_FIR,
-						VisCen_Olive_Intro, VisCen_Olive_Loss, VisCen_Olive_PostBattle)
+						VisCen_Olive_Intro, VisCen_Olive_Loss, VisCen_Olive_Loss, VisCen_Olive_PostBattle)
 			}
 		default:
 			setflag(FLAG_SYS_SET_BATTLE_BGM)
@@ -637,7 +636,8 @@ script(local) Battle_Transition
 			trainerbattle_no_whiteout(TRAINER_SEQUOIA,
 				format("???: Alright, everyone watching? You're lookin' at the new Champ in the making!\p"
 					"{FONT_SMALL}Just put on a good show, kid."),
-				"Great, great. Good work.",
+				"Great, great. Good work.", //Loss (to player)
+				"Great, great. Good work.", //Victory (to player)
 				VisCen_Prof_PostBattle)
 			clearflag(FLAG_SYS_SET_BATTLE_BGM)
 	}
@@ -984,7 +984,6 @@ script VisCen_Liam
 			// Transition to alpha battle event
 			setvar(VAR_VISCEN_STATE, 0x10)
 			setvar(OPP_SPRITE_ID,ALPHA_ID)
-			setvar(VAR_MUGSHOT_ID, MUGSHOT_LIAM)
 			call(RivalLink_Add_Liam)
 			
 			goto(Battle_Transition)
