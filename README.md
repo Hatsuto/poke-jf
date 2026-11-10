@@ -4,7 +4,6 @@ This is my personal repository for my solo ROMhack project. Currently in the pro
 
 # Release Information
 
-<<<<<<< HEAD
 ```
  [rh-hideout/pokeemerald-expansion]
  ⠀⠀        ⠀⠀⠀⠀⠀│
@@ -20,7 +19,6 @@ This is my personal repository for my solo ROMhack project. Currently in the pro
  ⠀⠀        ⠀⠀⠀⠀⠀├───────────┐
  ⠀⠀⠀        ⠀⠀x.y.z/X⠀⠀⠀x.y.z/Y
  ```
-=======
 > [!NOTE] Repo Structure
 >
 > `[rh-hideout/pokeemerald-expansion]`
