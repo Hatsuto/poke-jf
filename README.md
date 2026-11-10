@@ -4,6 +4,7 @@ This is my personal repository for my solo ROMhack project. Currently in the pro
 
 # Release Information
 
+<<<<<<< HEAD
 ```
  [rh-hideout/pokeemerald-expansion]
  ⠀⠀        ⠀⠀⠀⠀⠀│
@@ -19,6 +20,23 @@ This is my personal repository for my solo ROMhack project. Currently in the pro
  ⠀⠀        ⠀⠀⠀⠀⠀├───────────┐
  ⠀⠀⠀        ⠀⠀x.y.z/X⠀⠀⠀x.y.z/Y
  ```
+=======
+> [!NOTE] Repo Structure
+>
+> `[rh-hideout/pokeemerald-expansion]`
+> ⠀⠀        ⠀⠀⠀⠀⠀│
+> ⠀⠀        ⠀⠀⠀ `master`
+> ⠀⠀        ⠀⠀⠀⠀⠀│
+> ⠀⠀        ⠀⠀⠀⠀`base`
+> ⠀        ⠀⠀⠀⠀⠀⠀├─────┬──────┐
+> ⠀⠀⠀        ⠀⠀⠀⠀│⠀⠀⠀⠀`feature/X`⠀⠀⠀⠀`asset/Y`
+> ⠀⠀        ⠀⠀⠀⠀⠀│
+> ⠀⠀⠀        ⠀⠀⠀`main`
+> ⠀⠀⠀        ⠀⠀⠀⠀│
+> ⠀⠀⠀        ⠀`release/x.y.z`
+> ⠀⠀        ⠀⠀⠀⠀⠀├─────┐
+> ⠀⠀⠀        ⠀⠀`x.y.z/X`⠀⠀⠀`x.y.z/Y`
+>>>>>>> a6849272eb (Updating to 1.17.2)
  
 > - __**master**__: direct fork, local snapshot of `rh-hideout/pokeemerald-expansion` used for updating
 > - __**base**__: branched off `master`, mainly a vanilla emerald expansion ROM with additional custom assets and scripts
