@@ -65,6 +65,25 @@
 #define TRAINER_SILENTFOREST_MAPLE           62
 #define TRAINER_FREEBIRDGYM_ETIENNE          63 
 #define TRAINER_FREEBIRD_STANLEY             64
+//Skipping 65-519 for some reason
+#define TRAINER_ALPHA_VISCEN_GRS            520
+#define TRAINER_ALPHA_ROUTE_1_GRS           521
+#define TRAINER_FREEBIRD_LIAM_GRS           522
+#define TRAINER_ALPHA_VISCEN_FIR            523
+#define TRAINER_ALPHA_ROUTE_1_FIR           524
+#define TRAINER_FREEBIRD_LIAM_FIR           525
+#define TRAINER_ALPHA_VISCEN_WTR            526
+#define TRAINER_ALPHA_ROUTE_1_WTR           527
+#define TRAINER_FREEBIRD_LIAM_WTR           528
+#define TRAINER_BETA_VISCEN_GRS             529
+#define TRAINER_BETA_ROUTE_1_GRS            530
+#define TRAINER_FREEBIRD_OLIVE_GRS          531
+#define TRAINER_BETA_VISCEN_FIR             532
+#define TRAINER_BETA_ROUTE_1_FIR            533
+#define TRAINER_FREEBIRD_OLIVE_FIR          534
+#define TRAINER_BETA_VISCEN_WTR             535
+#define TRAINER_BETA_ROUTE_1_WTR            536
+#define TRAINER_FREEBIRD_OLIVE_WTR          537
 
 // VANILLA DEFINES
 

@@ -71,6 +71,10 @@ Common_Movement_WalkInPlaceRight:
 	walk_in_place_right
 	step_end
 
+Common_Movement_WalkInPlaceUp:
+	walk_in_place_up
+	step_end
+	
 @ End of follower-safe movements
 Common_Movement_FollowerSafeEnd::
 	step_end
@@ -173,4 +177,35 @@ Common_Movement_WalkRightFaster::
 
 Common_Movement_WalkLeftFaster::
 	walk_faster_left
+	step_end
+
+@ Custom
+
+Common_Movement_HopDown:
+	jump_in_place_down
+	step_end
+
+Common_Movement_HopUp:
+	jump_in_place_up
+	step_end
+
+Common_Movement_HopLeft:
+	jump_in_place_left
+	step_end
+
+Common_Movement_HopRight:
+	jump_in_place_right
+	step_end
+
+Common_NPCNotice:
+	playse SE_PIN
+	applymovement VAR_LAST_TALKED, Common_Movement_NPCNotice
+	waitmovement 0
+	delay 32
+	return
+
+Common_Movement_NPCNotice:
+	emote_exclamation_mark
+	delay_16
+	face_player
 	step_end

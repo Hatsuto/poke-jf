@@ -1,15 +1,3 @@
-//NPC ID's
-const PROF_ID = 1
-const ALPHA_ID = 3
-const BETA_ID = 4
-const KO_ID = 5
-const OYA_ID = 6
-const EMPLOYEE_ID = 7
-const RIAJUUF_ID = 8
-const RIAJUUM_ID = 9
-const LADY_ID = 10
-const GRAMPS_ID = 11
-const LASS_ID = 12
 //Bottom row, left to right
 const CROWDSTART_ID = 7
 const CROWDEND_ID = 10
@@ -98,14 +86,14 @@ script VisCen_OnLoad
 {
 	if (var(VAR_VISCEN_STATE) == 3)
 	{
-		setobjectxyperm(EMPLOYEE_ID, 6, 10)
-		setobjectmovementtype(EMPLOYEE_ID, MOVEMENT_TYPE_FACE_UP)
+		setobjectxyperm(LOCALID_EMPLOYEE, 6, 10)
+		setobjectmovementtype(LOCALID_EMPLOYEE, MOVEMENT_TYPE_FACE_UP)
 		setvar(VAR_BLOCKER, 1)
 	}
 	elif (var(VAR_VISCEN_STATE) < 0xA0)
 	{
-		setobjectxyperm(EMPLOYEE_ID, 7, 14)
-		setobjectmovementtype(EMPLOYEE_ID, MOVEMENT_TYPE_WANDER_AROUND)
+		setobjectxyperm(LOCALID_EMPLOYEE, 7, 14)
+		setobjectmovementtype(LOCALID_EMPLOYEE, MOVEMENT_TYPE_WANDER_AROUND)
 		setvar(VAR_BLOCKER, 1)
 	}
 	end
@@ -140,10 +128,10 @@ script VisCen_RaffleStart
 		msgbox(format("???: …And the 1st place winner, "
 			"with the first pick of the three, is…"))
 		
-		applymovement(PROF_ID, Common_Movement_WalkRight)
+		applymovement(LOCALID_PROF, Common_Movement_WalkRight)
 		waitmovement(0)
 		playse(SE_LEDGE)
-		applymovement(PROF_ID, Prof_WalkBehindBushes_1)
+		applymovement(LOCALID_PROF, Prof_WalkBehindBushes_1)
 		waitmovement(0)
 		
 		playbgm(MUS_GAME_CORNER, 1)
@@ -162,7 +150,7 @@ script VisCen_RaffleStart
 				"{FONT_NORMAL}…{PLAYER}!\n"
 				"Please, step up and claim your prize!"))
 		}
-		applymovement(PROF_ID, Prof_WalkBehindBushes_2)
+		applymovement(LOCALID_PROF, Prof_WalkBehindBushes_2)
 		setflag(FLAG_EVENT_START)
 	}
 	else // Event has started, player should not leave
@@ -210,8 +198,8 @@ script VisCen_RaffleStart
 script(local) HeadsUp
 {
 	// Heads up to all NPC's except alpha/beta
-	applymovement(OYA_ID, Common_Movement_FaceRight)
-	applymovement(KO_ID, Common_Movement_FaceRight)
+	applymovement(LOCALID_OYA, Common_Movement_FaceRight)
+	applymovement(LOCALID_KO, Common_Movement_FaceRight)
 	setvar(VAR_LOOP,CROWDSTART_ID)
 	
 	// They're all indexed in order
@@ -221,8 +209,8 @@ script(local) HeadsUp
 		addvar(VAR_LOOP,1)
 	} while (var(VAR_LOOP) <= CROWDEND_ID)
 	
-	applymovement(GRAMPS_ID, Common_Movement_FaceLeft)
-	applymovement(LASS_ID, Common_Movement_FaceLeft)
+	applymovement(LOCALID_GRAMPS, Common_Movement_FaceLeft)
+	applymovement(LOCALID_LASS, Common_Movement_FaceLeft)
 	waitmovement(0)
 }
 
@@ -256,7 +244,7 @@ script VisCen_CrowdBlock // Only available during rival select
 script VisCen_BallPick
 {
 	lockall
-	applymovement(PROF_ID, Common_Movement_FaceDown)
+	applymovement(LOCALID_PROF, Common_Movement_FaceDown)
 	waitmovement(0)
 	getplayerxy(PLAYER_X,PLAYER_Y)
 	
@@ -381,7 +369,7 @@ script VisCen_BallPick
 		
 		delay(32)
 		
-		applymovement(PROF_ID, Common_Movement_WalkInPlaceDown)
+		applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 		waitmovement(0)
 		msgbox(format("???: Excellent choice by our big winner!\p"
 			"Now, will winners Number 2 and 3 step up as well?"))
@@ -391,13 +379,13 @@ script VisCen_BallPick
 		switch(var(VAR_STARTER_MON))
 		{
 			case 0:	// Liam: M, Olive: R
-				applymovement(ALPHA_ID, Liam_Ball_M)
+				applymovement(LOCALID_ALPHA, Liam_Ball_M)
 				setvar(VAR_BALL_ID, BALL_M_ID)
 			case 1:	// Liam: R, Olive: L
-				applymovement(ALPHA_ID, Liam_Ball_R)
+				applymovement(LOCALID_ALPHA, Liam_Ball_R)
 				setvar(VAR_BALL_ID, BALL_R_ID)
 			case 2:	// Liam: L, Olive: M
-				applymovement(ALPHA_ID, Liam_Ball_L)
+				applymovement(LOCALID_ALPHA, Liam_Ball_L)
 				setvar(VAR_BALL_ID, BALL_L_ID)
 		}
 		
@@ -414,13 +402,13 @@ script VisCen_BallPick
 		switch(var(VAR_STARTER_MON))
 		{
 			case 0:	// Liam: M, Olive: R
-				applymovement(BETA_ID, Olive_Ball_R)
+				applymovement(LOCALID_BETA, Olive_Ball_R)
 				setvar(VAR_BALL_ID, BALL_R_ID)
 			case 1:	// Liam: R, Olive: L
-				applymovement(BETA_ID, Olive_Ball_L)
+				applymovement(LOCALID_BETA, Olive_Ball_L)
 				setvar(VAR_BALL_ID, BALL_L_ID)
 			case 2:	// Liam: L, Olive: M
-				applymovement(BETA_ID, Olive_Ball_M)
+				applymovement(LOCALID_BETA, Olive_Ball_M)
 				setvar(VAR_BALL_ID, BALL_M_ID)
 		}
 		
@@ -433,30 +421,30 @@ script VisCen_BallPick
 		waitfanfare
 		closemessage
 		
-		applymovement(PROF_ID, Common_Movement_WalkInPlaceDown)
+		applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 		waitmovement(0)
 		msgbox(format("???: So, what do you think of your new partners?\p"
 			"Some rare choices, right? Wasn't easy to get a hold of 'em…"))
 		closemessage
 		
-		applymovement(ALPHA_ID, Common_Movement_WalkInPlaceDown)
+		applymovement(LOCALID_ALPHA, Common_Movement_WalkInPlaceDown)
 		waitmovement(0)
 		msgbox(format("BOY: Partners, huh…? These Pokémon?"))
 		closemessage
 		
-		applymovement(PROF_ID, Common_Movement_WalkInPlaceDown)
+		applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 		waitmovement(0)
 		msgbox(format("???: That's right, your first Pokémon for a new journey!\p"
 			"Much more exciting than some boring sightseeing, yeah?"))
 		closemessage
 		
-		applymovement(BETA_ID, Common_Movement_WalkInPlaceDown)
+		applymovement(LOCALID_BETA, Common_Movement_WalkInPlaceDown)
 		waitmovement(0)
 		msgbox(format("GIRL: I was rather looking forward to the sightseeing, actually…"))
 		closemessage
 		
 		playse(SE_LEDGE)
-		applymovement(PROF_ID, Common_Movement_HopDown)
+		applymovement(LOCALID_PROF, Common_Movement_HopDown)
 		waitmovement(0)
 		msgbox(format("???: …But I can already see the excitement in your child eyes!\p"
 			"You're itchin' to battle already, aren't ya {PLAYER}?")
@@ -488,14 +476,14 @@ script VisCen_BallPick
 				{
 					case 0: //grs
 					case 1: //fir
-					applymovement(ALPHA_ID, Common_Movement_WalkInPlaceLeft)
-					waitmovement(ALPHA_ID)
+					applymovement(LOCALID_ALPHA, Common_Movement_WalkInPlaceLeft)
+					waitmovement(LOCALID_ALPHA)
 					applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
 					
 					case 2: //wtr
-					applymovement(BETA_ID, Olive_ChoiceA_P3)
-					applymovement(ALPHA_ID, Liam_ChoiceA_P3)
-					waitmovement(ALPHA_ID)
+					applymovement(LOCALID_BETA, Olive_ChoiceA_P3)
+					applymovement(LOCALID_ALPHA, Liam_ChoiceA_P3)
+					waitmovement(LOCALID_ALPHA)
 					applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
 				}
 				
@@ -504,34 +492,33 @@ script VisCen_BallPick
 				msgbox(format("BOY: Getting cold feet?\p"
 					"If you don't want your Pokémon, I can take care of it!"))
 				closemessage
-				applymovement(PROF_ID, Common_Movement_WalkInPlaceDown)
+				applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 				waitmovement(0)
 				msgbox(format("???: Ooh, those are fighting words!\n"
 					"You're not just gonna take that, right?"))
 					
 				setvar(VAR_VISCEN_STATE, 0x10)
-				setvar(OPP_SPRITE_ID,ALPHA_ID)
-				setvar(VAR_MUGSHOT_ID, MUGSHOT_LIAM)
+				setvar(OPP_SPRITE_ID,LOCALID_ALPHA)
 			}
 			else // Olive
 			{
 				switch(var(VAR_STARTER_MON))
 				{
 					case 0: //grs
-					applymovement(ALPHA_ID, Liam_ChoiceB_P1)
-					applymovement(BETA_ID, Olive_ChoiceB_P1)
-					waitmovement(BETA_ID)
+					applymovement(LOCALID_ALPHA, Liam_ChoiceB_P1)
+					applymovement(LOCALID_BETA, Olive_ChoiceB_P1)
+					waitmovement(LOCALID_BETA)
 					applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
 					
 					case 1: //fir
-					applymovement(BETA_ID, Common_Movement_WalkInPlaceRight)
-					waitmovement(BETA_ID)
+					applymovement(LOCALID_BETA, Common_Movement_WalkInPlaceRight)
+					waitmovement(LOCALID_BETA)
 					applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
 					
 					case 2: //wtr
-					applymovement(ALPHA_ID, Liam_ChoiceB_P3)
-					applymovement(BETA_ID, Olive_ChoiceB_P3)
-					waitmovement(BETA_ID)
+					applymovement(LOCALID_ALPHA, Liam_ChoiceB_P3)
+					applymovement(LOCALID_BETA, Olive_ChoiceB_P3)
+					waitmovement(LOCALID_BETA)
 					applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
 				}
 				
@@ -540,13 +527,13 @@ script VisCen_BallPick
 				msgbox(format("GIRL: Well, it would be rude not to get to know each other, right?\p"
 					"I think {STR_VAR_3} wants to play…"))
 				closemessage
-				applymovement(PROF_ID, Common_Movement_WalkInPlaceDown)
+				applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 				waitmovement(0)
 				msgbox(format("???: That's right, you three are in it for the long haul now!\p"
 					"Why don't you two come on over?"))
 				
 				setvar(VAR_VISCEN_STATE, 0x20)
-				setvar(OPP_SPRITE_ID,BETA_ID)
+				setvar(OPP_SPRITE_ID,LOCALID_BETA)
 			}
 			
 			goto(Battle_Transition)
@@ -568,20 +555,20 @@ script(local) Battle_Transition
 	lockall
 		
 	//NPC movements
-	setobjectxy(KO_ID, 5, 7)
-	setobjectxy(OYA_ID, 5, 8)
-	setobjectxy(RIAJUUF_ID, 6, 10)
-	setobjectxy(RIAJUUM_ID, 7, 11)
-	setobjectxy(LADY_ID, 11, 11)
-	setobjectxy(GRAMPS_ID, 12, 10)
-	setobjectxy(LASS_ID, 13, 9)
-	applymovement(LASS_ID, Common_Movement_FaceRight)
-	applymovement(GRAMPS_ID, Common_Movement_FaceLeft)
+	setobjectxy(LOCALID_KO, 5, 7)
+	setobjectxy(LOCALID_OYA, 5, 8)
+	setobjectxy(LOCALID_KANOJO, 6, 10)
+	setobjectxy(LOCALID_KARESHI, 7, 11)
+	setobjectxy(LOCALID_LADY, 11, 11)
+	setobjectxy(LOCALID_GRAMPS, 12, 10)
+	setobjectxy(LOCALID_LASS, 13, 9)
+	applymovement(LOCALID_LASS, Common_Movement_FaceRight)
+	applymovement(LOCALID_GRAMPS, Common_Movement_FaceLeft)
 	
 	//Move all three to spectator seats
-	setobjectxy(ALPHA_ID, SPECT_A_X, SPECT_Y)
-	setobjectxy(BETA_ID, SPECT_B_X, SPECT_Y)
-	setobjectxy(PROF_ID, SPECT_P_X, SPECT_Y)
+	setobjectxy(LOCALID_ALPHA, SPECT_A_X, SPECT_Y)
+	setobjectxy(LOCALID_BETA, SPECT_B_X, SPECT_Y)
+	setobjectxy(LOCALID_PROF, SPECT_P_X, SPECT_Y)
 	
 	//Move the player and their opponent to their places
 	//setobjectxy(OBJ_EVENT_ID_PLAYER, PLAYER_BATTLER_X, BATTLER_Y)
@@ -589,9 +576,9 @@ script(local) Battle_Transition
 	setobjectxy(OPP_SPRITE_ID, OPPONENT_BATTLER_X, BATTLER_Y)
 	
 	//Adjust facing
-	applymovement(ALPHA_ID, Common_Movement_FaceDown)
-	applymovement(BETA_ID, Common_Movement_FaceDown)
-	applymovement(PROF_ID, Common_Movement_FaceDown)
+	applymovement(LOCALID_ALPHA, Common_Movement_FaceDown)
+	applymovement(LOCALID_BETA, Common_Movement_FaceDown)
+	applymovement(LOCALID_PROF, Common_Movement_FaceDown)
 	call(HeadsUp)
 	
 	applymovement(OPP_SPRITE_ID, Common_Movement_FaceLeft)
@@ -604,7 +591,7 @@ script(local) Battle_Transition
 	//Battle start
 	switch(var(OPP_SPRITE_ID))
 	{
-		case ALPHA_ID:
+		case LOCALID_ALPHA:
 			switch(var(VAR_STARTER_MON))
 			{
 				case 0: //GRS
@@ -617,7 +604,7 @@ script(local) Battle_Transition
 					trainerbattle_no_whiteout(TRAINER_ALPHA_VISCEN_GRS,
 						VisCen_Liam_Intro, VisCen_Liam_Loss, VisCen_Liam_Loss, VisCen_Liam_PostBattle)
 			}
-		case BETA_ID:
+		case LOCALID_BETA:
 			switch(var(VAR_STARTER_MON))
 			{
 				case 0: //GRS
@@ -631,15 +618,12 @@ script(local) Battle_Transition
 						VisCen_Olive_Intro, VisCen_Olive_Loss, VisCen_Olive_Loss, VisCen_Olive_PostBattle)
 			}
 		default:
-			setflag(FLAG_SYS_SET_BATTLE_BGM)
-			setvar(VAR_BATTLE_BGM, MUS_RG_VS_TRAINER)
 			trainerbattle_no_whiteout(TRAINER_SEQUOIA,
 				format("???: Alright, everyone watching? You're lookin' at the new Champ in the making!\p"
 					"{FONT_SMALL}Just put on a good show, kid."),
 				"Great, great. Good work.", //Loss (to player)
 				"Great, great. Good work.", //Victory (to player)
 				VisCen_Prof_PostBattle)
-			clearflag(FLAG_SYS_SET_BATTLE_BGM)
 	}
 }
 text(local) VisCen_Liam_Intro
@@ -668,7 +652,7 @@ script(local) VisCen_Player_Realign //Workaround measure for camera issues
 	{
 		//Only possible leftward starting position is 1 to the left,
 		//which is when talking to Liam from the left side
-		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkFasterRight)
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRightFaster)
 		waitmovement(0)
 	}
 	else
@@ -677,7 +661,7 @@ script(local) VisCen_Player_Realign //Workaround measure for camera issues
 		while (var(PLAYER_X) > PLAYER_BATTLER_X)
 		{
 			subvar(PLAYER_X,1)
-			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkFasterLeft)
+			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeftFaster)
 			waitmovement(0)
 		}
 	}
@@ -686,7 +670,7 @@ script(local) VisCen_Player_Realign //Workaround measure for camera issues
 	{
 		//Only possible leftward starting position is 1 below,
 		//which is when talking to rivals facing up
-		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkFasterUp)
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUpFaster)
 		waitmovement(0)
 	}
 	else
@@ -695,7 +679,7 @@ script(local) VisCen_Player_Realign //Workaround measure for camera issues
 		while (var(PLAYER_Y) < BATTLER_Y)
 		{
 			addvar(PLAYER_Y,1)
-			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkFasterDown)
+			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDownFaster)
 			waitmovement(0)
 		}
 	}
@@ -729,7 +713,7 @@ script(local) VisCen_Olive_PostBattle
 }
 script(local) VisCen_Rivals_PostBattle
 {
-	applymovement(PROF_ID, Common_Movement_WalkInPlaceDown)
+	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp)
 	applymovement(OPP_SPRITE_ID, Common_Movement_FaceUp)
@@ -737,27 +721,27 @@ script(local) VisCen_Rivals_PostBattle
 		"Su{PAUSE 8}per{PAUSE 8} fun,{PAUSE 8} right?\n"
 		"Anyway, already told your other friend, but take these."))
 	closemessage
-	if (var(OPP_SPRITE_ID) == BETA_ID)
+	if (var(OPP_SPRITE_ID) == LOCALID_BETA)
 	{
 		//go straight right
-		applymovement(PROF_ID, Prof_Walk_1_1)
+		applymovement(LOCALID_PROF, Prof_Walk_1_1)
 	}
 	else
 	{
 		//go up and then right
-		applymovement(PROF_ID, Prof_Walk_1_2)
+		applymovement(LOCALID_PROF, Prof_Walk_1_2)
 	}
-	waitmovement(PROF_ID) //once to the right of bush
+	waitmovement(LOCALID_PROF) //once to the right of bush
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
 	
 	//Prof continues walking to below opponent
-	applymovement(PROF_ID, Prof_Walk_2)
-	waitmovement(PROF_ID)
+	applymovement(LOCALID_PROF, Prof_Walk_2)
+	waitmovement(LOCALID_PROF)
 	applymovement(OPP_SPRITE_ID, Common_Movement_WalkInPlaceUp)
 	
 	//Prof walks over to player
-	applymovement(PROF_ID, Prof_Walk_3)
-	waitmovement(PROF_ID)
+	applymovement(LOCALID_PROF, Prof_Walk_3)
+	waitmovement(LOCALID_PROF)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	delay(16)
@@ -780,9 +764,8 @@ script(local) VisCen_Prof_PostBattle
 			"You gotta watch it, or your little guy's gonna hurt…\l"
 			"{FONT_SMALL}You only get one, alright?"))
 	}
-	clearflag(FLAG_SYS_SET_BATTLE_BGM)
 	closemessage
-	applymovement(PROF_ID, Common_Movement_WalkLeft)
+	applymovement(LOCALID_PROF, Common_Movement_WalkLeft)
 	waitmovement(0)
 	delay(16)
 	
@@ -801,29 +784,29 @@ script(local) VisCen_Closing_Event
 	waitfanfare
 	
 	// Position professor to center
-	if (var(OPP_SPRITE_ID) != PROF_ID)
+	if (var(OPP_SPRITE_ID) != LOCALID_PROF)
 	{
-		applymovement(PROF_ID, Prof_Center_1)
+		applymovement(LOCALID_PROF, Prof_Center_1)
 	}
 	else
 	{
-		applymovement(PROF_ID, Prof_Center_2)
+		applymovement(LOCALID_PROF, Prof_Center_2)
 	}
 	waitmovement(0)
 	msgbox(format("???: It's a device that automatically stores data about Pokémon!"))
 	closemessage
-	applymovement(PROF_ID, Common_Movement_WalkDown)
+	applymovement(LOCALID_PROF, Common_Movement_WalkDown)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
 	waitmovement(0)
 	msgbox(format("That's right, it's the latest and greatest in Pokémon Trainer Technology!\p"
 		"Well yeah, okay, maybe you've seen it before. Everyone's got one these days.\p"
 		"But I won't be hearing anything about those Pokétch apps or whatever!\l"
 		"This is complex technology, you know?"))
-	applymovement(PROF_ID, Common_Movement_WalkInPlaceUp)
+	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	msgbox(format("Now, just seeing Pokémon is fine, but you'll learn more by catching 'em.\p"
 		"The tour guides here probably have Pokéballs for you…"))
-	applymovement(PROF_ID, Common_Movement_WalkInPlaceLeft)
+	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	msgbox(format("Hm? Why can't I give you some?\lYou're wringin' me dry here…"))
 	closemessage
@@ -910,15 +893,15 @@ script VisCen_Professor
 					"{FONT_SMALL}Ugh…{FONT_NORMAL}\p"
 					"Fine, fine. If I've gotta break the ice for you, it's better than nothing."))
 				closemessage
-				applymovement(PROF_ID, Common_Movement_WalkInPlaceDown)
+				applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 				waitmovement(0)
-				applymovement(ALPHA_ID, Common_Movement_FaceUp)
-				applymovement(BETA_ID, Common_Movement_FaceUp)
+				applymovement(LOCALID_ALPHA, Common_Movement_FaceUp)
+				applymovement(LOCALID_BETA, Common_Movement_FaceUp)
 				msgbox(format("Hey, you two come here for a sec.")
 					,MSGBOX_AUTOCLOSE)
 				
 				//Transition to prof battle event
-				setvar(OPP_SPRITE_ID,PROF_ID)
+				setvar(OPP_SPRITE_ID,LOCALID_PROF)
 				setvar(VAR_VISCEN_STATE, 0x30)
 				
 				goto(Battle_Transition)
@@ -951,8 +934,8 @@ script VisCen_Professor
 script(local) Prof_Hop // He just does this a lot
 {
 	playse(SE_LEDGE)
-	applymovement(PROF_ID, Common_Movement_HopDown)
-	waitmovement(PROF_ID)
+	applymovement(LOCALID_PROF, Common_Movement_HopDown)
+	waitmovement(LOCALID_PROF)
 }
 
 script VisCen_Liam
@@ -963,7 +946,7 @@ script VisCen_Liam
 		msgbox(format("BOY: He said I'm a winner, but it doesn't change my goals!\p"
 			"I'll catch the strongest Pokémon out there!")
 			,MSGBOX_NPC)
-		applymovement(ALPHA_ID, Common_Movement_FaceUp)
+		applymovement(LOCALID_ALPHA, Common_Movement_FaceUp)
 		waitmovement(0)
 	}
 	elif(!flag(FLAG_RIVAL_START))
@@ -983,7 +966,7 @@ script VisCen_Liam
 		{
 			// Transition to alpha battle event
 			setvar(VAR_VISCEN_STATE, 0x10)
-			setvar(OPP_SPRITE_ID,ALPHA_ID)
+			setvar(OPP_SPRITE_ID,LOCALID_ALPHA)
 			call(RivalLink_Add_Liam)
 			
 			goto(Battle_Transition)
@@ -1006,7 +989,7 @@ script VisCen_Olive
 		msgbox(format("GIRL: Hmm… a free Pokémon, huh-?\l"
 			"That's a lot of responsibility…")
 			,MSGBOX_NPC)
-		applymovement(BETA_ID, Common_Movement_FaceUp)
+		applymovement(LOCALID_BETA, Common_Movement_FaceUp)
 		waitmovement(0)
 	}
 	elif(!flag(FLAG_RIVAL_START))
@@ -1027,8 +1010,7 @@ script VisCen_Olive
 		{
 			// Transition to beta battle event
 			setvar(VAR_VISCEN_STATE, 0x20)
-			setvar(OPP_SPRITE_ID,BETA_ID)
-			setvar(VAR_MUGSHOT_ID, MUGSHOT_OLIVE)
+			setvar(OPP_SPRITE_ID,LOCALID_BETA)
 			call(RivalLink_Add_Olive)
 			
 			goto(Battle_Transition)
@@ -1049,11 +1031,11 @@ script VisCen_Oyako
 	lockall
 //	if(!flag(FLAG_EVENT_START))
 //	{
-		applymovement(OYA_ID,Common_Movement_FaceUp)
-		applymovement(KO_ID,Common_Movement_WalkInPlaceDown)
+		applymovement(LOCALID_OYA,Common_Movement_FaceUp)
+		applymovement(LOCALID_KO,Common_Movement_WalkInPlaceDown)
 		waitmovement(0)
 		msgbox(format("GIRL: Mom, mom! I want a Pokémon too!"))
-		applymovement(OYA_ID,Common_Movement_WalkInPlaceUp)
+		applymovement(LOCALID_OYA,Common_Movement_WalkInPlaceUp)
 		msgbox(format("MOTHER: Don't listen to the strange man, dear."))
 //	}
 	releaseall
@@ -1077,20 +1059,20 @@ script VisCen_Employee
 script VisCen_Riajuu
 {
 	lockall
-	applymovement(RIAJUUM_ID,Common_Movement_FaceLeft)
-	applymovement(RIAJUUF_ID,Common_Movement_WalkInPlaceRight)
+	applymovement(LOCALID_KARESHI,Common_Movement_FaceLeft)
+	applymovement(LOCALID_KANOJO,Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	if(!flag(FLAG_EVENT_START))
 	{
 		msgbox(format("GIRL: If he chooses you, honey, can I have your Pokémon instead…?"))
-		applymovement(RIAJUUM_ID,Common_Movement_WalkInPlaceLeft)
+		applymovement(LOCALID_KARESHI,Common_Movement_WalkInPlaceLeft)
 		msgbox(format("BOY: Huh?? I mean, o-of course you can, haha…"))
 	}
 	else
 	{
 		msgbox(format("GIRL: Aww, neither of our tickets won…\p"
 			"but you'll catch me a cute Pokémon anyway, right?"))
-		applymovement(RIAJUUM_ID,Common_Movement_WalkInPlaceLeft)
+		applymovement(LOCALID_KARESHI,Common_Movement_WalkInPlaceLeft)
 		msgbox(format("BOY: Of course, of course! {FONT_SMALL}Whew…"))
 	}
 	releaseall
@@ -1107,27 +1089,27 @@ script VisCen_Beauty
 script VisCen_LassGramps
 {
 	lockall
-	applymovement(GRAMPS_ID,Common_Movement_FaceUp)
-	applymovement(LASS_ID,Common_Movement_WalkInPlaceDown)
+	applymovement(LOCALID_GRAMPS,Common_Movement_FaceUp)
+	applymovement(LOCALID_LASS,Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	if(!flag(FLAG_EVENT_START))
 	{
 		msgbox(format("GIRL: Grandpa, did you hold onto your ticket?"))
-		applymovement(GRAMPS_ID,Common_Movement_WalkInPlaceUp)
+		applymovement(LOCALID_GRAMPS,Common_Movement_WalkInPlaceUp)
 		msgbox(format("GRAMPS: Hm?{PAUSE 16} What's that??{PAUSE 16}\nSpeak up, kiddo!"))
-		applymovement(LASS_ID,Common_Movement_WalkInPlaceDown)
+		applymovement(LOCALID_LASS,Common_Movement_WalkInPlaceDown)
 		msgbox(format("GIRL: THE TICKET, GRANDPA.\n"
 			"THE {COLOR BLUE}RAFFLE TICKET{COLOR DARK_GRAY} FOR A FREE POKéMON?"))
-		applymovement(GRAMPS_ID,Common_Movement_WalkInPlaceUp)
+		applymovement(LOCALID_GRAMPS,Common_Movement_WalkInPlaceUp)
 		msgbox(format("GRAMPS: Hah???"))
 	}
 	else
 	{
 		msgbox(format("GIRL: Looks like we didn't win, huh gramps?"))
-		applymovement(GRAMPS_ID,Common_Movement_WalkInPlaceUp)
+		applymovement(LOCALID_GRAMPS,Common_Movement_WalkInPlaceUp)
 		msgbox(format("GRAMPS: Givin' away Pokémon for free… hah!"
 			"In my day, you had to wrangle your Pokémon with your own two hands!!"))
-		applymovement(LASS_ID,Common_Movement_WalkInPlaceDown)
+		applymovement(LOCALID_LASS,Common_Movement_WalkInPlaceDown)
 		msgbox(format("GIRL: Is… that even remotely true?"))
 	}
 	releaseall

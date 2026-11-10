@@ -21,6 +21,7 @@
   ],
   "object_events": [
     {
+      "local_id": "LOCALID_PROF",
       "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_2",
       "x": 9,
       "y": 6,
@@ -47,6 +48,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_ALPHA",
       "graphics_id": "OBJ_EVENT_GFX_RED",
       "x": 7,
       "y": 10,
@@ -60,6 +62,7 @@
       "flag": "FLAG_VC_OUT_BALLS"
     },
     {
+      "local_id": "LOCALID_BETA",
       "graphics_id": "OBJ_EVENT_GFX_LEAF",
       "x": 11,
       "y": 10,
@@ -73,6 +76,7 @@
       "flag": "FLAG_VC_OUT_BALLS"
     },
     {
+      "local_id": "LOCALID_KO",
       "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
       "x": 5,
       "y": 8,
@@ -86,6 +90,7 @@
       "flag": "FLAG_VC_OUT_BALLS"
     },
     {
+      "local_id": "LOCALID_OYA",
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
       "x": 5,
       "y": 9,
@@ -99,6 +104,7 @@
       "flag": "FLAG_VC_OUT_BALLS"
     },
     {
+      "local_id": "LOCALID_EMPLOYEE",
       "graphics_id": "OBJ_EVENT_GFX_CAMPER",
       "x": 7,
       "y": 14,
@@ -112,6 +118,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_KANOJO",
       "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
       "x": 8,
       "y": 10,
@@ -125,6 +132,7 @@
       "flag": "FLAG_VC_OUT_BALLS"
     },
     {
+      "local_id": "LOCALID_KARESHI",
       "graphics_id": "OBJ_EVENT_GFX_MAN_3",
       "x": 9,
       "y": 10,
@@ -138,6 +146,7 @@
       "flag": "FLAG_VC_OUT_BALLS"
     },
     {
+      "local_id": "LOCALID_LADY",
       "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
       "x": 12,
       "y": 10,
@@ -151,6 +160,7 @@
       "flag": "FLAG_VC_OUT_BALLS"
     },
     {
+      "local_id": "LOCALID_GRAMPS",
       "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
       "x": 13,
       "y": 9,
@@ -164,6 +174,7 @@
       "flag": "FLAG_VC_OUT_BALLS"
     },
     {
+      "local_id": "LOCALID_LASS",
       "graphics_id": "OBJ_EVENT_GFX_LASS",
       "x": 13,
       "y": 8,
