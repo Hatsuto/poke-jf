@@ -51,6 +51,12 @@ InsideOfTruck_EventScript_MovingBox::
 	msgbox InsideOfTruck_Text_BoxPrintedWithMonLogo, MSGBOX_SIGN
 	end
 
+InsideOfTruck_EventScript_Debug::
+	lock
+	faceplayer
+	trainerbattle_no_intro TRAINER_SAWYER_1, EverGrandeCity_SidneysRoom_Text_Defeat
+	end
+
 InsideOfTruck_Text_BoxPrintedWithMonLogo:
 	.string "The box is printed with a POKéMON logo.\p"
 	.string "It's a POKéMON brand moving and\n"
