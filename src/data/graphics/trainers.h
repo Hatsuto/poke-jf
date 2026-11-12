@@ -486,6 +486,31 @@ const u16 gTrainerBackPicPalette_Leaf[] = INCGFX_U16("graphics/trainers/back_pic
 const u16 gTrainerBackPicPalette_Pokedude[] = INCGFX_U16("graphics/trainers/back_pics/pokedude.png", ".gbapal");
 const u16 gTrainerBackPicPalette_OldMan[] = INCGFX_U16("graphics/trainers/back_pics/old_man.png", ".gbapal");
 
+//Mugs (Handled the same as frontpics)
+
+const u32 gTrainerFrontPic_Akira_Mug[] = INCGFX_U32("graphics/trainers/mugshots/akira_mug.png", ".4bpp.smol");
+const u16 gTrainerPalette_Akira_Mug[] = INCGFX_U16("graphics/trainers/palettes/akira_mug.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_Miho_Mug[] = INCGFX_U32("graphics/trainers/mugshots/miho_mug.png", ".4bpp.smol");
+const u16 gTrainerPalette_Miho_Mug[] = INCGFX_U16("graphics/trainers/palettes/miho_mug.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_Sequoia_Mug[] = INCGFX_U32("graphics/trainers/mugshots/sequoia_mug.png", ".4bpp.smol");
+const u16 gTrainerPalette_Sequoia_Mug[] = INCGFX_U16("graphics/trainers/palettes/sequoia_mug.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_Liam_Mug[] = INCGFX_U32("graphics/trainers/mugshots/liam_mug.png", ".4bpp.smol");
+const u16 gTrainerPalette_Liam_Mug[] = INCGFX_U16("graphics/trainers/palettes/liam_mug.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_Olive_Mug[] = INCGFX_U32("graphics/trainers/mugshots/olive_mug.png", ".4bpp.smol");
+const u16 gTrainerPalette_Olive_Mug[] = INCGFX_U16("graphics/trainers/palettes/olive_mug.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_LeaderTeryn_Mug[] = INCGFX_U32("graphics/trainers/mugshots/leader_teryn_mug.png", ".4bpp.smol");
+const u16 gTrainerPalette_LeaderTeryn_Mug[] = INCGFX_U16("graphics/trainers/palettes/leader_teryn_mug.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_LeaderJones_Mug[] = INCGFX_U32("graphics/trainers/mugshots/leader_jones_mug.png", ".4bpp.smol");
+const u16 gTrainerPalette_LeaderJones_Mug[] = INCGFX_U16("graphics/trainers/palettes/leader_jones_mug.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_LeaderCadi_Mug[] = INCGFX_U32("graphics/trainers/mugshots/leader_cadi_mug.png", ".4bpp.smol");
+const u16 gTrainerPalette_LeaderCadi_Mug[] = INCGFX_U16("graphics/trainers/palettes/leader_cadi_mug.pal", ".gbapal");
 
 static const union AnimCmd sAnimCmd_Hoenn[] =
 {
@@ -1225,5 +1250,37 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_PAINTER_FRLG] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_PainterFrlg, gTrainerPalette_PainterFrlg),
+    },
+    [TRAINER_PIC_AKIRA_MUG] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Akira_Mug, gTrainerPalette_Akira_Mug),
+    },
+    [TRAINER_PIC_MIHO_MUG] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Miho_Mug, gTrainerPalette_Miho_Mug),
+    },
+    [TRAINER_PIC_SEQUOIA_MUG] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Sequoia_Mug, gTrainerPalette_Sequoia_Mug),
+    },
+    [TRAINER_PIC_LIAM_MUG] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Liam_Mug, gTrainerPalette_Liam_Mug),
+    },
+    [TRAINER_PIC_OLIVE_MUG] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Olive_Mug, gTrainerPalette_Olive_Mug),
+    },
+    [TRAINER_PIC_LEADER_TERYN_MUG] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_LeaderTeryn_Mug, gTrainerPalette_LeaderTeryn_Mug),
+    },
+    [TRAINER_PIC_LEADER_JONES_MUG] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_LeaderJones_Mug, gTrainerPalette_LeaderJones_Mug),
+    },
+    [TRAINER_PIC_LEADER_CADI_MUG] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_LeaderCadi_Mug, gTrainerPalette_LeaderCadi_Mug),
     },
 };
