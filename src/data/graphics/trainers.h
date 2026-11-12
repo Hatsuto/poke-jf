@@ -596,7 +596,7 @@ const union AnimCmd *const sBackAnims_OldManPokedude[] = {
         .imageData = picFile,                                                  \
         .paletteData = paletteFile,                                            \
         .mugshotCoords = {DEFAULT(0, __VA_ARGS__), DEFAULT_2(0, __VA_ARGS__)}, \
-        .mugshotRotation = DEFAULT_3(0x200, __VA_ARGS__),                      \
+        .mugshotRotation = DEFAULT_3(0x100, __VA_ARGS__),                      \
     }}
 
 #define TRAINER_BACK_PIC(yOffset, sprite, pal, anim)                                         \
