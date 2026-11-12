@@ -233,13 +233,13 @@ VisCen_BallPick_6:
 
 VisCen_BallPick_3:
 # 256 "data/maps/VisitorCenter/scripts.pory"
-	setvar VAR_TEMP_4, SPECIES_STARTER_GRS
+	setvar VAR_TEMP_4, SPECIES_GRASS_STARTER_1
 # 257 "data/maps/VisitorCenter/scripts.pory"
 	setvar VAR_STARTER_MON, 0
 # 258 "data/maps/VisitorCenter/scripts.pory"
-	setvar VAR_TEMP_5, SPECIES_STARTER_FIR
+	setvar VAR_TEMP_5, SPECIES_FIRE_STARTER_1
 # 259 "data/maps/VisitorCenter/scripts.pory"
-	setvar VAR_TEMP_6, SPECIES_STARTER_WTR
+	setvar VAR_TEMP_6, SPECIES_WATER_STARTER_1
 # 261 "data/maps/VisitorCenter/scripts.pory"
 	setvar VAR_TEMP_0, 8
 # 262 "data/maps/VisitorCenter/scripts.pory"
@@ -256,13 +256,13 @@ VisCen_BallPick_3:
 
 VisCen_BallPick_4:
 # 275 "data/maps/VisitorCenter/scripts.pory"
-	setvar VAR_TEMP_4, SPECIES_STARTER_FIR
+	setvar VAR_TEMP_4, SPECIES_FIRE_STARTER_1
 # 276 "data/maps/VisitorCenter/scripts.pory"
 	setvar VAR_STARTER_MON, 1
 # 277 "data/maps/VisitorCenter/scripts.pory"
-	setvar VAR_TEMP_5, SPECIES_STARTER_WTR
+	setvar VAR_TEMP_5, SPECIES_WATER_STARTER_1
 # 278 "data/maps/VisitorCenter/scripts.pory"
-	setvar VAR_TEMP_6, SPECIES_STARTER_GRS
+	setvar VAR_TEMP_6, SPECIES_GRASS_STARTER_1
 # 280 "data/maps/VisitorCenter/scripts.pory"
 	setvar VAR_TEMP_7, 14
 # 282 "data/maps/VisitorCenter/scripts.pory"
@@ -277,13 +277,13 @@ VisCen_BallPick_4:
 
 VisCen_BallPick_5:
 # 294 "data/maps/VisitorCenter/scripts.pory"
-	setvar VAR_TEMP_4, SPECIES_STARTER_WTR
+	setvar VAR_TEMP_4, SPECIES_WATER_STARTER_1
 # 295 "data/maps/VisitorCenter/scripts.pory"
 	setvar VAR_STARTER_MON, 2
 # 296 "data/maps/VisitorCenter/scripts.pory"
-	setvar VAR_TEMP_5, SPECIES_STARTER_GRS
+	setvar VAR_TEMP_5, SPECIES_GRASS_STARTER_1
 # 297 "data/maps/VisitorCenter/scripts.pory"
-	setvar VAR_TEMP_6, SPECIES_STARTER_FIR
+	setvar VAR_TEMP_6, SPECIES_FIRE_STARTER_1
 # 299 "data/maps/VisitorCenter/scripts.pory"
 	setvar VAR_TEMP_7, 15
 # 300 "data/maps/VisitorCenter/scripts.pory"
@@ -401,7 +401,7 @@ VisCen_BallPick_29:
 # 428 "data/maps/VisitorCenter/scripts.pory"
 	closemessage
 # 430 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_ALPHA, Common_Movement_WalkInPlaceDown
+	applymovement LOCALID_LIAM, Common_Movement_WalkInPlaceDown
 # 431 "data/maps/VisitorCenter/scripts.pory"
 	waitmovement 0
 # 432 "data/maps/VisitorCenter/scripts.pory"
@@ -417,7 +417,7 @@ VisCen_BallPick_29:
 # 439 "data/maps/VisitorCenter/scripts.pory"
 	closemessage
 # 441 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_BETA, Common_Movement_WalkInPlaceDown
+	applymovement LOCALID_OLIVE, Common_Movement_WalkInPlaceDown
 # 442 "data/maps/VisitorCenter/scripts.pory"
 	waitmovement 0
 # 443 "data/maps/VisitorCenter/scripts.pory"
@@ -468,7 +468,7 @@ VisCen_BallPick_45:
 # 535 "data/maps/VisitorCenter/scripts.pory"
 	setvar VAR_VISCEN_STATE, 0x20
 # 536 "data/maps/VisitorCenter/scripts.pory"
-	setvar VAR_TEMP_8, LOCALID_BETA
+	setvar VAR_TEMP_8, LOCALID_OLIVE
 VisCen_BallPick_37:
 # 539 "data/maps/VisitorCenter/scripts.pory"
 	goto Battle_Transition
@@ -527,42 +527,42 @@ VisCen_BallPick_21:
 
 VisCen_BallPick_26:
 # 382 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_ALPHA, Liam_Ball_M
+	applymovement LOCALID_LIAM, Liam_Ball_M
 # 383 "data/maps/VisitorCenter/scripts.pory"
 	setvar VAR_TEMP_7, 14
 	goto VisCen_BallPick_24
 
 VisCen_BallPick_27:
 # 385 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_ALPHA, Liam_Ball_R
+	applymovement LOCALID_LIAM, Liam_Ball_R
 # 386 "data/maps/VisitorCenter/scripts.pory"
 	setvar VAR_TEMP_7, 15
 	goto VisCen_BallPick_24
 
 VisCen_BallPick_28:
 # 388 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_ALPHA, Liam_Ball_L
+	applymovement LOCALID_LIAM, Liam_Ball_L
 # 389 "data/maps/VisitorCenter/scripts.pory"
 	setvar VAR_TEMP_7, 13
 	goto VisCen_BallPick_24
 
 VisCen_BallPick_31:
 # 405 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_BETA, Olive_Ball_R
+	applymovement LOCALID_OLIVE, Olive_Ball_R
 # 406 "data/maps/VisitorCenter/scripts.pory"
 	setvar VAR_TEMP_7, 15
 	goto VisCen_BallPick_29
 
 VisCen_BallPick_32:
 # 408 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_BETA, Olive_Ball_L
+	applymovement LOCALID_OLIVE, Olive_Ball_L
 # 409 "data/maps/VisitorCenter/scripts.pory"
 	setvar VAR_TEMP_7, 13
 	goto VisCen_BallPick_29
 
 VisCen_BallPick_33:
 # 411 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_BETA, Olive_Ball_M
+	applymovement LOCALID_OLIVE, Olive_Ball_M
 # 412 "data/maps/VisitorCenter/scripts.pory"
 	setvar VAR_TEMP_7, 14
 	goto VisCen_BallPick_29
@@ -597,56 +597,56 @@ VisCen_BallPick_41:
 # 500 "data/maps/VisitorCenter/scripts.pory"
 	setvar VAR_VISCEN_STATE, 0x10
 # 501 "data/maps/VisitorCenter/scripts.pory"
-	setvar VAR_TEMP_8, LOCALID_ALPHA
+	setvar VAR_TEMP_8, LOCALID_LIAM
 	goto VisCen_BallPick_37
 
 VisCen_BallPick_43:
 # 479 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_ALPHA, Common_Movement_WalkInPlaceLeft
+	applymovement LOCALID_LIAM, Common_Movement_WalkInPlaceLeft
 # 480 "data/maps/VisitorCenter/scripts.pory"
-	waitmovement LOCALID_ALPHA
+	waitmovement LOCALID_LIAM
 # 481 "data/maps/VisitorCenter/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	goto VisCen_BallPick_41
 
 VisCen_BallPick_44:
 # 484 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_BETA, Olive_ChoiceA_P3
+	applymovement LOCALID_OLIVE, Olive_ChoiceA_P3
 # 485 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_ALPHA, Liam_ChoiceA_P3
+	applymovement LOCALID_LIAM, Liam_ChoiceA_P3
 # 486 "data/maps/VisitorCenter/scripts.pory"
-	waitmovement LOCALID_ALPHA
+	waitmovement LOCALID_LIAM
 # 487 "data/maps/VisitorCenter/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	goto VisCen_BallPick_41
 
 VisCen_BallPick_47:
 # 508 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_ALPHA, Liam_ChoiceB_P1
+	applymovement LOCALID_LIAM, Liam_ChoiceB_P1
 # 509 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_BETA, Olive_ChoiceB_P1
+	applymovement LOCALID_OLIVE, Olive_ChoiceB_P1
 # 510 "data/maps/VisitorCenter/scripts.pory"
-	waitmovement LOCALID_BETA
+	waitmovement LOCALID_OLIVE
 # 511 "data/maps/VisitorCenter/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	goto VisCen_BallPick_45
 
 VisCen_BallPick_48:
 # 514 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_BETA, Common_Movement_WalkInPlaceRight
+	applymovement LOCALID_OLIVE, Common_Movement_WalkInPlaceRight
 # 515 "data/maps/VisitorCenter/scripts.pory"
-	waitmovement LOCALID_BETA
+	waitmovement LOCALID_OLIVE
 # 516 "data/maps/VisitorCenter/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	goto VisCen_BallPick_45
 
 VisCen_BallPick_49:
 # 519 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_ALPHA, Liam_ChoiceB_P3
+	applymovement LOCALID_LIAM, Liam_ChoiceB_P3
 # 520 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_BETA, Olive_ChoiceB_P3
+	applymovement LOCALID_OLIVE, Olive_ChoiceB_P3
 # 521 "data/maps/VisitorCenter/scripts.pory"
-	waitmovement LOCALID_BETA
+	waitmovement LOCALID_OLIVE
 # 522 "data/maps/VisitorCenter/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	goto VisCen_BallPick_45
@@ -676,9 +676,9 @@ Battle_Transition:
 # 566 "data/maps/VisitorCenter/scripts.pory"
 	applymovement LOCALID_GRAMPS, Common_Movement_FaceLeft
 # 569 "data/maps/VisitorCenter/scripts.pory"
-	setobjectxy LOCALID_ALPHA, 8, 6
+	setobjectxy LOCALID_LIAM, 8, 6
 # 570 "data/maps/VisitorCenter/scripts.pory"
-	setobjectxy LOCALID_BETA, 8 + 1 + 1, 6
+	setobjectxy LOCALID_OLIVE, 8 + 1 + 1, 6
 # 571 "data/maps/VisitorCenter/scripts.pory"
 	setobjectxy LOCALID_PROF, 8 + 1, 6
 # 575 "data/maps/VisitorCenter/scripts.pory"
@@ -686,9 +686,9 @@ Battle_Transition:
 # 576 "data/maps/VisitorCenter/scripts.pory"
 	setobjectxy VAR_TEMP_8, 10, 9
 # 579 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_ALPHA, Common_Movement_FaceDown
+	applymovement LOCALID_LIAM, Common_Movement_FaceDown
 # 580 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_BETA, Common_Movement_FaceDown
+	applymovement LOCALID_OLIVE, Common_Movement_FaceDown
 # 581 "data/maps/VisitorCenter/scripts.pory"
 	applymovement LOCALID_PROF, Common_Movement_FaceDown
 # 582 "data/maps/VisitorCenter/scripts.pory"
@@ -704,11 +704,11 @@ Battle_Transition:
 # 592 "data/maps/VisitorCenter/scripts.pory"
 	switch VAR_TEMP_8
 # 594 "data/maps/VisitorCenter/scripts.pory"
-	case LOCALID_ALPHA, Battle_Transition_2
+	case LOCALID_LIAM, Battle_Transition_2
 # 607 "data/maps/VisitorCenter/scripts.pory"
-	case LOCALID_BETA, Battle_Transition_3
+	case LOCALID_OLIVE, Battle_Transition_3
 # 621 "data/maps/VisitorCenter/scripts.pory"
-	trainerbattle_no_whiteout TRAINER_SEQUOIA, Battle_Transition_Text_0, Battle_Transition_Text_1, Battle_Transition_Text_1, VisCen_Prof_PostBattle
+	trainerbattle_no_whiteout TRAINER_VISCEN_SEQUOIA, Battle_Transition_Text_0, Battle_Transition_Text_1, Battle_Transition_Text_1, VisCen_Prof_PostBattle
 	return
 
 Battle_Transition_2:
@@ -735,32 +735,32 @@ Battle_Transition_3:
 
 Battle_Transition_6:
 # 598 "data/maps/VisitorCenter/scripts.pory"
-	trainerbattle_no_whiteout TRAINER_ALPHA_VISCEN_FIR, VisCen_Liam_Intro, VisCen_Liam_Loss, VisCen_Liam_Loss, VisCen_Liam_PostBattle
+	trainerbattle_no_whiteout TRAINER_VISCEN_LIAM_FIR, VisCen_Liam_Intro, VisCen_Liam_Loss, VisCen_Liam_Loss, VisCen_Liam_PostBattle
 	return
 
 Battle_Transition_7:
 # 601 "data/maps/VisitorCenter/scripts.pory"
-	trainerbattle_no_whiteout TRAINER_ALPHA_VISCEN_WTR, VisCen_Liam_Intro, VisCen_Liam_Loss, VisCen_Liam_Loss, VisCen_Liam_PostBattle
+	trainerbattle_no_whiteout TRAINER_VISCEN_LIAM_WTR, VisCen_Liam_Intro, VisCen_Liam_Loss, VisCen_Liam_Loss, VisCen_Liam_PostBattle
 	return
 
 Battle_Transition_8:
 # 604 "data/maps/VisitorCenter/scripts.pory"
-	trainerbattle_no_whiteout TRAINER_ALPHA_VISCEN_GRS, VisCen_Liam_Intro, VisCen_Liam_Loss, VisCen_Liam_Loss, VisCen_Liam_PostBattle
+	trainerbattle_no_whiteout TRAINER_VISCEN_LIAM_GRS, VisCen_Liam_Intro, VisCen_Liam_Loss, VisCen_Liam_Loss, VisCen_Liam_PostBattle
 	return
 
 Battle_Transition_10:
 # 611 "data/maps/VisitorCenter/scripts.pory"
-	trainerbattle_no_whiteout TRAINER_BETA_VISCEN_WTR, VisCen_Olive_Intro, VisCen_Olive_Loss, VisCen_Olive_Loss, VisCen_Olive_PostBattle
+	trainerbattle_no_whiteout TRAINER_VISCEN_OLIVE_WTR, VisCen_Olive_Intro, VisCen_Olive_Loss, VisCen_Olive_Loss, VisCen_Olive_PostBattle
 	return
 
 Battle_Transition_11:
 # 614 "data/maps/VisitorCenter/scripts.pory"
-	trainerbattle_no_whiteout TRAINER_BETA_VISCEN_GRS, VisCen_Olive_Intro, VisCen_Olive_Loss, VisCen_Olive_Loss, VisCen_Olive_PostBattle
+	trainerbattle_no_whiteout TRAINER_VISCEN_OLIVE_GRS, VisCen_Olive_Intro, VisCen_Olive_Loss, VisCen_Olive_Loss, VisCen_Olive_PostBattle
 	return
 
 Battle_Transition_12:
 # 617 "data/maps/VisitorCenter/scripts.pory"
-	trainerbattle_no_whiteout TRAINER_BETA_VISCEN_FIR, VisCen_Olive_Intro, VisCen_Olive_Loss, VisCen_Olive_Loss, VisCen_Olive_PostBattle
+	trainerbattle_no_whiteout TRAINER_VISCEN_OLIVE_FIR, VisCen_Olive_Intro, VisCen_Olive_Loss, VisCen_Olive_Loss, VisCen_Olive_PostBattle
 	return
 
 
@@ -875,7 +875,7 @@ VisCen_Rivals_PostBattle:
 # 723 "data/maps/VisitorCenter/scripts.pory"
 	closemessage
 # 724 "data/maps/VisitorCenter/scripts.pory"
-	compare VAR_TEMP_8, LOCALID_BETA
+	compare VAR_TEMP_8, LOCALID_OLIVE
 	goto_if_eq VisCen_Rivals_PostBattle_2
 # 732 "data/maps/VisitorCenter/scripts.pory"
 	applymovement LOCALID_PROF, Prof_Walk_1_2
@@ -1080,9 +1080,9 @@ VisCen_Professor_8:
 # 897 "data/maps/VisitorCenter/scripts.pory"
 	waitmovement 0
 # 898 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_ALPHA, Common_Movement_FaceUp
+	applymovement LOCALID_LIAM, Common_Movement_FaceUp
 # 899 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_BETA, Common_Movement_FaceUp
+	applymovement LOCALID_OLIVE, Common_Movement_FaceUp
 # 900 "data/maps/VisitorCenter/scripts.pory"
 	msgbox VisCen_Professor_Text_3, MSGBOX_AUTOCLOSE
 # 904 "data/maps/VisitorCenter/scripts.pory"
@@ -1144,7 +1144,7 @@ VisCen_Liam_2:
 # 946 "data/maps/VisitorCenter/scripts.pory"
 	msgbox VisCen_Liam_Text_0, MSGBOX_NPC
 # 949 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_ALPHA, Common_Movement_FaceUp
+	applymovement LOCALID_LIAM, Common_Movement_FaceUp
 # 950 "data/maps/VisitorCenter/scripts.pory"
 	waitmovement 0
 	goto VisCen_Liam_1
@@ -1158,7 +1158,7 @@ VisCen_Liam_8:
 # 968 "data/maps/VisitorCenter/scripts.pory"
 	setvar VAR_VISCEN_STATE, 0x10
 # 969 "data/maps/VisitorCenter/scripts.pory"
-	setvar VAR_TEMP_8, LOCALID_ALPHA
+	setvar VAR_TEMP_8, LOCALID_LIAM
 # 970 "data/maps/VisitorCenter/scripts.pory"
 	call RivalLink_Add_Liam
 # 972 "data/maps/VisitorCenter/scripts.pory"
@@ -1196,7 +1196,7 @@ VisCen_Olive_2:
 # 989 "data/maps/VisitorCenter/scripts.pory"
 	msgbox VisCen_Olive_Text_0, MSGBOX_NPC
 # 992 "data/maps/VisitorCenter/scripts.pory"
-	applymovement LOCALID_BETA, Common_Movement_FaceUp
+	applymovement LOCALID_OLIVE, Common_Movement_FaceUp
 # 993 "data/maps/VisitorCenter/scripts.pory"
 	waitmovement 0
 	goto VisCen_Olive_1
@@ -1210,7 +1210,7 @@ VisCen_Olive_8:
 # 1012 "data/maps/VisitorCenter/scripts.pory"
 	setvar VAR_VISCEN_STATE, 0x20
 # 1013 "data/maps/VisitorCenter/scripts.pory"
-	setvar VAR_TEMP_8, LOCALID_BETA
+	setvar VAR_TEMP_8, LOCALID_OLIVE
 # 1014 "data/maps/VisitorCenter/scripts.pory"
 	call RivalLink_Add_Olive
 # 1016 "data/maps/VisitorCenter/scripts.pory"

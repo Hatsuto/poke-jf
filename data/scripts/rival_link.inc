@@ -50,15 +50,15 @@ RivalLink_Get_OliveStarter::
 	return
 	
 RivalLink_Return_GrassStarter:
-	setvar VAR_0x8000, SPECIES_STARTER_GRS
+	setvar VAR_0x8000, SPECIES_GRASS_STARTER_1
 	goto RivalLink_Starter_BadgeCheck
 	
 RivalLink_Return_FireStarter:
-	setvar VAR_0x8000, SPECIES_STARTER_FIR
+	setvar VAR_0x8000, SPECIES_FIRE_STARTER_1
 	goto RivalLink_Starter_BadgeCheck
 	
 RivalLink_Return_Water_Starter:
-	setvar VAR_0x8000, SPECIES_STARTER_WTR
+	setvar VAR_0x8000, SPECIES_WATER_STARTER_1
 	goto RivalLink_Starter_BadgeCheck
 
 RivalLink_Starter_BadgeCheck:
