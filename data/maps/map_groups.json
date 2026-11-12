@@ -1,5 +1,7 @@
 {
   "group_order": [
+    "gMapGroup_TownsAndRoutes_JF",
+    "gMapGroup_VisitorCenter",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
@@ -75,6 +77,15 @@
     "gMapGroup_IndoorTwoIslandRoute_Frlg",
     "gMapGroup_IndoorSixIslandRoute_Frlg",
     "gMapGroup_IndoorSevenIslandRoute_Frlg"
+  ],
+  "gMapGroup_TownsAndRoutes_JF": [
+    "VisitorCenter",
+    "Route01",
+    "ThymeVillage"
+  ],
+  "gMapGroup_VisitorCenter": [
+    "VisitorCenter_Indoors",
+    "VisitorCenter_BusStop"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

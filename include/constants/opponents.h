@@ -4,6 +4,89 @@
 #include "constants/battle_partner.h"
 #include "constants/opponents_frlg.h"
 
+// CUSTOM DEFINES
+
+#define TRAINER_THYMEFOREST_ANDRE             1
+#define TRAINER_THYMEFOREST_JACOB             2
+#define TRAINER_THYMEFOREST_CORY              3
+#define TRAINER_THYMEFOREST_ROVE              4
+#define TRAINER_THYMEFOREST_CHO               5
+#define TRAINER_THYMEFOREST_AMANITA           6
+#define TRAINER_THYMEFOREST_GREGATHAN         7
+#define TRAINER_THYMEFOREST_TANEGUCHI         8
+#define TRAINER_THYMEFOREST_GINGER            9
+#define TRAINER_SEQUOIA				         10
+#define TRAINER_THYMEFOREST_GRUNT            11
+#define TRAINER_THYMEFOREST_LIAM_WTR         12
+#define TRAINER_THYMEFOREST_LIAM_GRS         13
+#define TRAINER_THYMEFOREST_LIAM_FIR         14
+#define TRAINER_THYMEFOREST_OLIVE_WTR        15
+#define TRAINER_THYMEFOREST_OLIVE_GRS        16
+#define TRAINER_THYMEFOREST_OLIVE_FIR        17
+#define TRAINER_THYMEFOREST_SWIFT            18
+#define TRAINER_THYMEGYM_RIN                 19
+#define TRAINER_THYMEGYM_HOLLY               20
+#define TRAINER_THYMEGYM_BRENNA              21
+#define TRAINER_THYMEGYM_GRACE               22
+#define TRAINER_THYMEGYM_TARA                23
+#define TRAINER_THYMEGYM_MEIA                24
+#define TRAINER_THYMEGYM_LLOYD               25
+#define TRAINER_ROUTE02_FLORENCE             26
+#define TRAINER_ROUTE02_STAN_AND_STACY       27
+#define TRAINER_ROUTE02_SHANE                28
+#define TRAINER_ROUTE02_FRED                 29
+#define TRAINER_SILENTFOREST_ASHLEIGH        30
+#define TRAINER_ROUTE02_EMMA                 31
+#define TRAINER_SILENTFOREST_GRUNT_1         32
+#define TRAINER_SILENTFOREST_GRUNT_2         33
+#define TRAINER_SILENTFOREST_GRUNT_3         34
+#define TRAINER_ROUTE02_JOSH                 35
+#define TRAINER_SPINDRIFT_GENE               36
+#define TRAINER_SPINDRIFT_RAUL               37
+#define TRAINER_SPINDRIFT_PRIYA              38
+#define TRAINER_SPINDRIFT_GABRIELLA          39
+#define TRAINER_SPINDRIFT_KEITH              40
+#define TRAINER_SPINDRIFT_YEJI_AND_JISU      41
+#define TRAINER_SPINDRIFT_BARBARA            42
+#define TRAINER_SPINDRIFT_FREYA              43
+#define TRAINER_FREEBIRDGYM_PEARL            44
+#define TRAINER_ROUTE04_HANS                 45
+#define TRAINER_ROUTE04_MONTERO              46
+#define TRAINER_FREEBIRD_ENRIQUE             47
+#define TRAINER_ROUTE04_GUNTHER              48
+#define TRAINER_ROUTE04_REN_AND_NORA         49
+#define TRAINER_ROUTE04_DARWIN               50
+//Skipping 51-56 (Gabby and Ty pointers)
+#define TRAINER_ROUTE04_BEARDSLEY            57
+#define TRAINER_ROUTE04_MATT_AND_FREYA       58
+#define TRAINER_ROUTE04_RICKY                59
+#define TRAINER_ROUTE04_MARTY                60
+#define TRAINER_ROUTE04_JADEN                61
+#define TRAINER_SILENTFOREST_MAPLE           62
+#define TRAINER_FREEBIRDGYM_ETIENNE          63 
+#define TRAINER_FREEBIRD_STANLEY             64
+//Skipping 65-519 for some reason
+#define TRAINER_ALPHA_VISCEN_GRS            520
+#define TRAINER_ALPHA_ROUTE_1_GRS           521
+#define TRAINER_FREEBIRD_LIAM_GRS           522
+#define TRAINER_ALPHA_VISCEN_FIR            523
+#define TRAINER_ALPHA_ROUTE_1_FIR           524
+#define TRAINER_FREEBIRD_LIAM_FIR           525
+#define TRAINER_ALPHA_VISCEN_WTR            526
+#define TRAINER_ALPHA_ROUTE_1_WTR           527
+#define TRAINER_FREEBIRD_LIAM_WTR           528
+#define TRAINER_BETA_VISCEN_GRS             529
+#define TRAINER_BETA_ROUTE_1_GRS            530
+#define TRAINER_FREEBIRD_OLIVE_GRS          531
+#define TRAINER_BETA_VISCEN_FIR             532
+#define TRAINER_BETA_ROUTE_1_FIR            533
+#define TRAINER_FREEBIRD_OLIVE_FIR          534
+#define TRAINER_BETA_VISCEN_WTR             535
+#define TRAINER_BETA_ROUTE_1_WTR            536
+#define TRAINER_FREEBIRD_OLIVE_WTR          537
+
+// VANILLA DEFINES
+
 #define TRAINER_NONE                          0
 #define TRAINER_SAWYER_1                      1
 #define TRAINER_GRUNT_AQUA_HIDEOUT_1          2

@@ -51,13 +51,15 @@
 
 #else
 
-#define FLAG_UNUSED_0x020    0x20 // Unused Flag
-#define FLAG_UNUSED_0x021    0x21 // Unused Flag
-#define FLAG_UNUSED_0x022    0x22 // Unused Flag
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
-#define FLAG_UNUSED_0x025    0x25 // Unused Flag
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
+//*** These were all unused in vanilla
+//[!] indicates that the flag should be set at game start, or before affected events "see" them
+#define FLAG_VC_STREET_MOM		0x20 // VC-street mom visibility
+#define FLAG_VC_IN_PROF			0x21 // VC prof visibility
+#define FLAG_VC_OUT_BALLS		0x22 // VC ball visibility
+#define FLAG_VC_COMPLETE		0x23 // VC traveler visibility
+#define FLAG_ROUTE_1_ROAD_NPC	0x24 // Route 1 cutscene visibility
+#define FLAG_ROUTE_1_PATH_NPC   0x25 // Route 1 traveler visibility
+#define FLAG_ROUTE_1_BALL_GUY	0x26 // Starting item pack
 #define FLAG_UNUSED_0x027    0x27 // Unused Flag
 #define FLAG_UNUSED_0x028    0x28 // Unused Flag
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag
@@ -1334,7 +1336,7 @@
 #define FLAG_DEFEATED_ELITE_4_GLACIA                                0x4FD
 #define FLAG_DEFEATED_ELITE_4_DRAKE                                 0x4FE
 
-#define FLAG_UNUSED_0x4FF                                           0x4FF // Unused Flag
+#define FLAG_SCENE_TEMP                                           0x4FF // Unused Flag
 
 // Trainer Flags
 // Trainer flags occupy 0x500 - 0x85F, the last 9 of which are unused

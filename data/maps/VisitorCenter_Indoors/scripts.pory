@@ -1,0 +1,508 @@
+const RECEPTIONIST_ID = 1
+const RESTMAN_ID = 2
+const MOM_ID = 3
+const PROF_ID = 4
+const PARASOL_ID = 5
+const BIRDMAN_ID = 6
+const WINGULL_ID = 7
+const POKEMOM_ID = 8
+const POKEDAD_ID = 9
+const POKEKID_ID = 10
+const OTAKU_ID = 11
+
+// Temp vars used:
+//		0:	Player X
+//		1:	Player Y
+//		2:	Dynamic object ID
+//		3:	Receptionist alt
+//		4:	Cute pokemon ID
+
+// Temp flags used:
+//		0: Pokeparents talked
+//		1: Birdman talked
+//		2: Prof talked
+
+const PLAYER_X = VAR_TEMP_0
+const PLAYER_Y = VAR_TEMP_1
+const VAR_DYNAMICID = VAR_TEMP_2
+const VAR_RECEPTION = VAR_TEMP_3
+const VAR_TEMP_CUTE = VAR_TEMP_4
+const VAR_TEMP_CUTE_HOLD = VAR_TEMP_5
+
+const FLAG_PARENTS = FLAG_TEMP_1
+const FLAG_BIRDMAN = FLAG_TEMP_2
+const FLAG_PROF = FLAG_TEMP_3
+const FLAG_PARASOL = FLAG_TEMP_4
+const FLAG_KID = FLAG_TEMP_5
+
+const RECEPTIONIST_BULLYMAX = 99
+
+
+mapscripts VisitorCenter_Indoors_MapScripts
+{
+	MAP_SCRIPT_ON_FRAME_TABLE
+	[
+		VAR_VISCEN_STATE, 1: VisCen_In_Enter
+	]
+}
+
+script VisCen_In_Enter
+{
+	lock
+	applymovement(OBJ_EVENT_ID_PLAYER, Player_Enter)
+	waitmovement(0)
+	setvar(VAR_VISCEN_STATE,2) //exit blocked by prof state
+	end
+}
+
+script VisCen_In_RoadBlock
+{
+	checkitem(ITEM_SS_TICKET,1)
+	
+	// Block the player from exiting north to the intro map
+	if (!(var(VAR_RESULT) > 0))
+	{
+		lock
+		msgbox(format("{COLOR LIGHT_BLUE}I don't have a bus pass…")
+			,MSGBOX_AUTOCLOSE)
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown)
+		waitmovement(0)
+		release
+		end
+	}
+}
+
+script VisCen_In_DoorBlock
+{
+	lockall
+	getplayerxy(PLAYER_X,PLAYER_Y)
+	playse(SE_LEDGE)
+	applymovement(PROF_ID,Prof_JumpOut)
+	waitmovement(0)
+	msgbox(format("???: Hey kid, hang on just a sec!"))
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER,Common_Movement_FaceUp)
+	
+	// Depending on which tile activated the event
+	if (var(PLAYER_X) == 1)
+		{ applymovement(PROF_ID,Prof_Approach_Left) }
+	else
+		{ applymovement(PROF_ID,Prof_Approach_Right) }
+	waitmovement(0)
+	
+	if (flag(FLAG_PROF))
+	{
+		msgbox(format("You know, now that I get a good look at you…\p"
+			"Yeah, yeah… I can see it.\p"
+			"Hey, sorry for the rudeness earlier. Listen, you like raffles?\p"
+			"I-{PAUSE 8} We're holding one outside, a big Pokémon giveaway!\p"
+			"Why don't you hold onto this ticket and stop on by?"))
+	}
+	else
+	{
+		msgbox(format("You wouldn't wanna miss out on the Pokémon Raffle, would ya?\p"
+			"{FONT_SMALL}Yeah, yeah… looks about right…\p"
+			"{FONT_NORMAL}Why don't you take this ticket?"
+			"One free per tourist!"))
+	}
+	
+	// Receive ticket
+	additem(ITEM_EON_TICKET,1)
+	playfanfare(MUS_RG_OBTAIN_KEY_ITEM)
+	msgbox(format("You received a Raffle Ticket from the"
+		"{COLOR BLUE}strange professor{COLOR DARK_GRAY}!"))
+	waitfanfare
+	
+	msgbox(format("PROF: I'll go on ahead, just follow me! Trust me, it'll be worth it."))
+	closemessage
+	
+	//Professor disappears out the door
+	if (var(PLAYER_X) == 1)
+		{ applymovement(PROF_ID,Prof_Exit_from_Left) }
+	else
+		{ applymovement(PROF_ID,Prof_Exit_from_Right) }
+	waitmovement(0)
+	removeobject(PROF_ID)
+	playse(SE_EXIT)
+	waitse
+	// setflag(FLAG_VC_IN_PROF)
+	// setobjectxy(PROF_ID,0,0)
+	setvar(VAR_VISCEN_STATE, 3) //exit unblocked, crowd event active
+	
+	releaseall
+	end
+}
+
+
+script VisCen_In_Mom
+{
+	lock
+	//setvar(VAR_LAST_TALKED,MOM_ID)
+	
+	// Check if whole starter event is over to proceed
+	if (flag(FLAG_VC_OUT_BALLS)) //Uses the same flag as for the pokeballs outside
+	{
+		msgbox(format("MOM: I just had a few more questions…"))
+		call(Common_NPCNotice)
+		msgbox(format("Hm? What's that? Oh, are they already heading out…? So pushy!\p"
+			"…What's that you've got there?\nA Pokédex? And a Pokémon too??\p"
+			"Here for 5 minutes and you're already talking to strangers…\p"
+			"Well, I'm not looking after it for you, okay? Take care of it."))
+		closemessage
+		
+		// intercom, set flags, rewarp to clear NPC's
+		playse(SE_DING_DONG)
+		waitse
+		delay(32)
+		
+		msgbox(format("Well, let's hurry along now! We don't want to fall behind!")
+			,MSGBOX_AUTOCLOSE)
+		
+		setflag(FLAG_VC_COMPLETE)
+		addvar(VAR_VISCEN_STATE, 0x90)
+		
+		warp(MAP_VISITOR_CENTER, 0, 0, 0)
+	}
+	else
+	{
+		msgbox(format("MOM: Hi, I just had a few questions about the tour…"))
+		call(Common_NPCNotice)
+		msgbox(format("Oh, just a minute, dear. Why don't you take a look around for a while?")
+			,MSGBOX_AUTOCLOSE)
+		applymovement(MOM_ID,Common_Movement_FaceUp)
+		waitmovement(0)
+	}
+	end
+}
+
+script VisCen_In_Professor
+{
+	if (!flag(FLAG_PROF))
+	{
+		lock
+		msgbox(format("???: No, these guys won't do…\p"
+			"Maybe someone with a little more…"))
+		call(Common_NPCNotice)
+		msgbox(format("Huh…? What's with the look, kid?\p"
+			"You never see a guy standin' around some plants before?"))
+		setflag(FLAG_PROF)
+	}
+	else
+	{
+		lock
+		msgbox(format("???: Surely one of these chumps have gotta be…"))
+		call(Common_NPCNotice)
+		msgbox(format("???: Yeah alright I get it, hey why don't you {COLOR RED}go outside{COLOR DARK_GRAY} to play, maybe?"))
+	}
+	applymovement(PROF_ID,Common_Movement_FaceRight)
+	waitmovement(0)
+	release
+	end
+}
+
+//script(local) NPC_Notice
+//{
+//	playse(SE_PIN)
+//	applymovement(VAR_DYNAMICID,NPC_Notice_Move)
+//	waitmovement(0)
+//	delay(15)
+//}
+
+script VisCen_In_Receptionist
+{
+	if (var(VAR_RECEPTION) < RECEPTIONIST_BULLYMAX)
+	{
+		lock
+		msgbox(format("Hello, and welcome to our Visitor Center.\p"
+			"Would you care for our free Pokémon {COLOR BLUE}healing services{COLOR DARK_GRAY}?")
+			,MSGBOX_YESNO)
+		if (var(VAR_RESULT) == 1)
+		{
+			msgbox(format("Of course! Wait right there."))
+			closemessage
+			
+			// Fade to black, heal pokemon
+			call(Common_EventScript_OutOfCenterPartyHeal)
+			
+			msgbox(format("Your Pokémon are as good as new!\n"
+				"Take care out there!")
+				,MSGBOX_AUTOCLOSE)
+		}
+		else
+		{
+			switch(var(VAR_RECEPTION))
+			{
+				case 0:
+					setvar(VAR_RECEPTION,1)
+					msgbox(format("No worries. Enjoy your time here!")
+						,MSGBOX_AUTOCLOSE)
+				case 1:
+					setvar(VAR_RECEPTION,2)
+					msgbox(format("Alright… Oh, if you were hoping to ride the bus,"
+						"I'm afraid you need a {COLOR BLUE}Bus Pass{COLOR DARK_GRAY}.")
+						,MSGBOX_AUTOCLOSE)
+				case 2:
+					setvar(VAR_RECEPTION,3)
+					msgbox(format("Um… Are you perhaps, lost…?\n"
+						"Where did you last see your {COLOR BLUE}Mom{COLOR DARK_GRAY}?")
+						,MSGBOX_AUTOCLOSE)
+				case 3:
+					setvar(VAR_RECEPTION,4)
+					msgbox(format("{COLOR BLUE}The tour pretty much follows the path{COLOR DARK_GRAY}…"
+						"if you aren't sure where to go,\l"
+						"you'll probably find them that way!")
+						,MSGBOX_AUTOCLOSE)
+				case 4:
+					setvar(VAR_RECEPTION,5)
+					msgbox(format("I'm, afraid I can't escort you myself,"
+						"but I CAN heal your Pokémon!\l"
+						"Er… did I mention that already…?")
+						,MSGBOX_AUTOCLOSE)
+				default:
+					setvar(VAR_RECEPTION,RECEPTIONIST_BULLYMAX)
+					msgbox(format("I-{PAUSE 8}If you don't need any assistance,"
+						"please just enjoy the tour!!\l"
+						"Have a nice day!!")
+						,MSGBOX_AUTOCLOSE)
+			}
+		}
+		end
+	}
+	msgbox("Please have a nice day!!!!!",MSGBOX_NPC)
+}
+
+script VisCen_In_PokeParents
+{
+	lock
+	if (!flag(FLAG_PARENTS))
+	{
+		applymovement(POKEDAD_ID, Common_Movement_WalkInPlaceFasterLeft)
+		waitmovement(0)
+		msgbox(format("MAN: Well we HAVE to see the\n"
+			"{COLOR BLUE}Seedot outside Thyme Village{COLOR DARK_GRAY}."))
+		applymovement(POKEMOM_ID, Common_Movement_WalkInPlaceFasterRight)
+		waitmovement(0)
+		msgbox(format("WOMAN: And don't forget the\n"
+			"{COLOR BLUE}Hatenna in the forest{COLOR DARK_GRAY}!"))
+		applymovement(POKEDAD_ID, Common_Movement_WalkInPlaceFasterLeft)
+		waitmovement(0)
+		msgbox(format("MAN: Do you think some {COLOR BLUE}Phantump\n"
+			"{COLOR DARK_GRAY}will come out too??"))
+		applymovement(POKEMOM_ID, Common_Movement_WalkInPlaceFasterRight)
+		waitmovement(0)
+		msgbox(format("WOMAN: Oh I hope so!! This tour is going to be so exciting!")
+			, MSGBOX_AUTOCLOSE)
+		setflag(FLAG_PARENTS)
+		releaseall
+		end
+	}
+	else
+	{
+		msgbox(format("{COLOR LIGHT_BLUE}They're loudly poring over a travel brochure.")
+			, MSGBOX_AUTOCLOSE)
+		release
+		end
+	}
+}
+script VisCen_In_PokeKid
+{
+	if (!flag(FLAG_KID))
+	{
+		setflag(FLAG_KID)
+		msgbox(format("BOY: How can mom and dad get so giddy about some dumb tour?\p"
+			"So cringe… I just wanna go home…")
+			,MSGBOX_NPC)
+	}
+	else
+	{
+		msgbox(format("BOY: Who wants to visit a dumb place like this anyway?")
+			,MSGBOX_NPC)
+	}
+}
+
+script VisCen_In_Parasol
+{
+	if (!flag(FLAG_PARASOL))
+	{
+		setflag(FLAG_PARASOL)
+		msgbox(format("GIRL: We're finally here!\p"
+			"Fresh air, beautiful sights, bustling crowds…\p"
+			"I'm sure to find my inspiration on this trip, just you wait!")
+			,MSGBOX_NPC)
+	}
+	else
+	{
+		msgbox(format("GIRL: I guess I should make plans on where to go at each stop!")
+			,MSGBOX_NPC)
+	}
+}
+
+script VisCen_In_Birdman
+{
+	if(!flag(FLAG_BIRDMAN))
+	{
+		lockall
+		faceplayer
+		msgbox(format("MAN: Oh, hello there! Are you in our tour group as well?"
+			"Nice to meet you! \p"
+			"We're both so excited to see new things and make new friends!"))
+		
+		applymovement(BIRDMAN_ID,Common_Movement_WalkInPlaceFasterRight)
+		waitmovement(0)
+		msgbox(format("Isn't that right, Wingull?"))
+		closemessage
+		
+		setflag(FLAG_BIRDMAN)
+		applymovement(WINGULL_ID,Common_Movement_FaceLeft)
+		waitmovement(0)
+		goto(Wingull_Squawk)
+	}
+	else
+	{
+		msgbox(format("MAN: We'll see you on the trail!"),MSGBOX_NPC)
+	}
+}
+script VisCen_In_Wingull
+{
+	lock
+	faceplayer
+	goto(Wingull_Squawk)
+}
+script(local) Wingull_Squawk
+{
+	applymovement(WINGULL_ID,Common_Movement_QuestionMark)
+	playmoncry(SPECIES_WINGULL,0)
+	waitmoncry
+	releaseall
+	end
+}
+
+script VisCen_In_Otaku
+{
+	if (var(VAR_CUTE_BABY) > 0)
+	{
+		lockall
+		faceplayer
+		msgbox(format("MAN: Hehe…{PAUSE 16} So you're back…{PAUSE 16}\p"
+			"Then you must…{PAUSE 16}\n"
+			"want to see…{PAUSE 16} {COLOR RED}more{COLOR DARK_GRAY}?")
+			,MSGBOX_YESNO)
+		goto_if_eq(VAR_RESULT, 1, VisCen_In_Otaku_Agree)
+	}
+	else
+	{
+		lockall
+		faceplayer
+		msgbox(format("MAN: Hehe…{PAUSE 16} Hey kid…\p"
+			"Do you wanna…{PAUSE 16}\n"
+			"See something…{PAUSE 16} {SHADOW DARK_GRAY}amazing{SHADOW LIGHT_GRAY}?")
+			,MSGBOX_YESNO)
+		goto_if_eq(VAR_RESULT, 1, VisCen_In_Otaku_Agree)
+	}
+	msgbox(format("Hehehe…{PAUSE 16} Your loss…")
+		,MSGBOX_AUTOCLOSE)
+	end
+}
+script(local) VisCen_In_Otaku_Agree
+{
+	msgbox(format("Okay…{PAUSE 16} Come a little closer…{PAUSE 16}\n"
+		"Are you ready…?"))
+	closemessage
+	
+	call(VisCen_In_Otaku_ChoiceLoop)
+	
+	msgbox(format("Right here…{PAUSE 16} in this brochure…{PAUSE 16}\p"
+		"…You see it?{PAUSE 16} Isn't it cute…?"))
+	closemessage
+	hidemonpic
+	
+	msgbox(format("I want to find…{PAUSE 16} all the cutest Pokémon in the Sekien region…\p"
+		"Hehe…{PAUSE 16} I hope you find some cute Pokémon too…")
+		,MSGBOX_AUTOCLOSE)
+	release
+	end
+}
+script(local) VisCen_In_Otaku_ChoiceLoop // pick a new, different random number 1-5
+{
+	random(5) //0-4
+	copyvar(VAR_TEMP_CUTE, VAR_RESULT)
+	addvar(VAR_TEMP_CUTE, 1) //1-5
+	goto_if_eq(VAR_TEMP_CUTE, VAR_TEMP_CUTE_HOLD, VisCen_In_Otaku_ChoiceLoop)
+	goto(VisCen_In_Otaku_ShowMon)
+}
+script(local) VisCen_In_Otaku_ShowMon
+{
+	copyvar(VAR_TEMP_CUTE_HOLD, VAR_TEMP_CUTE)
+	
+	switch(var(VAR_TEMP_CUTE_HOLD))
+	{
+		case 1:
+			setvar(VAR_CUTE_BABY, SPECIES_CLEFFA)
+		case 2:
+			setvar(VAR_CUTE_BABY, SPECIES_TOGEPI)
+		case 3:
+			setvar(VAR_CUTE_BABY, SPECIES_AZURILL)
+		case 4:
+			setvar(VAR_CUTE_BABY, SPECIES_CUTIEFLY)
+		case 5:
+			setvar(VAR_CUTE_BABY, SPECIES_MILCERY)
+		default: // not cute not cute not cute not cute
+			setvar(VAR_CUTE_BABY, SPECIES_STUNFISK)
+	}
+	showmonpic(VAR_CUTE_BABY, 10, 3)
+	delay(48)
+	return
+}
+
+script VisCen_In_RestingMan
+{
+	msgbox(format("Ah… a new tour's starting huh?\n"
+		"I just finished with mine.\p"
+		"It was a blast touring the whole\n"
+		"region, but I'm all tuckered out.")
+		,MSGBOX_NPC)
+}
+
+
+//Movement scripts
+
+movement Player_Enter
+{
+	walk_down * 3
+}
+
+//movement NPC_Notice_Move
+//{
+//	emote_exclamation_mark
+//	delay_16
+//	face_player
+//}
+
+movement Prof_JumpOut
+{
+	jump_right
+	walk_down
+}
+movement Prof_Approach_Left
+{
+	walk_down * 3
+}
+movement Prof_Approach_Right
+{
+	walk_right
+	walk_down * 3
+}
+movement Prof_Exit_from_Left
+{
+	walk_right
+	walk_down
+	delay_16
+	set_invisible
+}
+movement Prof_Exit_from_Right
+{
+	walk_left
+	walk_down
+	delay_16
+	set_invisible
+}

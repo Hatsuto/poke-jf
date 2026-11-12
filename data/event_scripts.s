@@ -56,6 +56,7 @@
 #include "constants/pokemon.h"
 #include "constants/pokemon_size_record.h"
 #include "constants/random_mon_generation.h"
+#include "constants/rival_link.h"
 #include "constants/rtc.h"
 #include "constants/roulette.h"
 #include "constants/script_menu.h"
@@ -1057,6 +1058,7 @@ gStdScripts_End::
 
 	.include "data/scripts/config.inc"
 	.include "data/scripts/debug.inc"
+	.include "data/scripts/rival_link.inc"
 
 EventScript_WhiteOut::
 	call EverGrandeCity_HallOfFame_EventScript_ResetEliteFour
@@ -1738,3 +1740,13 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/battle_frontier.inc"
 	.include "data/scripts/apricorn_tree.inc"
 	.include "data/scripts/wild_encounter.inc"
+
+	.include "data/maps/VisitorCenter/scripts.inc"
+
+	.include "data/maps/VisitorCenter_Indoors/scripts.inc"
+
+	.include "data/maps/VisitorCenter_BusStop/scripts.inc"
+
+	.include "data/maps/Route01/scripts.inc"
+
+	.include "data/maps/ThymeVillage/scripts.inc"

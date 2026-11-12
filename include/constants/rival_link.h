@@ -1,0 +1,11 @@
+#ifndef GUARD_CONSTANTS_RIVAL_LINK_H
+#define GUARD_CONSTANTS_RIVAL_LINK_H
+
+#define RIVAL_LINK_NO		0
+#define RIVAL_LINK_YES		1
+
+// See species.h if these are wrong
+#define RIVAL_LINK_EVO1_OFFSET	1
+#define RIVAL_LINK_EVO2_OFFSET	2
+
+#endif // GUARD_CONSTANTS_RIVAL_LINK_H
