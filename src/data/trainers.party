@@ -152,7 +152,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 === TRAINER_VISCEN_OLIVE_GRS ===
 Name: Olive
 Class: Rival
-Pic: Red
+Pic: Leaf
 Gender: Female
 Music: Female
 Double Battle: No
@@ -169,7 +169,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 === TRAINER_VISCEN_OLIVE_FIR ===
 Name: Olive
 Class: Rival
-Pic: Red
+Pic: Leaf
 Gender: Female
 Music: Female
 Double Battle: No
@@ -186,7 +186,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 === TRAINER_VISCEN_OLIVE_WTR ===
 Name: Olive
 Class: Rival
-Pic: Red
+Pic: Leaf
 Gender: Female
 Music: Female
 Double Battle: No
@@ -272,7 +272,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 === TRAINER_ROUTE_1_OLIVE_GRS ===
 Name: Olive
 Class: Rival
-Pic: Red
+Pic: Leaf
 Gender: Female
 Music: Female
 Double Battle: No
@@ -293,7 +293,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 === TRAINER_ROUTE_1_OLIVE_FIR ===
 Name: Olive
 Class: Rival
-Pic: Red
+Pic: Leaf
 Gender: Female
 Music: Female
 Double Battle: No
@@ -314,7 +314,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 === TRAINER_ROUTE_1_OLIVE_WTR ===
 Name: Olive
 Class: Rival
-Pic: Red
+Pic: Leaf
 Gender: Female
 Music: Female
 Double Battle: No
