@@ -109,7 +109,7 @@ Mom_Deproach:
 
 VisCen_Street_Opening_Text_0:
 # 43 "data/maps/VisitorCenter_BusStop/scripts.pory"
-	.string "MOM: {PLAYER}, we're finally here!\n"
+	.string "{SPEAKER NAME_MOM}{PLAYER}, we're finally here!\n"
 	.string "Did you enjoy the ride?\p"
 	.string "I'm still not sure why you wanted to sit\n"
 	.string "with all the luggage…\p"

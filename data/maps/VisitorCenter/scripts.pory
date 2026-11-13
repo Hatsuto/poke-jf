@@ -125,7 +125,8 @@ script VisCen_RaffleStart
 		call(HeadsUp)
 		fadeoutbgm(1)
 		
-		msgbox(format("???: …And the 1st place winner, "
+		setspeaker(SP_NAME_UNKNOWN)
+		msgbox(format("…And the 1st place winner, "
 			"with the first pick of the three, is…"))
 		
 		applymovement(LOCALID_PROF, Common_Movement_WalkRight)
@@ -150,6 +151,7 @@ script VisCen_RaffleStart
 				"{FONT_NORMAL}…{PLAYER}!\n"
 				"Please, step up and claim your prize!"))
 		}
+		setspeaker(SP_NAME_NONE)
 		applymovement(LOCALID_PROF, Prof_WalkBehindBushes_2)
 		setflag(FLAG_EVENT_START)
 	}
@@ -162,26 +164,26 @@ script VisCen_RaffleStart
 			switch(var(VAR_PROF_BEG))
 			{
 				case 0:
-					msgbox(format("???: W-wait a moment! This is a once in a lifetime chance!")
+					msgbox(format("{SPEAKER NAME_UNKNOWN}W-wait a moment! This is a once in a lifetime chance!")
 						,MSGBOX_AUTOCLOSE)
 					setvar(VAR_PROF_BEG,1)
 				case 1:
-					msgbox(format("???: It's a free Pokémon!!\n"
+					msgbox(format("{SPEAKER NAME_UNKNOWN}It's a free Pokémon!!\n"
 						"For free, kid!")
 						,MSGBOX_AUTOCLOSE)
 					setvar(VAR_PROF_BEG,2)
 				case 2:
-					msgbox(format("???: You're old enough to start your own Pokémon Journey!\p"
+					msgbox(format("{SPEAKER NAME_UNKNOWN}You're old enough to start your own Pokémon Journey!\p"
 						"Doesn't that sound exciting to you…?")
 						,MSGBOX_AUTOCLOSE)
 					setvar(VAR_PROF_BEG,3)
 				case 3:
-					msgbox(format("???: N-Need to check with your mother first, maybe?\p"
+					msgbox(format("{SPEAKER NAME_UNKNOWN}N-Need to check with your mother first, maybe?\p"
 						"Don't worry, I'm sure she would be thrilled!")
 						,MSGBOX_AUTOCLOSE)
 					setvar(VAR_PROF_BEG,4)
 				default:
-					msgbox(format("???:{FONT_SMALL}Kid, please, no one else in this crowd will cut it!\p"
+					msgbox(format("{SPEAKER NAME_UNKNOWN}{FONT_SMALL}Kid, please, no one else in this crowd will cut it!\p"
 						"Even if it's just for show, I'm beggin' ya!")
 						,MSGBOX_AUTOCLOSE)
 			}
@@ -217,7 +219,7 @@ script(local) HeadsUp
 // These events common between 3 tiles under different conditions
 script(local) CrowdBlock_RivalEvent //Should be goto, leads to StepIn
 {
-	msgbox(format("Hold on, kid! There's two willing opponents right here!!")
+	msgbox(format("{SPEAKER NAME_UNKNOWN}Hold on, kid! There's two willing opponents right here!!")
 		,MSGBOX_AUTOCLOSE)
 	goto(CrowdBlock_StepIn)
 }
@@ -247,6 +249,7 @@ script VisCen_BallPick
 	applymovement(LOCALID_PROF, Common_Movement_FaceDown)
 	waitmovement(0)
 	getplayerxy(PLAYER_X,PLAYER_Y)
+	setspeaker(SP_NAME_UNKNOWN)
 	
 	// Consolidated handling for each ball based on player position
 	switch(var(PLAYER_X))
@@ -350,13 +353,13 @@ script VisCen_BallPick
 		}
 		
 		removeobject(VAR_BALL_ID)
-		msgbox(format("???: Treat 'em well, alright?"))
+		msgbox(format("{SPEAKER NAME_UNKNOWN}Treat 'em well, alright?"))
 		lockall
 		
 		givemon(VAR_STARTER, 5, ITEM_NONE)
 		setflag(FLAG_SYS_POKEMON_GET)
 		playfanfare(MUS_EVOLVED)
-		msgbox(format("{PLAYER} received the {STR_VAR_1} from the Professor!"))
+		msgbox(format("{SPEAKER NAME_NONE}{PLAYER} received the {STR_VAR_1} from the Professor!"))
 		waitfanfare
 		closemessage
 		
@@ -371,7 +374,7 @@ script VisCen_BallPick
 		
 		applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 		waitmovement(0)
-		msgbox(format("???: Excellent choice by our big winner!\p"
+		msgbox(format("{SPEAKER NAME_UNKNOWN}Excellent choice by our big winner!\p"
 			"Now, will winners Number 2 and 3 step up as well?"))
 		closemessage
 		
@@ -392,7 +395,9 @@ script VisCen_BallPick
 		bufferspeciesname(1, VAR_LIAM_STARTER)
 		waitmovement(0)
 		removeobject(VAR_BALL_ID)
+		setspeaker(SP_NAME_BOY)
 		msgbox(Liam_Pick_Txt)
+		setspeaker(SP_NAME_NONE)
 		playfanfare(MUS_RG_OBTAIN_KEY_ITEM)
 		msgbox(Liam_Receive_Txt)
 		waitfanfare
@@ -415,7 +420,9 @@ script VisCen_BallPick
 		bufferspeciesname(2, VAR_OLIVE_STARTER)
 		waitmovement(0)
 		removeobject(VAR_BALL_ID)
+		setspeaker("OLIVE")
 		msgbox(Olive_Pick_Txt)
+		setspeaker(SP_NAME_NONE)
 		playfanfare(MUS_RG_OBTAIN_KEY_ITEM)
 		msgbox(Olive_Receive_Txt)
 		waitfanfare
@@ -423,36 +430,38 @@ script VisCen_BallPick
 		
 		applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 		waitmovement(0)
-		msgbox(format("???: So, what do you think of your new partners?\p"
+		msgbox(format("{SPEAKER NAME_UNKNOWN}So, what do you think of your new partners?\p"
 			"Some rare choices, right? Wasn't easy to get a hold of 'em…"))
 		closemessage
 		
 		applymovement(LOCALID_LIAM, Common_Movement_WalkInPlaceDown)
 		waitmovement(0)
-		msgbox(format("BOY: Partners, huh…? These Pokémon?"))
+		setspeaker(SP_NAME_BOY)
+		msgbox(format("Partners, huh…? These Pokémon?"))
 		closemessage
 		
 		applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 		waitmovement(0)
-		msgbox(format("???: That's right, your first Pokémon for a new journey!\p"
+		msgbox(format("{SPEAKER NAME_UNKNOWN}That's right, your first Pokémon for a new journey!\p"
 			"Much more exciting than some boring sightseeing, yeah?"))
 		closemessage
 		
 		applymovement(LOCALID_OLIVE, Common_Movement_WalkInPlaceDown)
 		waitmovement(0)
-		msgbox(format("GIRL: I was rather looking forward to the sightseeing, actually…"))
+		setspeaker(SP_NAME_GIRL)
+		msgbox(format("I was rather looking forward to the sightseeing, actually…"))
 		closemessage
 		
 		playse(SE_LEDGE)
 		applymovement(LOCALID_PROF, Common_Movement_HopDown)
 		waitmovement(0)
-		msgbox(format("???: …But I can already see the excitement in your child eyes!\p"
+		msgbox(format("{SPEAKER NAME_UNKNOWN}…But I can already see the excitement in your child eyes!\p"
 			"You're itchin' to battle already, aren't ya {PLAYER}?")
 			,MSGBOX_YESNO)
 		
 		if (var(VAR_RESULT) == 1) // Player challenges event
 		{
-			msgbox(format("???: Of course you are!\n"
+			msgbox(format("Of course you are!\n"
 				"{FONT_SMALL}Thanks for the out.{FONT_NORMAL}\p"
 				"What's an adventure without hardship?"
 				"\nWithout Rivals??\p"
@@ -465,7 +474,7 @@ script VisCen_BallPick
 		{
 			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
 			waitmovement(0)
-			msgbox(format("???: Hey, hey… just work with me a little, huh?\l"
+			msgbox(format("Hey, hey… just work with me a little, huh?\l"
 				"{FONT_SMALL}You just got a gift."))
 			
 			random(2)
@@ -489,12 +498,12 @@ script VisCen_BallPick
 				
 				// Liam dialogue to battle transition
 				
-				msgbox(format("BOY: Getting cold feet?\p"
+				msgbox(format("{SPEAKER NAME_BOY}Getting cold feet?\p"
 					"If you don't want your Pokémon, I can take care of it!"))
 				closemessage
 				applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 				waitmovement(0)
-				msgbox(format("???: Ooh, those are fighting words!\n"
+				msgbox(format("{SPEAKER NAME_UNKNOWN}Ooh, those are fighting words!\n"
 					"You're not just gonna take that, right?"))
 					
 				setvar(VAR_VISCEN_STATE, 0x10)
@@ -524,12 +533,12 @@ script VisCen_BallPick
 				
 				//Olive dialogue to battle transition
 				
-				msgbox(format("GIRL: Well, it would be rude not to get to know each other, right?\p"
+				msgbox(format("{SPEAKER NAME_GIRL}Well, it would be rude not to get to know each other, right?\p"
 					"I think {STR_VAR_3} wants to play…"))
 				closemessage
 				applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 				waitmovement(0)
-				msgbox(format("???: That's right, you three are in it for the long haul now!\p"
+				msgbox(format("{SPEAKER NAME_UNKNOWN}That's right, you three are in it for the long haul now!\p"
 					"Why don't you two come on over?"))
 				
 				setvar(VAR_VISCEN_STATE, 0x20)
@@ -619,7 +628,7 @@ script(local) Battle_Transition
 			}
 		default:
 			trainerbattle_no_whiteout(TRAINER_VISCEN_SEQUOIA,
-				format("???: Alright, everyone watching? You're lookin' at the new Champ in the making!\p"
+				format("{SPEAKER NAME_UNKNOWN}Alright, everyone watching? You're lookin' at the new Champ in the making!\p"
 					"{FONT_SMALL}Just put on a good show, kid."),
 				"Great, great. Good work.", //Loss (to player)
 				"Great, great. Good work.", //Victory (to player)
@@ -628,12 +637,12 @@ script(local) Battle_Transition
 }
 text(local) VisCen_Liam_Intro
 {
-	format("BOY: The name's {COLOR BLUE}Liam{COLOR DARK_GRAY}!\p"
+	format("{SPEAKER NAME_LIAM}The name's {COLOR BLUE}Liam{COLOR DARK_GRAY}!\p"
 		"Sorry, but you're gonna be our first step on the way to the top!")
 }
 text(local) VisCen_Olive_Intro
 {
-	format("GIRL: By the way, I'm {COLOR BLUE}Olive{COLOR DARK_GRAY}!\p"
+	format("{SPEAKER NAME_OLIVE}By the way, I'm {COLOR BLUE}Olive{COLOR DARK_GRAY}!\p"
 		"We'll be seeing each other a lot, so let's get along, alright?"
 		)
 }
@@ -692,11 +701,11 @@ script(local) VisCen_Liam_PostBattle
 	{
 		addvar(VAR_VISCEN_STATE,1)
 		call(RivalLink_Add_Liam) //only increase if you win
-		msgbox(format("LIAM: So you've got a head start, but we'll catch up!"))
+		msgbox(format("{SPEAKER NAME_LIAM}So you've got a head start, but we'll catch up!"))
 	}
 	else
 	{
-		msgbox(format("LIAM: How was that? I'm pretty good at this, don't you think?"))
+		msgbox(format("{SPEAKER NAME_LIAM}How was that? I'm pretty good at this, don't you think?"))
 	}
 	goto(VisCen_Rivals_PostBattle)
 }
@@ -708,7 +717,7 @@ script(local) VisCen_Olive_PostBattle
 		addvar(VAR_VISCEN_STATE,1)
 	}
 	call(RivalLink_Add_Olive) //happy either way
-	msgbox(format("OLIVE: Thank you for the battle. I can tell our Pokémon had fun!"))
+	msgbox(format("{SPEAKER NAME_OLIVE}Thank you for the battle. I can tell our Pokémon had fun!"))
 	goto(VisCen_Rivals_PostBattle)
 }
 script(local) VisCen_Rivals_PostBattle
@@ -717,7 +726,7 @@ script(local) VisCen_Rivals_PostBattle
 	waitmovement(0)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp)
 	applymovement(OPP_SPRITE_ID, Common_Movement_FaceUp)
-	msgbox(format("???: You kids done?\p"
+	msgbox(format("{SPEAKER NAME_UNKNOWN}You kids done?\p"
 		"Su{PAUSE 8}per{PAUSE 8} fun,{PAUSE 8} right?\n"
 		"Anyway, already told your other friend, but take these."))
 	closemessage
@@ -746,7 +755,7 @@ script(local) VisCen_Rivals_PostBattle
 	waitmovement(0)
 	delay(16)
 	
-	msgbox(format("Don't lose it, alright?"))
+	msgbox(format("{SPEAKER NAME_UNKNOWN}Don't lose it, alright?"))
 	goto(VisCen_Closing_Event)
 }
 script(local) VisCen_Prof_PostBattle
@@ -755,12 +764,12 @@ script(local) VisCen_Prof_PostBattle
 	if (var(VAR_RESULT) == B_OUTCOME_WON)
 	{
 		addvar(VAR_VISCEN_STATE,1)
-		msgbox(format("???: Alright, alright. Got that out of your system?\p"
+		msgbox(format("{SPEAKER NAME_UNKNOWN}Alright, alright. Got that out of your system?\p"
 			"Wasn't really in the script, but whatever gets you motivated."))
 	}
 	else
 	{
-		msgbox(format("???: …Er. You alright, kid?\p"
+		msgbox(format("{SPEAKER NAME_UNKNOWN}…Er. You alright, kid?\p"
 			"You gotta watch it, or your little guy's gonna hurt…\l"
 			"{FONT_SMALL}You only get one, alright?"))
 	}
@@ -769,7 +778,7 @@ script(local) VisCen_Prof_PostBattle
 	waitmovement(0)
 	delay(16)
 	
-	msgbox(format("Here, go ahead and take this. Don't lose it, understand?"))
+	msgbox(format("{SPEAKER NAME_UNKNOWN}Here, go ahead and take this. Don't lose it, understand?"))
 	
 	goto(VisCen_Closing_Event)
 }
@@ -793,12 +802,12 @@ script(local) VisCen_Closing_Event
 		applymovement(LOCALID_PROF, Prof_Center_2)
 	}
 	waitmovement(0)
-	msgbox(format("???: It's a device that automatically stores data about Pokémon!"))
+	msgbox(format("{SPEAKER NAME_UNKNOWN}It's a device that automatically stores data about Pokémon!"))
 	closemessage
 	applymovement(LOCALID_PROF, Common_Movement_WalkDown)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
 	waitmovement(0)
-	msgbox(format("That's right, it's the latest and greatest in Pokémon Trainer Technology!\p"
+	msgbox(format("{SPEAKER NAME_UNKNOWN}That's right, it's the latest and greatest in Pokémon Trainer Technology!\p"
 		"Well yeah, okay, maybe you've seen it before. Everyone's got one these days.\p"
 		"But I won't be hearing anything about those Pokétch apps or whatever!\l"
 		"This is complex technology, you know?"))
@@ -822,9 +831,9 @@ script(local) VisCen_Closing_Event
 	
 	call(Prof_Hop)
 	
-	msgbox(format("???: Whoops, that's my cue.\p"
+	msgbox(format("{SPEAKER NAME_UNKNOWN}Whoops, that's my cue.\p"
 		"Remember you three, if anyone asks where you got these?\p"
-		"Let them know {COLOR BLUE}Professor Sequoia{COLOR DARK_GRAY} hooked you up, alright?\l"
+		"{SPEAKER NAME_SEQUOIA}Let them know {COLOR BLUE}Professor Sequoia{COLOR DARK_GRAY} hooked you up, alright?\l"
 		"I'll be seeing you around!"))
 	
 	warp(MAP_VISITOR_CENTER, 0xFF, 8, 8)
@@ -874,7 +883,7 @@ script VisCen_Professor
 {
 	if(!flag(FLAG_RIVAL_START)) //Starter selection
 	{
-		msgbox(format("???: What's the matter, big winner? Tough decision?\p"
+		msgbox(format("{SPEAKER NAME_UNKNOWN}What's the matter, big winner? Tough decision?\p"
 			"…There's no strings attached, I promise!")
 			,MSGBOX_NPC)
 	}
@@ -882,7 +891,7 @@ script VisCen_Professor
 	{
 		lock
 		faceplayer
-		msgbox(format("???: Hmm? What, you want to battle me or something?")
+		msgbox(format("{SPEAKER NAME_UNKNOWN}Hmm? What, you want to battle me or something?")
 			,MSGBOX_YESNO)
 		
 		if(var(VAR_RESULT) == 1)
@@ -897,7 +906,7 @@ script VisCen_Professor
 				waitmovement(0)
 				applymovement(LOCALID_LIAM, Common_Movement_FaceUp)
 				applymovement(LOCALID_OLIVE, Common_Movement_FaceUp)
-				msgbox(format("Hey, you two come here for a sec.")
+				msgbox(format("{SPEAKER NAME_UNKNOWN}Hey, you two come here for a sec.")
 					,MSGBOX_AUTOCLOSE)
 				
 				//Transition to prof battle event
@@ -940,10 +949,11 @@ script(local) Prof_Hop // He just does this a lot
 
 script VisCen_Liam
 {
+	setspeaker(SP_NAME_BOY)
 	// Flavor text
 	if(!flag(FLAG_EVENT_START))
 	{
-		msgbox(format("BOY: He said I'm a winner, but it doesn't change my goals!\p"
+		msgbox(format("He said I'm a winner, but it doesn't change my goals!\p"
 			"I'll catch the strongest Pokémon out there!")
 			,MSGBOX_NPC)
 		applymovement(LOCALID_LIAM, Common_Movement_FaceUp)
@@ -951,7 +961,7 @@ script VisCen_Liam
 	}
 	elif(!flag(FLAG_RIVAL_START))
 	{
-		msgbox(format("BOY: So, you're the one who won first place.\p"
+		msgbox(format("So, you're the one who won first place.\p"
 			"Just don't take the good one!")
 			,MSGBOX_NPC)
 	}
@@ -959,7 +969,7 @@ script VisCen_Liam
 	{
 		lock
 		faceplayer
-		msgbox(format("BOY: Picking me, huh? Well, I'm not about to miss my first shot!")
+		msgbox(format("Picking me, huh? Well, I'm not about to miss my first shot!")
 			,MSGBOX_YESNO)
 		
 		if(var(VAR_RESULT) == 1)
@@ -983,10 +993,11 @@ script VisCen_Liam
 
 script VisCen_Olive
 {
+	setspeaker(SP_NAME_GIRL)
 	// Flavor text
 	if(!flag(FLAG_EVENT_START))
 	{
-		msgbox(format("GIRL: Hmm… a free Pokémon, huh-?\l"
+		msgbox(format("Hmm… a free Pokémon, huh-?\l"
 			"That's a lot of responsibility…")
 			,MSGBOX_NPC)
 		applymovement(LOCALID_OLIVE, Common_Movement_FaceUp)
@@ -994,7 +1005,7 @@ script VisCen_Olive
 	}
 	elif(!flag(FLAG_RIVAL_START))
 	{
-		msgbox(format("GIRL: Lucky you-!\p"
+		msgbox(format("Lucky you-!\p"
 			"Did you hear? I get to have the last Pokémon!")
 			,MSGBOX_NPC)
 	}
@@ -1003,7 +1014,7 @@ script VisCen_Olive
 		lock
 		faceplayer
 		bufferspeciesname(2, VAR_OLIVE_STARTER)
-		msgbox(format("GIRL: {STR_VAR_3} and I…? Well, why not!")
+		msgbox(format("{STR_VAR_3} and I…? Well, why not!")
 			,MSGBOX_YESNO)
 		
 		if(var(VAR_RESULT) == 1)
@@ -1017,7 +1028,7 @@ script VisCen_Olive
 		}
 		else
 		{
-			msgbox(format("GIRL: Oh…? Well, why not?"))
+			msgbox(format("Oh…? Well, why not?"))
 			setflag(FLAG_OLIVE_NO)
 		}
 		release
@@ -1034,9 +1045,9 @@ script VisCen_Oyako
 		applymovement(LOCALID_OYA,Common_Movement_FaceUp)
 		applymovement(LOCALID_KO,Common_Movement_WalkInPlaceDown)
 		waitmovement(0)
-		msgbox(format("GIRL: Mom, mom! I want a Pokémon too!"))
+		msgbox(format("{SPEAKER NAME_GIRL}Mom, mom! I want a Pokémon too!"))
 		applymovement(LOCALID_OYA,Common_Movement_WalkInPlaceUp)
-		msgbox(format("MOTHER: Don't listen to the strange man, dear."))
+		msgbox(format("{SPEAKER NAME_MOTHER}Don't listen to the strange man, dear."))
 //	}
 	releaseall
 	end
@@ -1064,16 +1075,16 @@ script VisCen_Riajuu
 	waitmovement(0)
 	if(!flag(FLAG_EVENT_START))
 	{
-		msgbox(format("GIRL: If he chooses you, honey, can I have your Pokémon instead…?"))
+		msgbox(format("{SPEAKER NAME_GIRL}If he chooses you, honey, can I have your Pokémon instead…?"))
 		applymovement(LOCALID_KARESHI,Common_Movement_WalkInPlaceLeft)
-		msgbox(format("BOY: Huh?? I mean, o-of course you can, haha…"))
+		msgbox(format("{SPEAKER NAME_BOY}Huh?? I mean, o-of course you can, haha…"))
 	}
 	else
 	{
-		msgbox(format("GIRL: Aww, neither of our tickets won…\p"
+		msgbox(format("{SPEAKER NAME_GIRL}Aww, neither of our tickets won…\p"
 			"but you'll catch me a cute Pokémon anyway, right?"))
 		applymovement(LOCALID_KARESHI,Common_Movement_WalkInPlaceLeft)
-		msgbox(format("BOY: Of course, of course! {FONT_SMALL}Whew…"))
+		msgbox(format("{SPEAKER NAME_BOY}Of course, of course! {FONT_SMALL}Whew…"))
 	}
 	releaseall
 	end
@@ -1081,7 +1092,7 @@ script VisCen_Riajuu
 
 script VisCen_Beauty
 {
-	msgbox(format("LADY: This free Pokémon stuff sounds fishy if you ask me…\p"
+	msgbox(format("{SPEAKER NAME_LADY}This free Pokémon stuff sounds fishy if you ask me…\p"
 		"Is he even a real Professor?")
 		,MSGBOX_NPC)
 	end
@@ -1094,23 +1105,23 @@ script VisCen_LassGramps
 	waitmovement(0)
 	if(!flag(FLAG_EVENT_START))
 	{
-		msgbox(format("GIRL: Grandpa, did you hold onto your ticket?"))
+		msgbox(format("{SPEAKER NAME_GIRL}Grandpa, did you hold onto your ticket?"))
 		applymovement(LOCALID_GRAMPS,Common_Movement_WalkInPlaceUp)
-		msgbox(format("GRAMPS: Hm?{PAUSE 16} What's that??{PAUSE 16}\nSpeak up, kiddo!"))
+		msgbox(format("{SPEAKER NAME_OLDMAN}Hm?{PAUSE 16} What's that??{PAUSE 16}\nSpeak up, kiddo!"))
 		applymovement(LOCALID_LASS,Common_Movement_WalkInPlaceDown)
-		msgbox(format("GIRL: THE TICKET, GRANDPA.\n"
+		msgbox(format("{SPEAKER NAME_GIRL}THE TICKET, GRANDPA.\n"
 			"THE {COLOR BLUE}RAFFLE TICKET{COLOR DARK_GRAY} FOR A FREE POKéMON?"))
 		applymovement(LOCALID_GRAMPS,Common_Movement_WalkInPlaceUp)
-		msgbox(format("GRAMPS: Hah???"))
+		msgbox(format("{SPEAKER NAME_OLDMAN}Hah???"))
 	}
 	else
 	{
-		msgbox(format("GIRL: Looks like we didn't win, huh gramps?"))
+		msgbox(format("{SPEAKER NAME_GIRL}Looks like we didn't win, huh gramps?"))
 		applymovement(LOCALID_GRAMPS,Common_Movement_WalkInPlaceUp)
-		msgbox(format("GRAMPS: Givin' away Pokémon for free… hah!"
+		msgbox(format("{SPEAKER NAME_OLDMAN}Givin' away Pokémon for free… hah!"
 			"In my day, you had to wrangle your Pokémon with your own two hands!!"))
 		applymovement(LOCALID_LASS,Common_Movement_WalkInPlaceDown)
-		msgbox(format("GIRL: Is… that even remotely true?"))
+		msgbox(format("{SPEAKER NAME_GIRL}Is… that even remotely true?"))
 	}
 	releaseall
 	end
@@ -1126,7 +1137,7 @@ script VisCen_TechnologyMan
 
 text Liam_Pick_Txt
 {
-	"BOY: Then I'll take this one!"
+	"Then I'll take this one!"
 }
 text Liam_Receive_Txt
 {
@@ -1135,7 +1146,7 @@ text Liam_Receive_Txt
 }
 text Olive_Pick_Txt
 {
-	"GIRL: So, this one is mine?"
+	"So, this one is mine?"
 }
 text Olive_Receive_Txt
 {
