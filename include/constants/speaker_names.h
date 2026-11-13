@@ -12,6 +12,7 @@ enum SpeakerNames {
     SP_NAME_BOY,
     SP_NAME_GIRL,
     SP_NAME_MAN,
+    SP_NAME_WOMAN,
     SP_NAME_LADY,
     SP_NAME_MOTHER,
     SP_NAME_OLDMAN,
