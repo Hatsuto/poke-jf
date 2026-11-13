@@ -548,7 +548,7 @@ script VisCen_BallPick
 script(local) Battle_Transition
 {
 	//Fade to black
-	fadescreen(FADE_TO_BLACK)
+	fadescreenswapbuffers(FADE_TO_BLACK)
 	
 	//Move player in place
 	//warpsilent(MAP_VISITOR_CENTER, 0xFF, PLAYER_BATTLER_X, BATTLER_Y)
@@ -586,7 +586,7 @@ script(local) Battle_Transition
 	waitmovement(0)
 	
 	//Unfade
-	fadescreen(FADE_FROM_BLACK)
+	fadescreenswapbuffers(FADE_FROM_BLACK)
 	
 	//Battle start
 	switch(var(OPP_SPRITE_ID))
