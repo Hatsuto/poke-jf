@@ -420,7 +420,7 @@ script VisCen_BallPick
 		bufferspeciesname(2, VAR_OLIVE_STARTER)
 		waitmovement(0)
 		removeobject(VAR_BALL_ID)
-		setspeaker("OLIVE")
+		setspeaker(SP_NAME_GIRL)
 		msgbox(Olive_Pick_Txt)
 		setspeaker(SP_NAME_NONE)
 		playfanfare(MUS_RG_OBTAIN_KEY_ITEM)
