@@ -825,7 +825,7 @@
 	@ Starts a trainer battle with victory text if the player loses. Same as earlyrival but not for tutorial use.
 	@ and an optional event script. When used with an event script you can pass in an optional flag to disable music
 	.macro trainerbattle_no_whiteout trainer:req, intro_text:req, lose_text:req, victory_text:req, event_script=NULL, music=TRUE
-	trainerbattle OBJ_ID_NONE, \trainer, \intro_text, \lose_text, \event_script, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, \victory_text, NULL, FALSE, \music, FALSE, FALSE, TRUE, FALSE, TRUE, FALSE
+	trainerbattle OBJ_ID_NONE, \trainer, \intro_text, \lose_text, \event_script, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, \victory_text, NULL, FALSE, \music, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE
 	.endm
 
 	@ Starts a lavaridge gym battle
