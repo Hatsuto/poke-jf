@@ -828,7 +828,7 @@ script(local) VisCen_Closing_Event
 		"I'll be seeing you around!"))
 	
 	warp(MAP_VISITOR_CENTER, 0xFF, 8, 8)
-	
+	waitstate
 	releaseall
 	end
 }
