@@ -9,6 +9,12 @@ enum SpeakerNames {
     SP_NAME_SEQUOIA,
     SP_NAME_LIAM,
     SP_NAME_OLIVE,
+    SP_NAME_BOY,
+    SP_NAME_GIRL,
+    SP_NAME_MAN,
+    SP_NAME_LADY,
+    SP_NAME_MOTHER,
+    SP_NAME_OLDMAN,
     SP_NAME_COUNT
 };
 
