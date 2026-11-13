@@ -79,7 +79,7 @@ script VisCen_In_DoorBlock
 	playse(SE_LEDGE)
 	applymovement(PROF_ID,Prof_JumpOut)
 	waitmovement(0)
-	msgbox(format("???: Hey kid, hang on just a sec!"))
+	msgbox(format("{SPEAKER NAME_UNKNOWN}Hey kid, hang on just a sec!"))
 	closemessage
 	applymovement(OBJ_EVENT_ID_PLAYER,Common_Movement_FaceUp)
 	
@@ -90,6 +90,7 @@ script VisCen_In_DoorBlock
 		{ applymovement(PROF_ID,Prof_Approach_Right) }
 	waitmovement(0)
 	
+	setspeaker(SP_NAME_UNKNOWN)
 	if (flag(FLAG_PROF))
 	{
 		msgbox(format("You know, now that I get a good look at you…\p"
@@ -105,6 +106,7 @@ script VisCen_In_DoorBlock
 			"{FONT_NORMAL}Why don't you take this ticket?"
 			"One free per tourist!"))
 	}
+	setspeaker(SP_NAME_NONE)
 	
 	// Receive ticket
 	additem(ITEM_EON_TICKET,1)
@@ -113,7 +115,7 @@ script VisCen_In_DoorBlock
 		"{COLOR BLUE}strange professor{COLOR DARK_GRAY}!"))
 	waitfanfare
 	
-	msgbox(format("PROF: I'll go on ahead, just follow me! Trust me, it'll be worth it."))
+	msgbox(format("{SPEAKER NAME_UNKNOWN}I'll go on ahead, just follow me! Trust me, it'll be worth it."))
 	closemessage
 	
 	//Professor disappears out the door
@@ -139,10 +141,11 @@ script VisCen_In_Mom
 	lock
 	//setvar(VAR_LAST_TALKED,MOM_ID)
 	
+	setspeaker(SP_NAME_MOM)
 	// Check if whole starter event is over to proceed
 	if (flag(FLAG_VC_OUT_BALLS)) //Uses the same flag as for the pokeballs outside
 	{
-		msgbox(format("MOM: I just had a few more questions…"))
+		msgbox(format("I just had a few more questions…"))
 		call(Common_NPCNotice)
 		msgbox(format("Hm? What's that? Oh, are they already heading out…? So pushy!\p"
 			"…What's that you've got there?\nA Pokédex? And a Pokémon too??\p"
@@ -155,7 +158,7 @@ script VisCen_In_Mom
 		waitse
 		delay(32)
 		
-		msgbox(format("Well, let's hurry along now! We don't want to fall behind!")
+		msgbox(format("{SPEAKER NAME_MOM}Well, let's hurry along now! We don't want to fall behind!")
 			,MSGBOX_AUTOCLOSE)
 		
 		setflag(FLAG_VC_COMPLETE)
@@ -165,7 +168,7 @@ script VisCen_In_Mom
 	}
 	else
 	{
-		msgbox(format("MOM: Hi, I just had a few questions about the tour…"))
+		msgbox(format("Hi, I just had a few questions about the tour…"))
 		call(Common_NPCNotice)
 		msgbox(format("Oh, just a minute, dear. Why don't you take a look around for a while?")
 			,MSGBOX_AUTOCLOSE)
@@ -180,7 +183,7 @@ script VisCen_In_Professor
 	if (!flag(FLAG_PROF))
 	{
 		lock
-		msgbox(format("???: No, these guys won't do…\p"
+		msgbox(format("No, these guys won't do…\p"
 			"Maybe someone with a little more…"))
 		call(Common_NPCNotice)
 		msgbox(format("Huh…? What's with the look, kid?\p"
@@ -190,9 +193,9 @@ script VisCen_In_Professor
 	else
 	{
 		lock
-		msgbox(format("???: Surely one of these chumps have gotta be…"))
+		msgbox(format("Surely one of these chumps have gotta be…"))
 		call(Common_NPCNotice)
-		msgbox(format("???: Yeah alright I get it, hey why don't you {COLOR RED}go outside{COLOR DARK_GRAY} to play, maybe?"))
+		msgbox(format("Yeah alright I get it, hey why don't you {COLOR RED}go outside{COLOR DARK_GRAY} to play, maybe?"))
 	}
 	applymovement(PROF_ID,Common_Movement_FaceRight)
 	waitmovement(0)
@@ -278,19 +281,19 @@ script VisCen_In_PokeParents
 	{
 		applymovement(POKEDAD_ID, Common_Movement_WalkInPlaceFasterLeft)
 		waitmovement(0)
-		msgbox(format("MAN: Well we HAVE to see the\n"
+		msgbox(format("{SPEAKER NAME_MAN}Well we HAVE to see the\n"
 			"{COLOR BLUE}Seedot outside Thyme Village{COLOR DARK_GRAY}."))
 		applymovement(POKEMOM_ID, Common_Movement_WalkInPlaceFasterRight)
 		waitmovement(0)
-		msgbox(format("WOMAN: And don't forget the\n"
+		msgbox(format("{SPEAKER NAME_WOMAN}And don't forget the\n"
 			"{COLOR BLUE}Hatenna in the forest{COLOR DARK_GRAY}!"))
 		applymovement(POKEDAD_ID, Common_Movement_WalkInPlaceFasterLeft)
 		waitmovement(0)
-		msgbox(format("MAN: Do you think some {COLOR BLUE}Phantump\n"
+		msgbox(format("{SPEAKER NAME_MAN}Do you think some {COLOR BLUE}Phantump\n"
 			"{COLOR DARK_GRAY}will come out too??"))
 		applymovement(POKEMOM_ID, Common_Movement_WalkInPlaceFasterRight)
 		waitmovement(0)
-		msgbox(format("WOMAN: Oh I hope so!! This tour is going to be so exciting!")
+		msgbox(format("{SPEAKER NAME_WOMAN}Oh I hope so!! This tour is going to be so exciting!")
 			, MSGBOX_AUTOCLOSE)
 		setflag(FLAG_PARENTS)
 		releaseall
@@ -306,44 +309,47 @@ script VisCen_In_PokeParents
 }
 script VisCen_In_PokeKid
 {
+	setspeaker(SP_NAME_BOY)
 	if (!flag(FLAG_KID))
 	{
 		setflag(FLAG_KID)
-		msgbox(format("BOY: How can mom and dad get so giddy about some dumb tour?\p"
+		msgbox(format("How can mom and dad get so giddy about some dumb tour?\p"
 			"So cringe… I just wanna go home…")
 			,MSGBOX_NPC)
 	}
 	else
 	{
-		msgbox(format("BOY: Who wants to visit a dumb place like this anyway?")
+		msgbox(format("Who wants to visit a dumb place like this anyway?")
 			,MSGBOX_NPC)
 	}
 }
 
 script VisCen_In_Parasol
 {
+	setspeaker(SP_NAME_GIRL)
 	if (!flag(FLAG_PARASOL))
 	{
 		setflag(FLAG_PARASOL)
-		msgbox(format("GIRL: We're finally here!\p"
+		msgbox(format("We're finally here!\p"
 			"Fresh air, beautiful sights, bustling crowds…\p"
 			"I'm sure to find my inspiration on this trip, just you wait!")
 			,MSGBOX_NPC)
 	}
 	else
 	{
-		msgbox(format("GIRL: I guess I should make plans on where to go at each stop!")
+		msgbox(format("I guess I should make plans on where to go at each stop!")
 			,MSGBOX_NPC)
 	}
 }
 
 script VisCen_In_Birdman
 {
+	setspeaker(SP_NAME_MAN)
 	if(!flag(FLAG_BIRDMAN))
 	{
 		lockall
 		faceplayer
-		msgbox(format("MAN: Oh, hello there! Are you in our tour group as well?"
+		msgbox(format("Oh, hello there! Are you in our tour group as well?"
 			"Nice to meet you! \p"
 			"We're both so excited to see new things and make new friends!"))
 		
@@ -359,7 +365,7 @@ script VisCen_In_Birdman
 	}
 	else
 	{
-		msgbox(format("MAN: We'll see you on the trail!"),MSGBOX_NPC)
+		msgbox(format("We'll see you on the trail!"),MSGBOX_NPC)
 	}
 }
 script VisCen_In_Wingull
@@ -379,11 +385,12 @@ script(local) Wingull_Squawk
 
 script VisCen_In_Otaku
 {
+	setspeaker(SP_NAME_MAN)
 	if (var(VAR_CUTE_BABY) > 0)
 	{
 		lockall
 		faceplayer
-		msgbox(format("MAN: Hehe…{PAUSE 16} So you're back…{PAUSE 16}\p"
+		msgbox(format("Hehe…{PAUSE 16} So you're back…{PAUSE 16}\p"
 			"Then you must…{PAUSE 16}\n"
 			"want to see…{PAUSE 16} {COLOR RED}more{COLOR DARK_GRAY}?")
 			,MSGBOX_YESNO)
@@ -393,7 +400,7 @@ script VisCen_In_Otaku
 	{
 		lockall
 		faceplayer
-		msgbox(format("MAN: Hehe…{PAUSE 16} Hey kid…\p"
+		msgbox(format("Hehe…{PAUSE 16} Hey kid…\p"
 			"Do you wanna…{PAUSE 16}\n"
 			"See something…{PAUSE 16} {SHADOW DARK_GRAY}amazing{SHADOW LIGHT_GRAY}?")
 			,MSGBOX_YESNO)
@@ -411,12 +418,12 @@ script(local) VisCen_In_Otaku_Agree
 	
 	call(VisCen_In_Otaku_ChoiceLoop)
 	
-	msgbox(format("Right here…{PAUSE 16} in this brochure…{PAUSE 16}\p"
+	msgbox(format("{SPEAKER NAME_MAN}Right here…{PAUSE 16} in this brochure…{PAUSE 16}\p"
 		"…You see it?{PAUSE 16} Isn't it cute…?"))
 	closemessage
 	hidemonpic
 	
-	msgbox(format("I want to find…{PAUSE 16} all the cutest Pokémon in the Sekien region…\p"
+	msgbox(format("{SPEAKER NAME_MAN}I want to find…{PAUSE 16} all the cutest Pokémon in the Sekien region…\p"
 		"Hehe…{PAUSE 16} I hope you find some cute Pokémon too…")
 		,MSGBOX_AUTOCLOSE)
 	release

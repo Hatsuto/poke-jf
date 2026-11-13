@@ -40,7 +40,7 @@ script VisCen_Street_Opening
 	applymovement(OBJ_EVENT_ID_PLAYER,Common_Movement_FaceRight)
 	applymovement(MOM_ID,Mom_Approach)
 	waitmovement(0)
-	msgbox(format("MOM: {PLAYER}, we're finally here!\n"
+	msgbox(format("{SPEAKER NAME_MOM}{PLAYER}, we're finally here!\n"
     	"Did you enjoy the ride?\p"
         "I'm still not sure why you wanted to sit with all the luggage…\p"
 		"We have a lot of walking ahead of us,\n"
