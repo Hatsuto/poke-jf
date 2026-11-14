@@ -1,0 +1,652 @@
+const WINGULL_ID = 5
+const MOM_ID = 8
+const GUIDE_ID = 7
+const BALLGUY_ID = 1
+const LIAM_ID = 3
+
+const NPC_TOP1_ID = 9
+const NPC_TOP2_ID = 10
+const NPC_BOT1_ID = 13
+const NPC_BOT2_ID = 12
+const NPC_MID_ID = 11
+
+const EVENT_Y = 11
+
+const ROAD_Y1 = 10
+const ROAD_Y2 = 15
+
+// Global flags/vars used
+//	VAR_ROUTE_1_STATE: 0 initial, 1 route entered
+//	VAR_LIAM_SOCIAL_LINK
+//	VAR_OLIVE_SOCIAL_LINK
+//	FLAG_ROUTE_1_ROAD_NPC
+//	FLAG_ROUTE_1_PATH_NPC
+//	FLAG_ROUTE_1_BALL_GUY: for initial 5 balls. Will always give player 1 if empty
+//	FLAG_ITEM_ROUTE_1_POTION
+
+// Temp vars
+//	Player x, y (0, 1)
+//	BALL_LOOP (2)
+//	count of party pokemon (3)
+const PLAYER_X = VAR_TEMP_0
+const PLAYER_Y = VAR_TEMP_1
+const VAR_BALL_LOOP = VAR_TEMP_2
+const VAR_POKEMON_COUNT = VAR_TEMP_3
+
+mapscripts Route01_MapScripts{}
+
+//On first entering the area
+script Route1_TourGuide
+{	
+	// player moves into position near mom
+	delay(15)
+	applymovement(MOM_ID, Common_Movement_WalkInPlaceRight)
+	waitmovement(0)
+	delay(15)
+	
+	getplayerxy(PLAYER_X, PLAYER_Y)
+	
+	switch(var(PLAYER_Y))
+	{
+		case EVENT_Y:
+			applymovement(OBJ_EVENT_ID_PLAYER, Player_TopToMom)
+		
+		case EVENT_Y+1:
+			applymovement(OBJ_EVENT_ID_PLAYER, Player_MidToMom)
+		
+		case EVENT_Y+2:
+			applymovement(OBJ_EVENT_ID_PLAYER, Player_BotToMom)
+	}
+	waitmovement(0)
+	applymovement(MOM_ID, Common_Movement_WalkInPlaceLeft)
+	waitmovement(0)
+	
+	// tour guide dialogue
+	applymovement(BALLGUY_ID, Common_Movement_FaceDown)
+	waitmovement(0)
+	call(Group_Attention)
+	applymovement(GUIDE_ID, Common_Movement_WalkInPlaceRight)
+	waitmovement(0)
+	
+	setspeaker("GUIDE")
+	msgbox(format("Alright, is everyone present?\p"
+		"As I was saying, welcome, everyone, to the Sekien region tour!\p"
+		"We hope to show you all the beautiful sights we have here,"
+		"as well as our biggest cities and attractions!\p"
+		"We'll be moving through each area on a regular schedule,"
+		"so please try and stay with the group."))
+	closemessage
+	
+	applymovement(GUIDE_ID, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	call(Group_OurNextStop)
+	
+	setspeaker("GUIDE")
+	msgbox(format("Our first stop is {COLOR RED}Thyme Village{COLOR DARK_GRAY},"
+		"one of our important nature reserves."))
+	closemessage
+	
+	applymovement(GUIDE_ID, Common_Movement_WalkInPlaceLeft)
+	waitmovement(0)
+	call(Group_OnYourLeft)
+	
+	setspeaker("GUIDE")
+	msgbox(format("For the adventurous, we recommend"
+		"the scenic route, this way.\p"
+		"Be warned, of course, that wild Pokémon may lurk in tall grass.\l"
+		"Be sure to use a Repel!"))
+	closemessage
+	
+	applymovement(BALLGUY_ID, Common_Movement_FaceRight)
+	applymovement(GUIDE_ID, Common_Movement_WalkRight)
+	waitmovement(0)
+	
+	setspeaker("GUIDE")
+	msgbox(format("And for those who signed up for our\n"
+		"{PKMN} Experience Package,\l"
+		"don't forget to pick up your complimentary"
+		"{COLOR BLUE}Trainer supplies!{COLOR DARK_GRAY}"))
+	closemessage
+	
+	setvar(VAR_LAST_TALKED, BALLGUY_ID)
+	call(Common_NPCNotice)
+	
+	applymovement(MOM_ID, Common_Movement_WalkInPlaceUp)
+	waitmovement(0)
+	msgbox(format("{SPEAKER NAME_MOM}{PLAYER}, why don't you take the scenic route?\p"
+		"Your mom is tired from the trip…\n"
+		"Let's meet up in town, okay?"))
+	closemessage
+	
+	applymovement(MOM_ID, Common_Movement_WalkInPlaceLeft)
+	waitmovement(0)
+	applymovement(GUIDE_ID, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	call(Group_Attention)
+	
+	setspeaker("GUIDE")
+	msgbox(format("Now, let's be off!"))
+	closemessage
+	
+	// NPC's walk down while screen fades
+	//lol just kidding it's gonna fade to black and go *door sfx*
+	setvar(VAR_ROUTE_1_STATE, 1)
+	setflag(FLAG_ROUTE_1_ROAD_NPC)
+	
+	playse(SE_EXIT)
+	warp(MAP_ROUTE01, 0xFF, 25, 12)
+	
+	releaseall
+	end
+}
+script(local) Group_Attention
+{
+	applymovement(NPC_TOP2_ID,Common_Movement_FaceDown)
+	applymovement(NPC_MID_ID,Common_Movement_FaceLeft)
+	
+	delay(8)
+	applymovement(NPC_TOP1_ID,Common_Movement_FaceDown)
+	applymovement(NPC_BOT2_ID,Common_Movement_FaceUp)
+	
+	delay(8)
+	applymovement(MOM_ID,Common_Movement_FaceLeft)
+	
+	delay(8)
+	applymovement(NPC_BOT1_ID,Common_Movement_FaceUp)
+	
+	waitmovement(0)
+}
+script(local) Group_OurNextStop
+{
+	applymovement(NPC_TOP2_ID,Common_Movement_FaceDown)
+	applymovement(NPC_MID_ID,Common_Movement_FaceDown)
+	
+	delay(8)
+	applymovement(NPC_TOP1_ID,Common_Movement_FaceDown)
+	applymovement(NPC_BOT2_ID,Common_Movement_FaceDown)
+	
+	delay(8)
+	applymovement(MOM_ID,Common_Movement_FaceDown)
+	
+	delay(8)
+	applymovement(NPC_BOT1_ID,Common_Movement_FaceDown)
+	
+	waitmovement(0)
+}
+script(local) Group_OnYourLeft
+{
+	applymovement(NPC_TOP2_ID,Common_Movement_FaceLeft)
+	applymovement(NPC_MID_ID,Common_Movement_FaceLeft)
+	
+	delay(8)
+	applymovement(NPC_TOP1_ID,Common_Movement_FaceLeft)
+	applymovement(NPC_BOT2_ID,Common_Movement_FaceLeft)
+	
+	delay(8)
+	applymovement(MOM_ID,Common_Movement_FaceLeft)
+	
+	delay(8)
+	applymovement(NPC_BOT1_ID,Common_Movement_FaceLeft)
+	
+	waitmovement(0)
+}
+
+//Tile events
+script Route1_RoadBlock
+{
+	//do not let player enter road, step back
+	lock
+	msgbox("{COLOR LIGHT_BLUE}{SHADOW WHITE}I shouldn't walk on the road…"
+		,MSGBOX_AUTOCLOSE)
+	getplayerxy(PLAYER_X, PLAYER_Y)
+	if (var(PLAYER_Y) == ROAD_Y1)
+	{
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown)
+	}
+	else
+	{
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp)
+	}
+	waitmovement(0)
+	release
+	end
+}
+script Route1_LiamBlock //Attempt to pass by
+{
+	lock
+	
+	//Liam: !
+	// turn to player
+	setvar(VAR_LAST_TALKED, LIAM_ID)
+	Call(Common_NPCNotice)
+	
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
+	waitmovement(0)
+	
+	goto(Route1_LiamTalk)
+}
+script Route1_Liam //Talk directly
+{
+	lock
+	faceplayer
+	
+	goto(Route1_LiamTalk)
+}
+
+//Persistent NPC's
+script Route1_BallGuy
+{
+	setspeaker("EMPLOYEE")
+	if (!flag(FLAG_ROUTE_1_BALL_GUY))
+	{
+		lockall
+		faceplayer
+		
+		//give player initial 5 pokeballs
+		msgbox(format("Hello, and thank you for choosing us for your tour!\p"
+			"Are you an aspiring trainer? Then please, take these!"))
+		
+		giveitem(ITEM_POKE_BALL,5)
+		giveitem(ITEM_POTION,3)
+		
+		msgbox(format("Some Pokéballs and Potions, courtesy of our local Pokémart!\p"
+			"Make sure to {COLOR BLUE}weaken Pokémon"
+			"before trying to catch them{COLOR DARK_GRAY},"
+			"and feel free to {COLOR BLUE}use potions"
+			"if yours start to feel tired{COLOR DARK_GRAY}!\p"
+			"And be sure to visit any Pokémart to stock up once you run out!"), MSGBOX_AUTOCLOSE)
+		
+		setflag(FLAG_ROUTE_1_BALL_GUY)
+	}
+	else
+	{
+		call(Check_Balls)
+		if (var(VAR_RESULT) == 0)
+		{
+			if (!flag(FLAG_ROUTE_1_PATH_NPC))
+			{
+				//no cheesing!
+				msgbox(format("Sorry, we only prepared one starter kit per trainer."
+					"You'll have to visit the Pokémart in the next town for more!")
+					, MSGBOX_NPC)
+			}
+			else
+			{
+				//give a single pokeball
+				lockall
+				faceplayer
+				
+				msgbox(format("Hello again! Have you run low on Pokéballs?\p"
+					"Not to worry. We're fully restocked, so have one on the house!"))
+				
+				giveitem(ITEM_POKE_BALL,1)
+				
+				msgbox(format("When using a Pokéball, be sure you weaken the wild Pokémon first.\p"
+					"Immobilizing them with a status effect may also help.\p"
+					"Good luck out there!")
+					, MSGBOX_AUTOCLOSE)
+			}
+		}
+		else
+		{
+			//regular dialogue
+			msgbox(format("Be sure to visit our Pokémarts to stock up on supplies!")
+				, MSGBOX_NPC)
+		}
+	}
+	
+	release
+	end
+}
+script(local) Check_Balls
+{
+	//loop through pokeball ID's until exhausted or at least 1 is found
+	//Realistically not going to worry about anything outside of POKE-CHERISH balls
+	setvar(VAR_BALL_LOOP, ITEM_POKE_BALL)
+	do
+	{
+		checkitem(VAR_BALL_LOOP, 1)
+		if (var(VAR_RESULT) == 1)
+		{
+			break
+		}
+		addvar(VAR_BALL_LOOP, 1)
+	} while (var(VAR_BALL_LOOP) <= ITEM_CHERISH_BALL)
+}
+script Route1_GrassKid
+{
+	msgbox(format("I dropped some money trying to rush back to the Center earlier.\p"
+		"I bet that darned Fletchling is already making a nest out of my cash…"), MSGBOX_NPC)
+}
+
+//Objects
+script Route1_RoadSign
+{
+	msgbox(format("Please do not block traffic."), MSGBOX_SIGN)
+}
+script Route1_GrassSign
+{
+	msgbox(format("ROUTE 1 - Walking Trail\n"
+		"Be on the lookout for wild Pokémon in the tall grass!"), MSGBOX_SIGN)
+}
+//Item ball: Route1_EventScript_ItemPotion
+
+//Tour NPC's
+script Route1_Birdman
+{
+	msgbox(format("{SPEAKER NAME_MAN}So this is the Sekien region!\p"
+		"I heard there's some pretty interesting wildlife here…\p"
+		"But well, we are still kinda close to the roads.")
+		, MSGBOX_NPC)
+}
+script Route1_Wingull
+{
+	lock
+	faceplayer
+	applymovement(WINGULL_ID,Common_Movement_QuestionMark)
+	playmoncry(SPECIES_WINGULL,0)
+	waitmoncry
+	release
+	end
+}
+script Route1_Olive
+{
+	lock
+	faceplayer
+	switch(var(VAR_ROUTE_1_OLIVE))
+	{
+		case 0: //Olive has not been talked to yet on this route
+			// Set Olive's starter species buffer
+			call(RivalLink_Get_OliveStarter)
+			bufferspeciesname(0, VAR_RESULT)
+			
+			//If battled prior, tired, otherwise new battle prompt
+			switch(var(VAR_VISCEN_STATE))
+			{
+				case 0xB0: //battle lost
+				case 0xB1: //battle won
+					setvar(VAR_ROUTE_1_OLIVE, 0x30) //Battle bypassed
+					msgbox(format("{SPEAKER NAME_OLIVE}Oh, hello again! {PLAYER}, right?\p"
+						"After our battle, {STR_VAR_1} was suddenly so excited to head out.\l"
+						"I wonder what they're thinking…?\p"
+						"Mr. Sequoia said we should try to catch more Pokémon ourselves,"
+						"but we are taking a short rest here.\p"
+						"I think {COLOR BLUE}that boy {COLOR DARK_GRAY}"
+						"was looking for you, though. Maybe he's nearby?")
+						, MSGBOX_AUTOCLOSE)
+				default: //didn't battle yet
+					setvar(VAR_ROUTE_1_OLIVE, 0x10) //talked to
+					msgbox(format("{SPEAKER NAME_GIRL}Oh, hello! You're the one from the raffle, yes…?\p"
+						"I must not have introduced myself. My name is {COLOR BLUE}Olive{COLOR DARK_GRAY}!\p"
+						"We watched your battle earlier… Yes, {STR_VAR_1} and I.\p"
+						"She was so excited after watching you that we went ahead right away!"))
+					
+					//Comments on whether you have caught a pokemon yet or not
+					getpartysize
+					if (var(VAR_RESULT) > 1)
+					{
+						msgbox(format("I see you have already started making new friends as well!\p"
+							"I am sure Mr. Sequoia would be happy with us."))
+					}
+					else
+					{
+						msgbox(format("Have you thought about making some new friends along the way?\p"
+							"Mr. Sequoia said we should do our best to, so we have!"))
+					}
+					
+					//Battle prompt
+					msgbox(format("Before we settle in for a break… what do you say?\l"
+						"Would you like to play with us too?"), MSGBOX_YESNO)
+					goto(Route1_Olive_Confirm)
+			}
+			
+		case 0x10: // battle refused once already
+			bufferleadmonspeciesname(0)
+			msgbox(format("{SPEAKER NAME_OLIVE}Hello again! Did you need something?\p"
+				"…Oh! Did you and your {STR_VAR_1} want to play?")
+				, MSGBOX_YESNO)
+			goto(Route1_Olive_Confirm)
+		
+		case 0x11: // battle started but not won
+			setvar(VAR_ROUTE_1_OLIVE, 0x20)
+			msgbox(format("{SPEAKER NAME_OLIVE}I'm so sorry for before!"
+				"I hope your Pokémon are alright.\p"
+				"Thank you for playing with us. We feel all energized now!")
+				, MSGBOX_AUTOCLOSE)
+		
+		case 0x20: // Post-battle, win or lose
+			msgbox(format("{SPEAKER NAME_OLIVE}We're still thinking about the"
+				"League Challenge ourselves…\p"
+				"It sounds like it would be a lot of work, but it could be fun, too.")
+				, MSGBOX_AUTOCLOSE)
+			
+		case 0x30: //Olive battled first, already spoken to once
+			msgbox(format("{SPEAKER NAME_OLIVE}Isn't the weather perfect for a quiet walk?\p"
+				"If you take it slow, you can even avoid most of the tall grass.")
+				, MSGBOX_AUTOCLOSE)
+	}
+	release
+	end
+}
+script(local) Route1_Olive_Confirm
+{
+	if (var(VAR_RESULT) == 1)
+	{
+		addvar(VAR_ROUTE_1_OLIVE, 0x1)
+		call(RivalLink_Add_Olive)
+		switch(var(VAR_STARTER_MON))
+		{
+			case 0: //GRS
+				trainerbattle_single(TRAINER_ROUTE_1_OLIVE_WTR,
+					Route1_Olive_Intro, Route1_Olive_Loss, Route1_Olive_PostBattle)
+			case 1: //FIR
+				trainerbattle_single(TRAINER_ROUTE_1_OLIVE_GRS,
+					Route1_Olive_Intro, Route1_Olive_Loss, Route1_Olive_PostBattle)
+			case 2: //WTR
+				trainerbattle_single(TRAINER_ROUTE_1_OLIVE_FIR,
+					Route1_Olive_Intro, Route1_Olive_Loss, Route1_Olive_PostBattle)
+		}
+	}
+	else
+	{
+		msgbox(format("Oh, I understand! You must be tired, too.\p"
+			"Well, we will be here for a while before going to Thyme.\l"
+			"Why don't you take a break, too?")
+			, MSGBOX_AUTOCLOSE)
+		release
+		end
+	}
+}
+text(local) Route1_Olive_Intro
+{
+	"I thought you might!"
+}
+text(local) Route1_Olive_Loss
+{
+	"Haha, we lost!"
+}
+script(local) Route1_Olive_PostBattle
+{
+	lock
+	setvar(VAR_ROUTE_1_OLIVE, 0x20) //Battle resolved
+	getpartysize
+	if (var(VAR_RESULT) > 1)
+	{
+		msgbox(format("{SPEAKER NAME_OLIVE}You are already quite used to this, aren't you?\p"
+			"Are you going to take the Sekien League Challenge as well?\p"
+			"I heard that the tour sponsors challengers, but nobody has really mentioned it…")
+			, MSGBOX_AUTOCLOSE)
+	}
+	else
+	{
+		msgbox(format("{SPEAKER NAME_OLIVE}You two are really quite confident, aren't you?\p"
+			"I suppose you are taking the Sekien League Challenge, then?"
+			"I heard that the tour sponsors challengers, but nobody has really mentioned it…")
+			, MSGBOX_AUTOCLOSE)
+	}
+	release
+	end
+}
+
+script(local) Route1_LiamTalk
+{
+	switch(var(VAR_ROUTE_1_LIAM))
+	{
+		case 0:
+			switch(var(VAR_VISCEN_STATE))
+			{
+				case 0xA0: //battle lost
+					setvar(VAR_ROUTE_1_LIAM, 0x30) //no battle
+					msgbox(format("{SPEAKER NAME_LIAM}Oh, it's you… {PLAYER}, was it?\p"
+						"You might've noticed, but Pokémon tire really easily.\p"
+						"They can only use their moves so much, and if they faint that's it.\p"
+						"You should really bring lots of items… if you plan to keep up, anyway."))
+				case 0xA1: //battle won
+					setvar(VAR_ROUTE_1_LIAM, 0x30) //no battle
+					msgbox(format("{SPEAKER NAME_LIAM}Oh, {PLAYER}.\p"
+						"You really surprised me, winning right after just meeting your Pokémon.\p"
+						"But I'm not about to fall behind, alright?\p"
+						"I've already caught some of the Pokémon on this path…\l"
+						"I'm just taking a short break.\p"
+						"Have you seen that other girl yet? She's around here too.\p"
+						"I think I might challenge her once we're all in Thyme.")
+						,MSGBOX_AUTOCLOSE)
+				
+				default:
+					setvar(VAR_ROUTE_1_LIAM, 0x10) //talked to, battleable
+					msgbox(format("{SPEAKER NAME_BOY}Hey, you're the other one from the raffle, right?\p"
+					"Was it {PLAYER}…? I overheard before your battle."))
+					switch(var(VAR_VISCEN_STATE))
+					{
+						case 0xB0:
+							msgbox(format("{COLOR BLUE}That girl {COLOR DARK_GRAY}"
+								"is more skilled than she looks, huh? Or was it bad luck?"))
+							
+						case 0xB1:
+							msgbox(format("You're pretty good at this, huh?"
+								"Or was {COLOR BLUE}that girl {COLOR DARK_GRAY}just not into it?"))
+							
+						case 0xC0:
+						case 0xC1:
+							msgbox(format("That {COLOR BLUE}weird professor{COLOR DARK_GRAY}…"
+								"he's not telling us the whole story, huh?"))
+					}
+					
+					//battle leadup
+					msgbox(format("{SPEAKER NAME_LIAM}Anyway, my name's {COLOR BLUE}Liam.\p"
+						"{COLOR DARK_GRAY}But more importantly, I wanna see something for myself:\l"
+						"Just how good are you as a rival?\p"
+						"What do you say? How about a battle?")
+						, MSGBOX_YESNO)
+					goto(Route1_Liam_Confirm)
+			}
+		case 0x10: // Talked to, not battled
+			msgbox(format("{SPEAKER NAME_LIAM}Heading into town? Or did you change your mind about battling me?")
+				,MSGBOX_YESNO)
+			goto(Route1_Liam_Confirm)
+		case 0x11: // Battle started but not won (lost)
+			setvar(VAR_ROUTE_1_LIAM, 0x20)
+			msgbox(format("{SPEAKER NAME_LIAM}Hey, are you alright?\p"
+				"I need you to get stronger on this trip too, okay?\p"
+				"{COLOR BLUE}That professor {COLOR DARK_GRAY}said we're rivals now, so you have to keep up!\p"
+				"I'm expecting more of a challenge next time we battle!")
+				, MSGBOX_AUTOCLOSE)
+		case 0x20: // Post-battle
+			msgbox(format("{SPEAKER NAME_LIAM}Did you notice? I really tried to get a head start.\p"
+				"Catching lots of Pokémon is the key to being ready for anything.")
+				, MSGBOX_AUTOCLOSE)
+		case 0x30:
+			msgbox(format("{SPEAKER NAME_LIAM}If you're still hanging around here, you should catch more Pokémon.\p"
+				"You can travel with six, so there's no reason to ever have any less.")
+				, MSGBOX_AUTOCLOSE)
+	}
+	release
+	end
+}
+script(local) Route1_Liam_Confirm
+{
+	if (var(VAR_RESULT) == 1) //yes to battle
+	{
+		addvar(VAR_ROUTE_1_LIAM, 0x1) //battle started
+		call(RivalLink_Add_Liam)
+		switch(var(VAR_STARTER_MON))
+		{
+			case 0: //GRS
+				trainerbattle_single(TRAINER_ROUTE_1_LIAM_FIR,
+					Route1_Liam_Intro, Route1_Liam_Loss, Route1_Liam_PostBattle)
+			case 1: //FIR
+				trainerbattle_single(TRAINER_ROUTE_1_LIAM_WTR,
+					Route1_Liam_Intro, Route1_Liam_Loss, Route1_Liam_PostBattle)
+			case 2: //WTR
+				trainerbattle_single(TRAINER_ROUTE_1_LIAM_GRS,
+					Route1_Liam_Intro, Route1_Liam_Loss, Route1_Liam_PostBattle)
+		}
+	}
+	else //no to battle
+	{
+		msgbox(format("Huh? Why not? Oh, I get it.\l"
+			"You want to get stronger first, right?\p"
+			"I'll just have to battle you later on. We've got time!")
+			,MSGBOX_AUTOCLOSE)
+		release
+		end
+	}
+}
+text(local) Route1_Liam_Intro
+{
+	"Good answer!"
+}
+text(local) Route1_Liam_Loss
+{
+	"Huh? I'm already out of Pokémon…"
+}
+script(local) Route1_Liam_PostBattle
+{
+	lock
+	setvar(VAR_ROUTE_1_LIAM, 0x20) //Battle resolved
+	
+	setspeaker(SP_NAME_LIAM)
+	//react based on if you lost to Olive first or not
+	if (var(VAR_VISCEN_STATE) == 0xB0)
+	{
+		msgbox(format("For real…? Am I the weakest link?\l"
+			"No, we just got started after all."
+			"There's lots of time to get stronger!"))
+	}
+	else
+	{
+		msgbox(format("You guys are actually pretty strong, huh?\p"
+			"I won't underestimate you a second time!"))
+	}
+	
+	msgbox(format("By the way, have you heard of the Sekien League Challenge?\p"
+		"That's what I came here for, not any of this tourist stuff.\p"
+		"So I need you to keep battling us along the way, okay?\p"
+		"You'll probably keep getting stronger too, so we could both use the practice.")
+		,MSGBOX_AUTOCLOSE)
+	
+	release
+	end
+}
+
+// Movement
+movement Player_TopToMom
+{
+	walk_left
+	walk_left
+}
+
+movement Player_MidToMom
+{
+	walk_left
+	walk_up
+	walk_left
+}
+
+movement Player_BotToMom
+{
+	walk_left
+	walk_up
+	walk_up
+	walk_left
+}

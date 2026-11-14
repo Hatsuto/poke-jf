@@ -393,7 +393,7 @@ VisCen_BallPick_29:
 # 422 "data/maps/VisitorCenter/scripts.pory"
 	removeobject VAR_TEMP_7
 # 423 "data/maps/VisitorCenter/scripts.pory"
-	setspeaker VisCen_BallPick_Text_7
+	setspeaker SP_NAME_GIRL
 # 424 "data/maps/VisitorCenter/scripts.pory"
 	msgbox Olive_Pick_Txt
 # 425 "data/maps/VisitorCenter/scripts.pory"
@@ -411,7 +411,7 @@ VisCen_BallPick_29:
 # 432 "data/maps/VisitorCenter/scripts.pory"
 	waitmovement 0
 # 433 "data/maps/VisitorCenter/scripts.pory"
-	msgbox VisCen_BallPick_Text_8
+	msgbox VisCen_BallPick_Text_7
 # 435 "data/maps/VisitorCenter/scripts.pory"
 	closemessage
 # 437 "data/maps/VisitorCenter/scripts.pory"
@@ -421,7 +421,7 @@ VisCen_BallPick_29:
 # 439 "data/maps/VisitorCenter/scripts.pory"
 	setspeaker SP_NAME_BOY
 # 440 "data/maps/VisitorCenter/scripts.pory"
-	msgbox VisCen_BallPick_Text_9
+	msgbox VisCen_BallPick_Text_8
 # 441 "data/maps/VisitorCenter/scripts.pory"
 	closemessage
 # 443 "data/maps/VisitorCenter/scripts.pory"
@@ -429,7 +429,7 @@ VisCen_BallPick_29:
 # 444 "data/maps/VisitorCenter/scripts.pory"
 	waitmovement 0
 # 445 "data/maps/VisitorCenter/scripts.pory"
-	msgbox VisCen_BallPick_Text_10
+	msgbox VisCen_BallPick_Text_9
 # 447 "data/maps/VisitorCenter/scripts.pory"
 	closemessage
 # 449 "data/maps/VisitorCenter/scripts.pory"
@@ -439,7 +439,7 @@ VisCen_BallPick_29:
 # 451 "data/maps/VisitorCenter/scripts.pory"
 	setspeaker SP_NAME_GIRL
 # 452 "data/maps/VisitorCenter/scripts.pory"
-	msgbox VisCen_BallPick_Text_11
+	msgbox VisCen_BallPick_Text_10
 # 453 "data/maps/VisitorCenter/scripts.pory"
 	closemessage
 # 455 "data/maps/VisitorCenter/scripts.pory"
@@ -449,7 +449,7 @@ VisCen_BallPick_29:
 # 457 "data/maps/VisitorCenter/scripts.pory"
 	waitmovement 0
 # 458 "data/maps/VisitorCenter/scripts.pory"
-	msgbox VisCen_BallPick_Text_12, MSGBOX_YESNO
+	msgbox VisCen_BallPick_Text_11, MSGBOX_YESNO
 # 462 "data/maps/VisitorCenter/scripts.pory"
 	compare VAR_RESULT, 1
 	goto_if_eq VisCen_BallPick_34
@@ -458,7 +458,7 @@ VisCen_BallPick_29:
 # 476 "data/maps/VisitorCenter/scripts.pory"
 	waitmovement 0
 # 477 "data/maps/VisitorCenter/scripts.pory"
-	msgbox VisCen_BallPick_Text_14
+	msgbox VisCen_BallPick_Text_13
 # 480 "data/maps/VisitorCenter/scripts.pory"
 	random 2
 # 482 "data/maps/VisitorCenter/scripts.pory"
@@ -474,7 +474,7 @@ VisCen_BallPick_29:
 	case 2, VisCen_BallPick_49
 VisCen_BallPick_45:
 # 536 "data/maps/VisitorCenter/scripts.pory"
-	msgbox VisCen_BallPick_Text_17
+	msgbox VisCen_BallPick_Text_16
 # 538 "data/maps/VisitorCenter/scripts.pory"
 	closemessage
 # 539 "data/maps/VisitorCenter/scripts.pory"
@@ -482,7 +482,7 @@ VisCen_BallPick_45:
 # 540 "data/maps/VisitorCenter/scripts.pory"
 	waitmovement 0
 # 541 "data/maps/VisitorCenter/scripts.pory"
-	msgbox VisCen_BallPick_Text_18
+	msgbox VisCen_BallPick_Text_17
 # 544 "data/maps/VisitorCenter/scripts.pory"
 	setvar VAR_VISCEN_STATE, 0x20
 # 545 "data/maps/VisitorCenter/scripts.pory"
@@ -587,7 +587,7 @@ VisCen_BallPick_33:
 
 VisCen_BallPick_34:
 # 464 "data/maps/VisitorCenter/scripts.pory"
-	msgbox VisCen_BallPick_Text_13
+	msgbox VisCen_BallPick_Text_12
 # 471 "data/maps/VisitorCenter/scripts.pory"
 	setflag FLAG_TEMP_5
 	goto VisCen_BallPick_6
@@ -603,7 +603,7 @@ VisCen_BallPick_38:
 	case 2, VisCen_BallPick_44
 VisCen_BallPick_41:
 # 501 "data/maps/VisitorCenter/scripts.pory"
-	msgbox VisCen_BallPick_Text_15
+	msgbox VisCen_BallPick_Text_14
 # 503 "data/maps/VisitorCenter/scripts.pory"
 	closemessage
 # 504 "data/maps/VisitorCenter/scripts.pory"
@@ -611,7 +611,7 @@ VisCen_BallPick_41:
 # 505 "data/maps/VisitorCenter/scripts.pory"
 	waitmovement 0
 # 506 "data/maps/VisitorCenter/scripts.pory"
-	msgbox VisCen_BallPick_Text_16
+	msgbox VisCen_BallPick_Text_15
 # 509 "data/maps/VisitorCenter/scripts.pory"
 	setvar VAR_VISCEN_STATE, 0x10
 # 510 "data/maps/VisitorCenter/scripts.pory"
@@ -1805,40 +1805,36 @@ VisCen_BallPick_Text_6:
 	.string "as well?$"
 
 VisCen_BallPick_Text_7:
-# 423 "data/maps/VisitorCenter/scripts.pory"
-	.string "OLIVE$"
-
-VisCen_BallPick_Text_8:
 # 433 "data/maps/VisitorCenter/scripts.pory"
 	.string "{SPEAKER NAME_UNKNOWN}So, what do you think of your new\n"
 	.string "partners?\p"
 	.string "Some rare choices, right? Wasn't easy\n"
 	.string "to get a hold of 'em…$"
 
-VisCen_BallPick_Text_9:
+VisCen_BallPick_Text_8:
 # 440 "data/maps/VisitorCenter/scripts.pory"
 	.string "Partners, huh…? These Pokémon?$"
 
-VisCen_BallPick_Text_10:
+VisCen_BallPick_Text_9:
 # 445 "data/maps/VisitorCenter/scripts.pory"
 	.string "{SPEAKER NAME_UNKNOWN}That's right, your first Pokémon for a\n"
 	.string "new journey!\p"
 	.string "Much more exciting than some boring\n"
 	.string "sightseeing, yeah?$"
 
-VisCen_BallPick_Text_11:
+VisCen_BallPick_Text_10:
 # 452 "data/maps/VisitorCenter/scripts.pory"
 	.string "I was rather looking forward to the\n"
 	.string "sightseeing, actually…$"
 
-VisCen_BallPick_Text_12:
+VisCen_BallPick_Text_11:
 # 458 "data/maps/VisitorCenter/scripts.pory"
 	.string "{SPEAKER NAME_UNKNOWN}…But I can already see the excitement\n"
 	.string "in your child eyes!\p"
 	.string "You're itchin' to battle already, aren't\n"
 	.string "ya {PLAYER}?$"
 
-VisCen_BallPick_Text_13:
+VisCen_BallPick_Text_12:
 # 464 "data/maps/VisitorCenter/scripts.pory"
 	.string "Of course you are!\n"
 	.string "{FONT_SMALL}Thanks for the out.{FONT_NORMAL}\p"
@@ -1847,30 +1843,30 @@ VisCen_BallPick_Text_13:
 	.string "Take hold of your destiny or whatever,\n"
 	.string "kid! Who's your mark?$"
 
-VisCen_BallPick_Text_14:
+VisCen_BallPick_Text_13:
 # 477 "data/maps/VisitorCenter/scripts.pory"
 	.string "Hey, hey… just work with me a little,\n"
 	.string "huh?\l"
 	.string "{FONT_SMALL}You just got a gift.$"
 
-VisCen_BallPick_Text_15:
+VisCen_BallPick_Text_14:
 # 501 "data/maps/VisitorCenter/scripts.pory"
 	.string "{SPEAKER NAME_BOY}Getting cold feet?\p"
 	.string "If you don't want your Pokémon, I can\n"
 	.string "take care of it!$"
 
-VisCen_BallPick_Text_16:
+VisCen_BallPick_Text_15:
 # 506 "data/maps/VisitorCenter/scripts.pory"
 	.string "{SPEAKER NAME_UNKNOWN}Ooh, those are fighting words!\n"
 	.string "You're not just gonna take that, right?$"
 
-VisCen_BallPick_Text_17:
+VisCen_BallPick_Text_16:
 # 536 "data/maps/VisitorCenter/scripts.pory"
 	.string "{SPEAKER NAME_GIRL}Well, it would be rude not to get to know\n"
 	.string "each other, right?\p"
 	.string "I think {STR_VAR_3} wants to play…$"
 
-VisCen_BallPick_Text_18:
+VisCen_BallPick_Text_17:
 # 541 "data/maps/VisitorCenter/scripts.pory"
 	.string "{SPEAKER NAME_UNKNOWN}That's right, you three are in it for the\n"
 	.string "long haul now!\p"
