@@ -78,11 +78,11 @@ script(local) Thyme_MomSpeech
 	switch(var(VAR_STARTER_MON))
 	{
 		case 0: //player: grass
-			bufferspeciesname(0, SPECIES_STARTER_GRS)
+			bufferspeciesname(0, SPECIES_GRASS_STARTER_1)
 		case 1: //player: fire
-			bufferspeciesname(0, SPECIES_STARTER_FIR)
+			bufferspeciesname(0, SPECIES_FIRE_STARTER_1)
 		case 2: //player: water
-			bufferspeciesname(0, SPECIES_STARTER_WTR)
+			bufferspeciesname(0, SPECIES_WATER_STARTER_1)
 	}
 	
 	msgbox(format("{SPEAKER NAME_MOM}So? How are you and that {STR_VAR_1} getting along?\p"
@@ -95,7 +95,7 @@ script(local) Thyme_MomSpeech
 		"…Well. Just in case, hang onto this."))
 	closemessage
 	
-	addmoney(2000,0)
+	addmoney(2000)
 	playse(SE_SHOP)
 	msgbox("Mom gave you ¥2000.")
 	waitse

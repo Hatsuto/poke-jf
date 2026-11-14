@@ -136,7 +136,7 @@ script Thyme_GiftShop_Clerk
 		closemessage
 		if (var(VAR_RESULT) == 1)
 		{
-			warp(MAP_INNER_THYME, 7)
+//			warp(MAP_INNER_THYME, 7)
 			release
 			end
 		}

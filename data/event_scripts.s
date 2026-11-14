@@ -1751,7 +1751,7 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 
 	.include "data/maps/ThymeVillage/scripts.inc"
 
-	.include "data/maps/ThymeVillage_GIftShop/scripts.inc"
+	.include "data/maps/ThymeVillage_GiftShop/scripts.inc"
 
 	.include "data/maps/ThymeVillage_Mart/scripts.inc"
 

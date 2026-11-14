@@ -28,7 +28,6 @@ script Thyme_House1_Boy
 	}
 	
 	special(ChoosePartyMon)
-	waitstate
 	lockall
 	specialvar(VAR_0x8005, GetSelectedMonNicknameAndSpecies)
 	copyvar(VAR_BUGSHOW, VAR_0x8005)
@@ -65,7 +64,6 @@ script Thyme_House1_Boy
 	}
 	
 	special(ChoosePartyMon)
-	waitstate
 	lockall
 	specialvar(VAR_0x8005, GetSelectedMonNicknameAndSpecies)
 	
