@@ -355,6 +355,12 @@
       "map": "MAP_VISITOR_CENTER",
       "x": 16,
       "y": 18
+    },
+    {
+      "id": "HEAL_LOCATION_THYME_VILLAGE",
+      "map": "MAP_THYME_VILLAGE",
+      "x": 14,
+      "y": 36
     }
   ]
 }

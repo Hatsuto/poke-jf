@@ -128,17 +128,17 @@ Thyme_MomSpeech_1:
 
 Thyme_MomSpeech_3:
 # 81 "data/maps/ThymeVillage/scripts.pory"
-	bufferspeciesname 0, SPECIES_STARTER_GRS
+	bufferspeciesname 0, SPECIES_GRASS_STARTER_1
 	goto Thyme_MomSpeech_1
 
 Thyme_MomSpeech_4:
 # 83 "data/maps/ThymeVillage/scripts.pory"
-	bufferspeciesname 0, SPECIES_STARTER_FIR
+	bufferspeciesname 0, SPECIES_FIRE_STARTER_1
 	goto Thyme_MomSpeech_1
 
 Thyme_MomSpeech_5:
 # 85 "data/maps/ThymeVillage/scripts.pory"
-	bufferspeciesname 0, SPECIES_STARTER_WTR
+	bufferspeciesname 0, SPECIES_WATER_STARTER_1
 	goto Thyme_MomSpeech_1
 
 

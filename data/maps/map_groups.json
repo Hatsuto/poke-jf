@@ -81,12 +81,12 @@
   ],
   "gMapGroup_TownsAndRoutes_JF": [
     "VisitorCenter",
+    "ThymeVillage",
     "Route01"
   ],
   "gMapGroup_OuterThyme": [
-    "ThymeVillage",
-    "ThymeVillage_House_1",
-    "ThymeVillage_House_2",
+    "ThymeVillage_House1",
+    "ThymeVillage_House2",
     "ThymeVillage_PokemonCenter_1F",
     "ThymeVillage_PokemonCenter_2F",
     "ThymeVillage_Mart",
