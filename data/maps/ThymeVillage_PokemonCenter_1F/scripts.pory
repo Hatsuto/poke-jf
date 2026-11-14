@@ -1,0 +1,60 @@
+const LOCALID_NURSE = 1
+
+//Special vars used
+//	VAR_0x800B
+
+mapscripts ThymeVillage_PokemonCenter_1F_MapScripts
+{
+	MAP_SCRIPT_ON_TRANSITION: Thyme_PokeCen_OnTransition
+	MAP_SCRIPT_ON_RESUME: CableClub_OnResume
+}
+
+script(local) Thyme_PokeCen_OnTransition
+{
+	setrespawn(HEAL_LOCATION_THYME_VILLAGE)
+	end
+}
+
+script Thyme_PokeCen_Nurse
+{
+	setvar(VAR_0x800B, LOCALID_NURSE)
+	call(Common_EventScript_PkmnCenterNurse)
+	waitmessage
+	waitbuttonpress
+	release
+	end
+}
+
+//***
+// End of Pokemon Center specific functions
+//***
+
+script Thyme_PokeCen_Man
+{
+	msgbox(format("It's amazing that Pokémon Centers are free to use.\p"
+		"I suppose we have the Sekien League to thank for that.")
+		,MSGBOX_NPC)
+}
+
+script Thyme_PokeCen_Woman
+{
+	msgbox(format("Wherever you go, always try to visit the local Pokémon Center.\p"
+		"That way you'll know where to run to in an emergency.")
+		,MSGBOX_NPC)
+}
+
+script Thyme_PokeCen_Lass
+{
+	msgbox(format("GIRL: Lots of famous people are from Sekien, so it gets a lot of visitors.\p"
+		"This is a first for me, but Thyme is actually Grandpa's hometown.\p"
+		"He says there are Mythical Pokémon on every leg of this trip…\p"
+        "But honestly, he's always saying wild stuff like that.")
+		,MSGBOX_NPC)
+}
+
+script Thyme_PokeCen_Gramps
+{
+	msgbox(format("GRAMPS: So they say this is Thyme? Hogwash!\p"
+		"The real natives of Thyme would never let 'em build a darned bus stop!")
+		,MSGBOX_NPC)
+}

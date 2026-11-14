@@ -1750,3 +1750,15 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/Route01/scripts.inc"
 
 	.include "data/maps/ThymeVillage/scripts.inc"
+
+	.include "data/maps/ThymeVillage_GIftShop/scripts.inc"
+
+	.include "data/maps/ThymeVillage_Mart/scripts.inc"
+
+	.include "data/maps/ThymeVillage_PokemonCenter_2F/scripts.inc"
+
+	.include "data/maps/ThymeVillage_PokemonCenter_1F/scripts.inc"
+
+	.include "data/maps/ThymeVillage_House_2/scripts.inc"
+
+	.include "data/maps/ThymeVillage_House_1/scripts.inc"

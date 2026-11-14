@@ -1,0 +1,49 @@
+mapscripts ThymeVillage_Mart_MapScripts{}
+
+script Thyme_Mart_Clerk
+{
+	lock
+	faceplayer
+	msgbox(gText_HowMayIServeYou)
+	waitmessage
+	pokemart(Thyme_Mart_Pokemart)
+	msgbox(gText_PleaseComeAgain)
+	release
+	end
+}
+
+raw `
+Thyme_Mart_Pokemart:
+	.2byte ITEM_POKE_BALL
+	.2byte ITEM_POTION
+	.2byte ITEM_ANTIDOTE
+	.2byte ITEM_PARALYZE_HEAL
+	.2byte ITEM_AWAKENING
+	.2byte ITEM_NONE
+	release
+	end
+`
+//***
+// End of Mart scripts
+//***
+
+script Thyme_Mart_Boy
+{
+	msgbox(format("Sure, you could run back to a\nPokémon Center when tired,\p"
+		"But isn't it so much easier to just carry a few Potions?")
+		,MSGBOX_NPC)
+}
+
+script Thyme_Mart_Woman
+{
+	msgbox(format("I'll let you in on a little shopper's secret…\p"
+		"If you buy 10 or more Pokéballs, they'll throw in another one for free!")
+		,MSGBOX_NPC)
+}
+
+script Thyme_Mart_RiajuuM
+{
+	msgbox(format("BOY: I stopped by here to stock up on supplies before we continue the tour…\p"
+		"But I get the feeling my girlfriend's already run off without me… haha…")
+		,MSGBOX_NPC)
+}

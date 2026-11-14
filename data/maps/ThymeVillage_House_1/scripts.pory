@@ -1,0 +1,100 @@
+const VAR_BUGSHOW = VAR_TEMP_0
+const VAR_BUGCOMPARE = VAR_TEMP_1
+
+mapscripts ThymeVillage_House1_MapScripts{}
+
+script Thyme_House1_Lady
+{
+	msgbox(format("May I ask, what did you come visit our region for?\p"
+		"Was it our famous shows? The celebrities from the city?\p"
+		"People say they enjoy the sights, appreciate the natural scenery…\p"
+		"But, that's never the first reason.")
+		,MSGBOX_NPC)
+}
+
+script Thyme_House1_Boy
+{
+	lockall
+	faceplayer
+	msgbox(format("Hey, you're a Pokémon Trainer, right?\n"
+		"You must have caught all kinds of rare and cool Pokémon!\p"
+		"I'm looking for a certain kind of Bug-type Pokémon…\p"
+		"If you have it, can you show it to me?")
+		,MSGBOX_YESNO)
+	if (var(VAR_RESULT) == 0)
+	{
+		msgbox(format("Aw, okay…"), MSGBOX_AUTOCLOSE)
+		end
+	}
+	
+	special(ChoosePartyMon)
+	waitstate
+	lockall
+	specialvar(VAR_0x8005, GetSelectedMonNicknameAndSpecies)
+	copyvar(VAR_BUGSHOW, VAR_0x8005)
+	
+	switch(var(VAR_BUGSHOW))
+	{
+		case SPECIES_BEAUTIFLY:
+		case SPECIES_DUSTOX:
+			break
+		case SPECIES_WURMPLE:
+		case SPECIES_SILCOON:
+		case SPECIES_CASCOON:
+			msgbox(format("Hm… that's not quite right, but I think you're on the right track.\p"
+				"Maybe if it looked a little stronger?")
+				,MSGBOX_AUTOCLOSE)
+			end
+		default:
+			msgbox(format("Nah… that's not the one.\p"
+				"I'm looking for one that's a little more… This or That, you know?\p"
+				"I think I've even seen it in the forest before…")
+				,MSGBOX_AUTOCLOSE)
+			end
+	}
+	
+	msgbox(format("That's it!! That's the one! Or at least… I think it is?\p"
+		"Do you have another one like it?")
+		,MSGBOX_YESNO)
+	
+	if (var(VAR_RESULT) == 0)
+	{
+		msgbox(format("Aw, okay… but if you find one, come back and show me both, okay?")
+			,MSGBOX_AUTOCLOSE)
+		end
+	}
+	
+	special(ChoosePartyMon)
+	waitstate
+	lockall
+	specialvar(VAR_0x8005, GetSelectedMonNicknameAndSpecies)
+	
+	if (var(VAR_0x8005) == VAR_BUGSHOW)
+	{
+		msgbox(format("Oh… that looks the exact same…\p"
+			"If you find one that's maybe {COLOR BLUE}related to that one{COLOR DARK_GRAY}, can you come back and show me both?")
+			,MSGBOX_AUTOCLOSE)
+		end
+	}
+	
+	switch(var(VAR_0x8005))
+	{
+		case SPECIES_BEAUTIFLY:
+		case SPECIES_DUSTOX:
+			msgbox(format("Yeah! That's right, Wurmple evolves into both of these!!\p"
+				"I don't have a reward for you, though…\p"
+				"{COLOR RED}Why don't you remind the game developer about this later?"))
+		case SPECIES_WURMPLE:
+		case SPECIES_SILCOON:
+		case SPECIES_CASCOON:
+			msgbox(format("Hm… that's not quite right, but I think you're on the right track.\p"
+				"Maybe if it looked a little stronger?")
+				,MSGBOX_AUTOCLOSE)
+			end
+		default:
+			msgbox(format("No… these don't look related.\p"
+				"If you find one that's maybe {COLOR BLUE}related to that one{COLOR DARK_GRAY}, can you come back and show me both?")
+				,MSGBOX_AUTOCLOSE)
+			end
+	}
+}
