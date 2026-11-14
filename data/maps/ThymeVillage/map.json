@@ -21,6 +21,7 @@
   ],
   "object_events": [
     {
+      "local_id": "LOCALID_BUSMAN",
       "graphics_id": "OBJ_EVENT_GFX_MYSTERY_GIFT_MAN",
       "x": 29,
       "y": 16,
@@ -73,6 +74,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_MOM",
       "graphics_id": "OBJ_EVENT_GFX_MOM",
       "x": 9,
       "y": 17,

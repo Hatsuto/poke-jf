@@ -45,7 +45,7 @@ script Thyme_PokeCen_Woman
 
 script Thyme_PokeCen_Lass
 {
-	msgbox(format("GIRL: Lots of famous people are from Sekien, so it gets a lot of visitors.\p"
+	msgbox(format("{SPEAKER NAME_GIRL}Lots of famous people are from Sekien, so it gets a lot of visitors.\p"
 		"This is a first for me, but Thyme is actually Grandpa's hometown.\p"
 		"He says there are Mythical Pokémon on every leg of this trip…\p"
         "But honestly, he's always saying wild stuff like that.")
@@ -54,7 +54,7 @@ script Thyme_PokeCen_Lass
 
 script Thyme_PokeCen_Gramps
 {
-	msgbox(format("GRAMPS: So they say this is Thyme? Hogwash!\p"
+	msgbox(format("{SPEAKER NAME_OLDMAN}So they say this is Thyme? Hogwash!\p"
 		"The real natives of Thyme would never let 'em build a darned bus stop!")
 		,MSGBOX_NPC)
 }

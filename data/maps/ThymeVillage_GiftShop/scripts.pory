@@ -58,7 +58,7 @@ script Thyme_GiftShop_PostBadge
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
 	waitmovement(0)
 	
-	msgbox(format("MOM: Oh, there you are.\p"
+	msgbox(format("{SPEAKER NAME_MOM}Oh, there you are.\p"
 		"Look at you, you're all covered in grass!!\nGoodness…\p"
 		"Well, you'll never believe it, but those trees that were blocking the path?\p"
 		"They just… disappeared!\p"
@@ -181,35 +181,37 @@ Thyme_GiftShop_Expanded:
 //***
 script Thyme_GiftShop_Mom
 {
+	setspeaker(SP_NAME_MOM)
 	if(var(VAR_THYME_STATE) < 3)
 	{
-		msgbox(format("MOM: Hmm? What'd you follow me for, hun?\p"
+		msgbox(format("Hmm? What'd you follow me for, hun?\p"
 			"Nothing but Poké Dolls to catch here. The tall grass is outside.")
 			,MSGBOX_NPC)
 	}
 	elif(!flag(FLAG_MOM))
 	{
 		setflag(FLAG_MOM)
-		msgbox(format("MOM: Oh honey, don't worry about me.\p"
+		msgbox(format("Oh honey, don't worry about me.\p"
 			"I knew it as soon as you showed me your Pokédex.\p"
 			"I just wasn't expecting you to do this while we were on vacation…")
 			,MSGBOX_NPC)
 	}
 	else
 	{
-		msgbox(format("MOM: I'm okay with you going slightly off the path.\p"
+		msgbox(format("I'm okay with you going slightly off the path.\p"
 			"Just no going on ahead of the group, okay?")
 			,MSGBOX_NPC)
 	}
 }
 script Thyme_GiftShop_Mother
 {
+	setspeaker(SP_NAME_WOMAN)
 	if(!flag(FLAG_MOTHER))
 	{
 		lock
 		faceplayer
 		setflag(FLAG_MOTHER)
-		msgbox(format("WOMAN: That girl of mine has not once stopped talking about Pokémon…\p"
+		msgbox(format("That girl of mine has not once stopped talking about Pokémon…\p"
 			"Not since that greasy man put on that stunt giving them away!\p"
 			"What was he thinking? Doesn't he know how dangerous they are for children?\p"
 			"Goodness… Maybe she'll calm down if I buy her a doll…"))
@@ -220,7 +222,7 @@ script Thyme_GiftShop_Mother
 	}
 	else
 	{
-		msgbox(format("WOMAN: …But which Pokémon does she even like…?\nCan she even tell the difference?")
+		msgbox(format("…But which Pokémon does she even like…?\nCan she even tell the difference?")
 			,MSGBOX_AUTOCLOSE)
 	}
 }
@@ -232,28 +234,28 @@ script Thyme_GiftShop_PokeFans
 		//Some embarrassing dialogue
 		applymovement(FANM_ID, Common_Movement_WalkInPlaceUp)
 		waitmovement(0)
-		msgbox(format("MAN: Kyaaa!! Look how big and fluffy he is!!"))
+		msgbox(format("{SPEAKER NAME_MAN}Kyaaa!! Look how big and fluffy he is!!"))
 		closemessage
 		
 		applymovement(FANF_ID, Common_Movement_WalkInPlaceUp)
 		waitmovement(0)
-		msgbox(format("WOMAN: And the little guys in the back!!\p"
+		msgbox(format("{SPEAKER NAME_WOMAN}And the little guys in the back!!\p"
 			"You think our little boy would like that cool-looking one?"))
 		closemessage
 		
 		applymovement(FANM_ID, Common_Movement_WalkInPlaceUp)
 		waitmovement(0)
-		msgbox(format("MAN: Oh I just know he'd love it! He's got so many just like it in his room!"))
+		msgbox(format("{SPEAKER NAME_MAN}Oh I just know he'd love it! He's got so many just like it in his room!"))
 		closemessage
 		
 		applymovement(FANF_ID, Common_Movement_WalkInPlaceUp)
 		waitmovement(0)
-		msgbox(format("WOMAN: That's so true! How many have we bought him over the years…?"))
+		msgbox(format("{SPEAKER NAME_WOMAN}That's so true! How many have we bought him over the years…?"))
 		closemessage
 		
 		applymovement(FANM_ID, Common_Movement_WalkInPlaceUp)
 		waitmovement(0)
-		msgbox(format("MAN: Hahaha, I don't remember anymore!"))
+		msgbox(format("{SPEAKER NAME_MAN}Hahaha, I don't remember anymore!"))
 		closemessage
 		
 		setflag(FLAG_FANS)
@@ -271,7 +273,7 @@ script Thyme_GiftShop_PokeFans
 script Thyme_GiftShop_Parasol
 {
 	//something about seeing the sights after the merch
-	msgbox(format("GIRL: I was all excited to take in the sights… but…\p"
+	msgbox(format("{SPEAKER NAME_GIRL}I was all excited to take in the sights… but…\p"
 		"M-maybe after I look around here a little longer first.")
 		,MSGBOX_NPC)
 }

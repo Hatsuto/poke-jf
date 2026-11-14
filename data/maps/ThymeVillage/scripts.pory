@@ -1,1 +1,305 @@
-mapscripts ThymeVillage_MapScripts {}
+const ENTER_X = 5
+const BUS_Y = 16
+
+mapscripts ThymeVillage_MapScripts{}
+
+// Global flags/vars used:
+//
+//	FLAG_ROUTE_1_PATH_NPC
+
+
+// Temp flags/vars
+//	player pox (0,1)
+const PLAYER_X = VAR_TEMP_0
+const PLAYER_Y = VAR_TEMP_1
+
+const FLAG_POKEKID = FLAG_TEMP_1
+const FLAG_OLDMAN = FLAG_TEMP_2
+const FLAG_GARDENER = FLAG_TEMP_3
+const FLAG_EMPLOYEE = FLAG_TEMP_4
+
+// *****
+// Tile events
+// *****
+
+//On first entering map
+script Thyme_Mom
+{
+	lock
+	faceplayer
+	
+	//Mom dialogue
+	msgbox(format("{SPEAKER NAME_MOM}Oh, there you are, {PLAYER}!"))
+	closemessage
+	
+	goto(Thyme_MomSpeech)
+}
+script Thyme_MomEvent
+{
+	lock
+	
+	setvar(VAR_LAST_TALKED, LOCALID_MOM)
+	call(Common_NPCNotice)
+	
+	setspeaker(SP_NAME_MOM)
+	//Mom dialogue
+	checkplayergender
+	if(var(VAR_RESULT) == 1)
+	{
+		msgbox(format("There you are, young lady!"))
+	}
+	else
+	{
+		msgbox(format("There you are, young man!"))
+	}
+	closemessage
+	
+	getplayerxy(PLAYER_X, PLAYER_Y)
+	switch(var(PLAYER_X))
+	{
+		case ENTER_X:
+			applymovement(LOCALID_MOM, Mom_WalkLeft4)
+		case ENTER_X+1:
+			applymovement(LOCALID_MOM, Mom_WalkLeft3)
+		case ENTER_X+2:
+			applymovement(LOCALID_MOM, Mom_WalkLeft2)
+		case ENTER_X+3:
+			applymovement(LOCALID_MOM, Mom_WalkLeft1)
+	}
+	waitmovement(0)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown)
+	waitmovement(0)
+	
+	goto(Thyme_MomSpeech)
+}
+script(local) Thyme_MomSpeech
+{
+	setflag(FLAG_ROUTE_1_PATH_NPC) //Route1 NPC's have moved on
+	switch(var(VAR_STARTER_MON))
+	{
+		case 0: //player: grass
+			bufferspeciesname(0, SPECIES_STARTER_GRS)
+		case 1: //player: fire
+			bufferspeciesname(0, SPECIES_STARTER_FIR)
+		case 2: //player: water
+			bufferspeciesname(0, SPECIES_STARTER_WTR)
+	}
+	
+	msgbox(format("{SPEAKER NAME_MOM}So? How are you and that {STR_VAR_1} getting along?\p"
+		"It's not all fun and games taking care of that thing, you know.\p"
+		"Now that you're a Pokemon Trainer, everyone and their grandma"
+		"will be itching to pick a fight with you.\p"
+		"Yes! Grandmas too!\p"
+		"If you aren't careful, your wallet will be empty before you know it.\p"
+		"Just avoid talking to strangers, okay?"
+		"…Well. Just in case, hang onto this."))
+	closemessage
+	
+	addmoney(2000,0)
+	playse(SE_SHOP)
+	msgbox("Mom gave you ¥2000.")
+	waitse
+	closemessage
+	
+	msgbox(format("{SPEAKER NAME_MOM}This was supposed to be your allowance for the trip…\p"
+		"But a Trainer like you has better things to do than shop with your mom, right?\p"
+		"No, no, it's fine… you go and have fun out in the wilderness, honey.\p"
+		"I'll just be in the gift shop until the tour gets moving again."))
+	closemessage
+	
+	applymovement(LOCALID_MOM, Mom_Leave)
+	waitmovement(0)
+	removeobject(LOCALID_MOM)
+	setvar(VAR_THYME_STATE, 1)
+	
+	release
+	end
+}
+movement Mom_WalkLeft1
+{
+	walk_left
+	face_up
+}
+movement Mom_WalkLeft2
+{
+	walk_left * 2
+	face_up
+}
+movement Mom_WalkLeft3
+{
+	walk_left * 3
+	face_up
+}
+movement Mom_WalkLeft4
+{
+	walk_left * 4
+	face_up
+}
+movement Mom_Leave
+{
+	walk_down * 7
+}
+
+//Don't allow through without a bus pass
+script Thyme_BusBlock
+{
+	lock
+	
+	setvar(VAR_LAST_TALKED, LOCALID_BUSMAN)
+	call(Common_NPCNotice)
+	
+	goto(Thyme_BusMan)
+}
+
+// *****
+// Signs/Objects
+// *****
+
+script Thyme_EntranceSign
+{
+	msgbox(format("THYME NATURE RESERVE\n"
+		"Help support our diverse wildlife!")
+		, MSGBOX_SIGN)
+}
+
+script Thyme_BusSign
+{
+	msgbox(format("Bus Stop ahead\nRuns 24/7 around the region"), MSGBOX_SIGN)
+}
+
+script Thyme_ExitSign
+{
+	msgbox(format("{UP_ARROW} Visitor Center\n"
+		"{RIGHT_ARROW} Gift Shop\l"
+		"{DOWN_ARROW} Old Bay"), MSGBOX_SIGN)
+}
+
+script Thyme_ShopSign
+{
+	msgbox(format("{COLOR GREEN}Thyme Nature Reserve Gift Shop\n"
+		"{COLOR DARK_GRAY}Experience the magic of the nature!"
+		"All proceeds go toward the benefit of the local forest population.")
+		, MSGBOX_SIGN)
+}
+
+
+// *****
+// NPC events
+// *****
+
+script Thyme_BusMan
+{
+	lock
+	faceplayer
+	
+	msgbox(format("I'm sorry, but you need a Bus Pass to ride.\p"
+		"You'll need to ask your parent or guardian purchase one for you."))
+	
+	closemessage
+	
+	getplayerxy(PLAYER_X,PLAYER_Y)
+	if (var(PLAYER_Y) <= BUS_Y)
+	{
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown)
+		waitmovement(0)
+	}
+	
+	release
+	end
+}
+
+script Thyme_OldMan
+{
+	if (flag(FLAG_BADGE01_GET))
+	{
+		msgbox(format("Word is you're on good terms with our mayor, now.\p"
+			"Or Leader, as his fans like to call him in the deep woods.\p"
+			"Bit of an upstart, but we trust him enough to keep up this act.")
+			, MSGBOX_NPC)
+	}
+	elif (!flag(FLAG_OLDMAN))
+	{
+		setflag(FLAG_OLDMAN)
+		msgbox(format("Heya, traveler! Welcome to the Thyme Nature Preserve!\p"
+			"Have you visited our gift shop yet?\p"
+			"Lots of Natural Products for you good folk, heh!")
+			, MSGBOX_NPC)
+	}
+	else
+	{
+		msgbox(format("Once you've done your business here,"
+			"be sure to stick with your group, ya hear?\p"
+			"Spritely kid like yourself might just get lost in the forest, heheh!")
+			,MSGBOX_NPC)
+	}
+}
+
+script Thyme_Gardener
+{
+	if (!flag(FLAG_GARDENER))
+	{
+		setflag(FLAG_GARDENER)
+		msgbox(format("They say that the stuff they sell over at the gift shop is all-natural.\p"
+			"…But that's obvious, right? Most of it's a bunch of mushrooms and dirt.")
+			,MSGBOX_NPC)
+	}
+	else
+	{
+		msgbox(format("The normal half of their stock's actually just imported from the city.\p"
+			"I'd know, I'm workin' here to get away from all that.")
+			,MSGBOX_NPC)
+	}
+}
+
+script Thyme_Employee
+{
+	if (!flag(FLAG_EMPLOYEE))
+	{
+		setflag(FLAG_EMPLOYEE)
+		if (flag(FLAG_BADGE01_GET))
+		{
+			msgbox(format("So, you've been to our sister location already?\p"
+				"Or, I suppose this was the sister location.\p"
+				"Well, our gift shop has a different stock, so you should still stop by!")
+				,MSGBOX_NPC)
+		}
+		else
+		{
+			msgbox(format("Have you visited the Thyme Nature Preserve Gift Shop yet?\p"
+				"It's just to the right! All our profits go to helping the forest!")
+				,MSGBOX_NPC)
+		}
+	}
+	else
+	{
+		msgbox(format("Our shop is stocked by popular demand, so you can be assured of its quality.\p"
+			"You may not think you need Tiny Mushrooms, but you never know!")
+			,MSGBOX_NPC)
+	}
+}
+
+script Thyme_PokeKid
+{
+	setspeaker(SP_NAME_BOY)
+	if (!flag(FLAG_POKEKID))
+	{
+		setflag(FLAG_POKEKID)
+		if (var(VAR_CUTE_BABY) > 0)
+		{
+			bufferspeciesname(0, VAR_CUTE_BABY)
+		}
+		else
+		{
+			bufferspeciesname(0, SPECIES_PIKACHU)
+		}
+		msgbox(format("I saw my parents going toward the gift shop, so I just dipped.\p"
+			"I'm not gonna stand around while they cry over {STR_VAR_1} dolls again…")
+			,MSGBOX_NPC)
+	}
+	else
+	{
+		msgbox(format("They're always trying to drag me around to contests and stuff, too.\p"
+			"How can they think I'm still into that kinda stuff?")
+			,MSGBOX_NPC)
+	}
+}

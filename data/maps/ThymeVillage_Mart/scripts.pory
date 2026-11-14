@@ -43,7 +43,7 @@ script Thyme_Mart_Woman
 
 script Thyme_Mart_RiajuuM
 {
-	msgbox(format("BOY: I stopped by here to stock up on supplies before we continue the tour…\p"
+	msgbox(format("{SPEAKER NAME_BOY}I stopped by here to stock up on supplies before we continue the tour…\p"
 		"But I get the feeling my girlfriend's already run off without me… haha…")
 		,MSGBOX_NPC)
 }
