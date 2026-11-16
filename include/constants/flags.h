@@ -53,50 +53,50 @@
 
 //*** These were all unused in vanilla
 //[!] indicates that the flag should be set at game start, or before affected events "see" them
-#define FLAG_VC_STREET_MOM		0x20 // VC-street mom visibility
-#define FLAG_VC_IN_PROF			0x21 // VC prof visibility
-#define FLAG_VC_OUT_BALLS		0x22 // VC ball visibility
-#define FLAG_VC_COMPLETE		0x23 // VC traveler visibility
-#define FLAG_ROUTE_1_ROAD_NPC	0x24 // Route 1 cutscene visibility
-#define FLAG_ROUTE_1_PATH_NPC   0x25 // Route 1 traveler visibility
-#define FLAG_ROUTE_1_BALL_GUY	0x26 // Starting item pack
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
-#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
-#define FLAG_UNUSED_0x02E    0x2E // Unused Flag
-#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
-#define FLAG_UNUSED_0x033    0x33 // Unused Flag
-#define FLAG_UNUSED_0x034    0x34 // Unused Flag
-#define FLAG_UNUSED_0x035    0x35 // Unused Flag
-#define FLAG_UNUSED_0x036    0x36 // Unused Flag
-#define FLAG_UNUSED_0x037    0x37 // Unused Flag
-#define FLAG_UNUSED_0x038    0x38 // Unused Flag
-#define FLAG_UNUSED_0x039    0x39 // Unused Flag
-#define FLAG_UNUSED_0x03A    0x3A // Unused Flag
-#define FLAG_UNUSED_0x03B    0x3B // Unused Flag
-#define FLAG_UNUSED_0x03C    0x3C // Unused Flag
-#define FLAG_UNUSED_0x03D    0x3D // Unused Flag
-#define FLAG_UNUSED_0x03E    0x3E // Unused Flag
-#define FLAG_UNUSED_0x03F    0x3F // Unused Flag
-#define FLAG_UNUSED_0x040    0x40 // Unused Flag
-#define FLAG_UNUSED_0x041    0x41 // Unused Flag
-#define FLAG_UNUSED_0x042    0x42 // Unused Flag
-#define FLAG_UNUSED_0x043    0x43 // Unused Flag
-#define FLAG_UNUSED_0x044    0x44 // Unused Flag
-#define FLAG_UNUSED_0x045    0x45 // Unused Flag
-#define FLAG_UNUSED_0x046    0x46 // Unused Flag
-#define FLAG_UNUSED_0x047    0x47 // Unused Flag
-#define FLAG_UNUSED_0x048    0x48 // Unused Flag
-#define FLAG_UNUSED_0x049    0x49 // Unused Flag
-#define FLAG_UNUSED_0x04A    0x4A // Unused Flag
-#define FLAG_UNUSED_0x04B    0x4B // Unused Flag
+#define FLAG_VC_STREET_MOM              0x20 // VC-street mom visibility
+#define FLAG_VC_IN_PROF                 0x21 // VC prof visibility
+#define FLAG_VC_OUT_BALLS               0x22 // VC ball visibility
+#define FLAG_VC_COMPLETE                0x23 // VC traveler visibility
+#define FLAG_ROUTE_1_ROAD_NPC           0x24 // Route 1 cutscene visibility
+#define FLAG_ROUTE_1_PATH_NPC           0x25 // Route 1 traveler visibility
+#define FLAG_ROUTE_1_BALL_GUY           0x26 // Starting item pack
+#define FLAG_THYME_MOM_NPC              0x27 // Thyme mom visibility
+#define FLAG_THYME_TOUR_NPC             0x28 // Thyme tour group visibility
+#define FLAG_ROUTE_2_TERYN              0x29 // Teryn cameo visibility
+#define FLAG_THYME_GRUNT                0x2A // Should be set once gym trial starts
+#define FLAG_THYME_FOREST_TRIAL         0x2B // End of gym trial
+#define FLAG_THYME_GYM_TREE             0x2C // First tree to prevent soft-locking
+#define FLAG_THYME_GYM_TREVENANT        0x2D // Trevenants outside gym
+#define FLAG_THYME_GYM_LEADER           0x2E // Leader outside gym
+#define FLAG_THYME_GYM_BLOCKER          0x2F // hex maniac in front of gym
+#define FLAG_ROUTE_2_TREVENANT          0x30 // [!] Trevenants appear after gym only
+#define FLAG_ROUTE_2_MOM                0x31 // [!] Mom blocking pass specifically
+#define FLAG_ROUTE_2_TOUR_NPC           0x32 // pokefamily, parasol, and mother
+#define FLAG_ROUTE_2_GRUNT              0x33 // beach grunt visibility
+#define FLAG_DELUGE_CAVERN_LYCANROC     0x34 // Lycanroc presence
+#define FLAG_DELUGE_CAVERN_LILY         0x35 // Lily
+#define FLAG_OLDBAY_RIAJUU_FIGHT        0x36 // fight concluded
+#define FLAG_OLDBAY_RIAJUU_MAN          0x37 // [!] man at lighthouse visibility
+#define FLAG_OLDBAY_RIAJUU_BEACHFIGHT   0x38 // Freya
+#define FLAG_OLDBAY_BOAT                0x39 // [!]
+#define FLAG_OLDBAY_RIAJUU_COUPLE       0x3A // [!]
+#define FLAG_OLDBAY_MOTHER_CHILD        0x3B // [!] 
+#define FLAG_OLDBAY_LILY_LARVI          0x3C // [!] 
+#define FLAG_SPINDRIFT_KLEFKI           0x3D // [!] 
+#define FLAG_OLDBAY_LIGHTHOUSE          0x3E // Door is open when flagged
+#define FLAG_OLDBAY_CORSOLA             0x3F // 
+#define FLAG_OLDBAY_KEEPER_HOUSE        0x40 // [!] reworked- now Kallista in her house
+#define FLAG_OLDBAY_KALLISTA            0x41 // [!] 
+#define FLAG_ROUTE_2_STATION_TOUR_NPC   0x42 // [!]
+#define FLAG_FREEBIRD_BIKEGUY           0x43 // After accepting bike offer
+#define FLAG_FREEBIRD_TOUR_NPC          0x44 // Set after bus has left Freebird
+#define FLAG_FREEBIRD_BIKER_TSKR        0x45 // Saved Enrique
+#define FLAG_FREEBIRD_BIKERS_MOVED      0x46 // Beat Hans and Montero
+#define FLAG_FREEBIRD_CONCERT           0x47 // [!]
+#define FLAG_FREEBIRD_BIKER_BLOCK       0x48 // [!] blockade moves after Jaden
+#define FLAG_FREEBIRD_HANS_AND_MONTERO  0x49 // [!]
+#define FLAG_FREEBIRD_LIAM_OUTSIDE      0x4A // Liam before Cadi's "quest" accepted
+#define FLAG_FREEBIRD_CADI_OUTSIDE      0x4B // Cadi at her perch
 #define FLAG_UNUSED_0x04C    0x4C // Unused Flag
 #define FLAG_UNUSED_0x04D    0x4D // Unused Flag
 #define FLAG_UNUSED_0x04E    0x4E // Unused Flag

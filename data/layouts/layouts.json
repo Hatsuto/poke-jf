@@ -9367,12 +9367,23 @@
     {
       "id": "LAYOUT_THYME_VILLAGE",
       "name": "ThymeVillage_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 38,
+      "height": 44,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/ThymeVillage/border.bin",
       "blockdata_filepath": "data/layouts/ThymeVillage/map.bin"
+    },
+    {
+      "id": "LAYOUT_THYME_VILLAGE_GIFT_SHOP",
+      "name": "ThymeVillage_GiftShop_Layout",
+      "width": 24,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Shop",
+      "border_filepath": "data/layouts/ThymeVillage_GiftShop/border.bin",
+      "blockdata_filepath": "data/layouts/ThymeVillage_GiftShop/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

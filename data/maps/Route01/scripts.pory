@@ -135,7 +135,7 @@ script Route1_TourGuide
 	
 	playse(SE_EXIT)
 	warp(MAP_ROUTE01, 0xFF, 25, 12)
-	
+	waitstate
 	releaseall
 	end
 }
