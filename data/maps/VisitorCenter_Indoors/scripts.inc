@@ -132,15 +132,15 @@ VisCen_In_Mom::
 	setspeaker SP_NAME_MOM
 # 146 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	goto_if_set FLAG_VC_OUT_BALLS, VisCen_In_Mom_2
-# 171 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	msgbox VisCen_In_Mom_Text_3
 # 172 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	call Common_NPCNotice
+	msgbox VisCen_In_Mom_Text_3
 # 173 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	call Common_NPCNotice
+# 174 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Mom_Text_4, MSGBOX_AUTOCLOSE
-# 175 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	applymovement 3, Common_Movement_FaceUp
 # 176 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	applymovement 3, Common_Movement_FaceUp
+# 177 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	waitmovement 0
 VisCen_In_Mom_1:
 	end
@@ -168,441 +168,443 @@ VisCen_In_Mom_2:
 	addvar VAR_VISCEN_STATE, 0x90
 # 167 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	warp MAP_VISITOR_CENTER, 0, 0, 0
+# 168 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	waitstate
 	goto VisCen_In_Mom_1
 
 
 VisCen_In_Professor::
-# 183 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 184 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	goto_if_unset FLAG_TEMP_3, VisCen_In_Professor_2
-# 195 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	lock
 # 196 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	msgbox VisCen_In_Professor_Text_2
+	lock
 # 197 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	call Common_NPCNotice
+	msgbox VisCen_In_Professor_Text_2
 # 198 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	call Common_NPCNotice
+# 199 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Professor_Text_3
 VisCen_In_Professor_1:
-# 200 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	applymovement 4, Common_Movement_FaceRight
 # 201 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	waitmovement 0
+	applymovement 4, Common_Movement_FaceRight
 # 202 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	waitmovement 0
+# 203 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	release
 	end
 
 VisCen_In_Professor_2:
-# 185 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	lock
 # 186 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	lock
+# 187 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Professor_Text_0
-# 188 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	call Common_NPCNotice
 # 189 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	call Common_NPCNotice
+# 190 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Professor_Text_1
-# 191 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 192 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	setflag FLAG_TEMP_3
 	goto VisCen_In_Professor_1
 
 
 VisCen_In_Receptionist::
-# 216 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 217 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	compare VAR_TEMP_3, 99
 	goto_if_lt VisCen_In_Receptionist_2
-# 274 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 275 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Receptionist_Text_9, MSGBOX_NPC
 	return
 
 VisCen_In_Receptionist_2:
-# 218 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	lock
 # 219 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	lock
+# 220 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Receptionist_Text_0, MSGBOX_YESNO
-# 222 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 223 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	compare VAR_RESULT, 1
 	goto_if_eq VisCen_In_Receptionist_5
-# 236 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 237 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	switch VAR_TEMP_3
-# 238 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 239 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	case 0, VisCen_In_Receptionist_9
-# 242 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 243 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	case 1, VisCen_In_Receptionist_10
-# 247 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 248 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	case 2, VisCen_In_Receptionist_11
-# 252 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 253 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	case 3, VisCen_In_Receptionist_12
-# 258 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 259 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	case 4, VisCen_In_Receptionist_13
-# 265 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	setvar VAR_TEMP_3, 99
 # 266 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	setvar VAR_TEMP_3, 99
+# 267 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Receptionist_Text_8, MSGBOX_AUTOCLOSE
 VisCen_In_Receptionist_4:
 	end
 
 VisCen_In_Receptionist_5:
-# 224 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	msgbox VisCen_In_Receptionist_Text_1
 # 225 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	msgbox VisCen_In_Receptionist_Text_1
+# 226 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	closemessage
-# 228 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 229 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	call Common_EventScript_OutOfCenterPartyHeal
-# 230 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 231 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Receptionist_Text_2, MSGBOX_AUTOCLOSE
 	goto VisCen_In_Receptionist_4
 
 VisCen_In_Receptionist_9:
-# 239 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	setvar VAR_TEMP_3, 1
 # 240 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	setvar VAR_TEMP_3, 1
+# 241 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Receptionist_Text_3, MSGBOX_AUTOCLOSE
 	goto VisCen_In_Receptionist_4
 
 VisCen_In_Receptionist_10:
-# 243 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	setvar VAR_TEMP_3, 2
 # 244 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	setvar VAR_TEMP_3, 2
+# 245 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Receptionist_Text_4, MSGBOX_AUTOCLOSE
 	goto VisCen_In_Receptionist_4
 
 VisCen_In_Receptionist_11:
-# 248 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	setvar VAR_TEMP_3, 3
 # 249 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	setvar VAR_TEMP_3, 3
+# 250 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Receptionist_Text_5, MSGBOX_AUTOCLOSE
 	goto VisCen_In_Receptionist_4
 
 VisCen_In_Receptionist_12:
-# 253 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	setvar VAR_TEMP_3, 4
 # 254 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	setvar VAR_TEMP_3, 4
+# 255 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Receptionist_Text_6, MSGBOX_AUTOCLOSE
 	goto VisCen_In_Receptionist_4
 
 VisCen_In_Receptionist_13:
-# 259 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	setvar VAR_TEMP_3, 5
 # 260 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	setvar VAR_TEMP_3, 5
+# 261 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Receptionist_Text_7, MSGBOX_AUTOCLOSE
 	goto VisCen_In_Receptionist_4
 
 
 VisCen_In_PokeParents::
-# 279 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	lock
 # 280 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	lock
+# 281 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	goto_if_unset FLAG_TEMP_1, VisCen_In_PokeParents_1
-# 304 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 305 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_PokeParents_Text_4, MSGBOX_AUTOCLOSE
-# 306 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 307 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	release
 	end
 
 VisCen_In_PokeParents_1:
-# 282 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	applymovement 9, Common_Movement_WalkInPlaceFasterLeft
 # 283 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	waitmovement 0
-# 284 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	msgbox VisCen_In_PokeParents_Text_0
-# 286 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	applymovement 8, Common_Movement_WalkInPlaceFasterRight
-# 287 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	waitmovement 0
-# 288 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	msgbox VisCen_In_PokeParents_Text_1
-# 290 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	applymovement 9, Common_Movement_WalkInPlaceFasterLeft
-# 291 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 284 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	waitmovement 0
-# 292 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	msgbox VisCen_In_PokeParents_Text_2
-# 294 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 285 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	msgbox VisCen_In_PokeParents_Text_0
+# 287 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	applymovement 8, Common_Movement_WalkInPlaceFasterRight
-# 295 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 288 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	waitmovement 0
+# 289 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	msgbox VisCen_In_PokeParents_Text_1
+# 291 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	applymovement 9, Common_Movement_WalkInPlaceFasterLeft
+# 292 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	waitmovement 0
+# 293 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	msgbox VisCen_In_PokeParents_Text_2
+# 295 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	applymovement 8, Common_Movement_WalkInPlaceFasterRight
 # 296 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	waitmovement 0
+# 297 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_PokeParents_Text_3, MSGBOX_AUTOCLOSE
-# 298 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	setflag FLAG_TEMP_1
 # 299 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	setflag FLAG_TEMP_1
+# 300 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	releaseall
 	end
 
 
 VisCen_In_PokeKid::
-# 312 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	setspeaker SP_NAME_BOY
 # 313 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	setspeaker SP_NAME_BOY
+# 314 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	goto_if_unset FLAG_TEMP_5, VisCen_In_PokeKid_1
-# 322 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 323 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_PokeKid_Text_1, MSGBOX_NPC
 	return
 
 VisCen_In_PokeKid_1:
-# 315 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	setflag FLAG_TEMP_5
 # 316 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	setflag FLAG_TEMP_5
+# 317 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_PokeKid_Text_0, MSGBOX_NPC
 	return
 
 
 VisCen_In_Parasol::
-# 329 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	setspeaker SP_NAME_GIRL
 # 330 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	setspeaker SP_NAME_GIRL
+# 331 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	goto_if_unset FLAG_TEMP_4, VisCen_In_Parasol_1
-# 340 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 341 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Parasol_Text_1, MSGBOX_NPC
 	return
 
 VisCen_In_Parasol_1:
-# 332 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	setflag FLAG_TEMP_4
 # 333 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	setflag FLAG_TEMP_4
+# 334 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Parasol_Text_0, MSGBOX_NPC
 	return
 
 
 VisCen_In_Birdman::
-# 347 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	setspeaker SP_NAME_MAN
 # 348 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	setspeaker SP_NAME_MAN
+# 349 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	goto_if_unset FLAG_TEMP_2, VisCen_In_Birdman_1
-# 368 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 369 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Birdman_Text_2, MSGBOX_NPC
 	return
 
 VisCen_In_Birdman_1:
-# 350 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	lockall
 # 351 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	faceplayer
+	lockall
 # 352 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	faceplayer
+# 353 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Birdman_Text_0
-# 356 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	applymovement 6, Common_Movement_WalkInPlaceFasterRight
 # 357 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	waitmovement 0
+	applymovement 6, Common_Movement_WalkInPlaceFasterRight
 # 358 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	msgbox VisCen_In_Birdman_Text_1
-# 359 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	closemessage
-# 361 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	setflag FLAG_TEMP_2
-# 362 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	applymovement 7, Common_Movement_FaceLeft
-# 363 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	waitmovement 0
+# 359 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	msgbox VisCen_In_Birdman_Text_1
+# 360 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	closemessage
+# 362 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	setflag FLAG_TEMP_2
+# 363 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	applymovement 7, Common_Movement_FaceLeft
 # 364 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	waitmovement 0
+# 365 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	goto Wingull_Squawk
 	return
 
 
 VisCen_In_Wingull::
-# 373 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	lock
 # 374 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	faceplayer
+	lock
 # 375 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	faceplayer
+# 376 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	goto Wingull_Squawk
 	return
 
 
 Wingull_Squawk:
-# 379 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	applymovement 7, Common_Movement_QuestionMark
 # 380 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	playmoncry SPECIES_WINGULL, 0
+	applymovement 7, Common_Movement_QuestionMark
 # 381 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	waitmoncry
+	playmoncry SPECIES_WINGULL, 0
 # 382 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	waitmoncry
+# 383 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	releaseall
 	end
 
 
 VisCen_In_Otaku::
-# 388 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	setspeaker SP_NAME_MAN
 # 389 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	setspeaker SP_NAME_MAN
+# 390 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	compare VAR_CUTE_BABY, 0
 	goto_if_gt VisCen_In_Otaku_2
-# 401 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	lockall
 # 402 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	faceplayer
+	lockall
 # 403 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	faceplayer
+# 404 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Otaku_Text_1, MSGBOX_YESNO
-# 407 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 408 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	goto_if_eq VAR_RESULT, 1, VisCen_In_Otaku_Agree
 VisCen_In_Otaku_1:
-# 409 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 410 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Otaku_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 VisCen_In_Otaku_2:
-# 391 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	lockall
 # 392 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	faceplayer
+	lockall
 # 393 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	faceplayer
+# 394 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Otaku_Text_0, MSGBOX_YESNO
-# 397 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 398 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	goto_if_eq VAR_RESULT, 1, VisCen_In_Otaku_Agree
 	goto VisCen_In_Otaku_1
 
 
 VisCen_In_Otaku_Agree:
-# 415 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 416 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Otaku_Agree_Text_0
-# 417 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 418 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	closemessage
-# 419 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 420 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	call VisCen_In_Otaku_ChoiceLoop
-# 421 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 422 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Otaku_Agree_Text_1
-# 423 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	closemessage
 # 424 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	closemessage
+# 425 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	hidemonpic
-# 426 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 427 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_Otaku_Agree_Text_2, MSGBOX_AUTOCLOSE
-# 429 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 430 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	release
 	end
 
 
 VisCen_In_Otaku_ChoiceLoop:
-# 434 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	random 5
 # 435 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	copyvar VAR_TEMP_4, VAR_RESULT
+	random 5
 # 436 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	addvar VAR_TEMP_4, 1
+	copyvar VAR_TEMP_4, VAR_RESULT
 # 437 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	goto_if_eq VAR_TEMP_4, VAR_TEMP_5, VisCen_In_Otaku_ChoiceLoop
+	addvar VAR_TEMP_4, 1
 # 438 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	goto_if_eq VAR_TEMP_4, VAR_TEMP_5, VisCen_In_Otaku_ChoiceLoop
+# 439 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	goto VisCen_In_Otaku_ShowMon
 	return
 
 
 VisCen_In_Otaku_ShowMon:
-# 442 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 443 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	copyvar VAR_TEMP_5, VAR_TEMP_4
-# 444 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 445 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	switch VAR_TEMP_5
-# 446 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 447 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	case 1, VisCen_In_Otaku_ShowMon_3
-# 448 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 449 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	case 2, VisCen_In_Otaku_ShowMon_4
-# 450 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 451 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	case 3, VisCen_In_Otaku_ShowMon_5
-# 452 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 453 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	case 4, VisCen_In_Otaku_ShowMon_6
-# 454 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 455 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	case 5, VisCen_In_Otaku_ShowMon_7
-# 457 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 458 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	setvar VAR_CUTE_BABY, SPECIES_STUNFISK
 VisCen_In_Otaku_ShowMon_1:
-# 459 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	showmonpic VAR_CUTE_BABY, 10, 3
 # 460 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	showmonpic VAR_CUTE_BABY, 10, 3
+# 461 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	delay 48
 	return
 
 VisCen_In_Otaku_ShowMon_3:
-# 447 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 448 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	setvar VAR_CUTE_BABY, SPECIES_CLEFFA
 	goto VisCen_In_Otaku_ShowMon_1
 
 VisCen_In_Otaku_ShowMon_4:
-# 449 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 450 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	setvar VAR_CUTE_BABY, SPECIES_TOGEPI
 	goto VisCen_In_Otaku_ShowMon_1
 
 VisCen_In_Otaku_ShowMon_5:
-# 451 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 452 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	setvar VAR_CUTE_BABY, SPECIES_AZURILL
 	goto VisCen_In_Otaku_ShowMon_1
 
 VisCen_In_Otaku_ShowMon_6:
-# 453 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 454 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	setvar VAR_CUTE_BABY, SPECIES_CUTIEFLY
 	goto VisCen_In_Otaku_ShowMon_1
 
 VisCen_In_Otaku_ShowMon_7:
-# 455 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 456 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	setvar VAR_CUTE_BABY, SPECIES_MILCERY
 	goto VisCen_In_Otaku_ShowMon_1
 
 
 VisCen_In_RestingMan::
-# 466 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 467 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	msgbox VisCen_In_RestingMan_Text_0, MSGBOX_NPC
 	return
 
 
-# 476 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 477 "data/maps/VisitorCenter_Indoors/scripts.pory"
 Player_Enter:
-# 478 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 479 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	walk_down
-# 478 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 479 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	walk_down
-# 478 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 479 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	walk_down
 	step_end
 
-# 488 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 489 "data/maps/VisitorCenter_Indoors/scripts.pory"
 Prof_JumpOut:
-# 490 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	jump_right
 # 491 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	jump_right
+# 492 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	walk_down
 	step_end
 
-# 493 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 494 "data/maps/VisitorCenter_Indoors/scripts.pory"
 Prof_Approach_Left:
-# 495 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 496 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	walk_down
-# 495 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 496 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	walk_down
-# 495 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 496 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	walk_down
 	step_end
 
-# 497 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 498 "data/maps/VisitorCenter_Indoors/scripts.pory"
 Prof_Approach_Right:
-# 499 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 500 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	walk_right
-# 500 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 501 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	walk_down
-# 500 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 501 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	walk_down
-# 500 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 501 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	walk_down
 	step_end
 
-# 502 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 503 "data/maps/VisitorCenter_Indoors/scripts.pory"
 Prof_Exit_from_Left:
-# 504 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	walk_right
 # 505 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	walk_down
+	walk_right
 # 506 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	delay_16
+	walk_down
 # 507 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	delay_16
+# 508 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	set_invisible
 	step_end
 
-# 509 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 510 "data/maps/VisitorCenter_Indoors/scripts.pory"
 Prof_Exit_from_Right:
-# 511 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	walk_left
 # 512 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	walk_down
+	walk_left
 # 513 "data/maps/VisitorCenter_Indoors/scripts.pory"
-	delay_16
+	walk_down
 # 514 "data/maps/VisitorCenter_Indoors/scripts.pory"
+	delay_16
+# 515 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	set_invisible
 	step_end
 
@@ -665,126 +667,126 @@ VisCen_In_Mom_Text_2:
 	.string "want to fall behind!$"
 
 VisCen_In_Mom_Text_3:
-# 171 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 172 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Hi, I just had a few questions about the\n"
 	.string "tour…$"
 
 VisCen_In_Mom_Text_4:
-# 173 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 174 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Oh, just a minute, dear. Why don't you\n"
 	.string "take a look around for a while?$"
 
 VisCen_In_Professor_Text_0:
-# 186 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 187 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "No, these guys won't do…\p"
 	.string "Maybe someone with a little more…$"
 
 VisCen_In_Professor_Text_1:
-# 189 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 190 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Huh…? What's with the look, kid?\p"
 	.string "You never see a guy standin' around\n"
 	.string "some plants before?$"
 
 VisCen_In_Professor_Text_2:
-# 196 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 197 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Surely one of these chumps have gotta\n"
 	.string "be…$"
 
 VisCen_In_Professor_Text_3:
-# 198 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 199 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Yeah alright I get it, hey why don't you\n"
 	.string "{COLOR RED}go outside{COLOR DARK_GRAY} to play, maybe?$"
 
 VisCen_In_Receptionist_Text_0:
-# 219 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 220 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Hello, and welcome to our Visitor\n"
 	.string "Center.\p"
 	.string "Would you care for our free Pokémon\n"
 	.string "{COLOR BLUE}healing services{COLOR DARK_GRAY}?$"
 
 VisCen_In_Receptionist_Text_1:
-# 224 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 225 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Of course! Wait right there.$"
 
 VisCen_In_Receptionist_Text_2:
-# 230 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 231 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Your Pokémon are as good as new!\n"
 	.string "Take care out there!$"
 
 VisCen_In_Receptionist_Text_3:
-# 240 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 241 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "No worries. Enjoy your time here!$"
 
 VisCen_In_Receptionist_Text_4:
-# 244 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 245 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Alright… Oh, if you were hoping to ride\n"
 	.string "the bus, I'm afraid you need a {COLOR BLUE}Bus Pass{COLOR DARK_GRAY}.$"
 
 VisCen_In_Receptionist_Text_5:
-# 249 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 250 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Um… Are you perhaps, lost…?\n"
 	.string "Where did you last see your {COLOR BLUE}Mom{COLOR DARK_GRAY}?$"
 
 VisCen_In_Receptionist_Text_6:
-# 254 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 255 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "{COLOR BLUE}The tour pretty much follows the path{COLOR DARK_GRAY}…\n"
 	.string "if you aren't sure where to go,\l"
 	.string "you'll probably find them that way!$"
 
 VisCen_In_Receptionist_Text_7:
-# 260 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 261 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "I'm, afraid I can't escort you myself,\n"
 	.string "but I CAN heal your Pokémon!\l"
 	.string "Er… did I mention that already…?$"
 
 VisCen_In_Receptionist_Text_8:
-# 266 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 267 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "I-{PAUSE 8}If you don't need any assistance,\n"
 	.string "please just enjoy the tour!!\l"
 	.string "Have a nice day!!$"
 
 VisCen_In_Receptionist_Text_9:
-# 274 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 275 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Please have a nice day!!!!!$"
 
 VisCen_In_PokeParents_Text_0:
-# 284 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 285 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "{SPEAKER NAME_MAN}Well we HAVE to see the\n"
 	.string "{COLOR BLUE}Seedot outside Thyme Village{COLOR DARK_GRAY}.$"
 
 VisCen_In_PokeParents_Text_1:
-# 288 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 289 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "{SPEAKER NAME_WOMAN}And don't forget the\n"
 	.string "{COLOR BLUE}Hatenna in the forest{COLOR DARK_GRAY}!$"
 
 VisCen_In_PokeParents_Text_2:
-# 292 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 293 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "{SPEAKER NAME_MAN}Do you think some {COLOR BLUE}Phantump\n"
 	.string "{COLOR DARK_GRAY}will come out too??$"
 
 VisCen_In_PokeParents_Text_3:
-# 296 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 297 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "{SPEAKER NAME_WOMAN}Oh I hope so!! This tour is going to be\n"
 	.string "so exciting!$"
 
 VisCen_In_PokeParents_Text_4:
-# 304 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 305 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "{COLOR LIGHT_BLUE}They're loudly poring over a travel\n"
 	.string "brochure.$"
 
 VisCen_In_PokeKid_Text_0:
-# 316 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 317 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "How can mom and dad get so giddy about\n"
 	.string "some dumb tour?\p"
 	.string "So cringe… I just wanna go home…$"
 
 VisCen_In_PokeKid_Text_1:
-# 322 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 323 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Who wants to visit a dumb place like\n"
 	.string "this anyway?$"
 
 VisCen_In_Parasol_Text_0:
-# 333 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 334 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "We're finally here!\p"
 	.string "Fresh air, beautiful sights, bustling\n"
 	.string "crowds…\p"
@@ -792,60 +794,60 @@ VisCen_In_Parasol_Text_0:
 	.string "trip, just you wait!$"
 
 VisCen_In_Parasol_Text_1:
-# 340 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 341 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "I guess I should make plans on where to\n"
 	.string "go at each stop!$"
 
 VisCen_In_Birdman_Text_0:
-# 352 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 353 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Oh, hello there! Are you in our tour\n"
 	.string "group as well? Nice to meet you!\p"
 	.string "We're both so excited to see new things\n"
 	.string "and make new friends!$"
 
 VisCen_In_Birdman_Text_1:
-# 358 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 359 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Isn't that right, Wingull?$"
 
 VisCen_In_Birdman_Text_2:
-# 368 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 369 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "We'll see you on the trail!$"
 
 VisCen_In_Otaku_Text_0:
-# 393 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 394 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Hehe…{PAUSE 16} So you're back…{PAUSE 16}\p"
 	.string "Then you must…{PAUSE 16}\n"
 	.string "want to see…{PAUSE 16} {COLOR RED}more{COLOR DARK_GRAY}?$"
 
 VisCen_In_Otaku_Text_1:
-# 403 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 404 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Hehe…{PAUSE 16} Hey kid…\p"
 	.string "Do you wanna…{PAUSE 16}\n"
 	.string "See something…{PAUSE 16} {SHADOW DARK_GRAY}amazing{SHADOW LIGHT_GRAY}?$"
 
 VisCen_In_Otaku_Text_2:
-# 409 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 410 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Hehehe…{PAUSE 16} Your loss…$"
 
 VisCen_In_Otaku_Agree_Text_0:
-# 415 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 416 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Okay…{PAUSE 16} Come a little closer…{PAUSE 16}\n"
 	.string "Are you ready…?$"
 
 VisCen_In_Otaku_Agree_Text_1:
-# 421 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 422 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "{SPEAKER NAME_MAN}Right here…{PAUSE 16} in this brochure…{PAUSE 16}\p"
 	.string "…You see it?{PAUSE 16} Isn't it cute…?$"
 
 VisCen_In_Otaku_Agree_Text_2:
-# 426 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 427 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "{SPEAKER NAME_MAN}I want to find…{PAUSE 16} all the cutest Pokémon\n"
 	.string "in the Sekien region…\p"
 	.string "Hehe…{PAUSE 16} I hope you find some cute\n"
 	.string "Pokémon too…$"
 
 VisCen_In_RestingMan_Text_0:
-# 466 "data/maps/VisitorCenter_Indoors/scripts.pory"
+# 467 "data/maps/VisitorCenter_Indoors/scripts.pory"
 	.string "Ah… a new tour's starting huh?\n"
 	.string "I just finished with mine.\p"
 	.string "It was a blast touring the whole\n"

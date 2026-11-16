@@ -116,6 +116,8 @@ Route1_TourGuide_1:
 	playse SE_EXIT
 # 137 "data/maps/Route01/scripts.pory"
 	warp MAP_ROUTE01, 0xFF, 25, 12
+# 138 "data/maps/Route01/scripts.pory"
+	waitstate
 # 139 "data/maps/Route01/scripts.pory"
 	releaseall
 	end
