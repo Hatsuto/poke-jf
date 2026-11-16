@@ -165,6 +165,7 @@ script VisCen_In_Mom
 		addvar(VAR_VISCEN_STATE, 0x90)
 		
 		warp(MAP_VISITOR_CENTER, 0, 0, 0)
+		waitstate
 	}
 	else
 	{
