@@ -48,6 +48,91 @@
 #define VAR_OBJ_GFX_ID_E           0x401E
 #define VAR_OBJ_GFX_ID_F           0x401F
 
+// Used Vars (moved from original position for visibility)
+#define	VAR_VISCEN_STATE		0x404E // events resulting from the opening scenes
+	// 0: (initial) opening event, autowalk into building
+	// 1: intro event over
+	// 2: autowalked into viscen for the first time
+	// 3: professor talk over, crowd event active
+	// 0x10/0xA0: alpha battle
+	// 0x20/0xB0: beta battle
+	// 0x30/0xC0: professor battle
+	// Any of the above three +0x01: won battle
+
+#define VAR_CUTE_BABY			0x4052	//...
+
+#define VAR_BATTLE_BGM			0x4083 // custom battle music (used in conjunction with flag)
+#define VAR_MUGSHOT_ID			0x40E5 // mugshot loading for trainer cut-in
+#define VAR_ROUTE_1_STATE		0x4060 // tracking progress through route 1
+	// 0: (initial) tour entry tiles active
+	// 1: tour started
+
+// States for battling Olive or Liam on Route 1
+#define VAR_ROUTE_1_OLIVE		0x4059
+#define VAR_ROUTE_1_LIAM		0x405B
+	// 0: (initial) not talked to
+	// 0x10: battle refused the first time (set to this at start of convo)
+	// 0x11: battle lost (set to this when battle starts)
+	// 0x20: battle over (set to this if post-script after battle activates)
+	// 0x30: not battle-able (was fought in viscen)
+	
+#define VAR_LIAM_SOCIAL_LINK	0x4055 // I don't know how I'm going to use these just yet
+#define VAR_OLIVE_SOCIAL_LINK	0x4056 // But might as well set them aside already
+
+#define VAR_THYME_STATE   		0x4051
+	// 0: (initial) mom tiles active
+	// 1: mom spoken to
+	// 2: jex spoken to
+	// 3: path opened to forest
+	// 4: forest approached (jex vanished from route 2)
+	// 5: gift shop unblocked (post-gym)
+
+#define VAR_INNERTHYME_STATE	0x4050
+	// 0xA[0-2] = trial started
+	// 0xB0 = gym event
+	// 0xC0 = post-gym event
+	
+#define VAR_THYME_GYM_TRIAL		0x408B
+	// Bitwise, representing 3 groups of trees with 3 states each
+	// 00: not yet inspected
+	// 01: inspected, correct tree not found
+	// 11: inspected, correct tree found
+	// 10 is not possible since 01 sets at the same time 10 would
+
+#define VAR_OLDBAY_STATE		0x4057
+	// 0: initial, has not triggered mother event yet
+	// 1: mother has been talked to
+	// 2: rescue event started (cave entry)
+	// 3: lycanroc seen
+	// 4: lycanroc defeated
+	// 5: mother and lily heard in town
+	// 6: event witnessed
+	// 7: lily talked to (riajuu stairs activated)
+	// 0x10: riajuu initiated
+	// 0x11: riajuu event seen
+	// 0x12: riajuu m request received
+	// 0x20: gym fought
+	// 0x21: Kallista spoken to at dock
+	// 0x22: Kallista spoken to once in house
+	// 0x23: Kallista shown the lighthouse key
+	// 0x24: Kallista talks gramps
+	
+#define VAR_SPINDRIFT_STATE		0x4063
+	// six bitwise flags (0-63), prog bits are thus mults of 64
+	// 64+: ghost event in progress
+	// 128+: ghost event has been completed
+	// 192+: gym has been visited
+	
+#define VAR_FREEBIRD_STATE		0x405C
+	// 1: set after final oldbay event to activate bus stop
+	// 2: after prof talk in bus stop
+	// 4: on arrival in freebird
+	// 5: after arrival
+	// 6: Cadi spoken to once
+	// 7: Cadi is being helped (bike shop unlocked)
+	// 0x10: after saving Enrique / Jaden ready to fight
+	// 0x21: bikers prepped to fight
+
 // general purpose vars
 #define VAR_RECYCLE_GOODS                                0x4020
 #define VAR_REPEL_STEP_COUNT                             0x4021

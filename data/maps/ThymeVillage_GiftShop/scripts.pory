@@ -1,0 +1,355 @@
+const CLERK_ID = 1
+const FANM_ID = 13
+const FANF_ID = 12
+const MOM_ID = 16
+const MOTHER_ID = 14
+
+const Counter_X = 20
+
+// Temporary flags/vars
+const FLAG_DOLL = FLAG_TEMP_1
+const FLAG_MOM = FLAG_TEMP_2
+const FLAG_MOTHER = FLAG_TEMP_3
+const FLAG_FANS = FLAG_TEMP_4
+
+const PLAYER_X = VAR_TEMP_0
+const PLAYER_Y = VAR_TEMP_1
+
+mapscripts ThymeVillage_GiftShop_MapScripts
+{
+	MAP_SCRIPT_ON_FRAME_TABLE
+	[
+		VAR_THYME_STATE, 5: Thyme_GiftShop_PostBadge
+	]
+}
+
+script Thyme_GiftShop_PostBadge
+{
+	lock
+	setvar(VAR_LAST_TALKED, CLERK_ID)
+	call(Common_NPCNotice)
+	
+	msgbox(format("Oh, hello. I take it you have your badge?\p"
+		"That's right… a {COLOR RED}Sekien League Gym Badge{COLOR DARK_GRAY}.\p"
+		"That means the mayor recognized you as trustworthy,"
+		"so I don't mind you using the back entrance whenever you'd like."))
+	closemessage
+	
+	applymovement(OBJ_EVENT_ID_PLAYER, Thyme_GiftShop_PlayerOutOfCounter)
+	waitmovement(0)
+	applymovement(CLERK_ID, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	
+	msgbox(format("Ah, before you go,"))
+	closemessage
+	
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
+	waitmovement(0)
+	
+	msgbox(format("We finally got some new stock, so be sure to check it out!\p"
+		"(From the other side of the counter, of course.)"))
+	closemessage
+	
+	applymovement(CLERK_ID, Common_Movement_WalkInPlaceLeft)
+	setvar(VAR_LAST_TALKED, MOM_ID)
+	call(Common_NPCNotice)
+	
+	applymovement(MOM_ID, Thyme_GiftShop_MomToPlayer)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
+	waitmovement(0)
+	
+	msgbox(format("{SPEAKER NAME_MOM}Oh, there you are.\p"
+		"Look at you, you're all covered in grass!!\nGoodness…\p"
+		"Well, you'll never believe it, but those trees that were blocking the path?\p"
+		"They just… disappeared!\p"
+		"Before we knew it, the forest rangers said there had been another landslide.\p"
+		"We all looked outside after, and it was like the trees were never there.\p"
+		"Crazy, right? Bet you regret missing that, huh? …No?\p"
+		"…Well, anyway, they've already went on ahead.\p"
+		"Clean yourself off a little and come meet me outside, alright?"))
+	closemessage
+	applymovement(MOM_ID, Common_Movement_WalkRight)
+	waitmovement(0)
+	
+	giveitem(ITEM_FRESH_WATER, 1)
+	closemessage
+	
+	applymovement(MOM_ID, Thyme_GiftShop_MomExit)
+	waitmovement(0)
+	playse(SE_EXIT)
+	removeobject(MOM_ID)
+	waitse
+	delay(16)
+	
+	setflag(FLAG_THYME_TOUR_NPC)
+	setflag(FLAG_ROUTE_2_TREVENANT)
+	clearflag(FLAG_ROUTE_2_MOM)
+	setvar(VAR_THYME_STATE, 6)
+	end
+}
+movement Thyme_GiftShop_PlayerOutOfCounter
+{
+	walk_down * 4
+	walk_left
+}
+movement Thyme_GiftShop_MomToPlayer
+{
+	walk_right * 3
+	walk_down * 2
+	walk_right * 2
+}
+movement Thyme_GiftShop_MomExit
+{
+	walk_left * 2
+	walk_down
+	delay_16
+}
+
+
+script Thyme_GiftShop_Clerk
+{
+	lock
+	faceplayer
+	getplayerxy(PLAYER_X, PLAYER_Y)
+	if (var(PLAYER_X) == Counter_X)
+	{
+		if (!flag(FLAG_BADGE01_GET))
+		{
+			msgbox(format("Welcome!\pWe are unfortunately low on stock right now, but here is what we have available."))
+			waitmessage
+			pokemart(Thyme_GiftShop_Basic)
+		}
+		else
+		{
+			msgbox(gText_HowMayIServeYou)
+			waitmessage
+			pokemart(Thyme_GiftShop_Expanded)
+		}
+		msgbox(gText_PleaseComeAgain)
+		release
+		end
+	}
+	else
+	{
+		msgbox(format("Would you like an escort to our village?")
+			,MSGBOX_YESNO)
+		closemessage
+		if (var(VAR_RESULT) == 1)
+		{
+//			warp(MAP_INNER_THYME, 7)
+			release
+			end
+		}
+		else
+		{
+			msgbox(format("Don't hesitate to ask. It's on the house!\p"
+				"But, if you wanted to buy something, please go across the counter first.")
+				,MSGBOX_AUTOCLOSE)
+			release
+			end
+		}
+	}
+}
+
+raw `
+	.align 2
+Thyme_GiftShop_Basic:
+	.2byte ITEM_BERRY_JUICE
+	.2byte ITEM_ENERGY_ROOT
+	.2byte ITEM_FLUFFY_TAIL
+	.2byte ITEM_NONE
+	release
+	end
+	
+	.align 2
+Thyme_GiftShop_Expanded:
+	.2byte ITEM_ROSE_INCENSE
+	.2byte ITEM_BERRY_JUICE
+	.2byte ITEM_ENERGY_ROOT
+	.2byte ITEM_RED_NECTAR
+	.2byte ITEM_YELLOW_NECTAR
+	.2byte ITEM_PINK_NECTAR
+	.2byte ITEM_PURPLE_NECTAR
+	.2byte ITEM_FLUFFY_TAIL
+	.2byte ITEM_NONE
+	release
+	end
+`
+
+//***
+// Event NPCs
+//***
+script Thyme_GiftShop_Mom
+{
+	setspeaker(SP_NAME_MOM)
+	if(var(VAR_THYME_STATE) < 3)
+	{
+		msgbox(format("Hmm? What'd you follow me for, hun?\p"
+			"Nothing but Poké Dolls to catch here. The tall grass is outside.")
+			,MSGBOX_NPC)
+	}
+	elif(!flag(FLAG_MOM))
+	{
+		setflag(FLAG_MOM)
+		msgbox(format("Oh honey, don't worry about me.\p"
+			"I knew it as soon as you showed me your Pokédex.\p"
+			"I just wasn't expecting you to do this while we were on vacation…")
+			,MSGBOX_NPC)
+	}
+	else
+	{
+		msgbox(format("I'm okay with you going slightly off the path.\p"
+			"Just no going on ahead of the group, okay?")
+			,MSGBOX_NPC)
+	}
+}
+script Thyme_GiftShop_Mother
+{
+	setspeaker(SP_NAME_WOMAN)
+	if(!flag(FLAG_MOTHER))
+	{
+		lock
+		faceplayer
+		setflag(FLAG_MOTHER)
+		msgbox(format("That girl of mine has not once stopped talking about Pokémon…\p"
+			"Not since that greasy man put on that stunt giving them away!\p"
+			"What was he thinking? Doesn't he know how dangerous they are for children?\p"
+			"Goodness… Maybe she'll calm down if I buy her a doll…"))
+		closemessage
+		applymovement(MOTHER_ID, Common_Movement_FaceLeft)
+		waitmovement(0)
+		end
+	}
+	else
+	{
+		msgbox(format("…But which Pokémon does she even like…?\nCan she even tell the difference?")
+			,MSGBOX_AUTOCLOSE)
+	}
+}
+script Thyme_GiftShop_PokeFans
+{
+	if (!flag(FLAG_FANS))
+	{
+		lockall
+		//Some embarrassing dialogue
+		applymovement(FANM_ID, Common_Movement_WalkInPlaceUp)
+		waitmovement(0)
+		msgbox(format("{SPEAKER NAME_MAN}Kyaaa!! Look how big and fluffy he is!!"))
+		closemessage
+		
+		applymovement(FANF_ID, Common_Movement_WalkInPlaceUp)
+		waitmovement(0)
+		msgbox(format("{SPEAKER NAME_WOMAN}And the little guys in the back!!\p"
+			"You think our little boy would like that cool-looking one?"))
+		closemessage
+		
+		applymovement(FANM_ID, Common_Movement_WalkInPlaceUp)
+		waitmovement(0)
+		msgbox(format("{SPEAKER NAME_MAN}Oh I just know he'd love it! He's got so many just like it in his room!"))
+		closemessage
+		
+		applymovement(FANF_ID, Common_Movement_WalkInPlaceUp)
+		waitmovement(0)
+		msgbox(format("{SPEAKER NAME_WOMAN}That's so true! How many have we bought him over the years…?"))
+		closemessage
+		
+		applymovement(FANM_ID, Common_Movement_WalkInPlaceUp)
+		waitmovement(0)
+		msgbox(format("{SPEAKER NAME_MAN}Hahaha, I don't remember anymore!"))
+		closemessage
+		
+		setflag(FLAG_FANS)
+		releaseall
+		end
+	}
+	else
+	{
+		lock
+		msgbox(format("{COLOR LIGHT_BLUE}{SHADOW WHITE}They're loud enough to hear from the entrance."))
+		release
+		end
+	}
+}
+script Thyme_GiftShop_Parasol
+{
+	//something about seeing the sights after the merch
+	msgbox(format("{SPEAKER NAME_GIRL}I was all excited to take in the sights… but…\p"
+		"M-maybe after I look around here a little longer first.")
+		,MSGBOX_NPC)
+}
+
+script Thyme_GiftShop_DollBlock
+{
+	if (!flag(FLAG_DOLL))
+	{
+		lock
+		msgbox("{COLOR LIGHT_BLUE}It's a Clefairy doll. Mom collects these.")
+		closemessage
+		//employee turns to player
+		applymovement(CLERK_ID, Common_Movement_WalkInPlaceDown)
+		waitmovement(0)
+		msgbox(format("Just a reminder of store policy:\nYou touch it, you buy it!"))
+		closemessage
+		//player turns away
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
+		applymovement(CLERK_ID, Common_Movement_WalkInPlaceLeft)
+		waitmovement(0)
+		setflag(FLAG_DOLL)
+	}
+	else
+	{
+		msgbox("{COLOR LIGHT_BLUE}It's too expensive to touch."
+			,MSGBOX_NPC)
+	}
+}
+
+//***
+// Regular NPCs
+//***
+script Thyme_GiftShop_FridgeLady
+{
+	msgbox(format("They may not have a very conventional stock, but it sure is unique.\p"
+		"That counts for something, right?")
+		,MSGBOX_NPC)
+}
+script Thyme_GiftShop_ShelfLady
+{
+	msgbox(format("I prefer shopping here instead of at the {COLOR BLUE}Pokémart{COLOR DARK_GRAY}.\p"
+		"I don't really know what's in Potions and Full Heals…\p"
+		"but at least I know an expensive root when I see one.")
+		,MSGBOX_NPC)
+}
+script Thyme_GiftShop_ShelfMan
+{
+	msgbox(format("I tell ya, the herbal medicine they sell works wonders!\p"
+		"…If your Pokémon can stand the taste.\p"
+		"They might resent you for it, but nothing beats good health.")
+		,MSGBOX_NPC)
+}
+
+script Thyme_GiftShop_NormalDolls
+{
+	if(!flag(FLAG_THYME_TOUR_NPC))
+	{
+		msgbox(format("{COLOR LIGHT_BLUE}A cadre of Poké Dolls holds would-be shoppers at bay.")
+			,MSGBOX_NPC)
+	}
+	else //After tour group has left, only Snorlax remains
+	{
+		msgbox(format("{COLOR LIGHT_BLUE}A lone guardian keeps this corner of the shop safe.")
+			,MSGBOX_NPC)
+	}
+}
+script Thyme_GiftShop_WaterDolls
+{
+	if(!flag(FLAG_THYME_TOUR_NPC))
+	{
+		msgbox(format("{COLOR LIGHT_BLUE}It feels like a beach party.")
+			,MSGBOX_NPC)
+	}
+	else
+	{
+		msgbox(format("{COLOR LIGHT_BLUE}It feels like a pool party.")
+			,MSGBOX_NPC)
+	}
+}
