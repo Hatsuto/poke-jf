@@ -177,6 +177,8 @@ enum __attribute__((packed)) TrainerPicID
     TRAINER_PIC_CRUSH_GIRL_FRLG,
     TRAINER_PIC_POKEMON_BREEDER_FRLG,
     TRAINER_PIC_PAINTER_FRLG,
+
+    TRAINER_PIC_OLIVE_1,
     
     //Mugs below here
     TRAINER_PIC_AKIRA_MUG,
