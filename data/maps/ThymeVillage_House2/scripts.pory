@@ -1,0 +1,35 @@
+mapscripts ThymeVillage_House2_MapScripts{}
+
+script Thyme_House2_Lady
+{
+	lock
+	faceplayer
+	if (!flag(FLAG_BADGE01_GET))
+	{
+		msgbox(format("You've been on the nature path from the Visitor Center, right?\p"
+			"I hope no Wurmples managed to sting your Pokémon.\p"
+			"The gift shop here sells {COLOR GREEN}special healing herbs"
+			"{COLOR DARK_GRAY}just in case!"))
+	}
+	else
+	{
+		msgbox(format("Residents of the deep woods don't feel the same, but I like the traffic.\p"
+			"There are always new types of people coming through, like you!"))
+	}
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
+	release
+	end
+}
+
+script Thyme_House2_Man
+{
+	lock
+	faceplayer
+	msgbox(format("What do you need, kid?\p"
+		"Sofy101's cooking show is gonna be on soon. I've never missed an episode!"))
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
+	release
+	end
+}

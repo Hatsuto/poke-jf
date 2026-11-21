@@ -32,8 +32,8 @@ gText_Birch_AndYouAre::
 	.string "And you are?$"
 
 gText_Birch_BoyOrGirl::
-	.string "Are you a boy?\n"
-	.string "Or are you a girl?$"
+	.string "And which one of\n"
+	.string "these is you?$"
 
 gText_Birch_WhatsYourName::
 	.string "All right.\n"
@@ -46,16 +46,19 @@ gText_Birch_YourePlayer::
 	.string "Ah, okay!\p"
 	.string "You're {PLAYER}{KUN} who's moving to my\n"
 	.string "hometown of LITTLEROOT.\l"
-	.string "I get it now!\p"
+	.string "I get it now! …Hm?\p"
+	.string "What's that? That's not right?\p"
 	.string "$"
 
 gText_Birch_AreYouReady::
-	.string "All right, are you ready?\p"
-	.string "Your very own adventure is about\n"
-	.string "to unfold.\p"
-	.string "Take courage, and leap into the\n"
-	.string "world of POKéMON where dreams,\l"
+	.string "Oh… I must have mistaken you for\n"
+	.string "someone else.\p"
+	.string "You're… that's right.\p"
+	.string "You're {PLAYER}{KUN} who's on vacation in\n"
+	.string "the Sekien Region with their mother.\p"
+	.string "Well, you may not be on a Pokémon\n"
+	.string "journey like others your age, but you\l"
+	.string "never know what the future may hold!\p"
+	.string "A world of POKéMON where dreams,\n"
 	.string "adventure, and friendships await!\p"
-	.string "Well, I'll be expecting you later.\n"
-	.string "Come see me in my POKéMON LAB.\p"
 	.string "$"
