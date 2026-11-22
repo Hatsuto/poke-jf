@@ -9384,6 +9384,26 @@
       "border_filepath": "data/layouts/ThymeVillage_GiftShop/border.bin",
       "blockdata_filepath": "data/layouts/ThymeVillage_GiftShop/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_ROUTE02_ENTRANCE",
+      "name": "Route02_Entrance_Layout",
+      "width": 52,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Route02_Entrance/border.bin",
+      "blockdata_filepath": "data/layouts/Route02_Entrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_THYME_FOREST",
+      "name": "ThymeForest_Layout",
+      "width": 64,
+      "height": 52,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/ThymeForest/border.bin",
+      "blockdata_filepath": "data/layouts/ThymeForest/map.bin"
     }
   ]
 }

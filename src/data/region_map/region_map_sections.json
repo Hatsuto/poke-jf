@@ -1638,6 +1638,14 @@
     {
       "id": "MAPSEC_THYME_VILLAGE",
       "name": "Thyme Village"
+    },
+    {
+      "id": "MAPSEC_ROUTE_02",
+      "name": "ROUTE 2"
+    },
+    {
+      "id": "MAPSEC_THYME_FOREST",
+      "name": "THYME FOREST"
     }
   ]
 }

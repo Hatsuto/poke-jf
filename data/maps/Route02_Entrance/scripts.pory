@@ -1,0 +1,363 @@
+const TREE_ROW1_Y = 18
+const TREE_ROW1_X1 = 13
+const TREE_ROW1_X2 = 15
+const TREE_ROW1_X3 = 17
+
+const TREE_ROW2_Y = 20
+const TREE_ROW2_X1 = 14
+const TREE_ROW2_X2 = 16
+
+const TREE_ROW3_Y = 22
+const TREE_ROW3_X1 = 14
+const TREE_ROW3_X2 = 16
+
+const TREE_SHORTCUT_X = 31
+const TREE_SHORTCUT_Y = 6
+
+const NPCTALK_POS1 = 21
+const NPCTALK_POS2 = 22
+
+const MOM_POS_X = 16
+const MOM_POS_Y = 19
+
+// Temp vars used:
+//		player pos (0,1)
+const PLAYER_X = VAR_TEMP_0
+const PLAYER_Y = VAR_TEMP_1
+
+// Dialogue flags
+const FLAG_JEX = FLAG_TEMP_1
+const FLAG_GUIDE = FLAG_TEMP_2
+
+mapscripts Route02_Entrance_MapScripts
+{
+	MAP_SCRIPT_ON_LOAD: Route2_TreeBlock
+}
+
+script Route2_TreeBlock
+{
+	if (!flag(FLAG_BADGE01_GET))
+	{
+		//they shouldn't be visible yet, will be cleared by another event
+		setflag(FLAG_ROUTE_2_TREVENANT)
+		setflag(FLAG_ROUTE_2_MOM)
+		
+		//set trees
+		setmetatile(TREE_ROW1_X1, TREE_ROW1_Y, 0x1E, 0x1)
+		setmetatile(TREE_ROW1_X1 + 1, TREE_ROW1_Y, 0x1F, 0x1)
+		setmetatile(TREE_ROW1_X1, TREE_ROW1_Y + 1, 0x26, 0x1)
+		setmetatile(TREE_ROW1_X1 + 1, TREE_ROW1_Y + 1, 0x27, 0x1)
+		
+		setmetatile(TREE_ROW1_X2, TREE_ROW1_Y, 0x1E, 0x1)
+		setmetatile(TREE_ROW1_X2 + 1, TREE_ROW1_Y, 0x1F, 0x1)
+		setmetatile(TREE_ROW1_X2, TREE_ROW1_Y + 1, 0x26, 0x1)
+		setmetatile(TREE_ROW1_X2 + 1, TREE_ROW1_Y + 1, 0x27, 0x1)
+		
+		setmetatile(TREE_ROW1_X3, TREE_ROW1_Y, 0x1E, 0x1)
+		setmetatile(TREE_ROW1_X3 + 1, TREE_ROW1_Y, 0x1F, 0x1)
+		setmetatile(TREE_ROW1_X3, TREE_ROW1_Y + 1, 0x26, 0x1)
+		setmetatile(TREE_ROW1_X3 + 1, TREE_ROW1_Y + 1, 0x27, 0x1)
+		
+		setmetatile(TREE_ROW2_X1, TREE_ROW2_Y, 0x1E, 0x1)
+		setmetatile(TREE_ROW2_X1 + 1, TREE_ROW2_Y, 0x1F, 0x1)
+		setmetatile(TREE_ROW2_X1, TREE_ROW2_Y + 1, 0x26, 0x1)
+		setmetatile(TREE_ROW2_X1 + 1, TREE_ROW2_Y + 1, 0x27, 0x1)
+		
+		setmetatile(TREE_ROW2_X2, TREE_ROW2_Y, 0x1E, 0x1)
+		setmetatile(TREE_ROW2_X2 + 1, TREE_ROW2_Y, 0x1F, 0x1)
+		setmetatile(TREE_ROW2_X2, TREE_ROW2_Y + 1, 0x26, 0x1)
+		setmetatile(TREE_ROW2_X2 + 1, TREE_ROW2_Y + 1, 0x27, 0x1)
+		
+		setmetatile(TREE_ROW3_X1, TREE_ROW3_Y, 0x1E, 0x1)
+		setmetatile(TREE_ROW3_X1 + 1, TREE_ROW3_Y, 0x1F, 0x1)
+		setmetatile(TREE_ROW3_X1, TREE_ROW3_Y + 1, 0x26, 0x1)
+		setmetatile(TREE_ROW3_X1 + 1, TREE_ROW3_Y + 1, 0x27, 0x1)
+		
+		setmetatile(TREE_ROW3_X2, TREE_ROW3_Y, 0x1E, 0x1)
+		setmetatile(TREE_ROW3_X2 + 1, TREE_ROW3_Y, 0x1F, 0x1)
+		setmetatile(TREE_ROW3_X2, TREE_ROW3_Y + 1, 0x26, 0x1)
+		setmetatile(TREE_ROW3_X2 + 1, TREE_ROW3_Y + 1, 0x27, 0x1)
+		
+		setmetatile(TREE_SHORTCUT_X, TREE_SHORTCUT_Y, 0x1E, 0x1)
+		setmetatile(TREE_SHORTCUT_X + 1, TREE_SHORTCUT_Y, 0x1F, 0x1)
+		setmetatile(TREE_SHORTCUT_X, TREE_SHORTCUT_Y + 1, 0x26, 0x1)
+		setmetatile(TREE_SHORTCUT_X + 1, TREE_SHORTCUT_Y + 1, 0x27, 0x1)
+	}
+}
+
+// *****
+// Tile events
+// *****
+
+script Route2_MomEvent
+{
+	lock
+	msgbox("Wait just a minute!!")
+	closemessage
+	
+	addobject(LOCALID_MOM_CUTSCENE)
+	
+	if (var(PLAYER_X) == NPCTALK_POS2)
+	{
+		applymovement(LOCALID_TERYN, Route2_Teryn_AsideUp)
+		waitmovement(0)
+	}
+	applymovement(OBJ_EVENT_ID_PLAYER, Route2_Player_ToMom)
+	applymovement(LOCALID_MOM_CUTSCENE, Route2_Mom_Arrive)
+	waitmovement(0)
+	
+	msgbox(format("{SPEAKER NAME_MOM}What are you thinking??\nAre you really going out there alone?")
+		,MSGBOX_YESNO)
+	
+	if(var(VAR_RESULT) == 1)
+	{
+		msgbox(format("Goodness, what am I going to do with you…"
+			"I wasn't really serious earlier!\p"
+			"But I figured you would… you've got your little friend with you now.\l"
+			"That's how it starts."))
+	}
+	else
+	{
+		msgbox(format("Don't be smart with me! I wasn't born yesterday, you know?\p"
+			"Kids like you get their Pokémon and they're suddenly so independent…"))
+	}
+	
+	msgbox(format("Well, I guess it was just a matter of time. You're going to want these."))
+	closemessage
+	applymovement(LOCALID_MOM_CUTSCENE, Common_Movement_WalkRight)
+	setflag(FLAG_SYS_B_DASH)
+	playfanfare(MUS_RG_OBTAIN_KEY_ITEM)
+	msgbox(format("Mom gave you a pair of Running Shoes!\n"
+		"({COLOR RED}Hold {B_BUTTON}{COLOR DARK_GRAY} while moving to run!)"))
+	waitfanfare
+	closemessage
+	applymovement(LOCALID_MOM_CUTSCENE, Route2_Mom_Leaving)
+	waitmovement(0)
+	msgbox(format("{SPEAKER NAME_MOM}I picked them up at the gift shop."
+		"I know they're not the most stylish, but your feet will thank you later."))
+	applymovement(LOCALID_MOM_CUTSCENE, Common_Movement_FaceRight)
+	waitmovement(0)
+	msgbox(format("…Just don't do anything too crazy, alright?\p"
+		"And be back before they get all this sorted out, or I'm leaving you here."))
+	closemessage
+	applymovement(LOCALID_MOM_CUTSCENE, Route2_Mom_Leave)
+	waitmovement(0)
+	
+	removeobject(LOCALID_MOM_CUTSCENE)
+	setvar(VAR_THYME_STATE, 3)
+	setflag(FLAG_ROUTE_2_MOM)
+	
+	release
+	end
+}
+movement Route2_Player_ToMom
+{
+	walk_left * 2
+}
+movement Route2_Mom_Arrive
+{
+	walk_down * 6
+	walk_right
+}
+movement Route2_Mom_Leaving
+{
+	walk_left * 2
+}
+movement Route2_Mom_Leave
+{
+	walk_up * 6
+}
+
+script Route2_TerynVanish
+{
+	setflag(FLAG_ROUTE_2_TERYN)
+	setvar(VAR_THYME_STATE, 4)
+}
+
+script Route2_ContinueOn
+{
+	lock
+	getplayerxy(PLAYER_X, PLAYER_Y)
+	applymovement(LOCALID_MOM_BLOCK, Common_Movement_FacePlayer)
+	if (var(PLAYER_X) < MOM_POS_X)
+	{
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
+	}
+	elif (var(PLAYER_X) > MOM_POS_X)
+	{
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
+	}
+	waitmovement(0)
+	msgbox(format("{SPEAKER NAME_MOM}Honey, you still look a mess."
+		"Did you even give your Pokémon a rest?\p"
+		"How are you feeling? Tired? Full of energy?\p"
+		"Your mom's feeling pent up waiting around, so we're going for a brisk walk, alright?"))
+	closemessage
+	applymovement(LOCALID_MOM_BLOCK, Common_Movement_WalkDown)
+	waitmovement(0)
+	
+	msgbox("Try and keep up!")
+	
+	setflag(FLAG_ROUTE_2_MOM)
+	setvar(VAR_THYME_STATE, 7)
+	
+	release
+	applymovement(LOCALID_MOM_BLOCK, Route2_Mom_JogToRoute3)
+	end
+}
+movement Route2_Mom_JogToRoute3
+{
+	walk_fast_down * 16
+	set_invisible
+}
+
+// *****
+// Signs/Objects
+// 
+//	Item ball: Route2_EventScript_ItemRevive
+// *****
+
+script Route2_BerrySign
+{
+	msgbox(format("Berries, free to pick for all guests!\p"
+		"We simply ask that you plant some extras for the next person!")
+		,MSGBOX_SIGN)
+}
+
+script Route2_ForestSign
+{
+	msgbox(format("NO PATH BEYOND THIS POINT\n"
+		"Please respect the local wildlife.")
+		,MSGBOX_SIGN)
+}
+
+// *****
+// NPC events
+// *****
+
+script Route2_RangerM
+{
+	msgbox(format("Wouldn't you know it, the path got all blocked up overnight…\p"
+		"Must've been a landslide or something from the recent rainfall.")
+		,MSGBOX_NPC)
+}
+
+script Route2_RangerF
+{
+	msgbox(format("Well, this kinda thing happens, being nature and all.\p"
+		"Nothing for it but to figure out a different way.")
+		,MSGBOX_NPC)
+}
+
+script Route2_Girl
+{
+	msgbox(format("{SPEAKER NAME_GIRL}Hey Mr. and Mrs. Ranger, can't we get through here?\p"
+		"I wanna see the wild Pokémon!")
+		,MSGBOX_NPC)
+}
+
+script Route2_Lady
+{
+	msgbox(format("{SPEAKER NAME_LADY}It's weird, isn't it…? For a path to get blocked up just like that?\p"
+		"These aren't even the same trees…\nI mean, like, even I noticed, you know?")
+		,MSGBOX_NPC)
+}
+
+script Route2_Guide
+{
+	setspeaker("GUIDE")
+	if(!flag(FLAG_GUIDE))
+	{
+		setflag(FLAG_GUIDE)
+		msgbox(format("Oh man, not again…\p"
+			"I'm sorry, but we can't continue the tour until we can get the path clear.\l"
+			"It shouldn't be much longer…! I hope…")
+			, MSGBOX_NPC)
+	}
+	else
+	{
+		msgbox(format("For now, why not try… um… chatting with your fellow tourists?")
+			, MSGBOX_NPC)
+	}
+}
+
+script Route2_Teryn
+{
+	if (var(VAR_THYME_STATE) < 2)
+	{
+		lock
+		faceplayer
+		// Talk then move out of the way
+		msgbox(format("You know, I heard the locals talking about this kind of thing…\p"
+			"I think there's someone who could help over in the forest?"))
+		closemessage
+		call(Route2_TerynAside)
+		msgbox(format("I think I saw an entrance just beyond here, if you wanted to take a look."))
+		setvar(VAR_THYME_STATE, 2)
+		setflag(FLAG_JEX)
+		release
+		end
+	}
+	elif (flag(FLAG_JEX))
+	{
+		// talked again before entering forest but after they've moved
+		msgbox(format("They say some kind of Witch lives there, but I think that's just for publicity.\p"
+			"But just in case, you might want to stock up at the Pokémart first.\p"
+			"…No, not the gift shop. The one with the blue roof.")
+			,MSGBOX_NPC)
+	}
+	else
+	{
+		lock
+		faceplayer
+		// talked again, but you've left the map so they reset pos
+		msgbox(format("Oh, excuse me."))
+		closemessage
+		call(Route2_TerynAside)
+		msgbox(format("Take care out there!"))
+		setflag(FLAG_JEX)
+		release
+		end
+	}
+}
+script(local) Route2_TerynAside
+{
+	getplayerxy(PLAYER_X, PLAYER_Y)
+	if (var(PLAYER_X) == NPCTALK_POS1)
+	{
+		applymovement(LOCALID_TERYN, Route2_Teryn_AsideUp)
+	}
+	else
+	{
+		applymovement(LOCALID_TERYN, Route2_Teryn_AsideLeft)
+	}
+	waitmovement(0)
+}
+movement Route2_Teryn_AsideLeft
+{
+	walk_left
+	face_right
+}
+movement Route2_Teryn_AsideUp
+{
+	walk_up
+	face_down
+}
+
+script Route2_Trevenant
+{
+	lock
+	playmoncry(SPECIES_TREVENANT, 0)
+	
+	setvar(VAR_0x8004, 0) //vertical pan
+	setvar(VAR_0x8005, 2) //horizontal pan
+	setvar(VAR_0x8006, 7) //num shakes
+	setvar(VAR_0x8007, 3) //shake delay
+	
+	special(ShakeCamera)
+	waitstate
+	
+	msgbox(format("{COLOR LIGHT_BLUE}{SHADOW WHITE}It seems hard at work.\n"
+		"Let's go around another way.")
+		, MSGBOX_AUTOCLOSE)
+}

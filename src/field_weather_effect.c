@@ -2619,9 +2619,36 @@ static const u8 sDefaultDynamicWeathers[] =
     WEATHER_RAIN_THUNDERSTORM,
 };*/
 
+//62.5% sunny, 25% rain, 12.5% thunderstorm
+static const u8 sDynamicWeathers_Temperate[] =
+{
+    WEATHER_SUNNY,
+    WEATHER_SUNNY,
+    WEATHER_SUNNY,
+    WEATHER_SUNNY,
+    WEATHER_SUNNY,
+    WEATHER_RAIN,
+    WEATHER_RAIN,
+    WEATHER_RAIN_THUNDERSTORM,
+}
+
+//High chance for clear or hot sun, still small chance of rain
+static const u8 sDynamicWeathers_Warm[] =
+{
+    WEATHER_SUNNY,
+    WEATHER_SUNNY,
+    WEATHER_SUNNY,
+    WEATHER_SUNNY,
+    WEATHER_DROUGHT,
+    WEATHER_DROUGHT,
+    WEATHER_DROUGHT,
+    WEATHER_RAIN,
+}
+
 static const struct DynamicWeatherPool sDynamicWeatherPools[] =
 {
     /*{ MAPSEC_DEWFORD_TOWN, DYNAMIC_WEATHER_POOL(sDynamicWeathers_DewfordTown) },*/
+    {MAPSEC_ROUTE02_ENTRANCE, DYNAMIC_WEATHER_POOL(sDynamicWeathers_Temperate) },
 };
 
 static const u8 *GetDynamicWeatherPool(u8 *count)

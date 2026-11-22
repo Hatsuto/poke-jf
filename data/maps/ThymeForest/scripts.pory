@@ -1,0 +1,307 @@
+const DeepThymeTree_1_X = 57
+const DeepThymeTree_1_Y = 43
+const DeepThymeTree_2_X = 58
+const DeepThymeTree_2_Y = 45
+
+const FLAG_BOUNCER = FLAG_TEMP_1
+const FLAG_RIAJUU = FLAG_TEMP_2
+
+mapscripts ThymeForest_MapScripts
+{
+	MAP_SCRIPT_ON_LOAD: ThymeForest_TreeBlock
+}
+
+script ThymeForest_TreeBlock
+{ //For the thyme being, this is always true. Won't "unlock" until very lategame
+	setmetatile(DeepThymeTree_1_X, DeepThymeTree_1_Y, 0x1E, 0x1)
+	setmetatile(DeepThymeTree_1_X + 1, DeepThymeTree_1_Y, 0x1F, 0x1)
+	setmetatile(DeepThymeTree_1_X, DeepThymeTree_1_Y + 1, 0x26, 0x1)
+	setmetatile(DeepThymeTree_1_X + 1, DeepThymeTree_1_Y + 1, 0x27, 0x1)
+	
+	setmetatile(DeepThymeTree_2_X, DeepThymeTree_2_Y, 0x1E, 0x1)
+	setmetatile(DeepThymeTree_2_X + 1, DeepThymeTree_2_Y, 0x1F, 0x1)
+	setmetatile(DeepThymeTree_2_X, DeepThymeTree_2_Y + 1, 0x26, 0x1)
+	setmetatile(DeepThymeTree_2_X + 1, DeepThymeTree_2_Y + 1, 0x27, 0x1)
+}
+
+//********************
+//Tile events
+//********************
+
+script ThymeForest_ShopBlock
+{
+	lock
+	setvar(VAR_LAST_TALKED, LOCALID_BOUNCER)
+	call(Common_NPCNotice)
+	//player step back
+	setflag(FLAG_BOUNCER)
+	applymovement(OBJ_EVENT_ID_PLAYER, ThymeForest_PlayerBTFO)
+	applymovement(LOCALID_BOUNCER, ThymeForest_BouncerBounce)
+	waitmovement(0)
+	goto(ThymeForest_Bouncer)
+}
+movement ThymeForest_PlayerBTFO
+{
+	walk_fast_right
+	face_left
+}
+movement ThymeForest_BouncerBounce
+{
+	walk_up
+	face_right
+}
+movement ThymeForest_BouncerBouncent
+{
+	walk_down
+	face_right
+}
+
+//********************
+//Signs/Objects
+//
+//	3 item balls
+//		Antidote
+//		Full Heal (by otaku)
+//		(Behind cut tree): 
+//		
+//	Some hidden items
+//		X Sp. Def
+//		X Speed
+//		Pokeball
+//		Tiny mushroom x2
+//********************
+
+script ThymeForest_ExperienceTip
+{
+	msgbox(format("Trainer Tips!\p"
+		"All Pokémon - strong or weak - can gain experience just by seeing an opponent.\p"
+		"Try to use many different kinds by switching them with teammates.\p"
+		"With a little help, you never know who may grow strong themselves!")
+		, MSGBOX_SIGN)
+}
+script ThymeForest_HiddenItemTip
+{
+	msgbox(format("Trainer Tips!\p"
+		"-is what it reads, but it looks like someone forgot to write any.")
+		, MSGBOX_SIGN)
+
+}
+script ThymeForest_LedgeTip
+{
+	msgbox(format("Trainer Tips!\p"
+		"You can hop down thin ledges by walking into them!")
+		, MSGBOX_SIGN)
+}
+
+//********************
+//Event NPCs
+//********************
+
+script ThymeForest_Bouncer
+{
+	lock
+	//can't let you through
+	msgbox(format("Sorry, kid. Can't let you through without a BADGE…\p"
+		"That's right… an Employee Badge.\nStaff only.\p"
+		"If you're going back to Thyme, gotta head back the way you came."))
+	closemessage
+	if (flag(FLAG_BOUNCER))
+	{
+		clearflag(FLAG_BOUNCER)
+		applymovement(LOCALID_BOUNCER, ThymeForest_BouncerBouncent)
+		waitmovement(0)
+		release
+		end
+	}
+	else
+	{
+		applymovement(LOCALID_BOUNCER, Common_Movement_FaceRight)
+		release
+		end
+	}
+}
+
+//********************
+//Tour NPCs
+//********************
+
+script ThymeForest_Otaku
+{
+	//Morelull
+	trainerbattle_single(TRAINER_THYMEFOREST_GREGATHAN,
+		format("{SPEAKER NAME_MAN}Hehehe… I found one…\pA cute…{PAUSE 8} little…{PAUSE 8} Pokémon…"),
+		"Oh no… it fell asleep…",
+		ThymeForest_Otaku_RateMyPokemon)
+
+	//Post-text
+	msgbox(format("{SPEAKER_NAME OTAKU}Morelull is pretty cute… but its spores might be bad for allergies…")
+		,MSGBOX_NPC)
+}
+script(local) ThymeForest_Otaku_RateMyPokemon
+{
+	lock
+	setspeaker(SP_NAME_OTAKU)
+	if (var(VAR_CUTE_BABY) > 0)
+	{
+		bufferspeciesname(0, VAR_CUTE_BABY)
+		msgbox(format("You… I remember you…\p"
+			"I showed you that cute {STR_VAR_1}…\nDo you remember?"))
+	}
+	else
+	{
+		msgbox(format("Wait… you're on the tour… just like me.\p"
+			"You walked by back at the Visitor Center… I saw you from the corner…"))
+	}
+	closemessage
+	msgbox(format("I didn't know you were a trainer. Then, maybe you can answer…\p"
+			"Morelull… do you think it was cute?")
+			,MSGBOX_YESNO)
+	
+	if (var(VAR_RESULT) == 0)
+	{
+		if (var(VAR_CUTE_BABY) == 0)
+		{
+			setvar(VAR_CUTE_BABY, SPECIES_STUNFISK)
+		}
+		goto(ThymeForest_Otaku_Rejection)
+	}
+	elif (var(VAR_CUTE_BABY) > 0)
+	{
+		msgbox(format("Really…? Even cuter than {STR_VAR_1}…??"), MSGBOX_YESNO)
+		if (var(VAR_RESULT) == 0)
+		{
+			goto(ThymeForest_Otaku_Rejection)
+		}
+	}
+	goto(ThymeForest_Otaku_Acceptance)
+}
+script(local) ThymeForest_Otaku_Rejection
+{
+	msgbox(format("Oh… I understand. Then… I need to keep looking…"))
+	goto(ThymeForest_Otaku_PostScript)
+}
+script(local) ThymeForest_Otaku_Acceptance
+{
+	setvar(VAR_CUTE_BABY, SPECIES_MORELULL)
+	msgbox(format("I see… so that is what a real trainer thinks… hehe…"))
+	goto(ThymeForest_Otaku_PostScript)
+}
+script(local) ThymeForest_Otaku_PostScript
+{
+	msgbox(format("Thank you for telling me. Why don't you take this?"))
+	closemessage
+	giveitem(ITEM_FLUFFY_TAIL,1)
+	msgbox(format("{SPEAKER NAME_OTAKU}Pokémon like to play with these… even wild ones.\p"
+		"I recommend using it if you don't want to fight…"),MSGBOX_AUTOCLOSE)
+}
+
+script ThymeForest_RiajuuF
+{
+	setspeaker(SP_NAME_GIRL)
+	if (!flag(FLAG_RIAJUU))
+	{
+		setflag(FLAG_RIAJUU)
+		msgbox(format("Hey, have you seen my boyfriend around?\p"
+			"We're supposed to catch Pokémon together, but I turned around and he was gone…\p"
+			"Maybe… no, I'm sure he'll be here soon.")
+			, MSGBOX_NPC)
+	}
+	else
+	{
+		msgbox(format("We'll be fine. It's just a normal forest.\p"
+			"There's no such thing as ghosts, or witches!\p"
+			"Just Ghost-type Pokémon.\nAnd witch-like Pokémon.")
+			, MSGBOX_NPC)
+	}
+}
+
+//********************
+//Standard NPCs
+//********************
+
+script ThymeForest_Boy
+{
+	msgbox(format("I'll let you in on a Pokémon fact. Think of it like a tip, for trainers!\p"
+		"In every habitat, there's usually one species that's rarely seen.\p"
+		"Whether they're very good at hiding, or there just aren't many of them, you'll be lucky to find one.")
+		, MSGBOX_NPC)
+}
+script ThymeForest_LedgeBoy
+{
+	msgbox(format("Ow, ow… I fell down this ledge while trying to read that sign.\p"
+		"Now I have to go south through the village just to get back up…")
+		, MSGBOX_NPC)
+}
+
+//********************
+//Trainer Battles
+//********************
+
+script ThymeForest_BugCatcher_Andre
+{
+	//Wurmple 4,5
+	trainerbattle_single(TRAINER_THYMEFOREST_ANDRE,
+		format("Hey, I see you there!\n"
+		"You ain't sneaking past me!"),
+		"…Not that I can stop you.")
+	msgbox(format("Trainers like me are always itchin' to battle!\p"
+		"Or… maybe I just got some bug bites.")
+		, MSGBOX_NPC)
+	end
+}
+script ThymeForest_Youngster_Jacob
+{
+	//Sentret 4, Pidgey 5
+	trainerbattle_single(TRAINER_THYMEFOREST_JACOB,
+		format("You don't look familiar. Sneak off from the tour?"),
+		format("That any way to treat a local??"))
+	msgbox(format("Not many people come through here.\p"
+		"Too much wild Pokémon scares off you city folk.")
+		, MSGBOX_NPC)
+	end
+}
+script ThymeForest_Youngster_Cory
+{
+	//Hoothoot, Hoothoot
+	trainerbattle_single(TRAINER_THYMEFOREST_CORY,
+		format("Whoa, wait! Watch where you're stepping!"),
+		"Gosh dangit.")
+	msgbox(format("I'm looking through the grass for Items.\p"
+		"Suspicious spaces, out-of-place rocks and bushes, you can find a lot if you look.")
+		, MSGBOX_NPC)
+	end
+}
+script ThymeForest_BugCatcher_Rove
+{
+	//Silcoon 5, Cascoon 5
+	trainerbattle_single(TRAINER_THYMEFOREST_ROVE,
+		format("Can you handle my newly evolved Pokémon!?"),
+		format("I think I liked 'em better as Wurmple…"))
+	msgbox(format("The cool thing about Bug Pokémon is how fast they evolve.\p"
+		"'Course, that also means they're done evolving pretty darn early.")
+		, MSGBOX_NPC)
+	end
+}
+script ThymeForest_NinjaBoy_Cho
+{
+	//Wurmple 3, Cascoon 4, Budew 6
+	trainerbattle_single(TRAINER_THYMEFOREST_CHO,
+		"To come all the way back here… you fool!",
+		"Ack… why did you even come this way…")
+	msgbox(format("Did you think I was hiding an item here, maybe?\p"
+		"No… this is just where I like to hang out…")
+		, MSGBOX_NPC)
+	end
+}
+script ThymeForest_AromaLady_Amanita
+{
+	//Buneary 4, Seedot 5, Bonsly 6
+	trainerbattle_single(TRAINER_THYMEFOREST_AMANITA,
+		format("Oh my, you're not from the village…\p"
+		"Would you like me to show you the way back?"),
+		"Oh! Well, I suppose you'll do fine.")
+	msgbox(format("Tourists don't usually come this way."
+		"You must be here for a good reason.")
+		, MSGBOX_NPC)
+	end
+}

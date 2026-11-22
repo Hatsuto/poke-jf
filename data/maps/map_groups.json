@@ -3,6 +3,7 @@
     "gMapGroup_TownsAndRoutes_JF",
     "gMapGroup_OuterThyme",
     "gMapGroup_VisitorCenter",
+    "gMapGroup_InnerThyme",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
@@ -82,7 +83,8 @@
   "gMapGroup_TownsAndRoutes_JF": [
     "VisitorCenter",
     "ThymeVillage",
-    "Route01"
+    "Route01",
+    "Route02_Entrance"
   ],
   "gMapGroup_OuterThyme": [
     "ThymeVillage_House1",
@@ -95,6 +97,9 @@
   "gMapGroup_VisitorCenter": [
     "VisitorCenter_Indoors",
     "VisitorCenter_BusStop"
+  ],
+  "gMapGroup_InnerThyme": [
+    "ThymeForest"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
