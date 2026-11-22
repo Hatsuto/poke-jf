@@ -553,6 +553,14 @@
 
 // Hidden Items
 #define FLAG_HIDDEN_ITEMS_START                                                         0x1F4
+
+// Custom
+#define FLAG_HIDDEN_ITEM_THYME_FOREST_TINY_MUSHROOM_1       (FLAG_HIDDEN_ITEMS_START + 0x00)
+#define FLAG_HIDDEN_ITEM_THYME_FOREST_TINY_MUSHROOM_2       (FLAG_HIDDEN_ITEMS_START + 0x01)
+#define FLAG_HIDDEN_ITEM_THYME_FOREST_POTION                (FLAG_HIDDEN_ITEMS_START + 0x02)
+#define FLAG_HIDDEN_ITEM_THYME_FOREST_ZINC                  (FLAG_HIDDEN_ITEMS_START + 0x03)
+
+// Vanilla below
 #define FLAG_HIDDEN_ITEM_LAVARIDGE_TOWN_ICE_HEAL             (FLAG_HIDDEN_ITEMS_START + 0x00)
 #define FLAG_HIDDEN_ITEM_TRICK_HOUSE_NUGGET                  (FLAG_HIDDEN_ITEMS_START + 0x01)
 #define FLAG_HIDDEN_ITEM_ROUTE_111_STARDUST                  (FLAG_HIDDEN_ITEMS_START + 0x02)
@@ -1053,6 +1061,10 @@
 
 // Item Ball Flags
 #define FLAG_ITEM_ROUTE_1_POTION                                    0x3E8
+#define FLAG_ITEM_ROUTE_2_REVIVE                                    0x3E9
+#define FLAG_ITEM_THYME_FOREST_GREAT_BALL                           0x3EA
+#define FLAG_ITEM_THYME_FOREST_TM_09                                0x3EB
+#define FLAG_ITEM_THYME_FOREST_ETHER                                0x3EC
 
 // Vanilla below
 #define FLAG_ITEM_ROUTE_102_POTION                                  0x3E8

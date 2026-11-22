@@ -26,7 +26,7 @@
   ],
   "object_events": [
     {
-      "local_id": "LOCALID_BALLGUY",
+      "local_id": "LOCALID_R1_BALLGUY",
       "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
       "x": 19,
       "y": 10,
@@ -53,7 +53,7 @@
       "flag": "FLAG_ROUTE_1_PATH_NPC"
     },
     {
-      "local_id": "LOCALID_LIAM",
+      "local_id": "LOCALID_R1_LIAM",
       "graphics_id": "OBJ_EVENT_GFX_RED",
       "x": 9,
       "y": 38,
@@ -80,7 +80,7 @@
       "flag": "FLAG_ROUTE_1_PATH_NPC"
     },
     {
-      "local_id": "LOCALID_WINGULL",
+      "local_id": "LOCALID_R1_WINGULL",
       "graphics_id": "OBJ_EVENT_GFX_WINGULL",
       "x": 7,
       "y": 25,
@@ -107,7 +107,7 @@
       "flag": "FLAG_ITEM_ROUTE_1_POTION"
     },
     {
-      "local_id": "LOCALID_GUIDE",
+      "local_id": "LOCALID_R1_GUIDE",
       "graphics_id": "OBJ_EVENT_GFX_REPORTER_M",
       "x": 22,
       "y": 12,
@@ -121,7 +121,7 @@
       "flag": "FLAG_ROUTE_1_ROAD_NPC"
     },
     {
-      "local_id": "LOCALID_MOM",
+      "local_id": "LOCALID_R1_MOM",
       "graphics_id": "OBJ_EVENT_GFX_MOM",
       "x": 26,
       "y": 12,
@@ -135,7 +135,7 @@
       "flag": "FLAG_ROUTE_1_ROAD_NPC"
     },
     {
-      "local_id": "LOCALID_NPC_TOP1",
+      "local_id": "LOCALID_R1_NPC_TOP1",
       "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
       "x": 24,
       "y": 9,
@@ -149,7 +149,7 @@
       "flag": "FLAG_ROUTE_1_ROAD_NPC"
     },
     {
-      "local_id": "LOCALID_NPC_TOP2",
+      "local_id": "LOCALID_R1_NPC_TOP2",
       "graphics_id": "OBJ_EVENT_GFX_LASS",
       "x": 25,
       "y": 9,
@@ -163,7 +163,7 @@
       "flag": "FLAG_ROUTE_1_ROAD_NPC"
     },
     {
-      "local_id": "LOCALID_NPC_MID",
+      "local_id": "LOCALID_R1_NPC_MID",
       "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
       "x": 25,
       "y": 13,
@@ -177,7 +177,7 @@
       "flag": "FLAG_ROUTE_1_ROAD_NPC"
     },
     {
-      "local_id": "LOCALID_NPC_BOT2",
+      "local_id": "LOCALID_R1_NPC_BOT2",
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
       "x": 24,
       "y": 16,
@@ -191,7 +191,7 @@
       "flag": "FLAG_ROUTE_1_ROAD_NPC"
     },
     {
-      "local_id": "LOCALID_NPC_BOT1",
+      "local_id": "LOCALID_R1_NPC_BOT1",
       "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
       "x": 23,
       "y": 16,

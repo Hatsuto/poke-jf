@@ -90,7 +90,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_ETHER",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_PETALBURG_WOODS_ETHER"
+      "flag": "FLAG_ITEM_THYME_FOREST_ETHER"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BUG_CATCHER",
@@ -184,7 +184,7 @@
       "flag": "FLAG_THYME_TOUR_NPC"
     },
     {
-      "local_id": "LOCALID_BOUNCER",
+      "local_id": "LOCALID_TF_BOUNCER",
       "graphics_id": "OBJ_EVENT_GFX_MAN_2",
       "x": 1,
       "y": 23,

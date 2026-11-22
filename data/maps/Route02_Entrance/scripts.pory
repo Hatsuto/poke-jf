@@ -95,15 +95,15 @@ script Route2_MomEvent
 	msgbox("Wait just a minute!!")
 	closemessage
 	
-	addobject(LOCALID_MOM_CUTSCENE)
+	addobject(LOCALID_R2_MOM_CUTSCENE)
 	
 	if (var(PLAYER_X) == NPCTALK_POS2)
 	{
-		applymovement(LOCALID_TERYN, Route2_Teryn_AsideUp)
+		applymovement(LOCALID_R2_TERYN, Route2_Teryn_AsideUp)
 		waitmovement(0)
 	}
 	applymovement(OBJ_EVENT_ID_PLAYER, Route2_Player_ToMom)
-	applymovement(LOCALID_MOM_CUTSCENE, Route2_Mom_Arrive)
+	applymovement(LOCALID_R2_MOM_CUTSCENE, Route2_Mom_Arrive)
 	waitmovement(0)
 	
 	msgbox(format("{SPEAKER NAME_MOM}What are you thinking??\nAre you really going out there alone?")
@@ -124,26 +124,26 @@ script Route2_MomEvent
 	
 	msgbox(format("Well, I guess it was just a matter of time. You're going to want these."))
 	closemessage
-	applymovement(LOCALID_MOM_CUTSCENE, Common_Movement_WalkRight)
+	applymovement(LOCALID_R2_MOM_CUTSCENE, Common_Movement_WalkRight)
 	setflag(FLAG_SYS_B_DASH)
 	playfanfare(MUS_RG_OBTAIN_KEY_ITEM)
 	msgbox(format("Mom gave you a pair of Running Shoes!\n"
 		"({COLOR RED}Hold {B_BUTTON}{COLOR DARK_GRAY} while moving to run!)"))
 	waitfanfare
 	closemessage
-	applymovement(LOCALID_MOM_CUTSCENE, Route2_Mom_Leaving)
+	applymovement(LOCALID_R2_MOM_CUTSCENE, Route2_Mom_Leaving)
 	waitmovement(0)
 	msgbox(format("{SPEAKER NAME_MOM}I picked them up at the gift shop."
 		"I know they're not the most stylish, but your feet will thank you later."))
-	applymovement(LOCALID_MOM_CUTSCENE, Common_Movement_FaceRight)
+	applymovement(LOCALID_R2_MOM_CUTSCENE, Common_Movement_FaceRight)
 	waitmovement(0)
 	msgbox(format("…Just don't do anything too crazy, alright?\p"
 		"And be back before they get all this sorted out, or I'm leaving you here."))
 	closemessage
-	applymovement(LOCALID_MOM_CUTSCENE, Route2_Mom_Leave)
+	applymovement(LOCALID_R2_MOM_CUTSCENE, Route2_Mom_Leave)
 	waitmovement(0)
 	
-	removeobject(LOCALID_MOM_CUTSCENE)
+	removeobject(LOCALID_R2_MOM_CUTSCENE)
 	setvar(VAR_THYME_STATE, 3)
 	setflag(FLAG_ROUTE_2_MOM)
 	
@@ -178,7 +178,7 @@ script Route2_ContinueOn
 {
 	lock
 	getplayerxy(PLAYER_X, PLAYER_Y)
-	applymovement(LOCALID_MOM_BLOCK, Common_Movement_FacePlayer)
+	applymovement(LOCALID_R2_MOM_BLOCK, Common_Movement_FacePlayer)
 	if (var(PLAYER_X) < MOM_POS_X)
 	{
 		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
@@ -193,7 +193,7 @@ script Route2_ContinueOn
 		"How are you feeling? Tired? Full of energy?\p"
 		"Your mom's feeling pent up waiting around, so we're going for a brisk walk, alright?"))
 	closemessage
-	applymovement(LOCALID_MOM_BLOCK, Common_Movement_WalkDown)
+	applymovement(LOCALID_R2_MOM_BLOCK, Common_Movement_WalkDown)
 	waitmovement(0)
 	
 	msgbox("Try and keep up!")
@@ -202,7 +202,7 @@ script Route2_ContinueOn
 	setvar(VAR_THYME_STATE, 7)
 	
 	release
-	applymovement(LOCALID_MOM_BLOCK, Route2_Mom_JogToRoute3)
+	applymovement(LOCALID_R2_MOM_BLOCK, Route2_Mom_JogToRoute3)
 	end
 }
 movement Route2_Mom_JogToRoute3
@@ -325,11 +325,11 @@ script(local) Route2_TerynAside
 	getplayerxy(PLAYER_X, PLAYER_Y)
 	if (var(PLAYER_X) == NPCTALK_POS1)
 	{
-		applymovement(LOCALID_TERYN, Route2_Teryn_AsideUp)
+		applymovement(LOCALID_R2_TERYN, Route2_Teryn_AsideUp)
 	}
 	else
 	{
-		applymovement(LOCALID_TERYN, Route2_Teryn_AsideLeft)
+		applymovement(LOCALID_R2_TERYN, Route2_Teryn_AsideLeft)
 	}
 	waitmovement(0)
 }

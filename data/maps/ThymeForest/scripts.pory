@@ -31,12 +31,12 @@ script ThymeForest_TreeBlock
 script ThymeForest_ShopBlock
 {
 	lock
-	setvar(VAR_LAST_TALKED, LOCALID_BOUNCER)
+	setvar(VAR_LAST_TALKED, LOCALID_TF_BOUNCER)
 	call(Common_NPCNotice)
 	//player step back
 	setflag(FLAG_BOUNCER)
 	applymovement(OBJ_EVENT_ID_PLAYER, ThymeForest_PlayerBTFO)
-	applymovement(LOCALID_BOUNCER, ThymeForest_BouncerBounce)
+	applymovement(LOCALID_TF_BOUNCER, ThymeForest_BouncerBounce)
 	waitmovement(0)
 	goto(ThymeForest_Bouncer)
 }
@@ -108,14 +108,14 @@ script ThymeForest_Bouncer
 	if (flag(FLAG_BOUNCER))
 	{
 		clearflag(FLAG_BOUNCER)
-		applymovement(LOCALID_BOUNCER, ThymeForest_BouncerBouncent)
+		applymovement(LOCALID_TF_BOUNCER, ThymeForest_BouncerBouncent)
 		waitmovement(0)
 		release
 		end
 	}
 	else
 	{
-		applymovement(LOCALID_BOUNCER, Common_Movement_FaceRight)
+		applymovement(LOCALID_TF_BOUNCER, Common_Movement_FaceRight)
 		release
 		end
 	}
@@ -134,7 +134,7 @@ script ThymeForest_Otaku
 		ThymeForest_Otaku_RateMyPokemon)
 
 	//Post-text
-	msgbox(format("{SPEAKER_NAME OTAKU}Morelull is pretty cute… but its spores might be bad for allergies…")
+	msgbox(format("{SPEAKER NAME_OTAKU}Morelull is pretty cute… but its spores might be bad for allergies…")
 		,MSGBOX_NPC)
 }
 script(local) ThymeForest_Otaku_RateMyPokemon

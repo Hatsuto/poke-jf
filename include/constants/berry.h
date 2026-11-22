@@ -53,6 +53,13 @@ enum __attribute__((__packed__)) Flavor
 // IDs for berry tree objects, indexes into berryTrees in SaveBlock1
 // Named for whatever berry is initially planted there on a new game
 // Those with no initial berry are named "soil"
+
+#define BERRY_TREE_ROUTE_2_ORAN_1       1
+#define BERRY_TREE_ROUTE_2_ORAN_2       2
+#define BERRY_TREE_ROUTE_2_PECHA_1      3
+#define BERRY_TREE_ROUTE_2_PECHA_2      4
+
+// Vanilla below
 #define BERRY_TREE_ROUTE_102_PECHA    1
 #define BERRY_TREE_ROUTE_102_ORAN     2
 #define BERRY_TREE_ROUTE_104_SOIL_1   3

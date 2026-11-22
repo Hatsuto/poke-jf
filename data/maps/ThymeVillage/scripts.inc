@@ -20,7 +20,7 @@ Thyme_MomEvent::
 # 39 "data/maps/ThymeVillage/scripts.pory"
 	lock
 # 41 "data/maps/ThymeVillage/scripts.pory"
-	setvar VAR_LAST_TALKED, LOCALID_MOM
+	setvar VAR_LAST_TALKED, LOCALID_OT_MOM
 # 42 "data/maps/ThymeVillage/scripts.pory"
 	call Common_NPCNotice
 # 44 "data/maps/ThymeVillage/scripts.pory"
@@ -65,22 +65,22 @@ Thyme_MomEvent_2:
 
 Thyme_MomEvent_7:
 # 61 "data/maps/ThymeVillage/scripts.pory"
-	applymovement LOCALID_MOM, Mom_WalkLeft4
+	applymovement LOCALID_OT_MOM, Mom_WalkLeft4
 	goto Thyme_MomEvent_5
 
 Thyme_MomEvent_8:
 # 63 "data/maps/ThymeVillage/scripts.pory"
-	applymovement LOCALID_MOM, Mom_WalkLeft3
+	applymovement LOCALID_OT_MOM, Mom_WalkLeft3
 	goto Thyme_MomEvent_5
 
 Thyme_MomEvent_9:
 # 65 "data/maps/ThymeVillage/scripts.pory"
-	applymovement LOCALID_MOM, Mom_WalkLeft2
+	applymovement LOCALID_OT_MOM, Mom_WalkLeft2
 	goto Thyme_MomEvent_5
 
 Thyme_MomEvent_10:
 # 67 "data/maps/ThymeVillage/scripts.pory"
-	applymovement LOCALID_MOM, Mom_WalkLeft1
+	applymovement LOCALID_OT_MOM, Mom_WalkLeft1
 	goto Thyme_MomEvent_5
 
 
@@ -115,11 +115,11 @@ Thyme_MomSpeech_1:
 # 108 "data/maps/ThymeVillage/scripts.pory"
 	closemessage
 # 110 "data/maps/ThymeVillage/scripts.pory"
-	applymovement LOCALID_MOM, Mom_Leave
+	applymovement LOCALID_OT_MOM, Mom_Leave
 # 111 "data/maps/ThymeVillage/scripts.pory"
 	waitmovement 0
 # 112 "data/maps/ThymeVillage/scripts.pory"
-	removeobject LOCALID_MOM
+	removeobject LOCALID_OT_MOM
 # 113 "data/maps/ThymeVillage/scripts.pory"
 	setvar VAR_THYME_STATE, 1
 # 115 "data/maps/ThymeVillage/scripts.pory"
@@ -208,7 +208,7 @@ Thyme_BusBlock::
 # 146 "data/maps/ThymeVillage/scripts.pory"
 	lock
 # 148 "data/maps/ThymeVillage/scripts.pory"
-	setvar VAR_LAST_TALKED, LOCALID_BUSMAN
+	setvar VAR_LAST_TALKED, LOCALID_OT_BUSMAN
 # 149 "data/maps/ThymeVillage/scripts.pory"
 	call Common_NPCNotice
 # 151 "data/maps/ThymeVillage/scripts.pory"

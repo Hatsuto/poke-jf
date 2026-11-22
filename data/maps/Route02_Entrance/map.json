@@ -3,7 +3,7 @@
   "name": "Route02_Entrance",
   "layout": "LAYOUT_ROUTE02_ENTRANCE",
   "music": "MUS_ROUTE101",
-  "region_map_section": "MAPSEC_ROUTE_102",
+  "region_map_section": "MAPSEC_ROUTE_02",
   "requires_flash": false,
   "weather": "WEATHER_DYNAMIC",
   "map_type": "MAP_TYPE_ROUTE",
@@ -135,7 +135,7 @@
       "flag": "0"
     },
     {
-      "local_id": "LOCALID_TERYN",
+      "local_id": "LOCALID_R2_TERYN",
       "graphics_id": "OBJ_EVENT_GFX_ROXANNE",
       "x": 22,
       "y": 15,
@@ -175,7 +175,7 @@
       "flag": "0"
     },
     {
-      "local_id": "LOCALID_MOM_CUTSCENE",
+      "local_id": "LOCALID_R2_MOM_CUTSCENE",
       "graphics_id": "OBJ_EVENT_GFX_MOM",
       "x": 17,
       "y": 9,
@@ -189,7 +189,7 @@
       "flag": "FLAG_SCENE_TEMP"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES_TREVENANT",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TREVENANT)",
       "x": 35,
       "y": 7,
       "elevation": 3,
@@ -202,7 +202,7 @@
       "flag": "FLAG_ROUTE_2_TREVENANT"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES_TREVENANT",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TREVENANT)",
       "x": 35,
       "y": 17,
       "elevation": 3,
@@ -215,7 +215,7 @@
       "flag": "FLAG_ROUTE_2_TREVENANT"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES_TREVENANT",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TREVENANT)",
       "x": 36,
       "y": 8,
       "elevation": 3,
@@ -228,7 +228,7 @@
       "flag": "FLAG_ROUTE_2_TREVENANT"
     },
     {
-      "local_id": "LOCALID_MOM_BLOCK",
+      "local_id": "LOCALID_R2_MOM_BLOCK",
       "graphics_id": "OBJ_EVENT_GFX_MOM",
       "x": 16,
       "y": 20,

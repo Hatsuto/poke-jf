@@ -38,7 +38,7 @@ script Thyme_MomEvent
 {
 	lock
 	
-	setvar(VAR_LAST_TALKED, LOCALID_MOM)
+	setvar(VAR_LAST_TALKED, LOCALID_OT_MOM)
 	call(Common_NPCNotice)
 	
 	setspeaker(SP_NAME_MOM)
@@ -58,13 +58,13 @@ script Thyme_MomEvent
 	switch(var(PLAYER_X))
 	{
 		case ENTER_X:
-			applymovement(LOCALID_MOM, Mom_WalkLeft4)
+			applymovement(LOCALID_OT_MOM, Mom_WalkLeft4)
 		case ENTER_X+1:
-			applymovement(LOCALID_MOM, Mom_WalkLeft3)
+			applymovement(LOCALID_OT_MOM, Mom_WalkLeft3)
 		case ENTER_X+2:
-			applymovement(LOCALID_MOM, Mom_WalkLeft2)
+			applymovement(LOCALID_OT_MOM, Mom_WalkLeft2)
 		case ENTER_X+3:
-			applymovement(LOCALID_MOM, Mom_WalkLeft1)
+			applymovement(LOCALID_OT_MOM, Mom_WalkLeft1)
 	}
 	waitmovement(0)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown)
@@ -107,9 +107,9 @@ script(local) Thyme_MomSpeech
 		"I'll just be in the gift shop until the tour gets moving again."))
 	closemessage
 	
-	applymovement(LOCALID_MOM, Mom_Leave)
+	applymovement(LOCALID_OT_MOM, Mom_Leave)
 	waitmovement(0)
-	removeobject(LOCALID_MOM)
+	removeobject(LOCALID_OT_MOM)
 	setvar(VAR_THYME_STATE, 1)
 	
 	release
@@ -145,7 +145,7 @@ script Thyme_BusBlock
 {
 	lock
 	
-	setvar(VAR_LAST_TALKED, LOCALID_BUSMAN)
+	setvar(VAR_LAST_TALKED, LOCALID_OT_BUSMAN)
 	call(Common_NPCNotice)
 	
 	goto(Thyme_BusMan)

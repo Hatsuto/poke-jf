@@ -28,7 +28,7 @@ script Route1_TourGuide
 {	
 	// player moves into position near mom
 	delay(15)
-	applymovement(LOCALID_MOM, Common_Movement_WalkInPlaceRight)
+	applymovement(LOCALID_R1_MOM, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	delay(15)
 	
@@ -46,14 +46,14 @@ script Route1_TourGuide
 			applymovement(OBJ_EVENT_ID_PLAYER, Player_BotToMom)
 	}
 	waitmovement(0)
-	applymovement(LOCALID_MOM, Common_Movement_WalkInPlaceLeft)
+	applymovement(LOCALID_R1_MOM, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	
 	// tour guide dialogue
-	applymovement(LOCALID_BALLGUY, Common_Movement_FaceDown)
+	applymovement(LOCALID_R1_BALLGUY, Common_Movement_FaceDown)
 	waitmovement(0)
 	call(Group_Attention)
-	applymovement(LOCALID_GUIDE, Common_Movement_WalkInPlaceRight)
+	applymovement(LOCALID_R1_GUIDE, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	
 	setspeaker("GUIDE")
@@ -65,7 +65,7 @@ script Route1_TourGuide
 		"so please try and stay with the group."))
 	closemessage
 	
-	applymovement(LOCALID_GUIDE, Common_Movement_WalkInPlaceDown)
+	applymovement(LOCALID_R1_GUIDE, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	call(Group_OurNextStop)
 	
@@ -74,7 +74,7 @@ script Route1_TourGuide
 		"one of our important nature reserves."))
 	closemessage
 	
-	applymovement(LOCALID_GUIDE, Common_Movement_WalkInPlaceLeft)
+	applymovement(LOCALID_R1_GUIDE, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	call(Group_OnYourLeft)
 	
@@ -85,8 +85,8 @@ script Route1_TourGuide
 		"Be sure to use a Repel!"))
 	closemessage
 	
-	applymovement(LOCALID_BALLGUY, Common_Movement_FaceRight)
-	applymovement(LOCALID_GUIDE, Common_Movement_WalkRight)
+	applymovement(LOCALID_R1_BALLGUY, Common_Movement_FaceRight)
+	applymovement(LOCALID_R1_GUIDE, Common_Movement_WalkRight)
 	waitmovement(0)
 	
 	setspeaker("GUIDE")
@@ -96,19 +96,19 @@ script Route1_TourGuide
 		"{COLOR BLUE}Trainer supplies!{COLOR DARK_GRAY}"))
 	closemessage
 	
-	setvar(VAR_LAST_TALKED, LOCALID_BALLGUY)
+	setvar(VAR_LAST_TALKED, LOCALID_R1_BALLGUY)
 	call(Common_NPCNotice)
 	
-	applymovement(LOCALID_MOM, Common_Movement_WalkInPlaceUp)
+	applymovement(LOCALID_R1_MOM, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	msgbox(format("{SPEAKER NAME_MOM}{PLAYER}, why don't you take the scenic route?\p"
 		"Your mom is tired from the trip…\n"
 		"Let's meet up in town, okay?"))
 	closemessage
 	
-	applymovement(LOCALID_MOM, Common_Movement_WalkInPlaceLeft)
+	applymovement(LOCALID_R1_MOM, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
-	applymovement(LOCALID_GUIDE, Common_Movement_WalkInPlaceDown)
+	applymovement(LOCALID_R1_GUIDE, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	call(Group_Attention)
 	
@@ -129,52 +129,52 @@ script Route1_TourGuide
 }
 script(local) Group_Attention
 {
-	applymovement(LOCALID_NPC_TOP2,Common_Movement_FaceDown)
-	applymovement(LOCALID_NPC_MID,Common_Movement_FaceLeft)
+	applymovement(LOCALID_R1_NPC_TOP2,Common_Movement_FaceDown)
+	applymovement(LOCALID_R1_NPC_MID,Common_Movement_FaceLeft)
 	
 	delay(8)
-	applymovement(LOCALID_NPC_TOP1,Common_Movement_FaceDown)
-	applymovement(LOCALID_NPC_BOT2,Common_Movement_FaceUp)
+	applymovement(LOCALID_R1_NPC_TOP1,Common_Movement_FaceDown)
+	applymovement(LOCALID_R1_NPC_BOT2,Common_Movement_FaceUp)
 	
 	delay(8)
-	applymovement(LOCALID_MOM,Common_Movement_FaceLeft)
+	applymovement(LOCALID_R1_MOM,Common_Movement_FaceLeft)
 	
 	delay(8)
-	applymovement(LOCALID_NPC_BOT1,Common_Movement_FaceUp)
+	applymovement(LOCALID_R1_NPC_BOT1,Common_Movement_FaceUp)
 	
 	waitmovement(0)
 }
 script(local) Group_OurNextStop
 {
-	applymovement(LOCALID_NPC_TOP2,Common_Movement_FaceDown)
-	applymovement(LOCALID_NPC_MID,Common_Movement_FaceDown)
+	applymovement(LOCALID_R1_NPC_TOP2,Common_Movement_FaceDown)
+	applymovement(LOCALID_R1_NPC_MID,Common_Movement_FaceDown)
 	
 	delay(8)
-	applymovement(LOCALID_NPC_TOP1,Common_Movement_FaceDown)
-	applymovement(LOCALID_NPC_BOT2,Common_Movement_FaceDown)
+	applymovement(LOCALID_R1_NPC_TOP1,Common_Movement_FaceDown)
+	applymovement(LOCALID_R1_NPC_BOT2,Common_Movement_FaceDown)
 	
 	delay(8)
-	applymovement(LOCALID_MOM,Common_Movement_FaceDown)
+	applymovement(LOCALID_R1_MOM,Common_Movement_FaceDown)
 	
 	delay(8)
-	applymovement(LOCALID_NPC_BOT1,Common_Movement_FaceDown)
+	applymovement(LOCALID_R1_NPC_BOT1,Common_Movement_FaceDown)
 	
 	waitmovement(0)
 }
 script(local) Group_OnYourLeft
 {
-	applymovement(LOCALID_NPC_TOP2,Common_Movement_FaceLeft)
-	applymovement(LOCALID_NPC_MID,Common_Movement_FaceLeft)
+	applymovement(LOCALID_R1_NPC_TOP2,Common_Movement_FaceLeft)
+	applymovement(LOCALID_R1_NPC_MID,Common_Movement_FaceLeft)
 	
 	delay(8)
-	applymovement(LOCALID_NPC_TOP1,Common_Movement_FaceLeft)
-	applymovement(LOCALID_NPC_BOT2,Common_Movement_FaceLeft)
+	applymovement(LOCALID_R1_NPC_TOP1,Common_Movement_FaceLeft)
+	applymovement(LOCALID_R1_NPC_BOT2,Common_Movement_FaceLeft)
 	
 	delay(8)
-	applymovement(LOCALID_MOM,Common_Movement_FaceLeft)
+	applymovement(LOCALID_R1_MOM,Common_Movement_FaceLeft)
 	
 	delay(8)
-	applymovement(LOCALID_NPC_BOT1,Common_Movement_FaceLeft)
+	applymovement(LOCALID_R1_NPC_BOT1,Common_Movement_FaceLeft)
 	
 	waitmovement(0)
 }
@@ -205,7 +205,7 @@ script Route1_LiamBlock //Attempt to pass by
 	
 	//Liam: !
 	// turn to player
-	setvar(VAR_LAST_TALKED, LOCALID_LIAM)
+	setvar(VAR_LAST_TALKED, LOCALID_R1_LIAM)
 	Call(Common_NPCNotice)
 	
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
@@ -331,7 +331,7 @@ script Route1_Wingull
 {
 	lock
 	faceplayer
-	applymovement(LOCALID_WINGULL,Common_Movement_QuestionMark)
+	applymovement(LOCALID_R1_WINGULL,Common_Movement_QuestionMark)
 	playmoncry(SPECIES_WINGULL,0)
 	waitmoncry
 	release
