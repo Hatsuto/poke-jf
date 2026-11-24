@@ -416,6 +416,7 @@ enum
 	
 	// Custom
 	OBJ_EVENT_GFX_ROUGHNECK,
+    OBJ_EVENT_GFX_OLIVE,
 	
     NUM_OBJ_EVENT_GFX,
 };
@@ -611,8 +612,8 @@ enum
 
 // Not a real object - final tag used by base ROM, above
 #define OBJ_EVENT_PAL_TAG_FINAL                   0x116A
-// Fakemon
-#define OBJ_EVENT_PAL_TAG_GREMBER                 (OBJ_EVENT_PAL_TAG_FINAL + 1)
+// Custom
+#define OBJ_EVENT_PAL_TAG_OLIVE                   (OBJ_EVENT_PAL_TAG_FINAL + 1)
 
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
