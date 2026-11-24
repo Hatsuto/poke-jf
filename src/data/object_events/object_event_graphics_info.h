@@ -7259,7 +7259,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Olive = {
     .tracks = TRACKS_FOOT,
     .oam = &gObjectEventBaseOam_32x32,
     .subspriteTables = sOamTables_32x32,
-    .anims = sAnimTable_Standard,
+    .anims = sAnimTable_Standard_Asym,
     .images = gObjectEventPicTable_Olive,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
