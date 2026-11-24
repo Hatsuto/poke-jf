@@ -2508,3 +2508,7 @@ const struct SpriteFrameImage gObjectEventPicTable_Roughneck[] = {
     overworld_frame(gObjectEventPic_Roughneck, 4, 4, 7),
     overworld_frame(gObjectEventPic_Roughneck, 4, 4, 8),
 };
+
+const struct SpriteFrameImage gObjectEventPicTable_Olive[] = {
+    overworld_ascending_frames(gObjectEventPic_Olive, 4, 4),
+};
