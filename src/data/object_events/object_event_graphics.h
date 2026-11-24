@@ -637,4 +637,4 @@ const u16 gObjectEventPic_ClefairyOld[] = INCGFX_U16("graphics/object_events/pic
 // Additional NPC
 const u32 gObjectEventPic_Roughneck[] = INCGFX_U32("graphics/object_events/pics/people/roughneck.png", ".4bpp", "-mwidth 4 -mheight 4");
 const u32 gObjectEventPic_Olive[] = INCGFX_U32("graphics/object_events/pics/people/olive.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u16 gObjectEventPic_Olive[] = INCGFX_U16("graphics/object_events/pics/people/olive.pal", ".gbapal");
+const u16 gObjectEventPal_Olive[] = INCGFX_U16("graphics/object_events/palettes/olive.pal", ".gbapal");

@@ -585,7 +585,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPaletteNeonLight,          OBJ_EVENT_PAL_TAG_NEON_LIGHT},
 	
 	// Custom OW below here
-    {gObjectEventPalette_Olive, OBJ_EVENT_PAL_TAG_OLIVE},
+    {gObjectEventPal_Olive,                 OBJ_EVENT_PAL_TAG_OLIVE},
     
 #ifdef BUGFIX
     {NULL,                                  OBJ_EVENT_PAL_TAG_NONE},
