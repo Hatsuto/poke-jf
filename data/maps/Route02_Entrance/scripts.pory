@@ -96,12 +96,6 @@ script Route2_MomEvent
 	closemessage
 	
 	addobject(LOCALID_R2_MOM_CUTSCENE)
-	
-	if (var(PLAYER_X) == NPCTALK_POS2)
-	{
-		applymovement(LOCALID_R2_TERYN, Route2_Teryn_AsideUp)
-		waitmovement(0)
-	}
 	applymovement(OBJ_EVENT_ID_PLAYER, Route2_Player_ToMom)
 	applymovement(LOCALID_R2_MOM_CUTSCENE, Route2_Mom_Arrive)
 	waitmovement(0)
@@ -299,7 +293,7 @@ movement Route2_Teryn_Aside
 }
 movement Route2_Teryn_Bookit
 {
-	walk_right_fast * 8
+	walk_fast_right * 8
 }
 
 script Route2_Trevenant
