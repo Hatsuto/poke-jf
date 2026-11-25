@@ -1,8 +1,8 @@
 {
   "group_order": [
     "gMapGroup_TownsAndRoutes_JF",
-    "gMapGroup_OuterThyme",
     "gMapGroup_VisitorCenter",
+    "gMapGroup_OuterThyme",
     "gMapGroup_InnerThyme",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
@@ -86,6 +86,10 @@
     "Route01",
     "Route02_Entrance"
   ],
+  "gMapGroup_VisitorCenter": [
+    "VisitorCenter_Indoors",
+    "VisitorCenter_BusStop"
+  ],
   "gMapGroup_OuterThyme": [
     "ThymeVillage_House1",
     "ThymeVillage_House2",
@@ -93,10 +97,6 @@
     "ThymeVillage_PokemonCenter_2F",
     "ThymeVillage_Mart",
     "ThymeVillage_GiftShop"
-  ],
-  "gMapGroup_VisitorCenter": [
-    "VisitorCenter_Indoors",
-    "VisitorCenter_BusStop"
   ],
   "gMapGroup_InnerThyme": [
     "ThymeForest"
