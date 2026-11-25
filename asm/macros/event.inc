@@ -790,10 +790,20 @@
 	trainerbattle LOCALID_NONE, \trainer, \intro_text, \lose_text, \event_script, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, \music, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE
 	.endm
 
+	@ To be used from a non-object event source. Starts a single trainer battle like the above, but requires an object ID to be valid.
+	.macro trainerbattle_event_single localId:req, trainer:req, intro_text:req, lose_text:req, event_script=NULL, music=TRUE
+	trainerbattle \localId, \trainer, \intro_text, \lose_text, \event_script, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, \music, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE
+	.endm
+
 	@ Starts a double trainer battle. Takes a trainer, intro text, loss text, text for when you have too few pokemon
 	@ and an optional event script. When used with an event script you can pass in an optional flag to disable music
 	.macro trainerbattle_double trainer:req, intro_text:req, lose_text:req, not_enough_pkmn_text:req, event_script=NULL, music=TRUE
 	trainerbattle LOCALID_NONE, \trainer, \intro_text, \lose_text, \event_script, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, \not_enough_pkmn_text, TRUE, \music, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE
+	.endm
+
+	@ To be used from a non-object event source. Starts a double trainer battle like the above, but requires an object ID to be valid.
+	.macro trainerbattle_event_double localId:req, trainer:req, intro_text:req, lose_text:req, not_enough_pkmn_text:req, event_script=NULL, music=TRUE
+	trainerbattle \localId, \trainer, \intro_text, \lose_text, \event_script, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, \not_enough_pkmn_text, TRUE, \music, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE
 	.endm
 
 	@ Starts a rematch battle. Takes a trainer, intro text and loss text
