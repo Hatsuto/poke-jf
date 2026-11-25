@@ -150,13 +150,15 @@ movement Route2_Player_ToMom
 }
 movement Route2_Mom_Arrive
 {
-	walk_down * 6
+	walk_down * 3
 	walk_right * 3
+	walk_down * 2
+	face_right
 }
 movement Route2_Mom_Leave
 {
 	walk_up * 2
-	walk_left * 2
+	walk_left * 3
 	walk_up * 4
 }
 

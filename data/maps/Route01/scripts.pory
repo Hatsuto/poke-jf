@@ -21,6 +21,10 @@ const PLAYER_Y = VAR_TEMP_1
 const VAR_BALL_LOOP = VAR_TEMP_2
 const VAR_POKEMON_COUNT = VAR_TEMP_3
 
+// Temp flags
+//  LIAM_FORCED: When Liam forces the player conversation and triggers a battle
+const LIAM_FORCED = FLAG_TEMP_1
+
 mapscripts Route01_MapScripts{}
 
 //On first entering the area
@@ -206,6 +210,7 @@ script Route1_LiamBlock //Attempt to pass by
 	//Liam: !
 	// turn to player
 	setvar(VAR_LAST_TALKED, LOCALID_R1_LIAM)
+	setflag(LIAM_FORCED)
 	Call(Common_NPCNotice)
 	
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
@@ -557,17 +562,35 @@ script(local) Route1_Liam_Confirm
 	{
 		addvar(VAR_ROUTE_1_LIAM, 0x1) //battle started
 		call(RivalLink_Add_Liam)
-		switch(var(VAR_STARTER_MON))
+		if (flag(LIAM_FORCED))
 		{
-			case 0: //GRS
-				trainerbattle_single(TRAINER_ROUTE_1_LIAM_FIR,
-					Route1_Liam_Intro, Route1_Liam_Loss, Route1_Liam_PostBattle)
-			case 1: //FIR
-				trainerbattle_single(TRAINER_ROUTE_1_LIAM_WTR,
-					Route1_Liam_Intro, Route1_Liam_Loss, Route1_Liam_PostBattle)
-			case 2: //WTR
-				trainerbattle_single(TRAINER_ROUTE_1_LIAM_GRS,
-					Route1_Liam_Intro, Route1_Liam_Loss, Route1_Liam_PostBattle)
+			switch(var(VAR_STARTER_MON))
+			{
+				case 0: //GRS
+					trainerbattle_event_single(LOCALID_R1_LIAM, TRAINER_ROUTE_1_LIAM_FIR,
+						Route1_Liam_Intro, Route1_Liam_Loss, Route1_Liam_PostBattle)
+				case 1: //FIR
+					trainerbattle_event_single(LOCALID_R1_LIAM, TRAINER_ROUTE_1_LIAM_WTR,
+						Route1_Liam_Intro, Route1_Liam_Loss, Route1_Liam_PostBattle)
+				case 2: //WTR
+					trainerbattle_event_single(LOCALID_R1_LIAM, TRAINER_ROUTE_1_LIAM_GRS,
+						Route1_Liam_Intro, Route1_Liam_Loss, Route1_Liam_PostBattle)
+			}
+		}
+		else
+		{
+			switch(var(VAR_STARTER_MON))
+			{
+				case 0: //GRS
+					trainerbattle_single(TRAINER_ROUTE_1_LIAM_FIR,
+						Route1_Liam_Intro, Route1_Liam_Loss, Route1_Liam_PostBattle)
+				case 1: //FIR
+					trainerbattle_single(TRAINER_ROUTE_1_LIAM_WTR,
+						Route1_Liam_Intro, Route1_Liam_Loss, Route1_Liam_PostBattle)
+				case 2: //WTR
+					trainerbattle_single(TRAINER_ROUTE_1_LIAM_GRS,
+						Route1_Liam_Intro, Route1_Liam_Loss, Route1_Liam_PostBattle)
+			}
 		}
 	}
 	else //no to battle
