@@ -1568,8 +1568,9 @@ enum KantoDexOrder
     F(HATTERENE) \
     F(STUFFUL) \
     F(BEWEAR) \
-    F(BUNEARY) \
-    F(LOPUNNY) \
+    F(MAREEP) \
+    F(FLAAFFY) \
+    F(AMPHAROS) \
     F(BONSLY) \
     F(SUDOWOODO) \
     F(HOOTHOOT) \
@@ -1579,17 +1580,21 @@ enum KantoDexOrder
     F(SHIFTRY) \
     F(PHANTUMP) \
     F(TREVENANT) \
+    F(PUMPKABOO) \
+    F(GOURGEIST) \
     F(MORELULL) \
     F(SHIINOTIC) \
+	F(GREMBER) \
+	F(CHARBOLD) \
+	F(SHAMPYRE) \
     F(HOUNDOUR) \
     F(HOUNDOOM) \
-    F(SPOINK) \
-    F(GRUMPIG) \
+    F(EXEGGCUTE) \
+    F(EXEGGUTOR) \
     F(MAGIKARP) \
     F(GYARADOS) \
-    F(CLAMPERL) \
-    F(HUNTAIL) \
-    F(GOREBYSS) \
+    F(SHELLDER) \
+    F(CLOYSTER) \
     F(WOOPER) \
     F(QUAGSIRE) \
     F(CLODSIRE) \
@@ -1601,11 +1606,10 @@ enum KantoDexOrder
     F(BEARTIC) \
     F(CORSOLA) \
     F(CURSOLA) \
-    F(DRIFLOON) \
-    F(DRIFBLIM) \
-    F(MAREEP) \
-    F(FLAAFFY) \
-    F(AMPHAROS) \
+    F(MAREANIE) \
+    F(TOXAPEX) \
+    F(NATU) \
+    F(XATU) \
     F(KLEFKI) \
     F(GOOMY) \
     F(SLIGGOO) \
@@ -1618,9 +1622,9 @@ enum KantoDexOrder
     F(JELLICENT) \
     F(VOLTORB) \
     F(ELECTRODE) \
-    F(LITWICK) \
-    F(LAMPENT) \
-    F(CHANDELURE) \
+    F(CHARCADET) \
+    F(ARMAROUGE) \
+    F(CERULEDGE) \
     F(SWABLU) \
     F(ALTARIA) \
     F(IGGLYBUFF) \
@@ -1642,19 +1646,19 @@ enum KantoDexOrder
     F(NOIVERN) \
     F(TOXEL) \
     F(TOXTRICITY) \
-    F(PETILIL) \
-    F(LILLIGANT) \
+    F(AIPOM) \
+    F(AMBIPOM) \
     F(SKIDDO) \
     F(GOGOAT) \
     F(CUTIEFLY) \
     F(RIBOMBEE) \
     F(ROCKRUFF) \
     F(LYCANROC) \
-	F(GREMBER) \
-	F(CHARBOLD) \
-	F(SHAMPYRE) \
-	F(CUDDLEFISH) \
-	F(CUDDLEFIST) \
+    F(CLAMPERL) \
+    F(HUNTAIL) \
+    F(GOREBYSS) \
+    F(CUDDLEFISH) \
+    F(CUDDLEFIST) \
 	F(SPIRITOMB) \
 	F(CELEBI) \
 	F(KYOGRE) \
