@@ -131,7 +131,7 @@ script Route2_MomEvent
 		"({COLOR RED}Hold {B_BUTTON}{COLOR DARK_GRAY} while moving to run!)"))
 	waitfanfare
 	closemessage
-	applymovement(LOCALID_R2_MOM_CUTSCENE, Route2_Mom_Leaving)
+	applymovement(LOCALID_R2_MOM_CUTSCENE, Common_Movement_WalkLeft)
 	waitmovement(0)
 	msgbox(format("{SPEAKER NAME_MOM}I picked them up at the gift shop."
 		"I know they're not the most stylish, but your feet will thank you later."))
@@ -144,34 +144,26 @@ script Route2_MomEvent
 	waitmovement(0)
 	
 	removeobject(LOCALID_R2_MOM_CUTSCENE)
-	setvar(VAR_THYME_STATE, 3)
-	setflag(FLAG_ROUTE_2_MOM)
+	setvar(VAR_THYME_STATE, 4)
 	
 	release
 	end
 }
 movement Route2_Player_ToMom
 {
-	walk_left * 2
+	walk_up
+	face_left
 }
 movement Route2_Mom_Arrive
 {
 	walk_down * 6
-	walk_right
-}
-movement Route2_Mom_Leaving
-{
-	walk_left * 2
+	walk_right * 3
 }
 movement Route2_Mom_Leave
 {
-	walk_up * 6
-}
-
-script Route2_TerynVanish
-{
-	setflag(FLAG_ROUTE_2_TERYN)
-	setvar(VAR_THYME_STATE, 4)
+	walk_up * 2
+	walk_left * 2
+	walk_up * 4
 }
 
 script Route2_ContinueOn
@@ -283,65 +275,31 @@ script Route2_Guide
 
 script Route2_Teryn
 {
-	if (var(VAR_THYME_STATE) < 2)
-	{
-		lock
-		faceplayer
-		// Talk then move out of the way
-		msgbox(format("You know, I heard the locals talking about this kind of thing…\p"
-			"I think there's someone who could help over in the forest?"))
-		closemessage
-		call(Route2_TerynAside)
-		msgbox(format("I think I saw an entrance just beyond here, if you wanted to take a look."))
-		setvar(VAR_THYME_STATE, 2)
-		setflag(FLAG_JEX)
-		release
-		end
-	}
-	elif (flag(FLAG_JEX))
-	{
-		// talked again before entering forest but after they've moved
-		msgbox(format("They say some kind of Witch lives there, but I think that's just for publicity.\p"
-			"But just in case, you might want to stock up at the Pokémart first.\p"
-			"…No, not the gift shop. The one with the blue roof.")
-			,MSGBOX_NPC)
-	}
-	else
-	{
-		lock
-		faceplayer
-		// talked again, but you've left the map so they reset pos
-		msgbox(format("Oh, excuse me."))
-		closemessage
-		call(Route2_TerynAside)
-		msgbox(format("Take care out there!"))
-		setflag(FLAG_JEX)
-		release
-		end
-	}
-}
-script(local) Route2_TerynAside
-{
-	getplayerxy(PLAYER_X, PLAYER_Y)
-	if (var(PLAYER_X) == NPCTALK_POS1)
-	{
-		applymovement(LOCALID_R2_TERYN, Route2_Teryn_AsideUp)
-	}
-	else
-	{
-		applymovement(LOCALID_R2_TERYN, Route2_Teryn_AsideLeft)
-	}
+	lock
+	faceplayer
+	// Talk then BOOK IT
+	msgbox(format("H-Hey, did you hear that?\p"
+		"I thought I heard something coming from the woods!\p"
+		"I h-heard it's dangerous… but I'll check it out. Don't tell the tour guide."))
+	closemessage
+	applymovement(LOCALID_R2_TERYN, Route2_Teryn_Aside)
 	waitmovement(0)
+	msgbox(format("And definitely don't follow me!\nI'll be back!"))
+	applymovement(LOCALID_R2_TERYN, Route2_Teryn_Bookit)
+	waitmovement(0)
+	removeobject(LOCALID_R2_TERYN)
+	setvar(VAR_THYME_STATE, 2)
+	release
+	end
 }
-movement Route2_Teryn_AsideLeft
+movement Route2_Teryn_Aside
 {
-	walk_left
-	face_right
+	walk_down
+	walk_in_place_up
 }
-movement Route2_Teryn_AsideUp
+movement Route2_Teryn_Bookit
 {
-	walk_up
-	face_down
+	walk_right_fast * 8
 }
 
 script Route2_Trevenant

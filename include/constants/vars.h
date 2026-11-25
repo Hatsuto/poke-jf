@@ -83,7 +83,7 @@
 	// 0: (initial) mom tiles active
 	// 1: mom spoken to
 	// 2: jex spoken to
-	// 3: path opened to forest
+	// 3: path opened to forest  (This is now skipped)
 	// 4: forest approached (jex vanished from route 2)
 	// 5: gift shop unblocked (post-gym)
 
