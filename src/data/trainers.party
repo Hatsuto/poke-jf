@@ -451,7 +451,7 @@ Music: Swimmer
 Double Battle: No
 AI: Check Bad Move
 
-Buneary
+Sentret
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -463,293 +463,385 @@ Grember
 Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_MUSEUM_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_THYMEFOREST_TANEGUCHI ===
+Name: Taneguchi
+Class: Ninja Boy
+Pic: Ninja Boy
 Gender: Male
-Music: Aqua
+Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Zubat
-Level: 14
+Houndour
+Level: 8
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Carvanha
-Level: 14
+=== TRAINER_THYMEFOREST_GINGER ===
+Name: Ginger
+Class: Hex Maniac
+Pic: Hex Maniac
+Gender: Female
+Music: Suspicious
+Items: Potion
+Double Battle: No
+AI: Check Bad Move / Prefer Status Moves
+
+Hoothoot
+Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_SPACE_CENTER_1 ===
-Name: GRUNT
+Morelull
+Level: 8
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_THYMEFOREST_SWIFT ===
+Name: Swift
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Check Bad Move
+
+Wingull
+Level: 9
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_THYMEFOREST_GRUNT ===
+Name: ???
 Class: Team Magma
-Pic: Magma Grunt M
-Gender: Male
+Pic: Magma Grunt F
+Gender: Female
 Music: Magma
-Double Battle: No
-AI: Check Bad Move
+Double Battle: Yes
+AI: Check Bad Move / Check Viability
 
-Numel
-Level: 32
+Gothita
+Level: 9
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Confusion
+- Pound
+- Tickle
 
-=== TRAINER_GRUNT_MT_PYRE_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+Natu
+Level: 9
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Night Shade
+- Peck
+- Leer
+
+=== TRAINER_THYMEFOREST_LIAM_GRS ===
+Name: Liam
+Class: Rival
+Pic: Red
 Gender: Male
-Music: Aqua
-Double Battle: No
-AI: Check Bad Move
-
-Zubat
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_MT_PYRE_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
-Double Battle: No
-AI: Check Bad Move
-
-Carvanha
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_MT_PYRE_3 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
-Double Battle: No
-AI: Check Bad Move
-
-Poochyena
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Carvanha
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_WEATHER_INST_4 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt F
-Gender: Female
-Music: Aqua
-Double Battle: No
-AI: Check Bad Move
-
-Carvanha
-Level: 28
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_AQUA_HIDEOUT_5 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt F
-Gender: Female
-Music: Aqua
-Double Battle: No
-AI: Check Bad Move
-
-Carvanha
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_AQUA_HIDEOUT_6 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt F
-Gender: Female
-Music: Aqua
-Double Battle: No
-AI: Check Bad Move
-
-Zubat
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_FREDRICK ===
-Name: FREDRICK
-Class: Expert
-Pic: Expert M
-Gender: Male
-Music: Intense
+Music: Male
 Double Battle: No
 AI: Basic Trainer
+Mugshot: Green
+Mugshot Pic: Liam Mug
 
-Makuhita
-Level: 30
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Machoke
-Level: 30
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_MATT ===
-Name: MATT
-Class: Aqua Admin
-Pic: Aqua Admin M
-Gender: Male
-Music: Aqua
-Items: Super Potion
-Double Battle: No
-AI: Basic Trainer
-
-Mightyena
-Level: 34
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Golbat
-Level: 34
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-=== TRAINER_ZANDER ===
-Name: ZANDER
-Class: Black Belt
-Pic: Black Belt
-Gender: Male
-Music: Intense
-Double Battle: No
-AI: Check Bad Move
-
-Hariyama
-Level: 31
+Sentret
+Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_SHELLY_WEATHER_INSTITUTE ===
-Name: SHELLY
-Class: Aqua Admin
-Pic: Aqua Admin F
-Gender: Female
-Music: Aqua
-Double Battle: No
-AI: Basic Trainer
+Grass Starter 1
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Carvanha
-Level: 28
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Mightyena
-Level: 28
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-=== TRAINER_SHELLY_SEAFLOOR_CAVERN ===
-Name: SHELLY
-Class: Aqua Admin
-Pic: Aqua Admin F
-Gender: Female
-Music: Aqua
-Double Battle: No
-AI: Basic Trainer
-
-Sharpedo
-Level: 37
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Mightyena
-Level: 37
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_ARCHIE ===
-Name: ARCHIE
-Class: Aqua Leader
-Pic: Aqua Leader Archie
+=== TRAINER_THYMEFOREST_LIAM_FIR ===
+Name: Liam
+Class: Rival
+Pic: Red
 Gender: Male
-Music: Aqua
-Items: Super Potion / Super Potion
+Music: Male
 Double Battle: No
 AI: Basic Trainer
+Mugshot: Green
+Mugshot Pic: Liam Mug
 
-Mightyena
-Level: 41
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Seedot
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Crobat
-Level: 41
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Fire Starter 1
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Sharpedo
-Level: 43
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+=== TRAINER_THYMEFOREST_LIAM_WTR ===
+Name: Liam
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+Mugshot: Green
+Mugshot Pic: Liam Mug
 
-=== TRAINER_LEAH ===
-Name: LEAH
+Fletchling
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Quick Attack
+- Growl
+- Peck
+
+Water Starter 1
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_THYMEFOREST_OLIVE_GRS ===
+Name: Olive
+Class: Rival
+Pic: Olive 1
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+Mugshot: Purple
+Mugshot Pic: Olive Mug
+
+Hatenna
+Level: 8
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Disarming Voice
+- Play Nice
+
+Grass Starter 1
+Level: 9
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_THYMEFOREST_OLIVE_FIR ===
+Name: Olive
+Class: Rival
+Pic: Olive 1
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+Mugshot: Purple
+Mugshot Pic: Olive Mug
+
+Hatenna
+Level: 8
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Disarming Voice
+- Play Nice
+
+Fire Starter 1
+Level: 9
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_THYMEFOREST_OLIVE_WTR ===
+Name: Olive
+Class: Rival
+Pic: Olive 1
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+Mugshot: Purple
+Mugshot Pic: Olive Mug
+
+Hatenna
+Level: 8
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Disarming Voice
+- Play Nice
+
+Water Starter 1
+Level: 9
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_THYMEGYM_RIN ===
+Name: Rin
 Class: Hex Maniac
 Pic: Hex Maniac
 Gender: Female
 Music: Suspicious
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint
 
-Spoink
-Level: 31
+Cacnea
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ball: Great
 
-=== TRAINER_DAISY ===
-Name: DAISY
+=== TRAINER_THYMEGYM_HOLLY ===
+Name: Holly
 Class: Aroma Lady
 Pic: Aroma Lady
 Gender: Female
-Music: Female
+Music: Swimmer
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Check Viability / HP Aware
 
-Shroomish
-Level: 14
+Oddish
+Level: 9
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ball: Great
 
-Roselia
-Level: 14
+Seedot
+Level: 9
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bullet Seed
+- Growth
+- Harden
+- Bide
 
-=== TRAINER_ROSE_1 ===
-Name: ROSE
-Class: Aroma Lady
-Pic: Aroma Lady
+=== TRAINER_THYMEGYM_BRENNA ===
+Name: Brenna
+Class: Hex Maniac
+Pic: Hex Maniac
 Gender: Female
-Music: Female
+Music: Suspicious
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Prefer Status Moves
 
-Roselia
-Level: 14
+Morelull
+Level: 9
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Leech Seed
+- Confuse Ray
+- Fairy Wind
+- Growth
 
-Shroomish
-Level: 14
+Foongus
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ball: Great
+- Poison Powder
+- Absorb
+- Facade
+- Growth
 
-Roselia
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_FELIX ===
-Name: FELIX
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
+=== TRAINER_THYMEGYM_GRACE ===
+Name: Grace
+Class: Psychic
+Pic: Psychic F
+Gender: Female
 Music: Cool
-Items: Full Restore
 Double Battle: No
-AI: Basic Trainer
+AI: Check Bad Move / Check Viability / Prefer Status Moves
 
-Medicham
-Level: 43
+Exeggcute
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Psychic
+Ball: Great
+- Round
+- Hypnosis
+- Bullet Seed
 
-Claydol
-Level: 43
+=== TRAINER_THYMEGYM_TARA ===
+Name: Tara
+Class: Aroma Lady
+Pic: Aroma Lady
+Gender: Female
+Music: Swimmer
+Double Battle: No
+AI: Check Bad Move / Check Viability / HP Aware
+
+Hoppip
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Skill Swap
-- Earthquake
+Ball: Great
+- Seed Bomb
+- Double Edge
+- Tail Whip
+
+Cottonee
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ball: Great
+- Absorb
+- Fairy Wind
+- Fake Tears
+
+Gossifleur
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ball: Great
+- Razor Leaf
+- Leafage
+- Sing
+
+=== TRAINER_THYMEGYM_GWEN ===
+Name: Gwen
+Class: Aroma Lady
+Pic: Aroma Lady
+Gender: Female
+Music: Swimmer
+Double Battle: No
+AI: Check Bad Move / Check Viability / HP Aware
+
+Nuzleaf
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Razor Leaf
+- Fake Out
+- Growth
+- Torment
+
+=== TRAINER_THYMEGYM_LLOYD ===
+Name: Lloyd
+Class: Ninja Boy
+Pic: Ninja Boy
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Check Viability / HP Aware
+
+Budew
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ball: Great
+- Mega Drain
+- Stun Spore
+- Pin Missile
+
+Oddish
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ball: Great
+- Acid
+- Poison Powder
+- Flail
+
+=== TRAINER_TERYN_1 ===
+Name: Teryn
+Class: Leader
+Pic: Leader Roxanne
+Gender: Male
+Music: Male
+Items: Super Potion
+Double Battle: No
+AI: Basic Trainer / HP Aware / Ace Pokemon / Smart Switching
+
+Exeggcute
+Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ball: Friend
+- Bullet Seed
+- Ancient Power
+- Poison Powder
+- Leech Seed
+
+Phantump
+Level: 14
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ball: Friend
+- Branch Poke
+- Astonish
+- Confuse Ray
+
+Roselia
+Level: 15
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ability: Poison Point
+Ball: Friend
+- Leafage
+- Poison Sting
+- Cut
 
 === TRAINER_VIOLET ===
 Name: VIOLET
