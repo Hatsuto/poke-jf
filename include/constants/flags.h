@@ -97,7 +97,7 @@
 #define FLAG_FREEBIRD_HANS_AND_MONTERO  0x49 // [!]
 #define FLAG_FREEBIRD_LIAM_OUTSIDE      0x4A // Liam before Cadi's "quest" accepted
 #define FLAG_FREEBIRD_CADI_OUTSIDE      0x4B // Cadi at her perch
-#define FLAG_UNUSED_0x04C    0x4C // Unused Flag
+#define FLAG_THYME_FOREST_RENEE         0x4C // Renee encountered in Thyme
 #define FLAG_UNUSED_0x04D    0x4D // Unused Flag
 #define FLAG_UNUSED_0x04E    0x4E // Unused Flag
 #define FLAG_UNUSED_0x04F    0x4F // Unused Flag

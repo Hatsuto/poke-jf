@@ -5766,3 +5766,9 @@ bool8 CheckAddCoins(void)
     else
         return TRUE;
 }
+
+// Uses var stored in VAR_ITEM_ID (0x800E) and returns the quantity in the player's bag
+u16 CheckItemQuantity(void)
+{
+    return CountTotalItemQuantityInBag(gSpecialVar_0x8000);
+}

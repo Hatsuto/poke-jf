@@ -1,13 +1,31 @@
 mapscripts ThymeVillage_Mart_MapScripts{}
 
+// Temp vars
+const VAR_POTION_BEFORE = VAR_TEMP_0
+const VAR_POTION_AFTER = VAR_TEMP_1
+
 script Thyme_Mart_Clerk
 {
 	lock
 	faceplayer
+	setvar(VAR_0x8000, ITEM_POTION)
+	specialvar(VAR_POTION_BEFORE,CheckItemQuantity)
 	msgbox(gText_HowMayIServeYou)
 	waitmessage
 	pokemart(Thyme_Mart_Pokemart)
 	msgbox(gText_PleaseComeAgain)
+	setvar(VAR_0x8000, ITEM_POTION)
+	specialvar(VAR_POTION_AFTER,CheckItemQuantity)
+	
+	//Man I wish there was a better way to do this.
+	if (var(VAR_INNERTHYME_STATE) == 0)
+	{
+		while (var(VAR_POTION_AFTER) > VAR_POTION_BEFORE && var(VAR_POTION_AFTER) > 0) //Failsafe
+		{
+			addvar(VAR_ACTIVITY_TRACK, 1)
+			subvar(VAR_POTION_AFTER, 1)
+		}
+	}
 	release
 	end
 }

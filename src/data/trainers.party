@@ -463,6 +463,19 @@ Grember
 Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
+=== TRAINER_THYMEFOREST_RENEE ===
+Name: Renée
+Class: Lady
+Pic: Lady
+Gender: Female
+Music: Rich
+Double Battle: No
+AI: Check Bad Move
+
+Goomy
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
 === TRAINER_THYMEFOREST_TANEGUCHI ===
 Name: Taneguchi
 Class: Ninja Boy
@@ -842,23 +855,6 @@ Ball: Friend
 - Leafage
 - Poison Sting
 - Cut
-
-=== TRAINER_VIOLET ===
-Name: VIOLET
-Class: Aroma Lady
-Pic: Aroma Lady
-Gender: Female
-Music: Female
-Double Battle: No
-AI: Check Bad Move
-
-Roselia
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Gloom
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ROSE_2 ===
 Name: ROSE

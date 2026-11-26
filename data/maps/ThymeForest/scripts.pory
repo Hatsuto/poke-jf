@@ -215,6 +215,85 @@ script ThymeForest_RiajuuF
 	}
 }
 
+//Technically not part of the tour.
+script ThymeForest_TravelNurse
+{
+	lock
+	faceplayer
+	if (var(VAR_ACTIVITY_TRACK) > 5)
+	{
+		msgbox(format("Salut! Euh… Hello!\p"
+			"What is this? An amateur trainer, so deep in this forest?\p"
+			"And yet I can see you come so prepared, with so many Potions!"))
+		
+		trainerbattle_single(TRAINER_THYMEFOREST_RENEE,
+				"Then surely, you are ready! We battle!",
+				"Magnifique!", ThymeForest_PostNurseBattle)
+	}
+	elif (var(VAR_ACTIVITY_TRACK) > 0)
+	{
+		msgbox(format("Salut! Euh… Hello!\p"
+			"What is this? An amateur trainer, so deep in this forest?\p"
+			"You come prepared with Potions, yet surely, you are already tired, no?")
+			, MSGBOX_YESNO)
+		
+		if (var(VAR_RESULT) == 0)
+		{
+			trainerbattle_single(TRAINER_THYMEFOREST_RENEE,
+				"Truly, no…?\nThen, you are ready! We battle!",
+				"Magnifique!", ThymeForest_PostNurseBattle)
+		}
+		else
+		{
+			msgbox(format("Then come, let this nurse rest your poor Pokémon!"), MSGBOX_AUTOCLOSE)
+			call(Common_EventScript_OutOfCenterPartyHeal)
+			release
+			end
+		}
+	}
+	else
+	{
+		setvar(VAR_ITEM_ID, ITEM_POTION)
+		specialvar(VAR_RESULT, CheckItemQuantity)
+		if (var(VAR_RESULT) == 0)
+		{
+			msgbox(format("Salut! Euh… Hello!\p"
+				"What is this? An amateur trainer, so deep in this forest?\p"
+				"And so little prepared! No Potions at all!!\p"
+				"Come, let this nurse rest your poor Pokémon!"))
+		}
+		else
+		{
+			msgbox(format("Salut! Euh… Hello!\p"
+				"What is this? An amateur trainer, so deep in this forest?\p"
+				"And so little prepared! Surely this is not enough Potions for your friends?\p"
+				"Come, let this nurse rest your Pokémon!"))
+		}
+		call(Common_EventScript_OutOfCenterPartyHeal)
+		
+		msgbox(format("I must depart! Take care of your Pokémon, for the sake of battling!"))
+		fadescreenswapbuffers(FADE_TO_BLACK)
+		removeobject(LOCALID_TF_RENEE)
+		fadescreenswapbuffers(FADE_FROM_BLACK)
+		release
+		end
+	}
+}
+script(local) ThymeForest_PostNurseBattle
+{
+	lock
+	call(Common_EventScript_OutOfCenterPartyHeal)
+	msgbox(format("Thank you for a wonderful battle.\p"
+		"I must depart, but you must continue to grow strong!\p"
+		"The {COLOR RED}SBC{COLOR DARK_GRAY} will be waiting for you!"), MSGBOX_AUTOCLOSE)
+	
+	fadescreenswapbuffers(FADE_TO_BLACK)
+	removeobject(LOCALID_TF_RENEE)
+	fadescreenswapbuffers(FADE_FROM_BLACK)
+	release
+	end
+}
+
 //********************
 //Standard NPCs
 //********************
