@@ -469,6 +469,9 @@ const u16 gTrainerPalette_LadyFrlg[] = INCGFX_U16("graphics/trainers/palettes/la
 const u32 gTrainerFrontPic_PainterFrlg[] = INCGFX_U32("graphics/trainers/front_pics/painter_frlg.png", ".4bpp.smol");
 const u16 gTrainerPalette_PainterFrlg[] = INCGFX_U16("graphics/trainers/palettes/painter_frlg.pal", ".gbapal");
 
+const u32 gTrainerFrontPic_Nurse[] = INCGFX_U32("graphics/trainers/front_pics/nurse.png", ".4bpp.smol");
+const u16 gTrainerPalette_Nurse[] = INCGFX_U16("graphics/trainers/palettes/nurse.pal", ".gbapal");
+
 const u32 gTrainerFrontPic_Olive_1[] = INCGFX_U32("graphics/trainers/front_pics/olive_1.png", ".4bpp.smol");
 const u16 gTrainerPalette_Olive[] = INCGFX_U16("graphics/trainers/palettes/olive.pal", ".gbapal");
 
@@ -1253,6 +1256,10 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_PAINTER_FRLG] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_PainterFrlg, gTrainerPalette_PainterFrlg),
+    },
+    [TRAINER_PIC_NURSE] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Nurse, gTrainerPalette_Nurse),
     },
 
     [TRAINER_PIC_OLIVE_1] =
