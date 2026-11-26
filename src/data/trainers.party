@@ -415,7 +415,6 @@ Cascoon
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
-- Harden
 - Poison Sting
 
 === TRAINER_THYMEFOREST_CHO ===
@@ -435,10 +434,9 @@ Cascoon
 Level: 6
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
-- Harden
 - Poison Sting
 
-Bonsly
+Fletchling
 Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -830,22 +828,22 @@ Items: Super Potion
 Double Battle: No
 AI: Basic Trainer / HP Aware / Ace Pokemon / Smart Switching
 
-Exeggcute
+Phantump
 Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ball: Friend
+- Branch Poke
+- Astonish
+- Confuse Ray
+
+Exeggcute
+Level: 14
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Ball: Friend
 - Bullet Seed
 - Ancient Power
 - Poison Powder
 - Leech Seed
-
-Phantump
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-Ball: Friend
-- Branch Poke
-- Astonish
-- Confuse Ray
 
 Roselia
 Level: 15
