@@ -247,6 +247,9 @@ script ThymeForest_TravelNurse
 		{
 			msgbox(format("Then come, let this nurse rest your poor Pokémon!"), MSGBOX_AUTOCLOSE)
 			call(Common_EventScript_OutOfCenterPartyHeal)
+			trainerbattle_single(TRAINER_THYMEFOREST_RENEE,
+				"Good, you are ready! Now, we battle!",
+				"Magnifique!", ThymeForest_PostNurseBattle)
 			release
 			end
 		}

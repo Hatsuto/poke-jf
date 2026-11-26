@@ -240,27 +240,27 @@ ThymeForest_TravelNurse::
 # 233 "data/maps/ThymeForest/scripts.pory"
 	compare VAR_ACTIVITY_TRACK, 0
 	goto_if_gt ThymeForest_TravelNurse_2
-# 256 "data/maps/ThymeForest/scripts.pory"
+# 259 "data/maps/ThymeForest/scripts.pory"
 	setvar VAR_ITEM_ID, ITEM_POTION
-# 257 "data/maps/ThymeForest/scripts.pory"
+# 260 "data/maps/ThymeForest/scripts.pory"
 	specialvar VAR_RESULT, CheckItemQuantity
-# 258 "data/maps/ThymeForest/scripts.pory"
+# 261 "data/maps/ThymeForest/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq ThymeForest_TravelNurse_10
-# 267 "data/maps/ThymeForest/scripts.pory"
-	msgbox ThymeForest_TravelNurse_Text_7
-ThymeForest_TravelNurse_9:
-# 272 "data/maps/ThymeForest/scripts.pory"
-	call Common_EventScript_OutOfCenterPartyHeal
-# 274 "data/maps/ThymeForest/scripts.pory"
+# 270 "data/maps/ThymeForest/scripts.pory"
 	msgbox ThymeForest_TravelNurse_Text_8
+ThymeForest_TravelNurse_9:
 # 275 "data/maps/ThymeForest/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
-# 276 "data/maps/ThymeForest/scripts.pory"
-	removeobject LOCALID_TF_RENEE
+	call Common_EventScript_OutOfCenterPartyHeal
 # 277 "data/maps/ThymeForest/scripts.pory"
-	fadescreenswapbuffers FADE_FROM_BLACK
+	msgbox ThymeForest_TravelNurse_Text_9
 # 278 "data/maps/ThymeForest/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 279 "data/maps/ThymeForest/scripts.pory"
+	removeobject LOCALID_TF_RENEE
+# 280 "data/maps/ThymeForest/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 281 "data/maps/ThymeForest/scripts.pory"
 	release
 	end
 
@@ -282,6 +282,8 @@ ThymeForest_TravelNurse_2:
 # 249 "data/maps/ThymeForest/scripts.pory"
 	call Common_EventScript_OutOfCenterPartyHeal
 # 250 "data/maps/ThymeForest/scripts.pory"
+	trainerbattle_single TRAINER_THYMEFOREST_RENEE, ThymeForest_TravelNurse_Text_6, ThymeForest_TravelNurse_Text_2, ThymeForest_PostNurseBattle
+# 253 "data/maps/ThymeForest/scripts.pory"
 	release
 	end
 
@@ -291,85 +293,85 @@ ThymeForest_TravelNurse_6:
 	return
 
 ThymeForest_TravelNurse_10:
-# 260 "data/maps/ThymeForest/scripts.pory"
-	msgbox ThymeForest_TravelNurse_Text_6
+# 263 "data/maps/ThymeForest/scripts.pory"
+	msgbox ThymeForest_TravelNurse_Text_7
 	goto ThymeForest_TravelNurse_9
 
 
 ThymeForest_PostNurseBattle:
-# 284 "data/maps/ThymeForest/scripts.pory"
+# 287 "data/maps/ThymeForest/scripts.pory"
 	lock
-# 285 "data/maps/ThymeForest/scripts.pory"
+# 288 "data/maps/ThymeForest/scripts.pory"
 	call Common_EventScript_OutOfCenterPartyHeal
-# 286 "data/maps/ThymeForest/scripts.pory"
+# 289 "data/maps/ThymeForest/scripts.pory"
 	msgbox ThymeForest_PostNurseBattle_Text_0, MSGBOX_AUTOCLOSE
-# 290 "data/maps/ThymeForest/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
-# 291 "data/maps/ThymeForest/scripts.pory"
-	removeobject LOCALID_TF_RENEE
-# 292 "data/maps/ThymeForest/scripts.pory"
-	fadescreenswapbuffers FADE_FROM_BLACK
 # 293 "data/maps/ThymeForest/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 294 "data/maps/ThymeForest/scripts.pory"
+	removeobject LOCALID_TF_RENEE
+# 295 "data/maps/ThymeForest/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 296 "data/maps/ThymeForest/scripts.pory"
 	release
 	end
 
 
 ThymeForest_Boy::
-# 303 "data/maps/ThymeForest/scripts.pory"
+# 306 "data/maps/ThymeForest/scripts.pory"
 	msgbox ThymeForest_Boy_Text_0, MSGBOX_NPC
 	return
 
 
 ThymeForest_LedgeBoy::
-# 310 "data/maps/ThymeForest/scripts.pory"
+# 313 "data/maps/ThymeForest/scripts.pory"
 	msgbox ThymeForest_LedgeBoy_Text_0, MSGBOX_NPC
 	return
 
 
 ThymeForest_BugCatcher_Andre::
-# 322 "data/maps/ThymeForest/scripts.pory"
+# 325 "data/maps/ThymeForest/scripts.pory"
 	trainerbattle_single TRAINER_THYMEFOREST_ANDRE, ThymeForest_BugCatcher_Andre_Text_0, ThymeForest_BugCatcher_Andre_Text_1
-# 326 "data/maps/ThymeForest/scripts.pory"
+# 329 "data/maps/ThymeForest/scripts.pory"
 	msgbox ThymeForest_BugCatcher_Andre_Text_2, MSGBOX_NPC
 	end
 
 
 ThymeForest_Youngster_Jacob::
-# 334 "data/maps/ThymeForest/scripts.pory"
-	trainerbattle_single TRAINER_THYMEFOREST_JACOB, ThymeForest_Youngster_Jacob_Text_0, ThymeForest_Youngster_Jacob_Text_1
 # 337 "data/maps/ThymeForest/scripts.pory"
+	trainerbattle_single TRAINER_THYMEFOREST_JACOB, ThymeForest_Youngster_Jacob_Text_0, ThymeForest_Youngster_Jacob_Text_1
+# 340 "data/maps/ThymeForest/scripts.pory"
 	msgbox ThymeForest_Youngster_Jacob_Text_2, MSGBOX_NPC
 	end
 
 
 ThymeForest_Youngster_Cory::
-# 345 "data/maps/ThymeForest/scripts.pory"
-	trainerbattle_single TRAINER_THYMEFOREST_CORY, ThymeForest_Youngster_Cory_Text_0, ThymeForest_Youngster_Cory_Text_1
 # 348 "data/maps/ThymeForest/scripts.pory"
+	trainerbattle_single TRAINER_THYMEFOREST_CORY, ThymeForest_Youngster_Cory_Text_0, ThymeForest_Youngster_Cory_Text_1
+# 351 "data/maps/ThymeForest/scripts.pory"
 	msgbox ThymeForest_Youngster_Cory_Text_2, MSGBOX_NPC
 	end
 
 
 ThymeForest_BugCatcher_Rove::
-# 356 "data/maps/ThymeForest/scripts.pory"
-	trainerbattle_single TRAINER_THYMEFOREST_ROVE, ThymeForest_BugCatcher_Rove_Text_0, ThymeForest_BugCatcher_Rove_Text_1
 # 359 "data/maps/ThymeForest/scripts.pory"
+	trainerbattle_single TRAINER_THYMEFOREST_ROVE, ThymeForest_BugCatcher_Rove_Text_0, ThymeForest_BugCatcher_Rove_Text_1
+# 362 "data/maps/ThymeForest/scripts.pory"
 	msgbox ThymeForest_BugCatcher_Rove_Text_2, MSGBOX_NPC
 	end
 
 
 ThymeForest_NinjaBoy_Cho::
-# 367 "data/maps/ThymeForest/scripts.pory"
-	trainerbattle_single TRAINER_THYMEFOREST_CHO, ThymeForest_NinjaBoy_Cho_Text_0, ThymeForest_NinjaBoy_Cho_Text_1
 # 370 "data/maps/ThymeForest/scripts.pory"
+	trainerbattle_single TRAINER_THYMEFOREST_CHO, ThymeForest_NinjaBoy_Cho_Text_0, ThymeForest_NinjaBoy_Cho_Text_1
+# 373 "data/maps/ThymeForest/scripts.pory"
 	msgbox ThymeForest_NinjaBoy_Cho_Text_2, MSGBOX_NPC
 	end
 
 
 ThymeForest_AromaLady_Amanita::
-# 378 "data/maps/ThymeForest/scripts.pory"
+# 381 "data/maps/ThymeForest/scripts.pory"
 	trainerbattle_single TRAINER_THYMEFOREST_AMANITA, ThymeForest_AromaLady_Amanita_Text_0, ThymeForest_AromaLady_Amanita_Text_1
-# 382 "data/maps/ThymeForest/scripts.pory"
+# 385 "data/maps/ThymeForest/scripts.pory"
 	msgbox ThymeForest_AromaLady_Amanita_Text_2, MSGBOX_NPC
 	end
 
@@ -516,7 +518,11 @@ ThymeForest_TravelNurse_Text_5:
 	.string "Pokémon!$"
 
 ThymeForest_TravelNurse_Text_6:
-# 260 "data/maps/ThymeForest/scripts.pory"
+# 251 "data/maps/ThymeForest/scripts.pory"
+	.string "Good, you are ready! Now, we battle!$"
+
+ThymeForest_TravelNurse_Text_7:
+# 263 "data/maps/ThymeForest/scripts.pory"
 	.string "Salut! Euh… Hello!\p"
 	.string "What is this? An amateur trainer, so\n"
 	.string "deep in this forest?\p"
@@ -525,8 +531,8 @@ ThymeForest_TravelNurse_Text_6:
 	.string "Come, let this nurse rest your poor\n"
 	.string "Pokémon!$"
 
-ThymeForest_TravelNurse_Text_7:
-# 267 "data/maps/ThymeForest/scripts.pory"
+ThymeForest_TravelNurse_Text_8:
+# 270 "data/maps/ThymeForest/scripts.pory"
 	.string "Salut! Euh… Hello!\p"
 	.string "What is this? An amateur trainer, so\n"
 	.string "deep in this forest?\p"
@@ -534,20 +540,20 @@ ThymeForest_TravelNurse_Text_7:
 	.string "not enough Potions for your friends?\p"
 	.string "Come, let this nurse rest your Pokémon!$"
 
-ThymeForest_TravelNurse_Text_8:
-# 274 "data/maps/ThymeForest/scripts.pory"
+ThymeForest_TravelNurse_Text_9:
+# 277 "data/maps/ThymeForest/scripts.pory"
 	.string "I must depart! Take care of your\n"
 	.string "Pokémon, for the sake of battling!$"
 
 ThymeForest_PostNurseBattle_Text_0:
-# 286 "data/maps/ThymeForest/scripts.pory"
+# 289 "data/maps/ThymeForest/scripts.pory"
 	.string "Thank you for a wonderful battle.\p"
 	.string "I must depart, but you must continue to\n"
 	.string "grow strong!\p"
 	.string "The {COLOR RED}SBC{COLOR DARK_GRAY} will be waiting for you!$"
 
 ThymeForest_Boy_Text_0:
-# 303 "data/maps/ThymeForest/scripts.pory"
+# 306 "data/maps/ThymeForest/scripts.pory"
 	.string "I'll let you in on a Pokémon fact. Think\n"
 	.string "of it like a tip, for trainers!\p"
 	.string "In every habitat, there's usually one\n"
@@ -557,53 +563,53 @@ ThymeForest_Boy_Text_0:
 	.string "be lucky to find one.$"
 
 ThymeForest_LedgeBoy_Text_0:
-# 310 "data/maps/ThymeForest/scripts.pory"
+# 313 "data/maps/ThymeForest/scripts.pory"
 	.string "Ow, ow… I fell down this ledge while\n"
 	.string "trying to read that sign.\p"
 	.string "Now I have to go south through the\n"
 	.string "village just to get back up…$"
 
 ThymeForest_BugCatcher_Andre_Text_0:
-# 323 "data/maps/ThymeForest/scripts.pory"
+# 326 "data/maps/ThymeForest/scripts.pory"
 	.string "Hey, I see you there!\n"
 	.string "You ain't sneaking past me!$"
 
 ThymeForest_BugCatcher_Andre_Text_1:
-# 325 "data/maps/ThymeForest/scripts.pory"
+# 328 "data/maps/ThymeForest/scripts.pory"
 	.string "…Not that I can stop you.$"
 
 ThymeForest_BugCatcher_Andre_Text_2:
-# 326 "data/maps/ThymeForest/scripts.pory"
+# 329 "data/maps/ThymeForest/scripts.pory"
 	.string "Trainers like me are always itchin' to\n"
 	.string "battle!\p"
 	.string "Or… maybe I just got some bug bites.$"
 
 ThymeForest_Youngster_Jacob_Text_0:
-# 335 "data/maps/ThymeForest/scripts.pory"
+# 338 "data/maps/ThymeForest/scripts.pory"
 	.string "You don't look familiar. Sneak off from\n"
 	.string "the tour?$"
 
 ThymeForest_Youngster_Jacob_Text_1:
-# 336 "data/maps/ThymeForest/scripts.pory"
+# 339 "data/maps/ThymeForest/scripts.pory"
 	.string "That any way to treat a local??$"
 
 ThymeForest_Youngster_Jacob_Text_2:
-# 337 "data/maps/ThymeForest/scripts.pory"
+# 340 "data/maps/ThymeForest/scripts.pory"
 	.string "Not many people come through here.\p"
 	.string "Too much wild Pokémon scares off you\n"
 	.string "city folk.$"
 
 ThymeForest_Youngster_Cory_Text_0:
-# 346 "data/maps/ThymeForest/scripts.pory"
+# 349 "data/maps/ThymeForest/scripts.pory"
 	.string "Whoa, wait! Watch where you're\n"
 	.string "stepping!$"
 
 ThymeForest_Youngster_Cory_Text_1:
-# 347 "data/maps/ThymeForest/scripts.pory"
+# 350 "data/maps/ThymeForest/scripts.pory"
 	.string "Gosh dangit.$"
 
 ThymeForest_Youngster_Cory_Text_2:
-# 348 "data/maps/ThymeForest/scripts.pory"
+# 351 "data/maps/ThymeForest/scripts.pory"
 	.string "I'm looking through the grass for\n"
 	.string "Items.\p"
 	.string "Suspicious spaces, out-of-place rocks\n"
@@ -611,47 +617,47 @@ ThymeForest_Youngster_Cory_Text_2:
 	.string "look.$"
 
 ThymeForest_BugCatcher_Rove_Text_0:
-# 357 "data/maps/ThymeForest/scripts.pory"
+# 360 "data/maps/ThymeForest/scripts.pory"
 	.string "Can you handle my newly evolved\n"
 	.string "Pokémon!?$"
 
 ThymeForest_BugCatcher_Rove_Text_1:
-# 358 "data/maps/ThymeForest/scripts.pory"
+# 361 "data/maps/ThymeForest/scripts.pory"
 	.string "I think I liked 'em better as Wurmple…$"
 
 ThymeForest_BugCatcher_Rove_Text_2:
-# 359 "data/maps/ThymeForest/scripts.pory"
+# 362 "data/maps/ThymeForest/scripts.pory"
 	.string "The cool thing about Bug Pokémon is how\n"
 	.string "fast they evolve.\p"
 	.string "'Course, that also means they're done\n"
 	.string "evolving pretty darn early.$"
 
 ThymeForest_NinjaBoy_Cho_Text_0:
-# 368 "data/maps/ThymeForest/scripts.pory"
+# 371 "data/maps/ThymeForest/scripts.pory"
 	.string "To come all the way back here… you fool!$"
 
 ThymeForest_NinjaBoy_Cho_Text_1:
-# 369 "data/maps/ThymeForest/scripts.pory"
+# 372 "data/maps/ThymeForest/scripts.pory"
 	.string "Ack… why did you even come this way…$"
 
 ThymeForest_NinjaBoy_Cho_Text_2:
-# 370 "data/maps/ThymeForest/scripts.pory"
+# 373 "data/maps/ThymeForest/scripts.pory"
 	.string "Did you think I was hiding an item here,\n"
 	.string "maybe?\p"
 	.string "No… this is just where I like to hang\n"
 	.string "out…$"
 
 ThymeForest_AromaLady_Amanita_Text_0:
-# 379 "data/maps/ThymeForest/scripts.pory"
+# 382 "data/maps/ThymeForest/scripts.pory"
 	.string "Oh my, you're not from the village…\p"
 	.string "Would you like me to show you the way\n"
 	.string "back?$"
 
 ThymeForest_AromaLady_Amanita_Text_1:
-# 381 "data/maps/ThymeForest/scripts.pory"
+# 384 "data/maps/ThymeForest/scripts.pory"
 	.string "Oh! Well, I suppose you'll do fine.$"
 
 ThymeForest_AromaLady_Amanita_Text_2:
-# 382 "data/maps/ThymeForest/scripts.pory"
+# 385 "data/maps/ThymeForest/scripts.pory"
 	.string "Tourists don't usually come this way.\n"
 	.string "You must be here for a good reason.$"
